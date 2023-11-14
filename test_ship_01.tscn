@@ -21,4 +21,32 @@ skeleton = NodePath("../..")
 transform = Transform3D(14.6095, 0, 0, 0, 5.94724, 0, 0, 0, 21.1379, 0, 0, 7.61163)
 shape = SubResource("BoxShape3D_omwwi")
 
+[node name="text" type="Node3D" parent="."]
+
+[node name="beschreibung" type="Label3D" parent="text"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 15, 0)
+billboard = 1
+text = "TextTest
+"
+
+[node name="health" type="Label3D" parent="text"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 12, 0)
+billboard = 1
+text = "health"
+font_size = 16
+
+[node name="armor" type="Label3D" parent="text"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 9, 0)
+billboard = 1
+text = "armor
+"
+font_size = 16
+
+[node name="shield" type="Label3D" parent="text"]
+transform = Transform3D(19.9892, 0, 0, 0, 19.9892, 0, 0, 0, 19.9892, 0, 6, 0)
+billboard = 1
+text = "schield
+"
+font_size = 16
+
 [connection signal="input_event" from="Modell/Test-ship/Area3D" to="." method="_on_area_3d_input_event"]

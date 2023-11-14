@@ -34,7 +34,10 @@ mesh = ExtResource("1_myngo")
 surface_material_override/0 = SubResource("StandardMaterial3D_404ni")
 
 [node name="testShip01" parent="." instance=ExtResource("3_75gxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.09653, -14.5704, -25.092)
+transform = Transform3D(1.00308, 0, 0, 0, 1.00308, 0, 0, 0, 1.00308, -6.09653, -14.5704, -25.092)
+
+[node name="testShip02" parent="." instance=ExtResource("3_75gxc")]
+transform = Transform3D(1.00308, 0, 0, 0, 1.00308, 0, 0, 0, 1.00308, 8.25541, -14.5704, -37.5323)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i7vx7")
