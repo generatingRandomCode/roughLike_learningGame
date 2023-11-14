@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://cj0wofdm4g5mk"]
+[gd_scene load_steps=4 format=3 uid="uid://cj0wofdm4g5mk"]
+
+[ext_resource type="ArrayMesh" uid="uid://bxhfqhq3kg616" path="res://resource/gameBackground/Space.obj" id="1_myngo"]
+[ext_resource type="Texture2D" uid="uid://bfvbrl24qw3qp" path="res://resource/gameBackground/space_01.jpg" id="2_s5v80"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_404ni"]
+albedo_texture = ExtResource("2_s5v80")
 
 [node name="main" type="Node3D"]
+transform = Transform3D(0.997723, 0, 0, 0, 0.997723, 0, 0, 0, 0.997723, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Marker3D"]
+
+[node name="Space" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.76995e-08, 0, -4, 0, 4, 0, 4, 0, 4.76995e-08, 0, 0, -2)
+mesh = ExtResource("1_myngo")
+surface_material_override/0 = SubResource("StandardMaterial3D_404ni")

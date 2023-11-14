@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bxhfqhq3kg616"
+path="res://.godot/imported/Space.obj-027ec2ec86794e8b4ad71d3b78cf6910.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Space.obj-027ec2ec86794e8b4ad71d3b78cf6910.mesh"]
+
+source_file="res://resource/gameBackground/Space.obj"
+dest_files=["res://.godot/imported/Space.obj-027ec2ec86794e8b4ad71d3b78cf6910.mesh", "res://.godot/imported/Space.obj-027ec2ec86794e8b4ad71d3b78cf6910.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
