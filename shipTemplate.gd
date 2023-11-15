@@ -40,3 +40,27 @@ func update_dispaly():
 func displayStats(label):
 	var stats = "Healt: {0} / {1} \nArmor: {2} / {3}\nShield {}"
 	get_node("beschreibung").text = stats
+
+func take_damage(damage):
+	
+	if ship_current_shield > 0:
+		if damage > ship_current_shield:
+			damage = damage - ship_current_shield
+			ship_current_shield = 0
+			take_damage(damage)
+		else:
+			ship_current_shield = ship_current_shield - damage
+	elif ship_current_armor > 0:
+		if damage > ship_current_armor * 2:
+			damage = damage - ship_current_armor * 2
+			ship_current_armor = 0
+			take_damage(damage)
+		else:
+			ship_current_armor = ship_current_armor - round(damage / 2)
+	elif ship_current_health > 0:
+		if damage > ship_current_health:
+			damage = damage - ship_current_health
+			ship_current_health = 0
+		else:
+			ship_current_health = ship_current_health - damage
+	update_dispaly()

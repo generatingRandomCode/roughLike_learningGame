@@ -30,11 +30,8 @@ func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 
 
 func _on_attack_pressed():
-	print("attack button press")
 	var test = self.get_parent().get_node("ship_enemy").get("ship_current_shield")
+	var enemy = self.get_parent().get_node("ship_enemy")
+	enemy.take_damage(60)
+
 	print("current shild: " , test)
-	#for _i in self.get_children():
-	#	print(_i)
-	#var test = self.get_parent()
-	#for _i in test.get_children():
-	#	print(_i)
