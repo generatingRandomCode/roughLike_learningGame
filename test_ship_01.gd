@@ -6,16 +6,15 @@ extends "res://shipTemplate.gd"
 
 #	gets called when ship is init
 func _ready():	
-	print("curren tree");
-	
-	#	init values from file in future
-	ship_name = "test ship"
+	print("_ready()");
+	#ship_name = "test ship"
 	ship_health = 100
 	ship_current_health = 100
 	ship_armor = 100
 	ship_current_armor = 100
 	ship_shield = 100
 	ship_current_shield = 100
+	#	init values from file in future
 	#	update the stats
 	update_dispaly()
 	
@@ -28,3 +27,14 @@ func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 			print("pressed left mouse button");
 			ship_current_shield = max(0, ship_current_shield - 10)
 			update_dispaly()
+
+
+func _on_attack_pressed():
+	print("attack button press")
+	var test = self.get_parent().get_node("ship_enemy").get("ship_current_shield")
+	print("current shild: " , test)
+	#for _i in self.get_children():
+	#	print(_i)
+	#var test = self.get_parent()
+	#for _i in test.get_children():
+	#	print(_i)

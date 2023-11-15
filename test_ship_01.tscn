@@ -49,4 +49,30 @@ text = "schield
 "
 font_size = 16
 
+[node name="Action" type="Panel" parent="text"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -67.0
+offset_right = -28.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="text/Action"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Attack" type="Button" parent="text/Action/HBoxContainer"]
+layout_mode = 2
+text = "Fire Small Gun"
+
 [connection signal="input_event" from="Modell/Test-ship/Area3D" to="." method="_on_area_3d_input_event"]
+[connection signal="pressed" from="text/Action/HBoxContainer/Attack" to="." method="_on_attack_pressed"]
