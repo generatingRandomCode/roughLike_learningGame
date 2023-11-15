@@ -37,10 +37,30 @@ func update_dispaly():
 	get_node("text/shield").text = display.format([ship_current_shield, ship_shield])
 	get_node("text/shield").modulate = Color("blue") 
 		
-func displayStats(label):
-	var stats = "Healt: {0} / {1} \nArmor: {2} / {3}\nShield {}"
-	get_node("beschreibung").text = stats
 
+func damage_step(damage):
+	$text/Action.hide()
+	var oldH = self.ship_current_health
+	var oldA = self.ship_current_armor
+	var oldS = self.ship_current_shield
+	take_damage(damage)
+	displayDamage(oldH,oldA,oldS)
+	
+	
+func displayDamage(health, armor, shield):
+	var string = "healt damage: {0}, armordamage: {1}, shielddamage: {2}"
+	health = max(0,health - self.ship_current_health)
+	armor = max(0, armor - self.ship_current_armor)
+	shield = max(0, shield- self.ship_current_shield)
+	string = string.format([health,armor,shield])
+	$damageText.show()
+	$damageText/HBoxContainer/Label.text = string
+	
+func _input(event):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and $damageText.visible:
+		$damageText.hide()
+		$text/Action.show()
+		
 func take_damage(damage):
 	
 	if ship_current_shield > 0:
