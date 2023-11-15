@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj0wofdm4g5mk"]
+[gd_scene load_steps=11 format=3 uid="uid://cj0wofdm4g5mk"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_7kjg5"]
 [ext_resource type="ArrayMesh" uid="uid://bxhfqhq3kg616" path="res://resource/gameBackground/Space.obj" id="1_myngo"]
 [ext_resource type="Texture2D" uid="uid://bfvbrl24qw3qp" path="res://resource/gameBackground/space_01.jpg" id="2_s5v80"]
 [ext_resource type="PackedScene" uid="uid://cqvr6rd0jpble" path="res://test_ship_01.tscn" id="3_75gxc"]
@@ -19,8 +20,12 @@ background_mode = 2
 sky = SubResource("Sky_hylld")
 ambient_light_source = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vu8of"]
+bg_color = Color(0.74902, 0.447059, 0.913725, 0.137255)
+
 [node name="main" type="Node3D"]
 transform = Transform3D(0.997723, 0, 0, 0, 0.997723, 0, 0, 0, 0.997723, 0, 0, 0)
+script = ExtResource("1_7kjg5")
 
 [node name="Marker3D" type="Marker3D" parent="."]
 
@@ -41,3 +46,41 @@ environment = SubResource("Environment_i7vx7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 25, 0)
+
+[node name="Menu" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = -3.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="startPanel" type="Panel" parent="Menu"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -118.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vu8of")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/startPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="Menu/startPanel/HBoxContainer"]
+layout_mode = 2
+text = "START"
+
+[connection signal="pressed" from="Menu/startPanel/HBoxContainer/Button" to="." method="_on_button_pressed"]
