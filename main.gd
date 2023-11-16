@@ -4,6 +4,7 @@ var ship1 = preload("res://test_ship_01.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#$Menu.hide()
 	pass # Replace with function body.
 
 
