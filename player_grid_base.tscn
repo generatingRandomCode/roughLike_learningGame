@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq5uynd8elmpb"]
+
+[ext_resource type="Script" path="res://PlayerGrid.gd" id="1_q0ddw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_53lt2"]
+size = Vector3(10, 10, 10)
+
+[node name="PlayerGridBase" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+script = ExtResource("1_q0ddw")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_53lt2")
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]

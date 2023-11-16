@@ -30,7 +30,7 @@ script = ExtResource("1_7kjg5")
 [node name="Marker3D" type="Marker3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Marker3D"]
-transform = Transform3D(1.00228, 0, 0, 0, 0.708721, 0.708721, 0, -0.708721, 0.708721, 0, 30, 30)
+transform = Transform3D(1.00228, 0, 0, 0, 0.708721, 0.708721, 0, -0.708721, 0.708721, 0, 50, 50)
 
 [node name="Space" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-05, 0, -1000, 0, 1000, 0, 1000, 0, -4.37114e-05, 0, 0, -152.476)
@@ -81,6 +81,5 @@ layout_mode = 2
 text = "START"
 
 [node name="PlayerGrid" parent="." instance=ExtResource("5_s1o23")]
-transform = Transform3D(1.00228, 0, 0, 0, 1.00228, 0, 0, 0, 1.00228, 0.401157, 0.135843, 0.10808)
 
 [connection signal="pressed" from="Menu/startPanel/HBoxContainer/Button" to="." method="_on_button_pressed"]
