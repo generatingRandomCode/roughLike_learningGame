@@ -1,0 +1,9 @@
+[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://bewldnvstglfj"]
+
+[ext_resource type="Texture2D" uid="uid://cja5ikeqk28i5" path="res://resource/ships/Typ-1/Schiff_Typ_1_mat_BaseColor.png" id="1_bjf6o"]
+[ext_resource type="Texture2D" uid="uid://kbmv51sprtej" path="res://resource/ships/Typ-1/Schiff_Typ_1_mat_Normal.png" id="2_gn6e8"]
+
+[resource]
+albedo_texture = ExtResource("1_bjf6o")
+normal_enabled = true
+normal_texture = ExtResource("2_gn6e8")

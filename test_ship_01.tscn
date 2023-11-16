@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqvr6rd0jpble"]
+[gd_scene load_steps=6 format=3 uid="uid://cqvr6rd0jpble"]
 
 [ext_resource type="Script" path="res://test_ship_01.gd" id="1_fe7f3"]
-[ext_resource type="ArrayMesh" uid="uid://ddxupfxnev6e6" path="res://resource/ships/Test-Ship.obj" id="1_t6d02"]
+[ext_resource type="Material" uid="uid://bewldnvstglfj" path="res://resource/ships/Typ-1/Typ-1_mat.tres" id="2_bkxp3"]
+[ext_resource type="ArrayMesh" uid="uid://b2ut57vv645iv" path="res://resource/ships/Typ-1/Schiff.obj" id="3_kaib3"]
 [ext_resource type="PackedScene" uid="uid://dw1ryx131522k" path="res://ship_ui.tscn" id="3_on0k0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_omwwi"]
@@ -13,7 +14,8 @@ script = ExtResource("1_fe7f3")
 
 [node name="Test-ship" type="MeshInstance3D" parent="Modell"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
-mesh = ExtResource("1_t6d02")
+material_override = ExtResource("2_bkxp3")
+mesh = ExtResource("3_kaib3")
 skeleton = NodePath("../..")
 
 [node name="Area3D" type="Area3D" parent="Modell/Test-ship"]

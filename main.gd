@@ -14,8 +14,8 @@ func _process(delta):
 
 func _on_button_pressed():
 	#	initiates the  player
-	init_ship("player", 100, 100 , 100, -20)
-	init_ship("enemy", 200, 50 , 75, 20)
+	#init_ship("player", 100, 100 , 100, -20)
+	#init_ship("enemy", 200, 50 , 75, 20)
 	print("start pressed")
 	#
 	$Menu.hide()

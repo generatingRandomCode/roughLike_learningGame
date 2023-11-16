@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b2ut57vv645iv"
+path="res://.godot/imported/Schiff.obj-e98d87150100171097b2ed9230e9b03b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Schiff.obj-e98d87150100171097b2ed9230e9b03b.mesh"]
+
+source_file="res://resource/ships/Typ-1/Schiff.obj"
+dest_files=["res://.godot/imported/Schiff.obj-e98d87150100171097b2ed9230e9b03b.mesh", "res://.godot/imported/Schiff.obj-e98d87150100171097b2ed9230e9b03b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

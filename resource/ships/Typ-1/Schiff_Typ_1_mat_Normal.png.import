@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://kbmv51sprtej"
+path.s3tc="res://.godot/imported/Schiff_Typ_1_mat_Normal.png-adf0426be594fc9c31b8a07b49f58cad.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://resource/ships/Typ-1/Schiff_Typ_1_mat_Normal.png"
+dest_files=["res://.godot/imported/Schiff_Typ_1_mat_Normal.png-adf0426be594fc9c31b8a07b49f58cad.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://resource/ships/Typ-1/Schiff_Typ_1_mat_Normal.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
