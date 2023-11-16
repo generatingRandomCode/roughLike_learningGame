@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqvr6rd0jpble"]
+[gd_scene load_steps=5 format=3 uid="uid://cqvr6rd0jpble"]
 
+[ext_resource type="Script" path="res://test_ship_01.gd" id="1_fe7f3"]
 [ext_resource type="ArrayMesh" uid="uid://ddxupfxnev6e6" path="res://resource/ships/Test-Ship.obj" id="1_t6d02"]
-[ext_resource type="Script" path="res://test_ship_01.gd" id="1_y4bs6"]
+[ext_resource type="PackedScene" uid="uid://dw1ryx131522k" path="res://ship_ui.tscn" id="3_on0k0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_omwwi"]
 
 [node name="testShip01" type="CharacterBody3D"]
-script = ExtResource("1_y4bs6")
+script = ExtResource("1_fe7f3")
 
 [node name="Modell" type="Node3D" parent="."]
 
@@ -21,81 +22,4 @@ skeleton = NodePath("../..")
 transform = Transform3D(14.6095, 0, 0, 0, 5.94724, 0, 0, 0, 21.1379, 0, 0, 7.61163)
 shape = SubResource("BoxShape3D_omwwi")
 
-[node name="text" type="Node3D" parent="."]
-
-[node name="beschreibung" type="Label3D" parent="text"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 15, -15)
-billboard = 1
-text = "TextTest
-"
-
-[node name="health" type="Label3D" parent="text"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 12, -12)
-billboard = 1
-text = "health"
-font_size = 16
-
-[node name="armor" type="Label3D" parent="text"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 9, -9)
-billboard = 1
-text = "armor
-"
-font_size = 16
-
-[node name="shield" type="Label3D" parent="text"]
-transform = Transform3D(19.9892, 0, 0, 0, 19.9892, 0, 0, 0, 19.9892, 0, 6, -6)
-billboard = 1
-text = "schield
-"
-font_size = 16
-
-[node name="Action" type="Panel" parent="text"]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 18.0
-offset_top = -67.0
-offset_right = -28.0
-offset_bottom = -14.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="text/Action"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Attack" type="Button" parent="text/Action/HBoxContainer"]
-layout_mode = 2
-text = "Fire Small Gun"
-
-[node name="damageText" type="Panel" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 22.0
-offset_top = 580.0
-offset_right = -418.0
-offset_bottom = -7.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="damageText"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.999
-anchor_bottom = 1.0
-offset_right = -0.288025
-alignment = 1
-
-[node name="Label" type="Label" parent="damageText/HBoxContainer"]
-layout_mode = 2
-text = "damage"
-
-[connection signal="input_event" from="Modell/Test-ship/Area3D" to="." method="_on_area_3d_input_event"]
-[connection signal="pressed" from="text/Action/HBoxContainer/Attack" to="." method="_on_attack_pressed"]
+[node name="ShipUI" parent="." instance=ExtResource("3_on0k0")]
