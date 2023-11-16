@@ -13,7 +13,7 @@ var ship_current_armor
 var ship_shield 
 var ship_current_shield
 
-
+signal mouse_click
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -44,6 +44,7 @@ func damage_step(damage):
 	var oldA = self.ship_current_armor
 	var oldS = self.ship_current_shield
 	take_damage(damage)
+	
 	displayDamage(oldH,oldA,oldS)
 	
 	
@@ -55,11 +56,20 @@ func displayDamage(health, armor, shield):
 	string = string.format([health,armor,shield])
 	$damageText.show()
 	$damageText/HBoxContainer/Label.text = string
+	await mouse_click
+	$damageText.hide()
+	$text/Action.show()
 	
+
+
 func _input(event):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and $damageText.visible:
-		$damageText.hide()
-		$text/Action.show()
+	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and $damageText.visible):
+		emit_signal("mouse_click")
+		
+#func _input(event):
+#	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and $damageText.visible:
+#		$damageText.hide()
+#		$text/Action.show()
 		
 func take_damage(damage):
 	
