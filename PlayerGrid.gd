@@ -28,6 +28,7 @@ func init_ship(name,health,armor,shield,x):
 	#instance.set("ship_name", "player") 
 	instance.build(name,health,armor,shield)
 	instance.set_name(name)
+	$Area3D.queue_free()
 	#var randomX = rng.randf_range(-90, 90)
 	#var randomY = rng.randf_range(-90, 90)
 	#var randomZ = rng.randf_range(-90, 90)
