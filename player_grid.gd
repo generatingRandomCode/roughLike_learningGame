@@ -37,6 +37,7 @@ func initBoardPlayer2(grid,player,offsetX,offsetZ):
 			var newGrid = grid.duplicate()
 			newGrid.set_position(Vector3(offsetX, 0,offsetZ))
 			#rotate to face inwards
+			#newGrid.rotate(Vector3(0,1,0), PI*0.5)
 			newGrid.rotate(Vector3(0,1,0), PI*0.5)
 			get_node("Player2").add_child(newGrid)
 			offsetZ = offsetZ +20

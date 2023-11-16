@@ -28,5 +28,6 @@ func init_ship(name,health,armor,shield,x):
 	#instance.set("ship_name", "player") 
 	instance.build(name,health,armor,shield)
 	instance.set_name(name)
+	instance.rotate(Vector3(0,1,0), PI*1.5)
 	add_child(instance)
 	#self.get_node("ship_player").set("ship_name", "player")

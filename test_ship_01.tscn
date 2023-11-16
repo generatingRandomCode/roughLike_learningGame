@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqvr6rd0jpble"]
+[gd_scene load_steps=7 format=3 uid="uid://cqvr6rd0jpble"]
 
 [ext_resource type="Script" path="res://test_ship_01.gd" id="1_fe7f3"]
 [ext_resource type="Material" uid="uid://bewldnvstglfj" path="res://resource/ships/Typ-1/Typ-1_mat.tres" id="2_bkxp3"]
 [ext_resource type="ArrayMesh" uid="uid://b2ut57vv645iv" path="res://resource/ships/Typ-1/Schiff.obj" id="3_kaib3"]
 [ext_resource type="PackedScene" uid="uid://dw1ryx131522k" path="res://ship_ui.tscn" id="3_on0k0"]
+[ext_resource type="PackedScene" uid="uid://cbeydpi12dux3" path="res://resource/Particles/truster_particle.tscn" id="5_7tt1w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_omwwi"]
 
@@ -25,3 +26,6 @@ transform = Transform3D(14.6095, 0, 0, 0, 5.94724, 0, 0, 0, 21.1379, 0, 0, 7.611
 shape = SubResource("BoxShape3D_omwwi")
 
 [node name="ShipUI" parent="." instance=ExtResource("3_on0k0")]
+
+[node name="TrusterParticle" parent="." instance=ExtResource("5_7tt1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12768, 0.765777, 13.4423)
