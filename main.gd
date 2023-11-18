@@ -2,6 +2,7 @@ extends Node3D
 
 var ship1 = preload("res://test_ship_01.tscn")
 
+signal start_pressed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$Menu.hide()
@@ -19,7 +20,8 @@ func _on_button_pressed():
 	#init_ship("enemy", 200, 50 , 75, 20)
 	print("start pressed")
 	#
-	$Menu.hide()
+	start_pressed.emit()
+	#$Menu.hide()
 
 func init_ship(name,health,armor,shield,x):
 	print("init_",name)
