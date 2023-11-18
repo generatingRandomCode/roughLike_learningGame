@@ -2,16 +2,17 @@ extends "res://shipTemplate.gd"
 
 #include("res://ship_ui.gd")
 
-
-#var shipUi = preload("res://ship_ui.gd")
-
-
+#	later preload the specific  ship
+var ship = preload("res://Ships/Typ1.tscn")
 
 #	gets called when ship is init
 func _ready():
 	print("_ready()");
+	ship = ship.instantiate()
+	add_child(ship)
 	$ShipUI.setStats(self.ship_name,self.ship_current_health, self.ship_health, self.ship_current_armor, self.ship_armor,self.ship_current_shield, self.ship_shield)
 	$ShipUI/Action.hide()
+	
 	#var shipUi = $ShipUi
 	#shipUi = shipUi.instantiate() 
 	
