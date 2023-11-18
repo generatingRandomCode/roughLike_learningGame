@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn0ifekqeawho"]
+
+[ext_resource type="Script" path="res://simpleButton.gd" id="1_x8234"]
+
+[node name="Button" type="Button"]
+text = "START"
+script = ExtResource("1_x8234")
+
+[connection signal="pressed" from="." to="." method="_on_button_pressed"]

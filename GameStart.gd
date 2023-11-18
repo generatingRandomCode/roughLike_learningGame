@@ -11,22 +11,14 @@ var main
 #	show the menu
 func enter(_msg := {}) -> void:
 	main = get_tree().get_root().get_node("main")
-	#print("main node:", main.name)
-	#for x in main.get_children():
-	#	print(x.name)
-	main.get_node("Menu").show()
+	main.get_node("StartMenu").show()
 	print("gameStart")
-	main.connect("start_pressed", startPressed)
 
 #	load playerfield 
-func startPressed():
-	print("connected signal")
-	#$"../../Menu".hide()
-	main.get_node("Menu").hide()
-	get_parent().transition_to("PlacePlayerState")
-	#playerGrid = playerGrid.instantiate()
-	#main.add_child(playerGrid)
-	#	scene transition to place ship scene
+func startPressed(name):
+	print("connected signal: ", name)
+	main.get_node("StartMenu").hide()
+	get_parent().transition_to("PlacePlayerState",{"shipName" : name})
 	
 
 	

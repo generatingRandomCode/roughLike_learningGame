@@ -4,7 +4,7 @@ var shipTemplate = preload("res://test_ship_01.tscn")
 var enemyGrid
 var main
 
-func enter(_msg := {}) -> void:
+func enter(parameter := {}) -> void:
 	main = get_tree().get_root().get_node("main")
 	enemyGrid = get_tree().get_root().get_node("main/PlayerGrid/Player2")
 	#enemyGrid = get_tree().get_node("Player2")

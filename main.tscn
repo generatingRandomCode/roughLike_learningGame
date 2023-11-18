@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://GameStart.gd" id="7_7byt3"]
 [ext_resource type="Script" path="res://PlaceEnemyState.gd" id="7_eech8"]
 [ext_resource type="Script" path="res://PlacePlayerState.gd" id="8_d6hui"]
+[ext_resource type="PackedScene" uid="uid://dm2sbmebph5vf" path="res://start_menu.tscn" id="9_1p4yo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_404ni"]
 albedo_texture = ExtResource("2_s5v80")
@@ -22,9 +23,6 @@ sky_material = SubResource("PanoramaSkyMaterial_dwnx6")
 background_mode = 2
 sky = SubResource("Sky_hylld")
 ambient_light_source = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vu8of"]
-bg_color = Color(0.74902, 0.447059, 0.913725, 0.137255)
 
 [node name="main" type="Node3D"]
 transform = Transform3D(0.997723, 0, 0, 0, 0.997723, 0, 0, 0, 0.997723, 0, 0, 0)
@@ -47,43 +45,6 @@ environment = SubResource("Environment_i7vx7")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 25, 0)
 
-[node name="Menu" type="TextureRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = -1.0
-offset_right = -3.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="startPanel" type="Panel" parent="Menu"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -118.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_vu8of")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Menu/startPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Button" type="Button" parent="Menu/startPanel/HBoxContainer"]
-layout_mode = 2
-text = "START"
-
 [node name="StateMashine" type="Node3D" parent="."]
 script = ExtResource("6_hcbpe")
 
@@ -97,4 +58,4 @@ script = ExtResource("7_eech8")
 transform = Transform3D(0.993863, 0, 0, 0, 0.993863, 0, 0, 0, 0.993863, 0, 0, 0)
 script = ExtResource("8_d6hui")
 
-[connection signal="pressed" from="Menu/startPanel/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="StartMenu" parent="." instance=ExtResource("9_1p4yo")]
