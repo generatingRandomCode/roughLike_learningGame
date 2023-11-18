@@ -28,7 +28,7 @@ func enter(_msg := {}) -> void:
 func playerPlaced(name):
 	print("playerPlace ", name)
 	var shipInstance = shipTemplate.instantiate()
-	shipInstance.build("Player Ship",100,100,100)
+	shipInstance.build("Typ1")
 	playerField.get_node(str(name)).add_child(shipInstance)
 	#	to only place one ship remove the clickBoxes after placements 
 	playerField.get_parent().removeClickZones("Player")

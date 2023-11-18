@@ -16,7 +16,7 @@ func placeEnemy():
 	var random_index = randi() % enemyGrid.get_child_count()
 	# Create a new node as a child
 	var shipInstance = shipTemplate.instantiate()
-	shipInstance.build("Enemy Ship",250,50,50)
+	shipInstance.build("Typ1")
 	# Add the new node as a child to the random child
 	enemyGrid.get_child(random_index).add_child(shipInstance)
 	print("Added a new node to a random child.")

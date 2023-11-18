@@ -3,28 +3,32 @@ extends "res://shipTemplate.gd"
 #include("res://ship_ui.gd")
 
 #	later preload the specific  ship
-var ship = preload("res://Ships/Typ1.tscn")
+var ship
 
 #	gets called when ship is init
 func _ready():
 	print("_ready()");
-	ship = ship.instantiate()
-	add_child(ship)
 	$ShipUI.setStats(self.ship_name,self.ship_current_health, self.ship_health, self.ship_current_armor, self.ship_armor,self.ship_current_shield, self.ship_shield)
 	$ShipUI/Action.hide()
 	
 	#var shipUi = $ShipUi
 	#shipUi = shipUi.instantiate() 
-	
-func build(name,health,armor,shield):
-	self.ship_name = name
-	self.ship_health = health
-	self.ship_current_health = health
-	self.ship_armor = armor
-	self.ship_current_armor = armor
-	self.ship_shield = shield
-	self.ship_current_shield = shield
-	#self.shipUI.setStats(self.ship_name,self.ship_health,self.ship_armor, self.ship_shield)
+
+#	Inits the ship from the ship builder with the name of the ship from the ship libary
+func build(ship):
+	var shipPath = "res://Ships/" + ship + ".tscn"
+	#	why does load work but not preload?
+	ship = load(shipPath)
+	ship = ship.instantiate()
+	ship.name = "Model"
+	add_child(ship)
+	self.ship_name = $Model.shipName
+	self.ship_health = $Model.shipHealth
+	self.ship_current_health = $Model.shipHealth
+	self.ship_armor = $Model.shipArmor
+	self.ship_current_armor = $Model.shipArmor
+	self.ship_shield = $Model.shipShield
+	self.ship_current_shield = $Model.shipShield
 	$ShipUI.setStats(self.ship_name,self.ship_current_health, self.ship_health, self.ship_current_armor, self.ship_armor,self.ship_current_shield, self.ship_shield)
 
 

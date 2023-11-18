@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxkc48tji5lwh"]
+[gd_scene load_steps=14 format=3 uid="uid://dxkc48tji5lwh"]
 
 [ext_resource type="Material" uid="uid://bewldnvstglfj" path="res://resource/ships/Typ-1/Typ-1_mat.tres" id="1_h5c66"]
+[ext_resource type="Script" path="res://ShipsScripts/Typ1.gd" id="1_koya1"]
 [ext_resource type="ArrayMesh" uid="uid://b2ut57vv645iv" path="res://resource/ships/Typ-1/Schiff.obj" id="2_xmh8l"]
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="3_kok3c"]
 
@@ -46,17 +47,18 @@ color_ramp = SubResource("GradientTexture1D_ko1hb")
 
 [sub_resource type="QuadMesh" id="QuadMesh_xdvja"]
 
-[node name="Typ1" type="Node3D"]
+[node name="Model" type="Node3D"]
+script = ExtResource("1_koya1")
 
-[node name="modell_typ1" type="MeshInstance3D" parent="."]
+[node name="Typ1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
 material_override = ExtResource("1_h5c66")
 mesh = ExtResource("2_xmh8l")
 skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="modell_typ1"]
+[node name="Area3D" type="Area3D" parent="Typ1"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="modell_typ1/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Typ1/Area3D"]
 transform = Transform3D(14.6095, 0, 0, 0, 5.94724, 0, 0, 0, 21.1379, 0, 0, 7.61163)
 shape = SubResource("BoxShape3D_omwwi")
 
