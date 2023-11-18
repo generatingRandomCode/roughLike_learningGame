@@ -9,6 +9,7 @@ func _ready():
 	base = base.instantiate()
 	initBoardPlayer(base,"player",-10,-20)
 	initBoardPlayer2(base,"player2",50,-20)
+	removeEnemyClickZones()
 
 	
 
@@ -43,7 +44,11 @@ func initBoardPlayer2(grid,player,offsetX,offsetZ):
 			offsetZ = offsetZ +20
 		offsetX += -20
 		offsetZ = -20
+		
+func removeEnemyClickZones():
+	var player2Root = $Player2
+	for sub in player2Root.get_children():
+		print("child_name: ",sub.name)
+		sub.get_node("Area3D").queue_free()
+		
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cj0wofdm4g5mk"]
+[gd_scene load_steps=14 format=3 uid="uid://cj0wofdm4g5mk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7kjg5"]
 [ext_resource type="ArrayMesh" uid="uid://bxhfqhq3kg616" path="res://resource/gameBackground/Space.obj" id="1_myngo"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://be5i8unniksbn" path="res://resource/gameBackground/ultra-detailed-nebula-abstract-wallpaper-4.jpg" id="4_b4k4n"]
 [ext_resource type="Script" path="res://StateMashine.gd" id="6_hcbpe"]
 [ext_resource type="Script" path="res://GameStart.gd" id="7_7byt3"]
-[ext_resource type="Script" path="res://TestState.gd" id="8_6gv4x"]
+[ext_resource type="Script" path="res://PlaceEnemyState.gd" id="7_eech8"]
+[ext_resource type="Script" path="res://PlacePlayerState.gd" id="8_d6hui"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_404ni"]
 albedo_texture = ExtResource("2_s5v80")
@@ -89,7 +90,10 @@ script = ExtResource("6_hcbpe")
 [node name="GameStart" type="Node3D" parent="StateMashine"]
 script = ExtResource("7_7byt3")
 
-[node name="TestState" type="Node3D" parent="StateMashine"]
-script = ExtResource("8_6gv4x")
+[node name="PlaceEnemyState" type="Node3D" parent="StateMashine"]
+script = ExtResource("7_eech8")
+
+[node name="PlacePlayerState" type="Node3D" parent="StateMashine"]
+script = ExtResource("8_d6hui")
 
 [connection signal="pressed" from="Menu/startPanel/HBoxContainer/Button" to="." method="_on_button_pressed"]

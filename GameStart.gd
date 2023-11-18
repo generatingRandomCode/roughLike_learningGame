@@ -1,30 +1,32 @@
 extends State
 
-var playerGrid = preload("res://player_grid.tscn")
+#	This state handles the start menu and the player placement 
 
+#var playerGrid = preload("res://player_grid.tscn")
+
+#	main node
 var main
+
 #	this function is called when the state is entered
+#	show the menu
 func enter(_msg := {}) -> void:
 	main = get_tree().get_root().get_node("main")
-	print("main node:", main.name)
-	for x in main.get_children():
-		print(x.name)
+	#print("main node:", main.name)
+	#for x in main.get_children():
+	#	print(x.name)
 	main.get_node("Menu").show()
-	#main.Menu.show()
 	print("gameStart")
-	var EMITTER = get_parent().get_parent()
-	#EMITTER.connect("start_pressed", self, "start_pressed")
-	#	connect connect the node from whish it is called to a function in the node where the current script is
-	EMITTER.connect("start_pressed", startPressed)
+	main.connect("start_pressed", startPressed)
 
-
+#	load playerfield 
 func startPressed():
 	print("connected signal")
-	$"../../Menu".hide()
-	playerGrid = playerGrid.instantiate()
-	main.add_child(playerGrid)
+	#$"../../Menu".hide()
+	main.get_node("Menu").hide()
+	get_parent().transition_to("PlacePlayerState")
+	#playerGrid = playerGrid.instantiate()
+	#main.add_child(playerGrid)
+	#	scene transition to place ship scene
+	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	#print("gameone")
-	pass
+	
