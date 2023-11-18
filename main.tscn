@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cj0wofdm4g5mk"]
+[gd_scene load_steps=15 format=3 uid="uid://cj0wofdm4g5mk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7kjg5"]
 [ext_resource type="ArrayMesh" uid="uid://bxhfqhq3kg616" path="res://resource/gameBackground/Space.obj" id="1_myngo"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://PlaceEnemyState.gd" id="7_eech8"]
 [ext_resource type="Script" path="res://PlacePlayerState.gd" id="8_d6hui"]
 [ext_resource type="PackedScene" uid="uid://dm2sbmebph5vf" path="res://start_menu.tscn" id="9_1p4yo"]
+[ext_resource type="Script" path="res://ChooseActionState.gd" id="9_hon5u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_404ni"]
 albedo_texture = ExtResource("2_s5v80")
@@ -57,5 +58,8 @@ script = ExtResource("7_eech8")
 [node name="PlacePlayerState" type="Node3D" parent="StateMashine"]
 transform = Transform3D(0.993863, 0, 0, 0, 0.993863, 0, 0, 0, 0.993863, 0, 0, 0)
 script = ExtResource("8_d6hui")
+
+[node name="ChooseActionState" type="Node3D" parent="StateMashine"]
+script = ExtResource("9_hon5u")
 
 [node name="StartMenu" parent="." instance=ExtResource("9_1p4yo")]

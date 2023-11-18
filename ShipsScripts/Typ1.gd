@@ -8,4 +8,4 @@ extends Node3D
 var shipName = "Typ1"
 var shipHealth = 100
 var shipArmor = 100
-var shipShield = 100
+var shipShield = 0

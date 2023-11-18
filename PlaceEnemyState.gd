@@ -20,3 +20,4 @@ func placeEnemy():
 	# Add the new node as a child to the random child
 	enemyGrid.get_child(random_index).add_child(shipInstance)
 	print("Added a new node to a random child.")
+	get_parent().transition_to("ChooseActionState")
