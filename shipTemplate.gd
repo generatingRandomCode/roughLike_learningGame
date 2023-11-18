@@ -14,7 +14,7 @@ var ship_shield
 var ship_current_shield
 var ship
 
-signal mouse_click
+#signal mouse_click
 #	gets called when ship is init
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,9 +47,7 @@ func displayDamage(health, armor, shield):
 	
 
 
-func _input(event):
-	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
-		emit_signal("mouse_click")
+
 		
 #func _input(event):
 #	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and $damageText.visible:

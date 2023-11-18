@@ -5,12 +5,10 @@ extends State
 #var playerGrid = preload("res://player_grid.tscn")
 
 #	main node
-var main
 
 #	this function is called when the state is entered
 #	show the menu
 func enter(_msg := {}) -> void:
-	main = get_tree().get_root().get_node("main")
 	main.get_node("StartMenu").show()
 	print("gameStart")
 

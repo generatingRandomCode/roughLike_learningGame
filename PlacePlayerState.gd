@@ -5,7 +5,7 @@ var base = preload("res://player_grid_base.tscn")
 var playerGrid = preload("res://player_grid.tscn")
 var shipTemplate = preload("res://test_ship_01.tscn")
 
-var main
+
 var playerField
 #	the player chosen ship
 var shipName
@@ -13,7 +13,6 @@ var shipName
 #	regulates the placing of character ships
 func enter(parameter := {}) -> void:
 	shipName = parameter["shipName"] 
-	main = get_tree().get_root().get_node("main")
 	print("enterPlaceShips")
 	playerGrid = playerGrid.instantiate()
 	main.add_child(playerGrid)
@@ -27,6 +26,7 @@ func playerPlaced(name):
 	print("playerPlace ", name)
 	var shipInstance = shipTemplate.instantiate()
 	shipInstance.build(shipName)
+	shipInstance.add_to_group("player")
 	playerField.get_node(str(name)).add_child(shipInstance)
 	#	to only place one ship remove the clickBoxes after placements 
 	playerField.get_parent().removeClickZones("Player")
