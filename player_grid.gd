@@ -48,7 +48,7 @@ func initBoardPlayer2(grid,player,offsetX,offsetZ):
 func removeEnemyClickZones():
 	var player2Root = $Player2
 	for sub in player2Root.get_children():
-		print("child_name: ",sub.name)
+		#print("child_name: ",sub.name)
 		sub.get_node("Area3D").queue_free()
 		
 

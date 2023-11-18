@@ -94,6 +94,7 @@ script = ExtResource("7_7byt3")
 script = ExtResource("7_eech8")
 
 [node name="PlacePlayerState" type="Node3D" parent="StateMashine"]
+transform = Transform3D(0.993863, 0, 0, 0, 0.993863, 0, 0, 0, 0.993863, 0, 0, 0)
 script = ExtResource("8_d6hui")
 
 [connection signal="pressed" from="Menu/startPanel/HBoxContainer/Button" to="." method="_on_button_pressed"]
