@@ -24,6 +24,7 @@ func setStats(name,health,maxHealth,armor,maxArmor,shield,maxShield):
 	print("set Stats")
 
 func setShipName(name):
+	print("text name: ", name)
 	$Stats/Name.text = name
 	$Stats/Name.modulate = Color("gray")
 

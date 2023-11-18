@@ -162,3 +162,5 @@ fract_delta = false
 transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_2eo25")
 draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[connection signal="input_event" from="Typ1/Area3D" to="." method="_on_area_3d_input_event"]

@@ -1,11 +1,12 @@
-extends Node3D
+#extends "res://ShipScripts/BaseShip.gd"
+extends BaseShip
 
 
 
 #	The Typ1 the very first test ship
 
 
-var shipName = "Typ1"
-var shipHealth = 100
-var shipArmor = 100
-var shipShield = 0
+var ship_name = "Typ1"
+var ship_health = 100
+var ship_armor = 100
+var ship_shield = 0

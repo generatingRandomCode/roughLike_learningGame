@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends Node3D
 
 
 #	This class hast all the basic functions to create a instance ship
@@ -12,12 +12,15 @@ var ship_armor
 var ship_current_armor 
 var ship_shield 
 var ship_current_shield
+var ship
 
 signal mouse_click
+#	gets called when ship is init
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	print("_ready()");
+	$ShipUI.setStats(self.ship_name,self.ship_current_health, self.ship_health, self.ship_current_armor, self.ship_armor,self.ship_current_shield, self.ship_shield)
+	$ShipUI/Action.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -77,3 +80,24 @@ func take_damage(damage):
 			ship_current_health = ship_current_health - damage
 	
 	$ShipUI.setStats(self.ship_name,self.ship_current_health, self.ship_health, self.ship_current_armor, self.ship_armor,self.ship_current_shield, self.ship_shield)
+
+func build(ship):
+	var shipPath = "res://Ships/" + ship + ".tscn"
+	#	why does load work but not preload?
+	ship = load(shipPath)
+	ship = ship.instantiate()
+	ship.name = "Model"
+	add_child(ship)
+	self.ship_name = $Model.ship_name
+	self.ship_health = $Model.ship_health
+	self.ship_current_health = $Model.ship_health
+	self.ship_armor = $Model.ship_armor
+	self.ship_current_armor = $Model.ship_armor
+	self.ship_shield = $Model.ship_shield
+	self.ship_current_shield = $Model.ship_shield
+	$ShipUI.setStats(self.ship_name,self.ship_current_health, self.ship_health, self.ship_current_armor, self.ship_armor,self.ship_current_shield, self.ship_shield)
+	
+func enemy_turn():
+	var enemy = self.get_parent().get_node("player")
+	#enemy.take_damage(40)
+	enemy.damage_step(40)

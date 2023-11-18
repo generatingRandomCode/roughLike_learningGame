@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqvr6rd0jpble"]
 
-[ext_resource type="Script" path="res://test_ship_01.gd" id="1_fe7f3"]
+[ext_resource type="Script" path="res://shipTemplate.gd" id="1_sjwsa"]
 [ext_resource type="PackedScene" uid="uid://dw1ryx131522k" path="res://ship_ui.tscn" id="3_on0k0"]
 
-[node name="testShip01" type="CharacterBody3D"]
-script = ExtResource("1_fe7f3")
+[node name="shipTemplate" type="Node3D"]
+script = ExtResource("1_sjwsa")
 
 [node name="ShipUI" parent="." instance=ExtResource("3_on0k0")]
