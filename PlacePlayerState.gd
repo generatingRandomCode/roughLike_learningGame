@@ -16,6 +16,7 @@ func enter(_msg := {}) -> void:
 	main.add_child(playerGrid)
 	playerField = main.get_node("PlayerGrid/Player")
 	print("playerField: ", playerField.name)
+	#	this is how 
 	for place in playerField.get_children():
 		place.connect("playerPlaced", playerPlaced)
 	#	this shoud connect to the signal emmited by the shipPlacedSignal
@@ -28,8 +29,9 @@ func playerPlaced(name):
 	print("playerPlace ", name)
 	var shipInstance = shipTemplate.instantiate()
 	shipInstance.build("Player Ship",100,100,100)
-	#$Area3D.queue_free()
-	#shipInstance.rotate(Vector3(0,1,0), PI*1.5)
 	playerField.get_node(str(name)).add_child(shipInstance)
-#	for i in playerField.get_children():
-#		print("child: ",i.name)
+	#	to only place one ship remove the clickBoxes after placements 
+	playerField.get_parent().removeClickZones("Player")
+	get_parent().transition_to("PlaceEnemyState")
+	#	clear area3d
+

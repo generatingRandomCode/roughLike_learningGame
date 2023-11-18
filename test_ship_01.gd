@@ -8,9 +8,10 @@ extends "res://shipTemplate.gd"
 
 
 #	gets called when ship is init
-func _ready():	
+func _ready():
 	print("_ready()");
 	$ShipUI.setStats(self.ship_name,self.ship_current_health, self.ship_health, self.ship_current_armor, self.ship_armor,self.ship_current_shield, self.ship_shield)
+	$ShipUI/Action.hide()
 	#var shipUi = $ShipUi
 	#shipUi = shipUi.instantiate() 
 	

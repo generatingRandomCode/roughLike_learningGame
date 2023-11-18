@@ -1,11 +1,22 @@
 extends State
 
+var shipTemplate = preload("res://test_ship_01.tscn")
+var enemyGrid
+var main
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func enter(_msg := {}) -> void:
+	main = get_tree().get_root().get_node("main")
+	enemyGrid = get_tree().get_root().get_node("main/PlayerGrid/Player2")
+	#enemyGrid = get_tree().get_node("Player2")
+	print("place Enemy State")
+	placeEnemy()
+	
+func placeEnemy():
+	# Get a random index to select a random child
+	var random_index = randi() % enemyGrid.get_child_count()
+	# Create a new node as a child
+	var shipInstance = shipTemplate.instantiate()
+	shipInstance.build("Enemy Ship",250,50,50)
+	# Add the new node as a child to the random child
+	enemyGrid.get_child(random_index).add_child(shipInstance)
+	print("Added a new node to a random child.")
