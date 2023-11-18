@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq5uynd8elmpb"]
+[gd_scene load_steps=5 format=3 uid="uid://cq5uynd8elmpb"]
 
 [ext_resource type="Script" path="res://PlayerGrid.gd" id="1_q0ddw"]
+[ext_resource type="Material" uid="uid://du63xj0gdu124" path="res://resource/Materials/ShipHollow.tres" id="2_ylaxv"]
+[ext_resource type="ArrayMesh" uid="uid://b2ut57vv645iv" path="res://resource/ships/Typ-1/Schiff.obj" id="3_xu3hu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_53lt2"]
 size = Vector3(10, 10, 10)
@@ -12,6 +14,11 @@ script = ExtResource("1_q0ddw")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 shape = SubResource("BoxShape3D_53lt2")
+
+[node name="Ship" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_ylaxv")
+mesh = ExtResource("3_xu3hu")
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]

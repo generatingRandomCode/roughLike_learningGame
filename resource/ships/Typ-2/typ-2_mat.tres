@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://dlg4n4nyjoklj"]
+
+[ext_resource type="Texture2D" uid="uid://n32737cmodxc" path="res://resource/ships/Typ-2/Typ-2_Typ-2_mat_BaseColor.png" id="1_fcxsa"]
+[ext_resource type="Texture2D" uid="uid://dkgs674ywkrm6" path="res://resource/ships/Typ-2/Typ-2_Typ-2_mat_OcclusionRoughnessMetallic.png" id="2_05dl6"]
+[ext_resource type="Texture2D" uid="uid://o3l5dal0w0d7" path="res://resource/ships/Typ-2/Typ-2_Typ-2_mat_Emissive.png" id="3_x4x0f"]
+[ext_resource type="Texture2D" uid="uid://dipij35p61d3r" path="res://resource/ships/Typ-2/Typ-2_Typ-2_mat_Normal.png" id="4_ayxvf"]
+
+[resource]
+albedo_texture = ExtResource("1_fcxsa")
+metallic = 1.0
+metallic_texture = ExtResource("2_05dl6")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_05dl6")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("3_x4x0f")
+normal_enabled = true
+normal_texture = ExtResource("4_ayxvf")
+ao_enabled = true
+ao_texture = ExtResource("2_05dl6")

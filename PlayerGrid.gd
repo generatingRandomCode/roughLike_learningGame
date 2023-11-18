@@ -14,5 +14,6 @@ func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 				playerPlaced.emit(self.name)
 				#	clear the local clickable field
 				$Area3D.queue_free()
+				$Ship.queue_free()
 
 
