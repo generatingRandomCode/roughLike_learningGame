@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://b622gynsjqa30"]
+[gd_scene load_steps=16 format=3 uid="uid://b622gynsjqa30"]
 
-[ext_resource type="Script" path="res://ShipsScripts/Typ2.gd" id="1_rfnjm"]
+[ext_resource type="Script" path="res://ShipsScripts/BaseShip.gd" id="1_1bqea"]
 [ext_resource type="Material" uid="uid://dlg4n4nyjoklj" path="res://resource/ships/Typ-2/typ-2_mat.tres" id="2_woyj1"]
 [ext_resource type="ArrayMesh" uid="uid://c27m5vtwiql4s" path="res://resource/ships/Typ-2/Typ-2.obj" id="3_bwsj8"]
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_6xyjn"]
+[ext_resource type="Material" uid="uid://cfmiblmrfa4x" path="res://resource/shield/shield_mat.tres" id="5_ndyqe"]
+[ext_resource type="ArrayMesh" uid="uid://ualvqrxxahwf" path="res://resource/shield/Typ-2_Schild.obj" id="5_pk3rs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_omwwi"]
 
@@ -48,7 +50,11 @@ color_ramp = SubResource("GradientTexture1D_ko1hb")
 [sub_resource type="QuadMesh" id="QuadMesh_xdvja"]
 
 [node name="Model" type="Node3D"]
-script = ExtResource("1_rfnjm")
+script = ExtResource("1_1bqea")
+ship_name = "Typ2"
+ship_health = 75
+ship_armor = 75
+ship_shield = 200
 
 [node name="Typ2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
@@ -163,5 +169,10 @@ fract_delta = false
 transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_2eo25")
 draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="Typ-2Schild" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.13861)
+material_override = ExtResource("5_ndyqe")
+mesh = ExtResource("5_pk3rs")
 
 [connection signal="input_event" from="Typ2/Area3D" to="." method="_on_area_3d_input_event"]

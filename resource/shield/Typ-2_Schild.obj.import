@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ualvqrxxahwf"
+path="res://.godot/imported/Typ-2_Schild.obj-7d2aa09724e2b1b2a9c555ad85b9cfe2.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Typ-2_Schild.obj-7d2aa09724e2b1b2a9c555ad85b9cfe2.mesh"]
+
+source_file="res://resource/shield/Typ-2_Schild.obj"
+dest_files=["res://.godot/imported/Typ-2_Schild.obj-7d2aa09724e2b1b2a9c555ad85b9cfe2.mesh", "res://.godot/imported/Typ-2_Schild.obj-7d2aa09724e2b1b2a9c555ad85b9cfe2.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

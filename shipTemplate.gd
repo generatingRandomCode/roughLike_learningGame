@@ -5,8 +5,8 @@ extends Node3D
 class_name ShipTemplate
 
 #	BASIC SHUP VALUES
-var ship_name
-var ship_health 
+@export var ship_name: String
+@export var ship_health: int 
 var ship_current_health 
 var ship_armor 
 var ship_current_armor 
@@ -25,6 +25,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
 
 func damage_step(damage):
 	var oldH = self.ship_current_health
@@ -41,21 +42,8 @@ func displayDamage(health, armor, shield):
 	shield = max(0, shield- self.ship_current_shield)
 	string = string.format([health,armor,shield])
 	$damageText/HBoxContainer/Label.text = string
-	#await mouse_click
-	#$damageText.hide()
-	#$text/Action.show()
-	
-
-
-
-		
-#func _input(event):
-#	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and $damageText.visible:
-#		$damageText.hide()
-#		$text/Action.show()
 		
 func take_damage(damage):
-	
 	if ship_current_shield > 0:
 		if damage > ship_current_shield:
 			damage = damage - ship_current_shield
@@ -99,3 +87,4 @@ func enemy_turn():
 	var enemy = self.get_parent().get_node("player")
 	#enemy.take_damage(40)
 	enemy.damage_step(40)
+

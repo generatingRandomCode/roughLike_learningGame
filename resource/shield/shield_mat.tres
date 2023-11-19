@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cfmiblmrfa4x"]
+
+[ext_resource type="Shader" path="res://resource/shield/shield_mat2.gdshader" id="1_8814m"]
+[ext_resource type="Texture2D" uid="uid://wksmrxg8c6fp" path="res://resource/shield/TCom_TilesPlain0150_1_seamless_S.jpg" id="2_1dtdp"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_8814m")
+shader_parameter/direction_and_speed = Vector2(0.25, 0)
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/flip = false
+shader_parameter/emission_amount = 2.0
+shader_parameter/albedo = ExtResource("2_1dtdp")

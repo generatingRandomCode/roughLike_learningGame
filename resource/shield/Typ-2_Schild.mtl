@@ -1,0 +1,12 @@
+# Blender 3.6.1 MTL File: 'Schiff.blend'
+# www.blender.org
+
+newmtl Schild
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.033215 0.024499 1.000000
+Ks 0.445455 0.445455 0.445455
+Ke 0.009822 0.019596 1.810878
+Ni 1.450000
+illum 2
+map_d D:/Dokumente/Blender-Projekte/2023.11.14_SpaceGame/source/TCom_TilesPlain0150_1_seamless_S.jpg

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8mhewygu1wwt"
-path.s3tc="res://.godot/imported/Schiff_Typ_1_mat_Emissive.png-a7864ff12d044d004e8ef3568302beeb.s3tc.ctex"
+uid="uid://wksmrxg8c6fp"
+path.s3tc="res://.godot/imported/TCom_TilesPlain0150_1_seamless_S.jpg-ec302efe7c3b7eac57cfcbdebd1efb64.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resource/ships/Typ-1/Schiff_Typ_1_mat_Emissive.png"
-dest_files=["res://.godot/imported/Schiff_Typ_1_mat_Emissive.png-a7864ff12d044d004e8ef3568302beeb.s3tc.ctex"]
+source_file="res://resource/shield/TCom_TilesPlain0150_1_seamless_S.jpg"
+dest_files=["res://.godot/imported/TCom_TilesPlain0150_1_seamless_S.jpg-ec302efe7c3b7eac57cfcbdebd1efb64.s3tc.ctex"]
 
 [params]
 

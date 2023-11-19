@@ -1,9 +1,20 @@
-[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://bewldnvstglfj"]
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://ewuje1vwr3gi"]
 
-[ext_resource type="Texture2D" uid="uid://cja5ikeqk28i5" path="res://resource/ships/Typ-1/Schiff_Typ_1_mat_BaseColor.png" id="1_bjf6o"]
-[ext_resource type="Texture2D" uid="uid://kbmv51sprtej" path="res://resource/ships/Typ-1/Schiff_Typ_1_mat_Normal.png" id="2_gn6e8"]
+[ext_resource type="Texture2D" uid="uid://cja5ikeqk28i5" path="res://resource/ships/Typ-1/Schiff_Typ_1_mat_BaseColor.png" id="1_epn8x"]
+[ext_resource type="Texture2D" uid="uid://kdga41hchmjo" path="res://resource/ships/Typ-1/Schiff_Typ_1_mat_OcclusionRoughnessMetallic.png" id="2_84r3f"]
+[ext_resource type="Texture2D" uid="uid://b8mhewygu1wwt" path="res://resource/ships/Typ-1/Schiff_Typ_1_mat_Emissive.png" id="3_syrjn"]
+[ext_resource type="Texture2D" uid="uid://kbmv51sprtej" path="res://resource/ships/Typ-1/Schiff_Typ_1_mat_Normal.png" id="4_20vvi"]
 
 [resource]
-albedo_texture = ExtResource("1_bjf6o")
+albedo_texture = ExtResource("1_epn8x")
+metallic = 1.0
+metallic_texture = ExtResource("2_84r3f")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_84r3f")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("3_syrjn")
 normal_enabled = true
-normal_texture = ExtResource("2_gn6e8")
+normal_texture = ExtResource("4_20vvi")
+ao_enabled = true
+ao_texture = ExtResource("2_84r3f")
