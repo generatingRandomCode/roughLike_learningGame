@@ -25,13 +25,14 @@ func enter(parameter := {}) -> void:
 	#$ActionUI.show()
 
 #	get signal when on a ship from the player is clicked
-func showShipMenu(nodeName):
-		if SelectedShip == nodeName:
+func showShipMenu(nodeID):
+		if SelectedShip == nodeID:
 			return
-		SelectedShip = nodeName
-		buildActionUI(nodeName)
+		SelectedShip = nodeID
+		buildActionUI(nodeID)
 		if !main.get_node("ActionUI").visible:
 			main.get_node("ActionUI").show()
+			main.get_node("ActionUI/ActionContainer").show()
 
 #	add buttons with ship specific actions
 func buildActionUI(shipID):
@@ -50,7 +51,12 @@ func createActionButton(wepon):
 	#	connect the signal
 	buttonInstance.connect("start_pressed", actionPress)
 	
-func actionPress(nodeName):
-	print("actionPress ", nodeName)
+func actionPress(nodeID):
+	print(instance_from_id(nodeID).name)
+	print("actionPress ", nodeID)
+	get_parent().transition_to("ChooseTargetState",{
+		"ActionName" : instance_from_id(nodeID).name,
+		"ActionCause" :  SelectedShip
+		})
 	
 
