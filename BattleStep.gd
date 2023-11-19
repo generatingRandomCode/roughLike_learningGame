@@ -4,8 +4,11 @@ extends Node3D
 #	here are all the functions to calculate the damage
 
 func executeAction(casue, target,action):
+	print("battlestep")
 	pass
 	
+func damageCalculation(damage):
+	pass
 #	if ship_current_shield > 0:
 #		if damage > ship_current_shield:
 #			damage = damage - ship_current_shield

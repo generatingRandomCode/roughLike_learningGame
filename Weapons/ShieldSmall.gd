@@ -7,4 +7,5 @@ func _ready():
 	wepon_name = "ShieldSmall"
 	wepon_initiative = 0
 	wepon_damage = 0
+	
 
