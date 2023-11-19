@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg8wgxcu3yfta"]
+
+[ext_resource type="Script" path="res://Weapons/LasergunSmall.gd" id="1_gsbrl"]
+
+[node name="LasergunSmall" type="Node3D"]
+script = ExtResource("1_gsbrl")
