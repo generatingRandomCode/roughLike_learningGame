@@ -11,12 +11,8 @@ class_name BaseShip
 @export var ship_shield : int
 
 #	the weapons of the ship, the sub nodes of the wepons 
-#	Array of nodes
-#@export var wepon1 : Node3D
 @export var wepons : Array[Node]
 
-
-#var weapon = ["small_laser_turret"]
 
 #when the ship gets clicked
 signal shipClicked

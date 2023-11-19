@@ -10,7 +10,7 @@ var state_machine = null
 @onready var main = get_tree().get_root().get_node("main")
 
 func _ready():
-	main = get_tree().get_root().get_node("main")
+	pass
 	
 	
 

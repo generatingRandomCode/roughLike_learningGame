@@ -14,12 +14,10 @@ var initial_state
 
 func _ready():
 	initial_state = $GameStart
-	state = $GameStart
-	#yield(owner, "ready")
+	state = initial_state
 	# The state machine assigns itself to the State objects' state_machine property.
 	for child in get_children():
 		child.state_machine = self
-	print("enter")
 	state.enter()
 
 
@@ -49,7 +47,8 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	print("transition to ",target_state_name)
 	if state != null:
 		state.exit()
+		#	to stop cross signals
+		state.queue_free()
 	state = get_node(target_state_name)
 	state.enter(msg)
-	print("transition to 2",target_state_name)
 	emit_signal("transitioned", state.name)

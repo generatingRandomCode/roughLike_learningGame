@@ -12,7 +12,8 @@ func enter(parameter := {}) -> void:
 	print(actionName,actionCause,actionTarget)
 	if actionName and actionCause and actionTarget:
 		$BattleStep.executeAction(actionCause,actionTarget,actionName)
-	get_parent().transition_to("ChooseActionState",{})
+		
+	get_parent().transition_to("EnemyState",{})
 	
 		
 		

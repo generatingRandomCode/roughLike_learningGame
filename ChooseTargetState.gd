@@ -17,8 +17,9 @@ func enter(parameter := {}) -> void:
 	displayTargetIcon()
 	for x in enemyShips:
 		if x.get_child_count():
-			#	die ui zum klicken sitzt auf modell, das muss ich mal ändern damit ich die schiffe besser bauen kann
-			x.get_node("Model").connect("shipClicked" ,targetShip)
+			if !x.get_node("Model").is_connected("shipClicked" ,targetShip):
+				#	die ui zum klicken sitzt auf modell, das muss ich mal ändern damit ich die schiffe besser bauen kann
+				x.get_node("Model").connect("shipClicked" ,targetShip)
 	
 func targetShip(shipID):
 	print("targetShip")

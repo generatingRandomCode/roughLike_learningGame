@@ -10,7 +10,9 @@ func _ready():
 	main.get_node("ActionUI").hide()
 
 func enter(parameter := {}) -> void:
-	SelectedShip = null
+	#SelectedShip = null
+	#if SelectedShip != null:
+		
 	#playerField = main.get_node("PlayerGrid/Player")
 	print("choose Action State")
 	playerShips = get_tree().get_nodes_in_group("player")
@@ -26,10 +28,9 @@ func enter(parameter := {}) -> void:
 #	get signal when on a ship from the player is clicked
 func showShipMenu(nodeID):
 		print("show shipMenu")
-		if SelectedShip == nodeID:
-			return
-		SelectedShip = nodeID
-		buildActionUI(nodeID)
+		if SelectedShip != nodeID:
+			buildActionUI(nodeID)
+			SelectedShip = nodeID
 		#if !main.get_node("ActionUI").visible:
 		main.get_node("ActionUI").show()
 		main.get_node("ActionUI/ActionContainer").show()
