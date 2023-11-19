@@ -3,10 +3,12 @@ extends State
 var button = preload("res://simpleButton.tscn")
 
 var playerShips
+var SelectedShip
 #var playerField
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$ActionUI.hide()
+	#main = get_tree().get_root().get_node("main")
+	main.get_node("ActionUI").hide()
 	pass # Replace with function body.
 
 func enter(parameter := {}) -> void:
@@ -24,18 +26,24 @@ func enter(parameter := {}) -> void:
 
 #	get signal when on a ship from the player is clicked
 func showShipMenu(nodeName):
-		print("showShipMenu")
-		print(playerShips)
+		if SelectedShip == nodeName:
+			return
+		SelectedShip = nodeName
 		buildActionUI(nodeName)
-		if !$ActionUI.visible:
-			$ActionUI.show()
+		if !main.get_node("ActionUI").visible:
+			main.get_node("ActionUI").show()
 
 #	add buttons with ship specific actions
 func buildActionUI(shipID):
+	#for x in main.get_node("ActionUI/ActionContainer").get_children():
+	#	x.queue_free()
 	var ship = instance_from_id(shipID)
 	for wepon in ship.wepons:
 		createActionButton(wepon)
+	
+#	creates the button
 func createActionButton(wepon):
 	var buttonInstace = button.instantiate()
 	buttonInstace.text = wepon.wepon_name
-	$ActionUI/ActionContainer.add_child(buttonInstace)
+	main.get_node("ActionUI/ActionContainer").add_child(buttonInstace)
+	#	connect the signal

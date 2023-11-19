@@ -7,7 +7,7 @@ extends Node
 # state and the state machine objects, but we found it to be most efficient for our needs.
 # The state machine node will set it.
 var state_machine = null
-var main
+@onready var main = get_tree().get_root().get_node("main")
 
 func _ready():
 	main = get_tree().get_root().get_node("main")
