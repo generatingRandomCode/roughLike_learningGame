@@ -26,11 +26,7 @@ func createButton(fileName):
 	var buttonInstance = button.instantiate()
 	buttonInstance.name = fileName
 	buttonInstance.text= fileName
-	#buttonInstance.pressed.connect(self._on_button_pressed)
 	$ChoseShip/startPanel/HBoxContainer.add_child(buttonInstance)
-	print("FileName: ", fileName)
-	print("startMenu: ",$ChoseShip/startPanel/HBoxContainer.get_children())
-	print("startMenu: ",$ChoseShip/startPanel/HBoxContainer.name)
 	#	connect to create game stat startProcess methode
 	buttonInstance.connect("start_pressed", main.get_node("StateMashine/GameStart").startPressed)
 

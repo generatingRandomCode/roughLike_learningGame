@@ -12,7 +12,7 @@ var ship_armor
 var ship_current_armor 
 var ship_shield 
 var ship_current_shield
-var ship
+#var ship
 
 #signal mouse_click
 #	gets called when ship is init
@@ -68,8 +68,13 @@ func take_damage(damage):
 	$ShipUI.setStats(self.ship_name,self.ship_current_health, self.ship_health, self.ship_current_armor, self.ship_armor,self.ship_current_shield, self.ship_shield)
 
 func build(ship):
+	print("shipID: ", ship)
+	if typeof(ship) == TYPE_INT:
+		ship = instance_from_id(ship)
+		ship = ship.name
 	var shipPath = "res://Ships/" + ship + ".tscn"
 	#	why does load work but not preload?
+	print("ship: ", shipPath)
 	ship = load(shipPath)
 	ship = ship.instantiate()
 	ship.name = "Model"

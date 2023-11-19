@@ -11,7 +11,7 @@ func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 				isEmpty = false;
 				print("init_",name)
-				playerPlaced.emit(self.name)
+				playerPlaced.emit(self.get_instance_id())
 				#	clear the local clickable field
 				$Area3D.queue_free()
 				$Ship.queue_free()

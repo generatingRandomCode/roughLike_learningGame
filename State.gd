@@ -1,6 +1,6 @@
 # Virtual base class for all states.
 class_name State
-extends Node
+extends Node3D
 
 # Reference to the state machine, to call its `transition_to()` method directly.
 # That's one unorthodox detail of our state implementation, as it adds a dependency between the

@@ -43,7 +43,14 @@ func buildActionUI(shipID):
 	
 #	creates the button
 func createActionButton(wepon):
-	var buttonInstace = button.instantiate()
-	buttonInstace.text = wepon.wepon_name
-	main.get_node("ActionUI/ActionContainer").add_child(buttonInstace)
+	var buttonInstance = button.instantiate()
+	buttonInstance.text = wepon.wepon_name
+	buttonInstance.name = wepon.wepon_name
+	main.get_node("ActionUI/ActionContainer").add_child(buttonInstance)
 	#	connect the signal
+	buttonInstance.connect("start_pressed", actionPress)
+	
+func actionPress(nodeName):
+	print("actionPress ", nodeName)
+	
+

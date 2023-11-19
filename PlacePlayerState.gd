@@ -13,6 +13,7 @@ var shipName
 #	regulates the placing of character ships
 func enter(parameter := {}) -> void:
 	shipName = parameter["shipName"] 
+	
 	print("enterPlaceShips")
 	playerGrid = playerGrid.instantiate()
 	main.add_child(playerGrid)
@@ -22,12 +23,14 @@ func enter(parameter := {}) -> void:
 	for place in playerField.get_children():
 		place.connect("playerPlaced", playerPlaced)
 
-func playerPlaced(name):
-	print("playerPlace ", name)
+func playerPlaced(gridID):
+	#	get the grid by nodeID
+	var grid = instance_from_id(gridID)
+	#	creat a ship instance and add to the grid field
 	var shipInstance = shipTemplate.instantiate()
 	shipInstance.build(shipName)
 	shipInstance.add_to_group("player")
-	playerField.get_node(str(name)).add_child(shipInstance)
+	grid.add_child(shipInstance)
 	#	to only place one ship remove the clickBoxes after placements 
 	playerField.get_parent().removeClickZones("Player")
 	get_parent().transition_to("PlaceEnemyState")
