@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cj0wofdm4g5mk"]
+[gd_scene load_steps=19 format=3 uid="uid://cj0wofdm4g5mk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7kjg5"]
 [ext_resource type="ArrayMesh" uid="uid://bxhfqhq3kg616" path="res://resource/gameBackground/Space.obj" id="1_myngo"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://ChooseActionState.gd" id="9_hon5u"]
 [ext_resource type="Script" path="res://ChooseTargetState.gd" id="10_ajshg"]
 [ext_resource type="PackedScene" uid="uid://n0xb56fyt5wl" path="res://Menu/action_ui.tscn" id="10_gtvye"]
+[ext_resource type="Script" path="res://ActionState.gd" id="11_ua7bk"]
+[ext_resource type="PackedScene" uid="uid://c62ireb8h86n3" path="res://battle_step.tscn" id="12_8ojwe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_404ni"]
 albedo_texture = ExtResource("2_s5v80")
@@ -66,6 +68,11 @@ script = ExtResource("9_hon5u")
 
 [node name="ChooseTargetState" type="Node3D" parent="StateMashine"]
 script = ExtResource("10_ajshg")
+
+[node name="ActionState" type="Node3D" parent="StateMashine"]
+script = ExtResource("11_ua7bk")
+
+[node name="BattleStep" parent="StateMashine/ActionState" instance=ExtResource("12_8ojwe")]
 
 [node name="StartMenu" parent="." instance=ExtResource("9_1p4yo")]
 

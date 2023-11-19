@@ -36,8 +36,6 @@ func showShipMenu(nodeID):
 
 #	add buttons with ship specific actions
 func buildActionUI(shipID):
-	#for x in main.get_node("ActionUI/ActionContainer").get_children():
-	#	x.queue_free()
 	var ship = instance_from_id(shipID)
 	for wepon in ship.wepons:
 		createActionButton(wepon)

@@ -19,5 +19,11 @@ func enter(parameter := {}) -> void:
 			#	die ui zum klicken sitzt auf modell, das muss ich mal ändern damit ich die schiffe besser bauen kann
 			x.get_node("Model").connect("shipClicked" ,targetShip)
 	
-func targetShip(buttonID):
+func targetShip(shipID):
 	print("targetShip")
+	#	als action class die classe an sich übergeben 
+	get_parent().transition_to("ActionState",{
+		"ActionName" : actionName,
+		"ActionCause" :  actionCause,
+		"ActionTarget" : shipID
+		})

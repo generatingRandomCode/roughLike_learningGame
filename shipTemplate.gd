@@ -31,7 +31,7 @@ func damage_step(damage):
 	var oldH = self.ship_current_health
 	var oldA = self.ship_current_armor
 	var oldS = self.ship_current_shield
-	take_damage(damage)
+	#take_damage(damage)
 	displayDamage(oldH,oldA,oldS)
 	
 	
@@ -43,29 +43,7 @@ func displayDamage(health, armor, shield):
 	string = string.format([health,armor,shield])
 	$damageText/HBoxContainer/Label.text = string
 		
-func take_damage(damage):
-	if ship_current_shield > 0:
-		if damage > ship_current_shield:
-			damage = damage - ship_current_shield
-			ship_current_shield = 0
-			take_damage(damage)
-		else:
-			ship_current_shield = ship_current_shield - damage
-	elif ship_current_armor > 0:
-		if damage > ship_current_armor * 2:
-			damage = damage - ship_current_armor * 2
-			ship_current_armor = 0
-			take_damage(damage)
-		else:
-			ship_current_armor = ship_current_armor - round(damage / 2)
-	elif ship_current_health > 0:
-		if damage > ship_current_health:
-			damage = damage - ship_current_health
-			ship_current_health = 0
-		else:
-			ship_current_health = ship_current_health - damage
-	
-	$ShipUI.setStats(self.ship_name,self.ship_current_health, self.ship_health, self.ship_current_armor, self.ship_armor,self.ship_current_shield, self.ship_shield)
+
 
 func build(ship):
 	print("shipID: ", ship)
