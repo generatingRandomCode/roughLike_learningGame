@@ -12,6 +12,9 @@ func enter(parameter := {}) -> void:
 	print(actionName,actionCause,actionTarget)
 	if actionName and actionCause and actionTarget:
 		$BattleStep.executeAction(actionCause,actionTarget,actionName)
+	get_parent().transition_to("ChooseActionState",{})
+	
+		
 		
 func freeTargetIcon():
 	var enemyShips = get_tree().get_nodes_in_group("enemy")

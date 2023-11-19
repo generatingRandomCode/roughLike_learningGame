@@ -3,31 +3,44 @@ extends Node3D
 
 #	here are all the functions to calculate the damage
 
-func executeAction(casue, target,action):
+func executeAction(cause, target,action):
 	print("battlestep")
-	pass
+	var damage = getWepondDamage(cause,action)
+	if damage:
+		damageCalculation(target, damage)
+
 	
-func damageCalculation(damage):
-	pass
-#	if ship_current_shield > 0:
-#		if damage > ship_current_shield:
-#			damage = damage - ship_current_shield
-#			ship_current_shield = 0
-#			take_damage(damage)
-#		else:
-#			ship_current_shield = ship_current_shield - damage
-#	elif ship_current_armor > 0:
-#		if damage > ship_current_armor * 2:
-#			damage = damage - ship_current_armor * 2
-#			ship_current_armor = 0
-#			take_damage(damage)
-#		else:
-#			ship_current_armor = ship_current_armor - round(damage / 2)
-#	elif ship_current_health > 0:
-#		if damage > ship_current_health:
-#			damage = damage - ship_current_health
-#			ship_current_health = 0
-#		else:
-#			ship_current_health = ship_current_health - damage
-#	
-#	$ShipUI.setStats(self.ship_name,self.ship_current_health, self.ship_health, self.ship_current_armor, self.ship_armor,self.ship_current_shield, self.ship_shield)
+func getWepondDamage(cause,action):
+	var ship = instance_from_id(cause)
+	print("action: ",action)
+	print(ship.get_children())
+	var weponDamage = ship.get_node(str(action)).wepon_damage
+	print("wepon damage: " , weponDamage)
+	return weponDamage
+
+
+func damageCalculation(targetID, damage):
+	var target = instance_from_id(targetID).get_parent()
+	print("test: ", target.name)
+	if target.ship_current_shield > 0:
+		if damage > target.ship_current_shield:
+			damage = damage - target.ship_current_shield
+			target.ship_current_shield = 0
+			damageCalculation(targetID,damage)
+		else:
+			target.ship_current_shield = target.ship_current_shield - damage
+	elif target.ship_current_armor > 0:
+		if damage > target.ship_current_armor * 2:
+			damage = damage - target.ship_current_armor * 2
+			target.ship_current_armor = 0
+			damageCalculation(targetID,damage)
+		else:
+			target.ship_current_armor = target.ship_current_armor - round(damage / 2)
+	elif target.ship_current_health > 0:
+		if damage > target.ship_current_health:
+			damage = damage - target.ship_current_health
+			target.ship_current_health = 0
+		else:
+			target.ship_current_health = target.ship_current_health - damage
+	
+	target.get_node("ShipUI").setStats(target.ship_name,target.ship_current_health, target.ship_health, target.ship_current_armor, target.ship_armor,target.ship_current_shield, target.ship_shield)

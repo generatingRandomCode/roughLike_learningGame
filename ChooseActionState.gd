@@ -7,18 +7,17 @@ var SelectedShip
 #var playerField
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#main = get_tree().get_root().get_node("main")
 	main.get_node("ActionUI").hide()
-	pass # Replace with function body.
 
 func enter(parameter := {}) -> void:
+	SelectedShip = null
 	#playerField = main.get_node("PlayerGrid/Player")
 	print("choose Action State")
 	playerShips = get_tree().get_nodes_in_group("player")
 	for x in playerShips:
 		if x.get_child_count():
-			print("ship names; ", x.get_node("Model").name)
-			x.get_node("Model").connect("shipClicked" ,showShipMenu)
+			if !x.get_node("Model").is_connected("shipClicked", showShipMenu):
+				x.get_node("Model").connect("shipClicked" ,showShipMenu)
 	
 	#for place in playerField.get_children():
 	#	place.connect("playerPlaced", playerPlaced)
@@ -26,13 +25,14 @@ func enter(parameter := {}) -> void:
 
 #	get signal when on a ship from the player is clicked
 func showShipMenu(nodeID):
+		print("show shipMenu")
 		if SelectedShip == nodeID:
 			return
 		SelectedShip = nodeID
 		buildActionUI(nodeID)
-		if !main.get_node("ActionUI").visible:
-			main.get_node("ActionUI").show()
-			main.get_node("ActionUI/ActionContainer").show()
+		#if !main.get_node("ActionUI").visible:
+		main.get_node("ActionUI").show()
+		main.get_node("ActionUI/ActionContainer").show()
 
 #	add buttons with ship specific actions
 func buildActionUI(shipID):
@@ -56,5 +56,6 @@ func actionPress(nodeID):
 		"ActionName" : instance_from_id(nodeID).name,
 		"ActionCause" :  SelectedShip
 		})
+	
 	
 
