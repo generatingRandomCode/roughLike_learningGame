@@ -28,9 +28,3 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-
-[node name="Attack" type="Button" parent="ActionContainer"]
-layout_mode = 2
-text = "Fire Small Gun"
-
-[connection signal="pressed" from="ActionContainer/Attack" to="." method="_on_attack_pressed"]
