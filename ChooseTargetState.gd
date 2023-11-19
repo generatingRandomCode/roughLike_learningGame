@@ -23,7 +23,9 @@ func enter(parameter := {}) -> void:
 	
 func targetShip(shipID):
 	print("targetShip")
-	#	als action class die classe an sich übergeben 
+	#	als action class die classe an sich übergeben
+	for x in enemyShips: 
+		x.get_node("Model").disconnect("shipClicked",targetShip)
 	get_parent().transition_to("ActionState",{
 		"ActionName" : actionName,
 		"ActionCause" :  actionCause,

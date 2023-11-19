@@ -4,6 +4,7 @@ var button = preload("res://simpleButton.tscn")
 
 var playerShips
 var SelectedShip
+var buttonInstance
 #var playerField
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,7 +44,7 @@ func buildActionUI(shipID):
 	
 #	creates the button
 func createActionButton(wepon):
-	var buttonInstance = button.instantiate()
+	buttonInstance = button.instantiate()
 	buttonInstance.text = wepon.wepon_name
 	buttonInstance.name = wepon.wepon_name
 	main.get_node("ActionUI/ActionContainer").add_child(buttonInstance)
@@ -53,6 +54,12 @@ func createActionButton(wepon):
 func actionPress(nodeID):
 	print(instance_from_id(nodeID).name)
 	print("actionPress ", nodeID)
+	#	disconnect the ship node to make them non clickable
+	for x in playerShips:
+		x.get_node("Model").disconnect("shipClicked",showShipMenu)
+	
+	#buttonInstance.disconnect("start_pressed",actionPress)
+	
 	get_parent().transition_to("ChooseTargetState",{
 		"ActionName" : instance_from_id(nodeID).name,
 		"ActionCause" :  SelectedShip
