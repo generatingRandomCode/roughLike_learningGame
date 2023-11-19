@@ -43,12 +43,18 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	# We don't use an assert here to help with code reuse. If you reuse a state in different state machines
 	# but you don't want them all, they won't be able to transition to states that aren't in the scene tree.
 	if not has_node(target_state_name):
+		#	wenn nicht da versuchen die scene zu laden?
+		#var stateScene = 
 		return
 	print("transition to ",target_state_name)
 	if state != null:
 		state.exit()
+		print("current State:", state)
+		state.process_mode = 4 # Disable
+		state.hide()
 		#	to stop cross signals
-		state.queue_free()
+		#state.queue_free()
 	state = get_node(target_state_name)
+	#state.paused = false
 	state.enter(msg)
 	emit_signal("transitioned", state.name)

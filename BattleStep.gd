@@ -2,7 +2,7 @@ extends Node3D
 
 
 #	here are all the functions to calculate the damage
-
+#	cause and target are the modell with the button
 func executeAction(cause, target,action):
 	print("battlestep")
 	var damage = getWepondDamage(cause,action)
@@ -12,16 +12,13 @@ func executeAction(cause, target,action):
 	
 func getWepondDamage(cause,action):
 	var ship = instance_from_id(cause)
-	print("action: ",action)
-	print(ship.get_children())
 	var weponDamage = ship.get_node(str(action)).wepon_damage
-	print("wepon damage: " , weponDamage)
 	return weponDamage
 
 
 func damageCalculation(targetID, damage):
+	#	because template is equiped
 	var target = instance_from_id(targetID).get_parent()
-	print("test: ", target.name)
 	if target.ship_current_shield > 0:
 		if damage > target.ship_current_shield:
 			damage = damage - target.ship_current_shield

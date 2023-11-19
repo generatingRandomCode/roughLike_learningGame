@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://kalh2bdi2bg8"]
 
 [ext_resource type="ArrayMesh" uid="uid://b6bo7lpmvs0yc" path="res://resource/assets/EnemySelection/AttackSelection.obj" id="1_ew7vl"]
-[ext_resource type="Material" path="res://resource/assets/EnemySelection/SelectEnemy_red1_mat.tres" id="2_qw0wx"]
-[ext_resource type="Material" path="res://resource/assets/EnemySelection/SelectEnemy_red2_mat.tres" id="3_dxotm"]
+[ext_resource type="Material" uid="uid://unebbcwxjxa1" path="res://resource/assets/EnemySelection/SelectEnemy_red1_mat.tres" id="2_qw0wx"]
+[ext_resource type="Material" uid="uid://cd7afvveq4jfn" path="res://resource/assets/EnemySelection/SelectEnemy_red2_mat.tres" id="3_dxotm"]
 [ext_resource type="Script" path="res://resource/assets/EnemySelection/PlaySelectionAnimation.gd" id="4_iuql6"]
 
 [sub_resource type="Animation" id="Animation_jd5pv"]
