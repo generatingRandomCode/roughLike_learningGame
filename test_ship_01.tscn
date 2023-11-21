@@ -1,10 +1,3 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqvr6rd0jpble"]
-
-[ext_resource type="Script" path="res://shipTemplate.gd" id="1_sjwsa"]
-[ext_resource type="PackedScene" uid="uid://dw1ryx131522k" path="res://ship_ui.tscn" id="3_on0k0"]
+[gd_scene format=3 uid="uid://crscbb8otrlq6"]
 
 [node name="shipTemplate" type="Node3D"]
-script = ExtResource("1_sjwsa")
-ship_health = 200
-
-[node name="ShipUI" parent="." instance=ExtResource("3_on0k0")]
