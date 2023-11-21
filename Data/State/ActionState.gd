@@ -12,11 +12,7 @@ func enter(parameter := {}) -> void:
 	main.get_node("ActionUI").hide()
 	print("Enter ActionState")
 	await executeActions(actions)
-	await clearBoard(actions)
-	#for action in actions:
-	#	$BattleStep.executeAction(action[0],action[1],action[2])
-	#	#	wait for 1 second
-	#	await get_tree().create_timer(0.1).timeout	
+	await clearBoard(actions)	
 	get_parent().transition_to("CheckBoardState",{})
 
 
@@ -40,7 +36,6 @@ func executeActions(actions):
 		if !target:
 			continue
 
-
 		if(start < $BattleStep.getWepondInitative(action[0],action[1])):
 			await get_tree().create_timer(1).timeout
 			if !checkShipHasHealth(action[1]):
@@ -51,13 +46,12 @@ func executeActions(actions):
 				continue
 
 		await $BattleStep.executeAction(action[0],action[1],action[2])
-			
+		await get_tree().create_timer(.25).timeout
 		start = $BattleStep.getWepondInitative(action[0],action[1])
 		#	durch await wird gewartet bis die function fertig ist, dadurch ist das schiff in der lage entfernt zu werden und das spiel schließt sich
 		#	wait for 1 second
 
 func clearBoard(actions):
-	
 	for action in actions:	
 		if !instance_from_id(action[1]):
 			continue

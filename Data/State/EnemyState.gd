@@ -8,8 +8,6 @@ func enter(parameter := {}) -> void:
 	var actions = parameter["Actions"]
 	actions += enemyAttack()
 	get_parent().transition_to("ActionState",{"Actions": actions})
-	
-
 
 func enemyAttack():
 	var actions = []

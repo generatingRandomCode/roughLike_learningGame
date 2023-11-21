@@ -12,7 +12,8 @@ func enter(parameter := {}) -> void:
 	placeEnemy()
 	
 func placeEnemy():
-	
+	var enemyNumber = max(1,randi() % 9)
+	#var enemyNumber = 2
 	var shipList = []
 	var path = "res://Ships"	
 	var dir = DirAccess.open(path)
@@ -28,17 +29,18 @@ func placeEnemy():
 	else:
 		print("An error occurred when trying to access the path.")
 	
-	var randShip = randi() % shipList.size()
-	var random_index = randi() % enemyGrid.get_child_count()
-	
-	var shipPath = "res://Ships/" + shipList[randShip].split(".")[0] + ".tscn"
-	var ship = load(shipPath)
-	var shipInstance = ship.instantiate()
-	shipInstance.add_to_group("enemy")
-	# Get a random index to select a random child
-	enemyGrid.get_child(random_index).add_child(shipInstance)
-	# Create a new node as a child
-	# Add the new node as a child to the random child
-	print("Added a new node to a random child.")
+	for x in range(enemyNumber):
+		var randShip = randi() % shipList.size()
+		var random_index = randi() % enemyGrid.get_child_count()
+		if !enemyGrid.get_child(random_index).has_node("Model"):
+			var shipPath = "res://Ships/" + shipList[randShip].split(".")[0] + ".tscn"
+			var ship = load(shipPath)
+			var shipInstance = ship.instantiate()
+			# Get a random index to select a random child
+			shipInstance.add_to_group("enemy")
+			enemyGrid.get_child(random_index).add_child(shipInstance)
+		# Create a new node as a child
+		# Add the new node as a child to the random child
+		print("Added a new EnemyShip to a random child.")
 	
 	get_parent().transition_to("ChoosePlayerState")
