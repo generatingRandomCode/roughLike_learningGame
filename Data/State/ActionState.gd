@@ -4,6 +4,9 @@ var explosion = preload("res://Data/3DVisual/Explosion_Particle.tscn")
 #	Actions [action, cause, target]
 #	gets a array of actions, sort them by init and executes them
 func enter(parameter := {}) -> void:
+	
+	# wie sorg ich dafür das er für jedes schiff einmal 
+	
 	var actions = parameter["Actions"]
 	print("Actions: ", actions)
 	#
@@ -15,25 +18,23 @@ func enter(parameter := {}) -> void:
 	await clearBoard(actions)	
 	get_parent().transition_to("CheckBoardState",{})
 
-
-
-
 #	calls the functions 
 func executeActions(actions):
 	#	sort action
 	actions = sortActionsByInitative(actions)
 	var start = 0
 	for action in actions:
-		#await destroyShip(action[1])
 		var cause = instance_from_id(action[1])
 		var target = instance_from_id(action[2])
 		#	cehck if current action still exist
 		#	check if ships still exist
-		if !cause:
-			continue
+		#if !cause:
+		#	continue
 		if !cause.get_child_count():
 			continue
-		if !target:
+		#if !target:
+		#	continue
+		if !cause.get_child_count():
 			continue
 
 		if(start < $BattleStep.getWepondInitative(action[0],action[1])):

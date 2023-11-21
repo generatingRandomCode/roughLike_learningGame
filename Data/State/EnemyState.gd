@@ -5,9 +5,15 @@ extends State
 #	this state fpr beginning will chose enemy stats at random
 func enter(parameter := {}) -> void:
 	print("Enter enemyState")
+	
 	var actions = parameter["Actions"]
+	
 	actions += enemyAttack()
+	
+	print("actions: ", actions)
 	get_parent().transition_to("ActionState",{"Actions": actions})
+	actions = {}
+	
 
 func enemyAttack():
 	var actions = []

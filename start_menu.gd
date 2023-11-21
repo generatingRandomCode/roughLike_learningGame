@@ -37,7 +37,7 @@ func createButton(fileName):
 
 func createNumberButton():
 	var main = get_tree().get_root().get_node("main")
-	var number = 5
+	var number = 10
 	for x in range(1,number):
 		var buttonInstance = button.instantiate()
 		buttonInstance.name = str(x)
