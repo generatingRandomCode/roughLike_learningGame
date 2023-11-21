@@ -1,0 +1,178 @@
+[gd_scene load_steps=16 format=3 uid="uid://mubsfndci7ev"]
+
+[ext_resource type="Script" path="res://ShipsScripts/BaseShip.gd" id="1_7mkp0"]
+[ext_resource type="Material" uid="uid://dawfwb4tocs7o" path="res://resource/ships/TheLavoisier/TheLavoisier_mat.tres" id="2_p24xr"]
+[ext_resource type="ArrayMesh" uid="uid://b4qnv45kdop0j" path="res://resource/ships/TheLavoisier/Fusionsreaktor_Schiff.obj" id="3_oufck"]
+[ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_esr3n"]
+[ext_resource type="PackedScene" uid="uid://cg8wgxcu3yfta" path="res://Weapons/lasergun_small.tscn" id="5_mjmrg"]
+[ext_resource type="PackedScene" uid="uid://8c7qta7v1skl" path="res://Weapons/Transmitter.tscn" id="6_ws2lb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_omwwi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ngxby"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xepbc"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_esr3n")
+emission_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_jkigj"]
+offsets = PackedFloat32Array(0, 0.0075188, 0.0541353, 0.114286, 0.332331, 0.715789, 1)
+colors = PackedColorArray(0.997827, 0.972396, 0.911708, 1, 0.867252, 0.668517, 0, 1, 0.955071, 0.777003, 0.30474, 1, 0.968627, 0.466667, 0.0509804, 0.560784, 0.965149, 0.184158, 0, 0.407843, 0.0196078, 0, 0, 0.384314, 0, 0, 0, 0.0588235)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ko1hb"]
+gradient = SubResource("Gradient_jkigj")
+
+[sub_resource type="Curve" id="Curve_w2njj"]
+_data = [Vector2(0, 0.326316), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_si8t3"]
+curve = SubResource("Curve_w2njj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2eo25"]
+lifetime_randomness = 0.08
+direction = Vector3(0, 0, 0)
+spread = 4.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 16.0
+angular_velocity_min = -181.1
+angular_velocity_max = -124.0
+angle_min = -161.5
+angle_max = 166.0
+scale_min = 2.78
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_si8t3")
+color_ramp = SubResource("GradientTexture1D_ko1hb")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xdvja"]
+
+[node name="Model" type="Node3D" node_paths=PackedStringArray("wepons")]
+script = ExtResource("1_7mkp0")
+ship_name = "Typ1"
+ship_health = 100
+ship_armor = 100
+ship_shield = 100
+wepons = [NodePath("LasergunSmall"), NodePath("Transmitter")]
+
+[node name="TheLavoisier" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
+material_override = ExtResource("2_p24xr")
+mesh = ExtResource("3_oufck")
+skeleton = NodePath("")
+
+[node name="Area3D" type="Area3D" parent="TheLavoisier"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheLavoisier/Area3D"]
+transform = Transform3D(14.6095, 0, 0, 0, 5.94724, 0, 0, 0, 21.1379, 0, 0, 7.61163)
+shape = SubResource("BoxShape3D_omwwi")
+
+[node name="TrusterParticle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12768, 0.765777, 15.8863)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrusterParticle"]
+shape = SubResource("SphereShape3D_ngxby")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.12744, 0, 0)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.37787, 0, 0)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.12744, -1.13963, 0)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.37787, -1.13963, 0)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="TrusterParticle/GPUParticles3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4215, 1.3478, 0)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="TrusterParticle/GPUParticles3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4834, 1.3478, 0)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="TrusterParticle/GPUParticles3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7339, 0.208173, 0)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="TrusterParticle/GPUParticles3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4834, 0.208173, 0)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="LasergunSmall" parent="." instance=ExtResource("5_mjmrg")]
+
+[node name="Transmitter" parent="." instance=ExtResource("6_ws2lb")]
+
+[connection signal="input_event" from="TheLavoisier/Area3D" to="." method="_on_area_3d_input_event"]

@@ -7,9 +7,12 @@ extends PlayerTurnState
 
 var actionsLeft
 var actions
-func _ready():
-	pass
 
+signal shipSelected
+
+func _ready():
+	connect("shipSelected", get_parent().selectPlayer)
+	
 func enter(parameter := {}) -> void:
 	print("enter choose Player State")
 	
@@ -44,11 +47,12 @@ func showShipMenu(_nodeID):
 	
 	#if(actionsLeft)
 	print("Actions array: ", actions)
-	await state_machine.transition_to("PlayerTurnState/ChooseActionState",{
-		"SelectedShipID" :  _nodeID,
-		"Actions" : actions
-		
-	})
+	shipSelected.emit(actions, _nodeID)
+	#await state_machine.transition_to("PlayerTurnState/ChooseActionState",{
+	#	"SelectedShipID" :  _nodeID,
+	#	"Actions" : actions
+	#	
+	#})
 	actions = {}
 
 	

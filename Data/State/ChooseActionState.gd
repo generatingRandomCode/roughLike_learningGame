@@ -3,11 +3,16 @@ extends PlayerTurnState
 var button = preload("res://simpleButton.tscn")
 
 var playerShips
-var SelectedShipID
+var selectedShipID
 var buttonInstance
 var actions
 #var playerField
 # Called when the node enters the scene tree for the first time.
+
+signal actionSelected
+
+func _ready():
+	connect("actionSelected", get_parent().selectAction)
 
 func enter(parameter = {}) -> void:
 	if parameter.has("Actions"):
@@ -19,9 +24,9 @@ func enter(parameter = {}) -> void:
 		x.queue_free()
 	
 	print("Enter choose Action State")
-	SelectedShipID = parameter["SelectedShipID"] 
+	selectedShipID = parameter["SelectedShipID"] 
 	#if SelectedShip != nodeID:
-	buildActionUI(SelectedShipID)
+	buildActionUI(selectedShipID)
 	#if !main.get_node("ActionUI").visible:
 	main.get_node("ActionUI").show()
 	main.get_node("ActionUI/ActionContainer").show()
@@ -45,11 +50,7 @@ func actionPress(nodeID):
 	main.get_node("ActionUI/ActionContainer").hide()
 	#	why is text ok but name not?  text is ok but name is problematic when adding more buttons
 	print("Actions array: Chooseactions", actions)
-	await state_machine.transition_to("PlayerTurnState/ChooseTargetState",{
-		"ActionName" : instance_from_id(nodeID).name,
-		"ActionCause" :  SelectedShipID,
-		"Actions"	: actions
-		})
+	actionSelected.emit(actions,selectedShipID,nodeID)
 	actions = {}
 	
 	

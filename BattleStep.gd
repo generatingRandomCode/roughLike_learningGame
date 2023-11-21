@@ -57,7 +57,8 @@ func shildDamage(targetID, damage):
 			damage = damage - target.ship_current_shield
 			target.ship_current_shield = 0
 			#	hide the shield when shield is zero
-			target.get_node("Shield").hide()
+			if target.has_node("Shield"):
+				target.get_node("Shield").hide()
 			damageCalculation(targetID,damage)
 		else:
 			target.ship_current_shield = target.ship_current_shield - damage

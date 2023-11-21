@@ -58,12 +58,8 @@ func targetShip(targetID):
 		actions += [[actionName,actionCause,targetID]]
 	else:
 		actions = [[actionName,actionCause,targetID]]
-	#main.get_node("ActionUI/Info").hide()
 	#	delete the action
-	#print("targetShip2: ", actionsLeft)
-	#print("targetShip2 ",instance_from_id(actionCause))
 	actionsLeft.erase(instance_from_id(actionCause))
-	#print("targetShip2: ", actionsLeft)
 	print("Actions array: target", actions)
 	if(actionsLeft.size() > 0):
 		await state_machine.transition_to("PlayerTurnState",{"Actions" = actions})
