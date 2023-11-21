@@ -6,6 +6,7 @@ var playerShips
 var selectedShipID
 var buttonInstance
 var actions
+
 #var playerField
 # Called when the node enters the scene tree for the first time.
 

@@ -66,9 +66,9 @@ func clearBoard(actions):
 
 func checkShipHasHealth(shipID):
 	var ship = instance_from_id(shipID)
-	print("ShipsHealth: ", ship.ship_current_health)
 	if !ship:
 		return false
+	print("ShipsHealth: ", ship.ship_current_health)
 	if ship.ship_current_health > 0:
 		return true
 	return false

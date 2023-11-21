@@ -6,15 +6,15 @@ var actions
 
 
 var icon = preload("res://Data/3DVisual/3DAttackSelector.tscn")
-var actionsLeft
+
 
 #	State to enter when choosing an action for a ship
 func enter(parameter := {}) -> void:
 	if parameter.has("Actions"):
 		actions = parameter["Actions"]
 	print("Actions array: target start", actions)
-	if !actionsLeft:
-		actionsLeft = get_tree().get_nodes_in_group("player")
+	if !get_parent().actionsLeft:
+		get_parent().actionsLeft = get_tree().get_nodes_in_group("player")
 	
 	
 	actionName = parameter["ActionName"] 
@@ -59,9 +59,9 @@ func targetShip(targetID):
 	else:
 		actions = [[actionName,actionCause,targetID]]
 	#	delete the action
-	actionsLeft.erase(instance_from_id(actionCause))
+	get_parent().actionsLeft.erase(instance_from_id(actionCause))
 	print("Actions array: target", actions)
-	if(actionsLeft.size() > 0):
+	if(get_parent().actionsLeft.size() > 0):
 		await state_machine.transition_to("PlayerTurnState",{"Actions" = actions})
 	else:
 		await state_machine.transition_to("EnemyState",{"Actions" = actions})

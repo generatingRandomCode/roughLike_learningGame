@@ -2,12 +2,16 @@ extends State
 
 class_name PlayerTurnState
 
+var actionsLeft
 #var actions
 #func _ready():
 
 #var actionsLeft
 
 func enter(parameter := {}) -> void:
+	if !actionsLeft:
+		actionsLeft = get_tree().get_nodes_in_group("player")
+	
 	var actions = []
 	print("Enter PlayerTurnState")
 	if parameter.has("Actions"):
