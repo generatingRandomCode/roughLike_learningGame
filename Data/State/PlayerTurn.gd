@@ -6,6 +6,7 @@ var actionsLeft
 #var actions
 #func _ready():
 
+
 #var actionsLeft
 
 func enter(parameter := {}) -> void:
@@ -34,6 +35,12 @@ func selectAction(actions,selectedShipID,actionID):
 		"Actions"	: actions
 		})
 		
-func selectTarget(actions):
-	pass
+func selectTarget(actions,selectedShipID):
+	#	after last round 
+	actionsLeft.erase(instance_from_id(selectedShipID))
+	if(actionsLeft.size() > 0):
+		await state_machine.transition_to("PlayerTurnState/ChoosePlayerState",{"Actions" = actions})
+	else:
+		await state_machine.transition_to("EnemyState",{"Actions" = actions})
+
 

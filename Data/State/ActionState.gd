@@ -8,7 +8,6 @@ func enter(parameter := {}) -> void:
 	# wie sorg ich dafür das er für jedes schiff einmal 
 	
 	var actions = parameter["Actions"]
-	print("Actions: ", actions)
 	#
 	main.get_node("ActionUI/ActionContainer").hide()
 	main.get_node("ActionUI/Info").hide()
@@ -22,6 +21,7 @@ func enter(parameter := {}) -> void:
 func executeActions(actions):
 	#	sort action
 	actions = sortActionsByInitative(actions)
+	print("Actions: real", actions)
 	var start = 0
 	for action in actions:
 		var cause = instance_from_id(action[1])
