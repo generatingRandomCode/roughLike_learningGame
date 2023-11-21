@@ -18,7 +18,7 @@ func getWepondDamage(cause,action):
 
 func damageCalculation(targetID, damage):
 	#	because template is equiped
-	var target = instance_from_id(targetID).get_parent()
+	var target = instance_from_id(targetID)
 	if target.ship_current_shield > 0:
 		if damage > target.ship_current_shield:
 			damage = damage - target.ship_current_shield

@@ -19,8 +19,8 @@ func enter(parameter := {}) -> void:
 	playerShips = get_tree().get_nodes_in_group("player")
 	for x in playerShips:
 		if x.get_child_count():
-			if !x.get_node("Model").is_connected("shipClicked", showShipMenu):
-				x.get_node("Model").connect("shipClicked" ,showShipMenu)
+			if !x.is_connected("shipClicked", showShipMenu):
+				x.connect("shipClicked" ,showShipMenu)
 	
 	#for place in playerField.get_children():
 	#	place.connect("playerPlaced", playerPlaced)
@@ -56,7 +56,7 @@ func actionPress(nodeID):
 	print("actionPress ", nodeID)
 	#	disconnect the ship node to make them non clickable
 	for x in playerShips:
-		x.get_node("Model").disconnect("shipClicked",showShipMenu)
+		x.disconnect("shipClicked",showShipMenu)
 	
 	#buttonInstance.disconnect("start_pressed",actionPress)
 	

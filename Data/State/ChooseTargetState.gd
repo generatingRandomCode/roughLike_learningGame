@@ -17,15 +17,15 @@ func enter(parameter := {}) -> void:
 	displayTargetIcon()
 	for x in enemyShips:
 		if x.get_child_count():
-			if !x.get_node("Model").is_connected("shipClicked" ,targetShip):
+			if !x.is_connected("shipClicked" ,targetShip):
 				#	die ui zum klicken sitzt auf modell, das muss ich mal ändern damit ich die schiffe besser bauen kann
-				x.get_node("Model").connect("shipClicked" ,targetShip)
+				x.connect("shipClicked" ,targetShip)
 	
 func targetShip(shipID):
 	print("targetShip")
 	#	als action class die classe an sich übergeben
 	for x in enemyShips: 
-		x.get_node("Model").disconnect("shipClicked",targetShip)
+		x.disconnect("shipClicked",targetShip)
 	get_parent().transition_to("ActionState",{
 		"ActionName" : actionName,
 		"ActionCause" :  actionCause,

@@ -17,32 +17,6 @@ var ship_current_shield
 #signal mouse_click
 #	gets called when ship is init
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	print("_ready()");
-	$ShipUI.setStats(self.ship_name,self.ship_current_health, self.ship_health, self.ship_current_armor, self.ship_armor,self.ship_current_shield, self.ship_shield)
-	$ShipUI/Action.hide()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
-
-func damage_step(damage):
-	var oldH = self.ship_current_health
-	var oldA = self.ship_current_armor
-	var oldS = self.ship_current_shield
-	#take_damage(damage)
-	displayDamage(oldH,oldA,oldS)
-	
-	
-func displayDamage(health, armor, shield):
-	var string = "healt damage: {0}, armordamage: {1}, shielddamage: {2}"
-	health = max(0,health - self.ship_current_health)
-	armor = max(0, armor - self.ship_current_armor)
-	shield = max(0, shield- self.ship_current_shield)
-	string = string.format([health,armor,shield])
-	$damageText/HBoxContainer/Label.text = string
-		
 
 
 func build(ship):
@@ -65,9 +39,5 @@ func build(ship):
 	self.ship_shield = $Model.ship_shield
 	self.ship_current_shield = $Model.ship_shield
 	$ShipUI.setStats(self.ship_name,self.ship_current_health, self.ship_health, self.ship_current_armor, self.ship_armor,self.ship_current_shield, self.ship_shield)
-	
-func enemy_turn():
-	var enemy = self.get_parent().get_node("player")
-	#enemy.take_damage(40)
-	enemy.damage_step(40)
+
 

@@ -27,19 +27,19 @@ func placeEnemy():
 			fileName = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
-		
-	#print("fileNameName: ", shipList)
-	#	choose a random ship to spwan
-	var randShip = randi() % shipList.size()
-	# Get a random index to select a random child
-	var random_index = randi() % enemyGrid.get_child_count()
-	# Create a new node as a child
-	var shipInstance = shipTemplate.instantiate()
-	shipInstance.add_to_group("enemy")
 	
-	shipInstance.build(shipList[randShip].split(".")[0])
-	# Add the new node as a child to the random child
+	var randShip = randi() % shipList.size()
+	var random_index = randi() % enemyGrid.get_child_count()
+	
+	var shipPath = "res://Ships/" + shipList[randShip].split(".")[0] + ".tscn"
+	var ship = load(shipPath)
+	var shipInstance = ship.instantiate()
+	shipInstance.add_to_group("enemy")
+	shipInstance.build()
+	# Get a random index to select a random child
 	enemyGrid.get_child(random_index).add_child(shipInstance)
+	# Create a new node as a child
+	# Add the new node as a child to the random child
 	print("Added a new node to a random child.")
 	
 	get_parent().transition_to("ChooseActionState")
