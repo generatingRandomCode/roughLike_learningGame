@@ -41,4 +41,4 @@ func placeEnemy():
 	# Add the new node as a child to the random child
 	print("Added a new node to a random child.")
 	
-	get_parent().transition_to("ChooseActionState")
+	get_parent().transition_to("ChoosePlayerState")

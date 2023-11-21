@@ -3,38 +3,24 @@ extends State
 var button = preload("res://simpleButton.tscn")
 
 var playerShips
-var SelectedShip
+var SelectedShipID
 var buttonInstance
 #var playerField
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	main.get_node("ActionUI").hide()
 
-func enter(parameter := {}) -> void:
-	#SelectedShip = null
-	#if SelectedShip != null:
-		
-	#playerField = main.get_node("PlayerGrid/Player")
-	print("choose Action State")
-	playerShips = get_tree().get_nodes_in_group("player")
-	for x in playerShips:
-		if x.get_child_count():
-			if !x.is_connected("shipClicked", showShipMenu):
-				x.connect("shipClicked" ,showShipMenu)
+func enter(parameter = {}) -> void:
+	#	clear the ui
+	for x in main.get_node("ActionUI/ActionContainer").get_children():
+		x.queue_free()
+		main.get_node("ActionUI/ActionContainer").remove_child(x)
 	
-	#for place in playerField.get_children():
-	#	place.connect("playerPlaced", playerPlaced)
-	#$ActionUI.show()
-
-#	get signal when on a ship from the player is clicked
-func showShipMenu(nodeID):
-		print("show shipMenu")
-		if SelectedShip != nodeID:
-			buildActionUI(nodeID)
-			SelectedShip = nodeID
-		#if !main.get_node("ActionUI").visible:
-		main.get_node("ActionUI").show()
-		main.get_node("ActionUI/ActionContainer").show()
+	print("Enter choose Action State")
+	SelectedShipID = parameter["SelectedShipID"] 
+	#if SelectedShip != nodeID:
+	buildActionUI(SelectedShipID)
+	#if !main.get_node("ActionUI").visible:
+	main.get_node("ActionUI").show()
+	main.get_node("ActionUI/ActionContainer").show()
 
 #	add buttons with ship specific actions
 func buildActionUI(shipID):
@@ -52,17 +38,11 @@ func createActionButton(wepon):
 	buttonInstance.connect("start_pressed", actionPress)
 	
 func actionPress(nodeID):
-	print(instance_from_id(nodeID).name)
-	print("actionPress ", nodeID)
-	#	disconnect the ship node to make them non clickable
-	for x in playerShips:
-		x.disconnect("shipClicked",showShipMenu)
-	
-	#buttonInstance.disconnect("start_pressed",actionPress)
-	
+	main.get_node("ActionUI/ActionContainer").hide()
+	#	why is text ok but name not?  text is ok but name is problematic when adding more buttons
 	get_parent().transition_to("ChooseTargetState",{
 		"ActionName" : instance_from_id(nodeID).name,
-		"ActionCause" :  SelectedShip
+		"ActionCause" :  SelectedShipID
 		})
 	
 	

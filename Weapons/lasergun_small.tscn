@@ -4,4 +4,4 @@
 
 [node name="LasergunSmall" type="Node3D"]
 script = ExtResource("1_gsbrl")
-wepon_damage = 150
+wepon_damage = 100

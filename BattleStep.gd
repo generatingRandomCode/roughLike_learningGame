@@ -14,6 +14,10 @@ func executeAction(cause, target,action):
 	
 func getWepondDamage(cause,action):
 	var ship = instance_from_id(cause)
+	print("getWepondDamage shipName", ship)
+	for x in ship.get_children():
+		print(x)
+		print("Action: ", action)
 	var weponDamage = ship.get_node(str(action)).wepon_damage
 	return weponDamage
 
@@ -27,7 +31,6 @@ func damageCalculation(targetID, damage):
 		armorDamage(targetID, damage)
 	else:
 		healthDamage(targetID, damage)
-	#	wie update auf ein kaputtes schiff?
 	updateShipUI(targetID)
 	
 func armorDamage(targetID, damage):
@@ -44,9 +47,10 @@ func armorDamage(targetID, damage):
 func shildDamage(targetID, damage):
 	var target = instance_from_id(targetID)
 	if target.ship_current_shield > 0:
-		if damage > target.ship_current_shield:
+		if damage >= target.ship_current_shield:
 			damage = damage - target.ship_current_shield
 			target.ship_current_shield = 0
+			#	hide the shield when shield is zero
 			target.get_node("Shield").hide()
 			damageCalculation(targetID,damage)
 		else:
@@ -65,13 +69,14 @@ func healthDamage(targetID, damage):
 func destroyShip(targetID):
 	print("destroy ship")
 	var target = instance_from_id(targetID)
-	target.add_to_group("destroyed")
-	for x in target.get_children():
-		target.remove_child(x)
-		x.queue_free()
-	var node = target.get_parent()
 	var explosionInstance = explosion.instantiate()
+	var node = target.get_parent()
 	node.add_child(explosionInstance)
+	#	remove ship
+	#target.add_to_group("destroyed")
+	#for x in target.get_children():
+	#	target.remove_child(x)
+	#	x.queue_free()
 	node.remove_child(target)
 	target.queue_free()
 
