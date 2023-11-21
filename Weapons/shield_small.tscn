@@ -4,4 +4,6 @@
 
 [node name="ShieldSmall" type="Node3D"]
 script = ExtResource("1_8pb8e")
-wepon_name = "Shield Small"
+wepon_name = "ShieldSmall"
+wepon_initiative = 1
+wepon_damage = 50

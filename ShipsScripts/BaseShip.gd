@@ -39,3 +39,22 @@ func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 				# name is the node name that is the same for every one 
 				shipClicked.emit(self.get_instance_id())
 
+#	why cant i quee free the player
+func destroySelf():
+	var signals = get_signal_list()
+	#disconnect("shipClicked", get_tree().get_root().get_node("main/StateMashine/ChoosePlayerState").showShipMenu)
+	#for cur_signal in signals:
+	#	var conns = get_signal_connection_list(cur_signal.name);
+	#	for cur_conn in conns:
+	#		print("signal", cur_conn["signal"]);
+			#print("signal",cur_conn.target);
+	#		print("signal",cur_conn["callable"]);
+			#disconnect(cur_conn["signal"].name, cur_conn["callable"])
+			#disconnect(cur_conn.signal, cur_conn.target, cur_conn.method)
+	#print("signals: ", signals)
+	#disconnect("shipClicked",_on_area_3d_input_event)
+	for x in get_children():
+		remove_child(x)
+		x.queue_free()
+	get_parent().remove_child(self)
+	queue_free()

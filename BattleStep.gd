@@ -2,24 +2,44 @@ extends Node3D
 
 var explosion = preload("res://Data/3DVisual/Explosion_Particle.tscn")
 
+func executeActions(actions):
+	#	sort action
+	actions = sortActionsByInitative(actions)
+	
+	for action in actions:
+		#	durch await wird gewartet bis die function fertig ist, dadurch ist das schiff in der lage entfernt zu werden und das spiel schließt sich
+		executeAction(action[0],action[1],action[2])
+		await get_tree().create_timer(1).timeout
+		#	wait for 1 second
+
+func sortActionsByInitative(actions):
+	#	retrun true if greter
+	#	so return -1 for lesser iniz
+	actions.sort_custom(func(a, b): return getWepondInitative(a[0],a[1]) < getWepondInitative(b[0],b[1]))
+	return actions
 
 #	here are all the functions to calculate the damage
 #	cause and target are the modell with the button
 func executeAction(action, cause, target):
 	print("battlestep")
-	var damage = getWepondDamage(cause,action)
+	var damage = getWepondDamage(action,cause)
 	if damage:
 		damageCalculation(target, damage)
 
-	
-func getWepondDamage(cause,action):
+func getWepondInitative(action,cause):
 	var ship = instance_from_id(cause)
-	print("getWepondDamage shipName", ship)
-	for x in ship.get_children():
-		print(x)
-		print("Action: ", action)
-	var weponDamage = ship.get_node(str(action)).wepon_damage
-	return weponDamage
+	return ship.get_node(str(action)).wepon_initiative 
+
+	
+func getWepondDamage(action,cause):
+	var ship = instance_from_id(cause)
+	if ship:
+		print("getWepondDamage shipName", ship)
+		var weponDamage = ship.get_node(str(action)).wepon_damage
+		return weponDamage
+	else:
+		print("no ship for damage")
+		return 0
 
 
 func damageCalculation(targetID, damage):
@@ -72,13 +92,8 @@ func destroyShip(targetID):
 	var explosionInstance = explosion.instantiate()
 	var node = target.get_parent()
 	node.add_child(explosionInstance)
-	#	remove ship
-	#target.add_to_group("destroyed")
-	#for x in target.get_children():
-	#	target.remove_child(x)
-	#	x.queue_free()
-	node.remove_child(target)
-	target.queue_free()
+	#	not removing player...
+	target.destroySelf()
 
 func updateShipUI(targetID):
 	var target = instance_from_id(targetID)

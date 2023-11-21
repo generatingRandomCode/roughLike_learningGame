@@ -14,7 +14,13 @@ func checkField():
 	var enemyShips = get_tree().get_nodes_in_group("enemy")
 	var playerShips = get_tree().get_nodes_in_group("player")
 	#	end the game if on of the fields is empty
-	if !playerShips or !enemyShips:
+	#print("playerShips: ", playerShips)
+	#print("enemyShips: ", enemyShips)
+	if !playerShips:
 		await get_tree().create_timer(3).timeout
 		get_tree().quit()
+	if !enemyShips:
+		await get_tree().create_timer(3).timeout
+		get_tree().quit()
+
 

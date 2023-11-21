@@ -4,4 +4,6 @@
 
 [node name="LasergunSmall" type="Node3D"]
 script = ExtResource("1_gsbrl")
+wepon_name = "LasergunSmall"
+wepon_initiative = 3
 wepon_damage = 100
