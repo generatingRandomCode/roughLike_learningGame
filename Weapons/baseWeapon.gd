@@ -10,3 +10,6 @@ class_name BaseWepon
 @export var wepon_initiative: int
 @export var wepon_damage: int
 
+#	function that defines what the wepond does
+func action():
+	pass

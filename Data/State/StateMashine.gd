@@ -10,7 +10,7 @@ signal transitioned(state_name)
 var state;
 var initial_state
 # The current active state. At the start of the game, we get the `initial_state`.
-
+@onready var root = get_tree().get_root().get_node("main/StateMashine")
 
 func _ready():
 	initial_state = $GameStart
@@ -18,6 +18,7 @@ func _ready():
 	# The state machine assigns itself to the State objects' state_machine property.
 	for child in get_children():
 		child.state_machine = self
+	$PlayerTurnState/ChoosePlayerState.state_machine = self
 	state.enter()
 
 
@@ -42,19 +43,15 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	# Safety check, you could use an assert() here to report an error if the state name is incorrect.
 	# We don't use an assert here to help with code reuse. If you reuse a state in different state machines
 	# but you don't want them all, they won't be able to transition to states that aren't in the scene tree.
-	if not has_node(target_state_name):
+	#if not has_node(target_state_name):
 		#	wenn nicht da versuchen die scene zu laden?
 		#var stateScene = 
-		return
+	#	return
 	print("transition to ",target_state_name)
 	if state != null:
 		state.exit()
-		print("current State:", state)
-		state.process_mode = 4 # Disable
-		state.hide()
-		#	to stop cross signals
-		#state.queue_free()
-	state = get_node(target_state_name)
+
+	state = root.get_node(target_state_name)
 	#state.paused = false
 	state.enter(msg)
 	emit_signal("transitioned", state.name)

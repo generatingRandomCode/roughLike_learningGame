@@ -28,12 +28,12 @@ func executeActions(actions):
 		var target = instance_from_id(action[2])
 		#	cehck if current action still exist
 		#	check if ships still exist
-		#if !cause:
-		#	continue
+		if !cause:
+			continue
 		if !cause.get_child_count():
 			continue
-		#if !target:
-		#	continue
+		if !target:
+			continue
 		if !cause.get_child_count():
 			continue
 

@@ -1,4 +1,4 @@
-extends State
+extends PlayerTurnState
 
 var button = preload("res://simpleButton.tscn")
 
@@ -45,7 +45,7 @@ func actionPress(nodeID):
 	main.get_node("ActionUI/ActionContainer").hide()
 	#	why is text ok but name not?  text is ok but name is problematic when adding more buttons
 	print("Actions array: Chooseactions", actions)
-	await get_parent().transition_to("ChooseTargetState",{
+	await state_machine.transition_to("PlayerTurnState/ChooseTargetState",{
 		"ActionName" : instance_from_id(nodeID).name,
 		"ActionCause" :  SelectedShipID,
 		"Actions"	: actions

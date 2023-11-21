@@ -1,4 +1,4 @@
-extends State
+extends PlayerTurnState
 
 var actionName
 var actionCause
@@ -19,9 +19,8 @@ func enter(parameter := {}) -> void:
 	
 	actionName = parameter["ActionName"] 
 	actionCause = parameter["ActionCause"] 
-	main.get_node("ActionUI/ActionContainer").hide()
-	main.get_node("ActionUI/Info").text = "Choose Target to shoot with " + actionName + "!"
-	main.get_node("ActionUI/Info").show()
+	#main.get_node("ActionUI/Info").text = "Choose Target to shoot with " + actionName + "!"
+	#main.get_node("ActionUI/Info").show()
 		#connect to all enemy ships
 	var enemyShips = get_tree().get_nodes_in_group("enemy")
 	await displayTargetIcon()
@@ -59,16 +58,15 @@ func targetShip(targetID):
 		actions += [[actionName,actionCause,targetID]]
 	else:
 		actions = [[actionName,actionCause,targetID]]
-	main.get_node("ActionUI/Info").hide()
-	
+	#main.get_node("ActionUI/Info").hide()
 	#	delete the action
-	print("targetShip2: ", actionsLeft)
-	print("targetShip2 ",instance_from_id(actionCause))
+	#print("targetShip2: ", actionsLeft)
+	#print("targetShip2 ",instance_from_id(actionCause))
 	actionsLeft.erase(instance_from_id(actionCause))
-	print("targetShip2: ", actionsLeft)
+	#print("targetShip2: ", actionsLeft)
 	print("Actions array: target", actions)
 	if(actionsLeft.size() > 0):
-		await get_parent().transition_to("ChoosePlayerState",{"Actions" = actions})
+		await state_machine.transition_to("PlayerTurnState",{"Actions" = actions})
 	else:
-		await get_parent().transition_to("EnemyState",{"Actions" = actions})
+		await state_machine.transition_to("EnemyState",{"Actions" = actions})
 	actions = {}

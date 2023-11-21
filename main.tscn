@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cj0wofdm4g5mk"]
+[gd_scene load_steps=25 format=3 uid="uid://cj0wofdm4g5mk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7kjg5"]
 [ext_resource type="Texture2D" uid="uid://bc4dxw407oly7" path="res://resource/gameBackground/SpaceHDR.png" id="4_2bmyh"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Data/State/CheckDestroyState.gd" id="14_mwm5o"]
 [ext_resource type="Script" path="res://Data/State/ChoosePlayerState.gd" id="15_y8yl8"]
 [ext_resource type="Script" path="res://Data/State/CheckBoardState.gd" id="16_00dks"]
+[ext_resource type="Script" path="res://Data/State/PlayerTurn.gd" id="16_gjkpn"]
 [ext_resource type="ArrayMesh" uid="uid://dseemn36qr30u" path="res://resource/gameBackground/planets/PlanetMesh.obj" id="18_mhset"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dwnx6"]
@@ -77,12 +78,6 @@ script = ExtResource("7_e3jri")
 transform = Transform3D(0.993863, 0, 0, 0, 0.993863, 0, 0, 0, 0.993863, 0, 0, 0)
 script = ExtResource("8_gwhf8")
 
-[node name="ChooseActionState" type="Node3D" parent="StateMashine"]
-script = ExtResource("9_koic7")
-
-[node name="ChooseTargetState" type="Node3D" parent="StateMashine"]
-script = ExtResource("10_0atkk")
-
 [node name="ActionState" type="Node3D" parent="StateMashine"]
 script = ExtResource("11_ckm3l")
 
@@ -94,13 +89,21 @@ script = ExtResource("13_cd4cd")
 [node name="CheckDestroyState" type="Node3D" parent="StateMashine"]
 script = ExtResource("14_mwm5o")
 
-[node name="ChoosePlayerState" type="Node3D" parent="StateMashine"]
-script = ExtResource("15_y8yl8")
-
 [node name="CheckBoardState" type="Node3D" parent="StateMashine"]
 script = ExtResource("16_00dks")
 
+[node name="PlayerTurnState" type="Node3D" parent="StateMashine"]
+script = ExtResource("16_gjkpn")
+
+[node name="ChoosePlayerState" type="Node3D" parent="StateMashine/PlayerTurnState"]
+script = ExtResource("15_y8yl8")
+
+[node name="ChooseActionState" type="Node3D" parent="StateMashine/PlayerTurnState"]
+script = ExtResource("9_koic7")
+
+[node name="ChooseTargetState" type="Node3D" parent="StateMashine/PlayerTurnState"]
+script = ExtResource("10_0atkk")
+
 [node name="StartMenu" parent="." instance=ExtResource("9_1p4yo")]
-visible = false
 
 [node name="ActionUI" parent="." instance=ExtResource("10_gtvye")]
