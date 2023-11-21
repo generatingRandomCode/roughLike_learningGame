@@ -28,6 +28,7 @@ func createButton(fileName):
 	buttonInstance.text= fileName
 	$ChoseShip/startPanel/HBoxContainer.add_child(buttonInstance)
 	#	connect to create game stat startProcess methode
+	#	must be refactoring, no upwardds connectiong!
 	buttonInstance.connect("start_pressed", main.get_node("StateMashine/GameStart").startPressed)
 
 
