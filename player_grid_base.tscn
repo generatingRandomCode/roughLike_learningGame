@@ -24,7 +24,7 @@ visible = false
 material_override = ExtResource("2_ylaxv")
 mesh = ExtResource("3_xu3hu")
 
-[node name="Grid" type="MeshInstance3D" parent="."]
+[node name="FieldSelect" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 6)
 material_override = ExtResource("4_3gtc4")
 mesh = ExtResource("4_n6a5r")

@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://cndwceewwspy8"]
+
+[ext_resource type="Texture2D" uid="uid://b61fcju5aoyqa" path="res://resource/gameBackground/planets/MagmaPlanet/Planet_Mesh_Magma_mat_BaseColor.png" id="1_n3hfw"]
+[ext_resource type="Texture2D" uid="uid://ctkgu5j1en8s0" path="res://resource/gameBackground/planets/MagmaPlanet/Planet_Mesh_Magma_mat_OcclusionRoughnessMetallic.png" id="2_vacpd"]
+[ext_resource type="Texture2D" uid="uid://5j1bujlx6iui" path="res://resource/gameBackground/planets/MagmaPlanet/Planet_Mesh_Magma_mat_Emissive.png" id="3_vgut1"]
+[ext_resource type="Texture2D" uid="uid://dnun7s2nnfukv" path="res://resource/gameBackground/planets/MagmaPlanet/Planet_Mesh_Magma_mat_Normal.png" id="4_3fub1"]
+
+[resource]
+albedo_texture = ExtResource("1_n3hfw")
+roughness_texture = ExtResource("2_vacpd")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("3_vgut1")
+normal_enabled = true
+normal_texture = ExtResource("4_3fub1")
+ao_enabled = true
+ao_texture = ExtResource("2_vacpd")
