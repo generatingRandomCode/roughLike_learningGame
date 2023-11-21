@@ -6,14 +6,15 @@ extends State
 func enter(parameter := {}) -> void:
 	print("enter checkBoardState")
 	checkField()
+	get_parent().transition_to("ChoosePlayerState",{})
 
 
 #	checks if there are still enemys
 func checkField():
 	var enemyShips = get_tree().get_nodes_in_group("enemy")
 	var playerShips = get_tree().get_nodes_in_group("player")
-	if playerShips and enemyShips:
-		get_parent().transition_to("ChoosePlayerState",{})
-	else:
+	#	end the game if on of the fields is empty
+	if !playerShips or !enemyShips:
+		await get_tree().create_timer(3).timeout
 		get_tree().quit()
 

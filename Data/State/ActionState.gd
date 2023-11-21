@@ -1,19 +1,22 @@
 extends State
 
+#	gets a array of actions, sort them by init and executes them
 func enter(parameter := {}) -> void:
-	freeTargetIcon()
+	var actions = parameter["Actions"]
+	print("Actions: ", actions)
+	#
 	main.get_node("ActionUI/ActionContainer").hide()
 	main.get_node("ActionUI/Info").hide()
 	main.get_node("ActionUI").hide()
 	print("Enter ActionState")
-	var actionName = parameter["ActionName"] 
-	var actionCause = parameter["ActionCause"] 
-	var actionTarget = parameter["ActionTarget"]
-	print(actionName,actionCause,actionTarget)
-	if actionName and actionCause and actionTarget:
-		$BattleStep.executeAction(actionCause,actionTarget,actionName)
+
+
+	for action in actions:
+		$BattleStep.executeAction(action[0],action[1],action[2])
+		#	wait for 1 second
+		await get_tree().create_timer(1).timeout
 		
-	get_parent().transition_to("EnemyState",{})
+	get_parent().transition_to("CheckBoardState",{})
 	
 		
 		

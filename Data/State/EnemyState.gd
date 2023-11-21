@@ -5,12 +5,14 @@ extends State
 #	this state fpr beginning will chose enemy stats at random
 func enter(parameter := {}) -> void:
 	print("Enter enemyState")
-	enemyAttack()
-	get_parent().transition_to("CheckBoardState",{})
+	var actions = parameter["Actions"]
+	actions += enemyAttack()
+	get_parent().transition_to("ActionState",{"Actions": actions})
 	
 
 
 func enemyAttack():
+	var actions = []
 	var enemyShips = getEnemyShips()
 	var playerShips = getPlayerShips()
 	for ship in enemyShips:
@@ -21,7 +23,9 @@ func enemyAttack():
 		var target = playerShips[random_target].get_instance_id()
 		var action = wepons[random_wepon].name
 		print("Action: ")
-		$"../ActionState/BattleStep".executeAction(cause,target,action)
+		#$"../ActionState/BattleStep".executeAction(cause,target,action)
+		actions += [[action,cause,target]]
+	return actions
 
 func getEnemyShips():
 	return get_tree().get_nodes_in_group("enemy")

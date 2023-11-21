@@ -5,7 +5,7 @@ var explosion = preload("res://Data/3DVisual/Explosion_Particle.tscn")
 
 #	here are all the functions to calculate the damage
 #	cause and target are the modell with the button
-func executeAction(cause, target,action):
+func executeAction(action, cause, target):
 	print("battlestep")
 	var damage = getWepondDamage(cause,action)
 	if damage:

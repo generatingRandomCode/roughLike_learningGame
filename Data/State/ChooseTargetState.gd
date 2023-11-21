@@ -21,16 +21,13 @@ func enter(parameter := {}) -> void:
 				#	die ui zum klicken sitzt auf modell, das muss ich mal ändern damit ich die schiffe besser bauen kann
 				x.connect("shipClicked" ,targetShip)
 	
-func targetShip(shipID):
+func targetShip(targetID):
 	print("targetShip")
 	#	als action class die classe an sich übergeben
 	for x in enemyShips: 
 		x.disconnect("shipClicked",targetShip)
-	get_parent().transition_to("ActionState",{
-		"ActionName" : actionName,
-		"ActionCause" :  actionCause,
-		"ActionTarget" : shipID
-		})
+	freeTargetIcon()
+	get_parent().transition_to("EnemyState",{"Actions" = [[actionName,actionCause,targetID]]})
 
 #	Ziel symbole, später abhängig davon 
 func displayTargetIcon():
@@ -38,3 +35,10 @@ func displayTargetIcon():
 	for x in enemyShips:
 		if x.get_child_count():
 			x.add_child(iconInstance)
+
+func freeTargetIcon():
+	var enemyShips = get_tree().get_nodes_in_group("enemy")
+	for x in enemyShips:
+		if x.get_child_count():
+			x.get_node("AttackSelection").queue_free()
+	
