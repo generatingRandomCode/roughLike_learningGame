@@ -39,5 +39,9 @@ func damageCalculation(targetID, damage):
 			target.ship_current_health = 0
 		else:
 			target.ship_current_health = target.ship_current_health - damage
-	
-	target.get_node("ShipUI").setStats(target.ship_name,target.ship_current_health, target.ship_health, target.ship_current_armor, target.ship_armor,target.ship_current_shield, target.ship_shield)
+	updateShipUI(targetID)	
+
+
+func updateShipUI(targetID):
+	var target = instance_from_id(targetID)
+	target.get_node("ShipUI").updateShipUI()

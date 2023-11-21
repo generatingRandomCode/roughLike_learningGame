@@ -16,7 +16,14 @@ func _process(delta):
 
 func setDamageDispaly():
 	pass
+
+# cALLS  setStats but gets the values from parent
+func updateShipUI():
+	var ship = get_parent()
+	setStats(ship.ship_name,ship.ship_current_health, ship.ship_health, ship.ship_current_armor, ship.ship_armor,ship.ship_current_shield, ship.ship_shield)
+
 	
+
 func setStats(name,health,maxHealth,armor,maxArmor,shield,maxShield):
 	setShipName(name)
 	setShipHealth(health, maxHealth)

@@ -1,7 +1,7 @@
 extends Node3D
 #spawn ship on click
 var isEmpty = true
-var shipTemplate = preload("res://test_ship_01.tscn")
+
 
 signal playerPlaced
 
