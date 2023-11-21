@@ -16,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_chy08")
 
-[node name="ChoseShip" type="TextureRect" parent="."]
+[node name="ChooseShip" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -25.8683
@@ -31,7 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="startPanel" type="Panel" parent="ChoseShip"]
+[node name="startPanel" type="Panel" parent="ChooseShip"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -42,11 +42,31 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_e4ump")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ChoseShip/startPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ChooseShip/startPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
+
+[node name="ChooseShipNumber" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.015
+anchor_bottom = 1.0
+offset_right = -0.250122
+offset_bottom = 5.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChooseShipNumber"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.341
+anchor_right = 1.0
+anchor_bottom = 0.735
+offset_left = -2.0
+offset_top = -0.309006
+offset_right = -22.0
+offset_bottom = -0.0150146
 alignment = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cj0wofdm4g5mk"]
+[gd_scene load_steps=24 format=3 uid="uid://cj0wofdm4g5mk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7kjg5"]
 [ext_resource type="Texture2D" uid="uid://bc4dxw407oly7" path="res://resource/gameBackground/SpaceHDR.png" id="4_2bmyh"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Data/State/GameStart.gd" id="6_gg8rk"]
 [ext_resource type="Script" path="res://Data/State/PlaceEnemyState.gd" id="7_e3jri"]
 [ext_resource type="Script" path="res://Data/State/PlacePlayerState.gd" id="8_gwhf8"]
+[ext_resource type="Script" path="res://Data/State/ChooseShipToPlace.gd" id="8_wee5y"]
 [ext_resource type="PackedScene" uid="uid://dm2sbmebph5vf" path="res://start_menu.tscn" id="9_1p4yo"]
 [ext_resource type="Script" path="res://Data/State/ChooseActionState.gd" id="9_koic7"]
 [ext_resource type="Script" path="res://Data/State/ChooseTargetState.gd" id="10_0atkk"]
@@ -66,6 +67,9 @@ script = ExtResource("5_3rjji")
 [node name="GameStart" type="Node3D" parent="StateMashine"]
 script = ExtResource("6_gg8rk")
 
+[node name="ChooseShipToPlace" type="Node3D" parent="StateMashine"]
+script = ExtResource("8_wee5y")
+
 [node name="PlaceEnemyState" type="Node3D" parent="StateMashine"]
 script = ExtResource("7_e3jri")
 
@@ -97,5 +101,6 @@ script = ExtResource("15_y8yl8")
 script = ExtResource("16_00dks")
 
 [node name="StartMenu" parent="." instance=ExtResource("9_1p4yo")]
+visible = false
 
 [node name="ActionUI" parent="." instance=ExtResource("10_gtvye")]

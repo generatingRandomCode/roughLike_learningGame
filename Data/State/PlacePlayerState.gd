@@ -11,11 +11,11 @@ var shipName
 #	regulates the placing of character ships
 func enter(parameter := {}) -> void:
 	shipName = parameter["shipName"] 
-	
 	print("enterPlaceShips")
 	#	create player grid
-	playerGrid = playerGrid.instantiate()
-	main.add_child(playerGrid)
+	if !main.has_node("PlayerGrid"):
+		var playerGridInstance = playerGrid.instantiate()
+		main.add_child(playerGridInstance)
 	#	
 	playerField = main.get_node("PlayerGrid/Player")
 	print("playerField: ", playerField.name)
@@ -38,10 +38,10 @@ func playerPlaced(gridID):
 	shipInstance.add_to_group("player")
 	grid.add_child(shipInstance)
 	#	to only place one ship remove the clickBoxes after placements 
-	playerField.get_parent().removeClickZones("Player")
 	
 	for place in playerField.get_children():
 		place.disconnect("playerPlaced",playerPlaced)
-	get_parent().transition_to("PlaceEnemyState")
+	
+	get_parent().transition_to("ChooseShipToPlace")
 
 
