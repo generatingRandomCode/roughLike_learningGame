@@ -35,7 +35,6 @@ func placeEnemy():
 	var ship = load(shipPath)
 	var shipInstance = ship.instantiate()
 	shipInstance.add_to_group("enemy")
-	shipInstance.build()
 	# Get a random index to select a random child
 	enemyGrid.get_child(random_index).add_child(shipInstance)
 	# Create a new node as a child

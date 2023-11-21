@@ -173,8 +173,8 @@ transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_2eo25")
 draw_pass_1 = SubResource("QuadMesh_xdvja")
 
-[node name="Typ-2Schild" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.13861)
+[node name="Shield" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0847007, -0.996353, 0.0103513, -0.00877889, -0.0111345, -0.999899, 0.996368, 0.0846013, -0.00968997, 0, -2.02594, 0)
 material_override = ExtResource("5_ndyqe")
 mesh = ExtResource("5_pk3rs")
 

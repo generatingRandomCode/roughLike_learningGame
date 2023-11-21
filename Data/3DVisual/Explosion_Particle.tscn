@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://81hssnoskpx0"]
+
+[ext_resource type="Material" path="res://resource/assets/Explosion/Explosion.tres" id="1_nxrd1"]
+[ext_resource type="Script" path="res://Data/3DVisual/StartExplosion.gd" id="2_gr45l"]
+
+[sub_resource type="Gradient" id="Gradient_e7j3u"]
+offsets = PackedFloat32Array(0.0669014, 0.183099, 0.442254, 0.71831, 1)
+colors = PackedColorArray(0.972549, 0.976471, 0, 1, 0.97251, 0.472708, 0, 1, 0.0666667, 0, 0, 0.34902, 0.529412, 0, 0, 0.117647, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yadwp"]
+gradient = SubResource("Gradient_e7j3u")
+
+[sub_resource type="Curve" id="Curve_72jlw"]
+_data = [Vector2(0, 0.273684), 0.0, 0.0, 0, 0, Vector2(1, 0.463158), -1.49695, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_npiv6"]
+curve = SubResource("Curve_72jlw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k8a5l"]
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector3(150, 150, 150)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 120.0
+scale_min = 12.0
+scale_max = 40.0
+scale_curve = SubResource("CurveTexture_npiv6")
+color = Color(0.913725, 0.913725, 0.913725, 1)
+color_ramp = SubResource("GradientTexture1D_yadwp")
+hue_variation_min = -0.02
+hue_variation_max = 0.02
+turbulence_enabled = true
+turbulence_noise_strength = 0.01
+turbulence_noise_scale = 0.1
+
+[sub_resource type="QuadMesh" id="QuadMesh_udbas"]
+
+[node name="Explosion" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = ExtResource("1_nxrd1")
+cast_shadow = 0
+emitting = false
+amount = 120
+lifetime = 0.7
+one_shot = true
+preprocess = 0.04
+explosiveness = 0.95
+randomness = 1.0
+collision_base_size = 100.0
+visibility_aabb = AABB(-15, -15, -15, 30, 30, 30)
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_k8a5l")
+draw_pass_1 = SubResource("QuadMesh_udbas")
+script = ExtResource("2_gr45l")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 74.8792)

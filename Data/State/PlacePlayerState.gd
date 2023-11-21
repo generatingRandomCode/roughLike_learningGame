@@ -1,9 +1,7 @@
 extends State
 
-#	basic ship template
 var base = preload("res://player_grid_base.tscn")
 var playerGrid = preload("res://player_grid.tscn")
-#var shipTemplate = preload("res://test_ship_01.tscn")
 
 
 var playerField
@@ -32,16 +30,11 @@ func playerPlaced(gridID):
 	#	get the tcen after player name 
 	#	get the ship name from the ShipName
 	print("ShipName: ", shipName)
-	#shipName = instance_from_id(shipName)
-	#shipName = shipName.name
 	var shipPath = "res://Ships/" + shipName + ".tscn"
 	#	why does load work but not preload?
 	#	get ship
 	var ship = load(shipPath)
 	var shipInstance = ship.instantiate()
-	#	
-	#var shipInstance = shipTemplate.instantiate()
-	shipInstance.build()
 	shipInstance.add_to_group("player")
 	grid.add_child(shipInstance)
 	#	to only place one ship remove the clickBoxes after placements 

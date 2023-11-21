@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dasoramdsygog"]
+
+[ext_resource type="Texture2D" uid="uid://blsfvvjniv11u" path="res://Explosion/flame_04.png" id="1_c3jgi"]
+
+[resource]
+transparency = 1
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_c3jgi")
+albedo_texture_msdf = true
+emission_enabled = true
+emission = Color(1, 0.364706, 0.203922, 1)
+emission_energy_multiplier = 10.0
+emission_operator = 1
