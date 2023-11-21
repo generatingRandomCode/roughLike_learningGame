@@ -8,9 +8,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	environment.sky_rotation.y += 0.0001
-	environment.sky_rotation.z += 0.0001
-	environment.sky_rotation.x += 0.0001
+	environment.sky_rotation.y += .0001
+	#environment.sky_rotation.z += 0.0001
+	#environment.sky_rotation.x += 0.0001
 	
 	if environment.sky_rotation.y >= 360:
 		environment.sky_rotation.y = 0

@@ -39,8 +39,9 @@ func playerPlaced(gridID):
 	grid.add_child(shipInstance)
 	#	to only place one ship remove the clickBoxes after placements 
 	playerField.get_parent().removeClickZones("Player")
+	
 	for place in playerField.get_children():
 		place.disconnect("playerPlaced",playerPlaced)
 	get_parent().transition_to("PlaceEnemyState")
-	#	clear area3d
+
 

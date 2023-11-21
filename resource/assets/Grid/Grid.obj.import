@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bsn3dkb3j8xah"
+path="res://.godot/imported/Grid.obj-042f300659f13635f2586d1ab005ed1f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Grid.obj-042f300659f13635f2586d1ab005ed1f.mesh"]
+
+source_file="res://resource/assets/Grid/Grid.obj"
+dest_files=["res://.godot/imported/Grid.obj-042f300659f13635f2586d1ab005ed1f.mesh", "res://.godot/imported/Grid.obj-042f300659f13635f2586d1ab005ed1f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

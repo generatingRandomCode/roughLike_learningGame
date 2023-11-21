@@ -1,22 +1,8 @@
 extends Node3D
 
-var explosion = preload("res://Data/3DVisual/Explosion_Particle.tscn")
 
-func executeActions(actions):
-	#	sort action
-	actions = sortActionsByInitative(actions)
-	
-	for action in actions:
-		#	durch await wird gewartet bis die function fertig ist, dadurch ist das schiff in der lage entfernt zu werden und das spiel schließt sich
-		executeAction(action[0],action[1],action[2])
-		await get_tree().create_timer(1).timeout
-		#	wait for 1 second
 
-func sortActionsByInitative(actions):
-	#	retrun true if greter
-	#	so return -1 for lesser iniz
-	actions.sort_custom(func(a, b): return getWepondInitative(a[0],a[1]) < getWepondInitative(b[0],b[1]))
-	return actions
+
 
 #	here are all the functions to calculate the damage
 #	cause and target are the modell with the button
@@ -28,15 +14,15 @@ func executeAction(action, cause, target):
 
 func getWepondInitative(action,cause):
 	var ship = instance_from_id(cause)
-	return ship.get_node(str(action)).wepon_initiative 
+	return ship.get_node(str(action)).wepon_initiative
+
 
 	
 func getWepondDamage(action,cause):
 	var ship = instance_from_id(cause)
 	if ship:
 		print("getWepondDamage shipName", ship)
-		var weponDamage = ship.get_node(str(action)).wepon_damage
-		return weponDamage
+		return ship.get_node(str(action)).wepon_damage
 	else:
 		print("no ship for damage")
 		return 0
@@ -46,12 +32,12 @@ func damageCalculation(targetID, damage):
 	#	because template is equiped
 	var target = instance_from_id(targetID)
 	if target.ship_current_shield > 0:
-		shildDamage(targetID, damage)
+		await shildDamage(targetID, damage)
 	elif target.ship_current_armor > 0:
-		armorDamage(targetID, damage)
+		await armorDamage(targetID, damage)
 	else:
-		healthDamage(targetID, damage)
-	updateShipUI(targetID)
+		await healthDamage(targetID, damage)
+	await updateShipUI(targetID)
 	
 func armorDamage(targetID, damage):
 	var target = instance_from_id(targetID)
@@ -79,21 +65,14 @@ func shildDamage(targetID, damage):
 
 func healthDamage(targetID, damage):
 	var target = instance_from_id(targetID)
-	if target.ship_current_health <= 0:
-		destroyShip(targetID)
-	elif damage >= target.ship_current_health:
-		destroyShip(targetID)
-	else:
-		target.ship_current_health = max(0,target.ship_current_health - damage)
+	#if target.ship_current_health <= 0:
+	target.ship_current_health = max(0,target.ship_current_health - damage)
+		#destroyShip(targetID)
+	#elif damage >= target.ship_current_health:
+		#destroyShip(targetID)
+	#else:
 
-func destroyShip(targetID):
-	print("destroy ship")
-	var target = instance_from_id(targetID)
-	var explosionInstance = explosion.instantiate()
-	var node = target.get_parent()
-	node.add_child(explosionInstance)
-	#	not removing player...
-	target.destroySelf()
+
 
 func updateShipUI(targetID):
 	var target = instance_from_id(targetID)

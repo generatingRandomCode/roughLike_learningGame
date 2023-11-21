@@ -56,5 +56,6 @@ func destroySelf():
 	for x in get_children():
 		remove_child(x)
 		x.queue_free()
-	get_parent().remove_child(self)
+	if get_parent():
+		get_parent().remove_child(self)
 	queue_free()

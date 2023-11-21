@@ -47,7 +47,9 @@ func initBoardPlayer2(grid,player,offsetX,offsetZ):
 func removeClickZones(fieldName):
 	var player2Root = get_node(fieldName)
 	for sub in player2Root.get_children():
-		sub.get_node("Area3D").queue_free()
+		#sub.get_node("Area3D").queue_free()
+		#	to click on zone later again
+		sub.get_node("Area3D").hide()
 		sub.get_node("Ship").queue_free()
 		
 
