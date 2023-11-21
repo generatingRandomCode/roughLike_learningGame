@@ -11,8 +11,8 @@ var buttonInstance
 func enter(parameter = {}) -> void:
 	#	clear the ui
 	for x in main.get_node("ActionUI/ActionContainer").get_children():
-		x.queue_free()
 		main.get_node("ActionUI/ActionContainer").remove_child(x)
+		x.queue_free()
 	
 	print("Enter choose Action State")
 	SelectedShipID = parameter["SelectedShipID"] 

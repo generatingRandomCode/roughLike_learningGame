@@ -6,7 +6,7 @@ extends State
 func enter(parameter := {}) -> void:
 	print("Enter enemyState")
 	enemyAttack()
-	get_parent().transition_to("ChoosePlayerState",{})
+	get_parent().transition_to("CheckBoardState",{})
 	
 
 
