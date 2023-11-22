@@ -3,44 +3,51 @@ extends State
 class_name PlayerTurnState
 
 var actionsLeft
-#var actions
+var actionName
+
 #func _ready():
 
-
+var actions
+var selectedShipID
 #var actionsLeft
 
 func enter(parameter := {}) -> void:
 	if !actionsLeft:
 		actionsLeft = get_tree().get_nodes_in_group("player")
 	
-	var actions = []
 	print("Enter PlayerTurnState")
-	if parameter.has("Actions"):
-		actions = parameter["Actions"]
-	await get_parent().transition_to("PlayerTurnState/ChoosePlayerState",{"Actions" = actions})
+	
+	await get_parent().transition_to("PlayerTurnState/ChoosePlayerState")
 	
 	
-func selectPlayer(actions,selectedShipID):
+func selectPlayer(selectedShipID):
+	self.selectedShipID = selectedShipID
 	await state_machine.transition_to("PlayerTurnState/ChooseActionState",{
 		"SelectedShipID" :  selectedShipID,
-		"Actions" : actions
-		
 	})
 
-func selectAction(actions,selectedShipID,actionID):
-	
+#	hier wird aufgerufen was bei der jeweiligen action pssieren soll
+func selectAction(actionName):
+	self.actionName = actionName
 	await state_machine.transition_to("PlayerTurnState/ChooseTargetState",{
-		"ActionName" : instance_from_id(actionID).name,
-		"ActionCause" :  selectedShipID,
-		"Actions"	: actions
 		})
-		
-func selectTarget(actions,selectedShipID):
+
+
+func selectTarget(targetID):
 	#	after last round 
+	if self.actions:
+		self.actions += [[actionName,selectedShipID,targetID]]
+	else:
+		self.actions = [[actionName,selectedShipID,targetID]]
+		
 	actionsLeft.erase(instance_from_id(selectedShipID))
 	if(actionsLeft.size() > 0):
-		await state_machine.transition_to("PlayerTurnState/ChoosePlayerState",{"Actions" = actions})
+		await state_machine.transition_to("PlayerTurnState/ChoosePlayerState",{"Actions" : self.actions})
+		selectedShipID = null
+		actionName = null
 	else:
-		await state_machine.transition_to("EnemyState",{"Actions" = actions})
+		await state_machine.transition_to("EnemyState",{"Actions" = self.actions})
+		selectedShipID = ""
+		self.actions = []
 
 

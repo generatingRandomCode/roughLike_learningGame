@@ -6,6 +6,7 @@ func _ready():
 	#	hide ui
 	$Action.hide()
 	$Damage.hide()
+	add_to_group("ShipUI")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,10 +30,10 @@ func setStats(name,health,maxHealth,armor,maxArmor,shield,maxShield):
 	setShipHealth(health, maxHealth)
 	setShipArmor(armor,maxArmor)
 	setShipShield(shield,maxShield)
-	print("set Stats")
+	#print("set Stats")
 
 func setShipName(name):
-	print("text name: ", name)
+	#print("text name: ", name)
 	$Stats/Name.text = name
 	$Stats/Name.modulate = Color("gray")
 

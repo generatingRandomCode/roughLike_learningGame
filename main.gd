@@ -1,6 +1,6 @@
 extends Node3D
 
-var ship1 = preload("res://test_ship_01.tscn")
+
 
 signal start_pressed
 

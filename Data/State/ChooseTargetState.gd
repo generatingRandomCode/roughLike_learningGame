@@ -1,9 +1,5 @@
 extends PlayerTurnState
 
-var actionName
-var actionCause
-var actions
-
 
 var icon = preload("res://Data/3DVisual/3DAttackSelector.tscn")
 
@@ -14,18 +10,7 @@ func _ready():
 
 #	State to enter when choosing an action for a ship
 func enter(parameter := {}) -> void:
-	if parameter.has("Actions"):
-		actions = parameter["Actions"]
-	print("Actions array: target start", actions)
-	if !get_parent().actionsLeft:
-		get_parent().actionsLeft = get_tree().get_nodes_in_group("player")
-	
-	
-	actionName = parameter["ActionName"]
-	actionCause = parameter["ActionCause"] 
-	#main.get_node("ActionUI/Info").text = "Choose Target to shoot with " + actionName + "!"
-	#main.get_node("ActionUI/Info").show()
-		#connect to all enemy ships
+
 	var enemyShips = get_tree().get_nodes_in_group("enemy")
 	await displayTargetIcon()
 	for x in enemyShips:
@@ -58,16 +43,11 @@ func targetShip(targetID):
 		x.disconnect("shipClicked",targetShip)
 
 	freeTargetIcon()
-	if actions:
-		actions += [[actionName,actionCause,targetID]]
-	else:
-		actions = [[actionName,actionCause,targetID]]
-	#	delete the action
-	#get_parent().actionsLeft.erase(instance_from_id(actionCause))
+
 	print("Actions array: target", actions)
-	targetSelected.emit(actions, actionCause)
-	#if(get_parent().actionsLeft.size() > 0):
-	#	await state_machine.transition_to("PlayerTurnState",{"Actions" = actions})
-	#else:
-	#	await state_machine.transition_to("EnemyState",{"Actions" = actions})
-	#actions = {}
+	targetSelected.emit(targetID)
+
+func exit():
+	main.get_node("ActionUI/ActionContainer").hide()
+	main.get_node("ActionUI/Info").hide()
+	main.get_node("ActionUI").hide()

@@ -1,6 +1,6 @@
 extends State
 
-var shipTemplate = preload("res://test_ship_01.tscn")
+
 var enemyGrid
 
 

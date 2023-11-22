@@ -54,6 +54,7 @@ ship_name = "Typ1"
 ship_health = 100
 ship_armor = 100
 wepons = [NodePath("LasergunSmall")]
+metadata/_edit_group_ = true
 
 [node name="Typ1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)

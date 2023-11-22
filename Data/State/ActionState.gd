@@ -4,17 +4,10 @@ var explosion = preload("res://Data/3DVisual/Explosion_Particle.tscn")
 #	Actions [action, cause, target]
 #	gets a array of actions, sort them by init and executes them
 func enter(parameter := {}) -> void:
-	
 	# wie sorg ich dafür das er für jedes schiff einmal 
-	
 	var actions = parameter["Actions"]
-	#
-	main.get_node("ActionUI/ActionContainer").hide()
-	main.get_node("ActionUI/Info").hide()
-	main.get_node("ActionUI").hide()
-	print("Enter ActionState")
 	await executeActions(actions)
-	await clearBoard(actions)	
+	await clearBoard(actions)
 	get_parent().transition_to("CheckBoardState",{})
 
 #	calls the functions 
@@ -28,15 +21,16 @@ func executeActions(actions):
 		var target = instance_from_id(action[2])
 		#	cehck if current action still exist
 		#	check if ships still exist
-		if !cause:
+		if !get_node_or_null(cause):
 			continue
 		if !cause.get_child_count():
 			continue
-		if !target:
+		if !get_node_or_null(target):
 			continue
 		if !cause.get_child_count():
 			continue
 
+		get_tree().call_group("ShipUI", "updateShipUI")
 		if(start < $BattleStep.getWepondInitative(action[0],action[1])):
 			await get_tree().create_timer(1).timeout
 			if !checkShipHasHealth(action[1]):
@@ -45,12 +39,16 @@ func executeActions(actions):
 			if !checkShipHasHealth(action[2]):
 				destroyShip(action[2])
 				continue
-
-		await $BattleStep.executeAction(action[0],action[1],action[2])
+		
+		#	call the battelstep with the action
+		await cause.get_node(str(action[0])).executeAction(action[2])
+		
 		await get_tree().create_timer(.25).timeout
+		
 		start = $BattleStep.getWepondInitative(action[0],action[1])
-		#	durch await wird gewartet bis die function fertig ist, dadurch ist das schiff in der lage entfernt zu werden und das spiel schließt sich
-		#	wait for 1 second
+		
+		get_tree().call_group("ShipUI", "updateShipUI")
+
 
 func clearBoard(actions):
 	for action in actions:	
@@ -63,12 +61,13 @@ func clearBoard(actions):
 
 		if !checkShipHasHealth(action[2]):
 			destroyShip(action[2])
+	get_tree().call_group("ShipUI", "updateShipUI")
 
 func checkShipHasHealth(shipID):
 	var ship = instance_from_id(shipID)
 	if !ship:
 		return false
-	print("ShipsHealth: ", ship.ship_current_health)
+	#print("ShipsHealth: ", ship.ship_current_health)
 	if ship.ship_current_health > 0:
 		return true
 	return false
@@ -86,8 +85,10 @@ func destroyShip(targetID):
 	print("destroy ship")
 	#var target = instance_from_id(targetID)
 	var explosionInstance = explosion.instantiate()
-	var node = target.get_parent()
-	if node:
-		node.add_child(explosionInstance)
+	#	das ganze quee free zeug functioniert nicht wso wirklich
+	if target:
+		var node = target.get_parent()
+		if node:
+			node.add_child(explosionInstance)
 	#	not removing player...
 	target.destroySelf()

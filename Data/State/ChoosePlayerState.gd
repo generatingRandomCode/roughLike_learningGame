@@ -1,13 +1,5 @@
 extends PlayerTurnState
 
-
-
-#var playerField
-# Called when the node enters the scene tree for the first time.
-
-
-var actions
-
 signal shipSelected
 
 func _ready():
@@ -17,8 +9,6 @@ func _ready():
 func enter(parameter := {}) -> void:
 	print("enter choose Player State")
 	
-	if parameter.has("Actions"):
-		actions = parameter["Actions"]
 		
 	#	get the action array
 	actionsLeft = get_parent().actionsLeft
@@ -40,9 +30,8 @@ func showShipMenu(_nodeID):
 		if x.is_connected("shipClicked",showShipMenu):
 			x.disconnect("shipClicked",showShipMenu)
 
-	print("Actions array: ", actions)
-	shipSelected.emit(actions, _nodeID)
-	actions = {}
+	shipSelected.emit( _nodeID)
+
 
 	
 

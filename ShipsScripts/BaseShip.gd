@@ -59,3 +59,4 @@ func destroySelf():
 	if get_parent():
 		get_parent().remove_child(self)
 	queue_free()
+

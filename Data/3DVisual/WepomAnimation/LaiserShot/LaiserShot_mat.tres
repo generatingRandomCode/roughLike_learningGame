@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bawfw5jnf2pg6"]
+
+[ext_resource type="Texture2D" uid="uid://bw6ih4rvvfrvo" path="res://LaiserShot/muzzle_05.png" id="1_cs212"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_cs212")

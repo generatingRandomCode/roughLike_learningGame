@@ -54,7 +54,6 @@ script = ExtResource("1_7mkp0")
 ship_name = "Typ1"
 ship_health = 100
 ship_armor = 100
-ship_shield = 100
 wepons = [NodePath("LasergunSmall"), NodePath("Transmitter")]
 
 [node name="TheLavoisier" type="MeshInstance3D" parent="."]
