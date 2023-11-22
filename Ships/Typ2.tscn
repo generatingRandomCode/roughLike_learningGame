@@ -179,7 +179,6 @@ material_override = ExtResource("5_ndyqe")
 mesh = ExtResource("5_pk3rs")
 
 [node name="ShieldSmall" parent="." instance=ExtResource("7_hdxyb")]
-needTarget = null
 
 [node name="LasergunSmall" parent="." instance=ExtResource("8_huhdw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07679, 1.64482, 5.96979)
