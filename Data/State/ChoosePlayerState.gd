@@ -8,10 +8,10 @@ func _ready():
 
 func enter(parameter := {}) -> void:
 	print("enter choose Player State")
-	
+	actionsLeft = get_parent().actionsLeft
 		
 	#	get the action array
-	actionsLeft = get_parent().actionsLeft
+	displayPlayerIcon()
 	for x in actionsLeft:
 		if !x:
 			continue
@@ -32,6 +32,15 @@ func showShipMenu(_nodeID):
 
 	shipSelected.emit( _nodeID)
 
+func displayPlayerIcon():
+	for x in actionsLeft:
+		if !x.has_node("AttackSelection"):
+			x.get_parent().get_node("FieldSelect").show()
 
+func freePlayerIcon():
+	for x in actionsLeft:
+		x.get_parent().get_node("FieldSelect").hide()
 	
 
+func exit():
+	freePlayerIcon()
