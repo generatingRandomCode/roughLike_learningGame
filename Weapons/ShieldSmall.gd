@@ -1,4 +1,4 @@
-extends BaseWepon
+extends Shield
 class_name ShieldSmall
 
 
@@ -7,5 +7,8 @@ func _ready():
 	wepon_name = "ShieldSmall"
 	#wepon_initiative = 1
 	#wepon_damage = 0
-	
+
+func action(targetID) -> void:
+	selfShieldRaise(150)
+	#executeDamageAction(targetID)
 

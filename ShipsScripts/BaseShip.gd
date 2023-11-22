@@ -3,7 +3,7 @@ extends Node3D
 #	base class of a ship template
 class_name BaseShip
 
-
+var explosion = preload("res://Data/3DVisual/Explosion_Particle.tscn")
 #	Basic Ship Variables
 @export var ship_name : String
 @export var ship_health : int
@@ -23,6 +23,7 @@ var shipUI = preload("res://ship_ui.tscn")
 
 #	init loads ships with zero health
 func _enter_tree():
+	add_to_group("ship")
 	self.ship_current_health = self.ship_health
 	self.ship_current_armor = self.ship_armor
 	self.ship_current_shield = self.ship_shield
@@ -40,19 +41,18 @@ func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 				shipClicked.emit(self.get_instance_id())
 
 #	why cant i quee free the player
+func checkHealthIsAboveZero():
+	if self.ship_current_health > 0:
+		return true
+	return false
+
+
 func destroySelf():
-	var signals = get_signal_list()
-	#disconnect("shipClicked", get_tree().get_root().get_node("main/StateMashine/ChoosePlayerState").showShipMenu)
-	#for cur_signal in signals:
-	#	var conns = get_signal_connection_list(cur_signal.name);
-	#	for cur_conn in conns:
-	#		print("signal", cur_conn["signal"]);
-			#print("signal",cur_conn.target);
-	#		print("signal",cur_conn["callable"]);
-			#disconnect(cur_conn["signal"].name, cur_conn["callable"])
-			#disconnect(cur_conn.signal, cur_conn.target, cur_conn.method)
-	#print("signals: ", signals)
-	#disconnect("shipClicked",_on_area_3d_input_event)
+	var explosionInstance = explosion.instantiate()
+	add_child(explosionInstance)
+	#await get_tree().create_timer(.1).timeout
+	#hide()
+	await get_tree().create_timer(.5).timeout
 	for x in get_children():
 		remove_child(x)
 		x.queue_free()

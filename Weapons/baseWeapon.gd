@@ -11,11 +11,11 @@ class_name BaseWepon
 @export var wepon_damage: int
 
 #	function that defines what the wepond does
-func action():
+func action(targetID) ->  void:
 	pass
 
-func executeAction(target):
-	damageCalculation(target, self.wepon_damage)
+func executeDamageAction(targetID):
+	damageCalculation(targetID, self.wepon_damage)
 
 func damageCalculation(targetID, damage):
 	#	because template is equiped
