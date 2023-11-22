@@ -25,10 +25,9 @@ func enemyAttack():
 		var random_target = randi() % playerShips.size()
 		var cause = ship.get_instance_id()
 		var target = playerShips[random_target].get_instance_id()
-		var action = wepons[random_wepon].name
-		print("Action: ")
-		#$"../ActionState/BattleStep".executeAction(cause,target,action)
-		actions += [[action,cause,target]]
+		var action = wepons[random_wepon].get_instance_id()
+		
+		actions += [ActionTemplate.new(action,cause,target)]
 	return actions
 
 func getEnemyShips():

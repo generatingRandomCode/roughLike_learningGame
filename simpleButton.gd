@@ -5,6 +5,6 @@ extends Button
 signal start_pressed
 
 func _on_button_pressed():
-	print("button id: ", self.get_instance_id())
+	#print("button id: ", self.get_instance_id())
 	start_pressed.emit(self.get_instance_id())
 

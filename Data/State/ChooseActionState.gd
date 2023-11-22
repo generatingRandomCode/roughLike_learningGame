@@ -33,14 +33,15 @@ func buildActionUI(shipID):
 func createActionButton(wepon):
 	buttonInstance = button.instantiate()
 	buttonInstance.text = wepon.wepon_name
-	buttonInstance.name = wepon.wepon_name
+	buttonInstance.name = str(wepon.get_instance_id())
 	main.get_node("ActionUI/ActionContainer").add_child(buttonInstance)
 	#	connect the signal
 	buttonInstance.connect("start_pressed", actionPress)
 	
 func actionPress(nodeID):
 	main.get_node("ActionUI/ActionContainer").hide()
-	#	why is text ok but name not?  text is ok but name is problematic when adding more buttons
 	nodeID = instance_from_id(nodeID).name
+	#	why is text ok but name not?  text is ok but name is problematic when adding more buttons
+	#nodeID = instance_from_id(nodeID).name
 	actionSelected.emit(nodeID)
 

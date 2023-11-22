@@ -49,13 +49,14 @@ func checkHealthIsAboveZero():
 
 func destroySelf():
 	var explosionInstance = explosion.instantiate()
-	add_child(explosionInstance)
 	#await get_tree().create_timer(.1).timeout
 	#hide()
-	await get_tree().create_timer(.5).timeout
 	for x in get_children():
 		remove_child(x)
 		x.queue_free()
+
+	add_child(explosionInstance)
+	await get_tree().create_timer(.5).timeout
 	if get_parent():
 		get_parent().remove_child(self)
 	queue_free()

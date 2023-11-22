@@ -8,7 +8,7 @@ func _ready():
 	#wepon_initiative = 1
 	#wepon_damage = 0
 
-func action(targetID) -> void:
+func action(action) -> void:
 	selfShieldRaise(150)
 	#executeDamageAction(targetID)
 

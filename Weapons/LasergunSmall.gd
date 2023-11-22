@@ -4,6 +4,8 @@ extends BaseWepon
 
 class_name LaserGunSmall
 
+func _ready():
+	needTarget = 1
 
-func action(targetID) -> void:
-	executeDamageAction(targetID)
+func action(action) -> void:
+	executeDamageAction(action.targets)

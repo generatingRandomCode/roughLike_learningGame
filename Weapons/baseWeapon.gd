@@ -9,36 +9,33 @@ class_name BaseWepon
 @export var wepon_name: String
 @export var wepon_initiative: int
 @export var wepon_damage: int
-
+@export var needTarget :int = 0
 #	function that defines what the wepond does
-func action(targetID) ->  void:
+func action(action) ->  void:
 	pass
 
-func executeDamageAction(targetID):
-	damageCalculation(targetID, self.wepon_damage)
+func executeDamageAction(target):
+	damageCalculation(target, self.wepon_damage)
 
-func damageCalculation(targetID, damage):
+func damageCalculation(target, damage):
 	#	because template is equiped
-	var target = instance_from_id(targetID)
 	if target.ship_current_shield > 0:
-		await shildDamage(targetID, damage)
+		await shildDamage(target, damage)
 	elif target.ship_current_armor > 0:
-		await armorDamage(targetID, damage)
+		await armorDamage(target, damage)
 	else:
-		await healthDamage(targetID, damage)
+		await healthDamage(target, damage)
 
-func armorDamage(targetID, damage):
-	var target = instance_from_id(targetID)
+func armorDamage(target, damage):
 	if target.ship_current_armor > 0:
 		if damage > target.ship_current_armor * 2:
 			damage = damage - target.ship_current_armor * 2
 			target.ship_current_armor = 0
-			damageCalculation(targetID,damage)
+			damageCalculation(target,damage)
 		else:
 			target.ship_current_armor = target.ship_current_armor - round(damage / 2)
 
-func shildDamage(targetID, damage):
-	var target = instance_from_id(targetID)
+func shildDamage(target, damage):
 	if target.ship_current_shield > 0:
 		if damage >= target.ship_current_shield:
 			damage = damage - target.ship_current_shield
@@ -46,11 +43,10 @@ func shildDamage(targetID, damage):
 			#	hide the shield when shield is zero
 			if target.has_node("Shield"):
 				target.get_node("Shield").hide()
-			damageCalculation(targetID,damage)
+			damageCalculation(target,damage)
 		else:
 			target.ship_current_shield = target.ship_current_shield - damage
 
-func healthDamage(targetID, damage):
-	var target = instance_from_id(targetID)
+func healthDamage(target, damage):
 	target.ship_current_health = max(0,target.ship_current_health - damage)
 
