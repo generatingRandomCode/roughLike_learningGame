@@ -6,6 +6,7 @@ var isEmpty = true
 signal playerPlaced
 
 func _ready():
+	add_to_group("Field")
 	$Ship.show()
 	$FieldSelect.hide()
 

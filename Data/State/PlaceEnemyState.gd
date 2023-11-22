@@ -6,7 +6,7 @@ var enemyGrid
 
 func enter(parameter := {}) -> void:
 
-	enemyGrid = get_tree().get_root().get_node("main/PlayerGrid/Player2")
+	enemyGrid = get_tree().get_root().get_node("main/PlayerGrid/Enemy")
 	#enemyGrid = get_tree().get_node("Player2")
 	print("place Enemy State")
 	placeEnemy()

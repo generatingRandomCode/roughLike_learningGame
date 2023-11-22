@@ -47,7 +47,7 @@ script = ExtResource("1_7kjg5")
 [node name="Marker3D" type="Marker3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Marker3D"]
-transform = Transform3D(1.00228, 0, 0, 0, 0.708721, 0.708721, 0, -0.708721, 0.708721, 0, 50, 50)
+transform = Transform3D(1.00228, 0, 0, 0, 0.708721, 0.708721, 0, -0.708721, 0.708721, 0, 75, 75)
 current = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
