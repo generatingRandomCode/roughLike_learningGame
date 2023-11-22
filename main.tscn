@@ -55,13 +55,14 @@ environment = SubResource("Environment_i7vx7")
 script = ExtResource("5_6gc2w")
 
 [node name="PlanetMesh" type="MeshInstance3D" parent="WorldEnvironment"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -149.466, -502.456, -770.024)
+transform = Transform3D(0.615662, 0, 0.788011, 0, 1, 0, -0.788011, 0, 0.615662, 500, -1510.51, -1788)
 material_override = ExtResource("4_m16tw")
 mesh = ExtResource("18_mhset")
 skeleton = NodePath("../..")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 25, 0)
+light_energy = 0.5
 
 [node name="StateMashine" type="Node3D" parent="."]
 script = ExtResource("5_3rjji")
