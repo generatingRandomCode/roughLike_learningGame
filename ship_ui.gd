@@ -21,23 +21,15 @@ func setStats(name,health,maxHealth,armor,maxArmor,shield,maxShield):
 
 func setShipName(name):
 	print("text name: ", name)
-	$Stats/Name.text = name
-	$Stats/Name.modulate = Color("gray")
 
 func setShipHealth(health,maxHealth):
 	healthObj.scale.z = getRelativeStats(health,maxHealth)
-	$Stats/Health.text = str(health) + " / " + str(maxHealth)
-	$Stats/Health.modulate = Color("red")
 	
 func setShipArmor(armor,maxArmor):
 	armorObj.scale.z = getRelativeStats(armor,maxArmor)
-	$Stats/Armor.text = str(armor) + " / " + str(maxArmor)
-	$Stats/Armor.modulate = Color("yellow") 
 
 func setShipShield(shield,maxShield):
 	shieldObj.scale.z = getRelativeStats(shield,maxShield)
-	$Stats/Shield.text = str(shield) + " / " + str(maxShield)
-	$Stats/Shield.modulate = Color("blue")
 
 func getRelativeStats(current, max)->float:
 	print("testtesttest Update SHIPUI ",current ," ",max)
@@ -46,5 +38,9 @@ func getRelativeStats(current, max)->float:
 		return float(current) / float(max)
 	return 0
 
-
-	
+func _process(delta):
+	# Get the global position of the camera
+	var camera_global_transform = get_viewport().get_camera_3d().get_global_transform()
+	var camera_position = camera_global_transform.origin
+	# Look at the camera
+	look_at(camera_position, Vector3(0, 1, 0))  # Adjust the up vector as needed

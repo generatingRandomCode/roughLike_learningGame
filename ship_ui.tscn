@@ -14,38 +14,10 @@ healthObj = NodePath("ParameterUiBase/health")
 armorObj = NodePath("ParameterUiBase/armor")
 shieldObj = NodePath("ParameterUiBase/shield")
 
-[node name="Stats" type="Node3D" parent="."]
-visible = false
-
-[node name="Name" type="Label3D" parent="Stats"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 15, -15)
-billboard = 1
-text = "TextTest
-"
-
-[node name="Health" type="Label3D" parent="Stats"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 12, -12)
-billboard = 1
-text = "health"
-font_size = 16
-
-[node name="Armor" type="Label3D" parent="Stats"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 9, -9)
-billboard = 1
-text = "armor
-"
-font_size = 16
-
-[node name="Shield" type="Label3D" parent="Stats"]
-transform = Transform3D(19.9892, 0, 0, 0, 19.9892, 0, 0, 0, 19.9892, 0, 6, -6)
-billboard = 1
-text = "schield
-"
-font_size = 16
-
 [node name="ParameterUiBase" type="MeshInstance3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20, 1, 0)
+transform = Transform3D(3.82137e-15, -8.74228e-08, 2, -2, -8.74228e-08, 0, 8.74228e-08, -2, -8.74228e-08, 0, 15, 0)
 mesh = ExtResource("2_0q3o0")
+metadata/_edit_group_ = true
 
 [node name="shield" type="MeshInstance3D" parent="ParameterUiBase"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.85, 0, 0)
