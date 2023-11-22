@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dwwq4fv0r2ct0"]
 
-[ext_resource type="Texture2D" uid="uid://bw6ih4rvvfrvo" path="res://LaiserShot/muzzle_05.png" id="2_gcd2a"]
-[ext_resource type="Material" uid="uid://cd3dmran22fwk" path="res://LaiserShot/LaiserShot_Particle.tres" id="3_ixonm"]
-[ext_resource type="Script" path="res://LaiserShot/LaiserGunScript.gd" id="3_ljr6b"]
+[ext_resource type="Texture2D" uid="uid://bw6ih4rvvfrvo" path="res://Data/3DVisual/WepomAnimation/LaiserShot/muzzle_05.png" id="2_gcd2a"]
+[ext_resource type="Material" uid="uid://cd3dmran22fwk" path="res://Data/3DVisual/WepomAnimation/LaiserShot/LaiserShot_Particle.tres" id="3_ixonm"]
+[ext_resource type="Script" path="res://Data/3DVisual/WepomAnimation/LaiserShot/LaiserGunScript.gd" id="3_ljr6b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djupj"]
 transparency = 1
@@ -15,9 +15,7 @@ emission_energy_multiplier = 3.0
 flip_faces = true
 center_offset = Vector3(0, 0.3, 0)
 
-[node name="Node3D" type="Node3D"]
-
-[node name="LaiserShot" type="GPUParticles3D" parent="."]
+[node name="LaiserShot" type="GPUParticles3D"]
 material_override = SubResource("StandardMaterial3D_djupj")
 emitting = false
 amount = 10

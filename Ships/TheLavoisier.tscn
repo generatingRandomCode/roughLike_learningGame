@@ -171,6 +171,7 @@ process_material = SubResource("ParticleProcessMaterial_2eo25")
 draw_pass_1 = SubResource("QuadMesh_xdvja")
 
 [node name="LasergunSmall" parent="." instance=ExtResource("5_mjmrg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.33897, 6.39873, -5.52685)
 
 [node name="Transmitter" parent="." instance=ExtResource("6_ws2lb")]
 

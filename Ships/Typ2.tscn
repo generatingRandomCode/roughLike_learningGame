@@ -182,5 +182,6 @@ mesh = ExtResource("5_pk3rs")
 needTarget = null
 
 [node name="LasergunSmall" parent="." instance=ExtResource("8_huhdw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07679, 1.64482, 5.96979)
 
 [connection signal="input_event" from="Typ2/Area3D" to="." method="_on_area_3d_input_event"]
