@@ -40,6 +40,7 @@ func createActionButton(wepon):
 	
 func actionPress(nodeID):
 	main.get_node("ActionUI/ActionContainer").hide()
+	main.get_node("ActionUI").hide()
 	nodeID = instance_from_id(nodeID).name
 	#	why is text ok but name not?  text is ok but name is problematic when adding more buttons
 	#nodeID = instance_from_id(nodeID).name
