@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://nwq4l7xrgl42"
+path="res://.godot/imported/ParameterUI_HealthArmorShield.obj-7f099a0d0d5658169cb573246481a557.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ParameterUI_HealthArmorShield.obj-7f099a0d0d5658169cb573246481a557.mesh"]
+
+source_file="res://resource/Menu/ParameterUI/ParameterUI_HealthArmorShield.obj"
+dest_files=["res://.godot/imported/ParameterUI_HealthArmorShield.obj-7f099a0d0d5658169cb573246481a557.mesh", "res://.godot/imported/ParameterUI_HealthArmorShield.obj-7f099a0d0d5658169cb573246481a557.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

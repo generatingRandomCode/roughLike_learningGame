@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cu6cuosycxe8q"
+path="res://.godot/imported/ParameterUI_Ernergy.obj-137ab57b39eedcf5541967b1c2d3abef.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ParameterUI_Ernergy.obj-137ab57b39eedcf5541967b1c2d3abef.mesh"]
+
+source_file="res://resource/Menu/ParameterUI/ParameterUI_Ernergy.obj"
+dest_files=["res://.godot/imported/ParameterUI_Ernergy.obj-137ab57b39eedcf5541967b1c2d3abef.mesh", "res://.godot/imported/ParameterUI_Ernergy.obj-137ab57b39eedcf5541967b1c2d3abef.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

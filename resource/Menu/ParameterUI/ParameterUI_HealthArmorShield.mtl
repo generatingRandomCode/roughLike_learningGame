@@ -1,0 +1,12 @@
+# Blender MTL File: 'Schiff.blend'
+# Material Count: 1
+
+newmtl Armor
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.661855 0.380429 0.005974
+Ks 0.000000 0.000000 0.000000
+Ke 0.603783 0.347550 0.005611
+Ni 1.450000
+d 1.000000
+illum 1

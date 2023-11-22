@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dlrvljm23rbgs"
+path="res://.godot/imported/ParameterUI_Base.obj-f9bc7636735651aa34e33deaf968e1b2.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ParameterUI_Base.obj-f9bc7636735651aa34e33deaf968e1b2.mesh"]
+
+source_file="res://resource/Menu/ParameterUI/ParameterUI_Base.obj"
+dest_files=["res://.godot/imported/ParameterUI_Base.obj-f9bc7636735651aa34e33deaf968e1b2.mesh", "res://.godot/imported/ParameterUI_Base.obj-f9bc7636735651aa34e33deaf968e1b2.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
