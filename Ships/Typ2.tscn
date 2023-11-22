@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b622gynsjqa30"]
+[gd_scene load_steps=20 format=3 uid="uid://b622gynsjqa30"]
 
 [ext_resource type="Script" path="res://ShipsScripts/BaseShip.gd" id="1_1bqea"]
 [ext_resource type="Material" uid="uid://dlg4n4nyjoklj" path="res://resource/ships/Typ-2/typ-2_mat.tres" id="2_woyj1"]
@@ -51,7 +51,32 @@ color_ramp = SubResource("GradientTexture1D_ko1hb")
 
 [sub_resource type="QuadMesh" id="QuadMesh_xdvja"]
 
+[sub_resource type="Animation" id="Animation_mmlf7"]
+resource_name = "Ship_Idle_Animation"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 2, 1, 0, 0.1, 0.5, 4, 1, -0.1, -0.051, -0.056, 6.1, 1, 0.1, -0.2, -1, 10.2, 1, 0, 0.1, 0, 12, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 2.2, 1, 0, 0, 0.035, 0.999, 5.8, 1, 0, 0, -0.035, 0.999, 9.4, 1, 0, 0.009, 0.035, 0.999, 12, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8a3bm"]
+_data = {
+"Ship_Idle_Animation": SubResource("Animation_mmlf7")
+}
+
 [node name="Model" type="Node3D" node_paths=PackedStringArray("wepons")]
+transform = Transform3D(0.997624, -0.0688881, 0, 0.0688881, 0.997624, 0, 0, 0, 1, -0.00247513, 0.0985127, 0.497337)
 script = ExtResource("1_1bqea")
 ship_name = "Typ2"
 ship_health = 75
@@ -60,7 +85,7 @@ ship_shield = 200
 wepons = [NodePath("ShieldSmall"), NodePath("LasergunSmall")]
 
 [node name="Typ2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 material_override = ExtResource("2_woyj1")
 mesh = ExtResource("3_bwsj8")
 skeleton = NodePath("")
@@ -72,7 +97,7 @@ transform = Transform3D(14.6095, 0, 0, 0, 5.94724, 0, 0, 0, 21.1379, 0, 0, 7.611
 shape = SubResource("BoxShape3D_omwwi")
 
 [node name="TrusterParticle" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92309, 0.765777, 13.4423)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.923, 0.766, 13.442)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TrusterParticle"]
 shape = SubResource("SphereShape3D_ngxby")
@@ -174,13 +199,18 @@ process_material = SubResource("ParticleProcessMaterial_2eo25")
 draw_pass_1 = SubResource("QuadMesh_xdvja")
 
 [node name="Shield" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0847007, -0.996353, 0.0103513, -0.00877889, -0.0111345, -0.999899, 0.996368, 0.0846013, -0.00968997, 0, -2.02594, 0)
+transform = Transform3D(0.9, 0, 0, 0, 0.616, 0, 0, 0, 0.4, 0, 0, -2.75428)
 material_override = ExtResource("5_ndyqe")
 mesh = ExtResource("5_pk3rs")
 
 [node name="ShieldSmall" parent="." instance=ExtResource("7_hdxyb")]
 
 [node name="LasergunSmall" parent="." instance=ExtResource("8_huhdw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07679, 1.64482, 5.96979)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53903e-08, 1.645, 5.97)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8a3bm")
+}
 
 [connection signal="input_event" from="Typ2/Area3D" to="." method="_on_area_3d_input_event"]

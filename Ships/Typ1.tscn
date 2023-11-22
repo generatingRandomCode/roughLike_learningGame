@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxkc48tji5lwh"]
+[gd_scene load_steps=17 format=3 uid="uid://dxkc48tji5lwh"]
 
 [ext_resource type="Material" uid="uid://ewuje1vwr3gi" path="res://resource/ships/Typ-1/Typ-1_mat.tres" id="1_h5c66"]
 [ext_resource type="Script" path="res://ShipsScripts/BaseShip.gd" id="1_t2mgs"]
@@ -48,7 +48,32 @@ color_ramp = SubResource("GradientTexture1D_ko1hb")
 
 [sub_resource type="QuadMesh" id="QuadMesh_xdvja"]
 
+[sub_resource type="Animation" id="Animation_10k3k"]
+resource_name = "Ship_Idle_Animation"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1.8, 1, 0, 0.1, -0.05, 4.5, 1, -0.1, -0.1, 0.1, 7.7, 1, 0, 0.1, -0.5, 10, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(2.3, 1, 0, 0, -0.026, 1, 6.2, 1, 0, 0, 0.026, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hw0yp"]
+_data = {
+"Ship_Idle_Animation": SubResource("Animation_10k3k")
+}
+
 [node name="Model" type="Node3D" node_paths=PackedStringArray("wepons")]
+transform = Transform3D(0.99982, -0.0189768, 0, 0.0189768, 0.99982, 0, 0, 0, 1, -0.099287, -0.0979293, 0.070226)
 script = ExtResource("1_t2mgs")
 ship_name = "Typ1"
 ship_health = 100
@@ -171,5 +196,10 @@ draw_pass_1 = SubResource("QuadMesh_xdvja")
 
 [node name="LasergunSmall" parent="." instance=ExtResource("5_qf0yc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03871, 0.914343, 2.96543)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hw0yp")
+}
 
 [connection signal="input_event" from="Typ1/Area3D" to="." method="_on_area_3d_input_event"]

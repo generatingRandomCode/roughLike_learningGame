@@ -13,8 +13,8 @@ void fragment() {
 	vec2 uv = UV * scale - direction_and_speed * TIME;
 	if(flip) {uv = 1.0 - uv; }
 	ALBEDO = vec3(0.2,0.2,1.0);
-	ALPHA = texture(albedo, uv).r;
-	EMISSION = vec3(0.0,0.2,1.0).rgb * emission_amount;
+	ALPHA = texture(albedo, uv).r * 0.1;
+	EMISSION = vec3(0.0,0.1,1.0).rgb * emission_amount;
 	
 	
 	// Place fragment code here.
