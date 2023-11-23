@@ -75,14 +75,14 @@ _data = {
 "Ship_Idle_Animation": SubResource("Animation_mmlf7")
 }
 
-[node name="Model" type="Node3D" node_paths=PackedStringArray("wepons")]
+[node name="Model" type="Node3D" node_paths=PackedStringArray("actions")]
 transform = Transform3D(0.997624, -0.0688881, 0, 0.0688881, 0.997624, 0, 0, 0, 1, -0.00247513, 0.0985127, 0.497337)
 script = ExtResource("1_1bqea")
 ship_name = "Typ2"
 ship_health = 75
 ship_armor = 75
 ship_shield = 200
-wepons = [NodePath("ShieldSmall"), NodePath("LasergunSmall")]
+actions = [NodePath("LasergunSmall"), NodePath("ShieldSmall")]
 
 [node name="Typ2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)

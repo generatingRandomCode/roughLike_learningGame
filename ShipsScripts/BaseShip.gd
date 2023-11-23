@@ -14,7 +14,8 @@ var ship_current_armor
 var ship_current_shield
 
 #	the weapons of the ship, the sub nodes of the wepons 
-@export var wepons : Array[Node]
+@export var actions : Array[Node]
+@export var bonusActions : Array[Node]
 
 #when the ship gets clicked
 signal shipClicked

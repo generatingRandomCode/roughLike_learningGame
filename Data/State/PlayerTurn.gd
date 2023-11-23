@@ -3,6 +3,7 @@ extends State
 class_name PlayerTurnState
 
 var actionsLeft
+var bonusActionsLeft
 var actionName
 
 #func _ready():

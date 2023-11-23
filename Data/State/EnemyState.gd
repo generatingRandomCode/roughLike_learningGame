@@ -34,7 +34,7 @@ func getEnemyShips():
 	return get_tree().get_nodes_in_group("enemy")
 			
 func getWeponForShip(enemyShip):
-	return enemyShip.wepons
+	return enemyShip.actions
 
 func getPlayerShips():
 	return get_tree().get_nodes_in_group("player")

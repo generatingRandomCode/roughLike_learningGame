@@ -16,7 +16,7 @@ func enter(parameter = {}) -> void:
 		x.queue_free()
 	
 	print("Enter choose Action State")
-	selectedShipID = parameter["SelectedShipID"] 
+	selectedShipID = parameter["SelectedShipID"]
 	#if SelectedShip != nodeID:
 	buildActionUI(selectedShipID)
 	#if !main.get_node("ActionUI").visible:
@@ -26,7 +26,7 @@ func enter(parameter = {}) -> void:
 #	add buttons with ship specific actions
 func buildActionUI(shipID):
 	var ship = instance_from_id(shipID)
-	for wepon in ship.wepons:
+	for wepon in ship.actions:
 		createActionButton(wepon)
 	
 #	creates the button

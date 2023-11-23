@@ -93,13 +93,13 @@ _data = {
 "Ship_Idle_Animation": SubResource("Animation_vh0hd")
 }
 
-[node name="Model" type="Node3D" node_paths=PackedStringArray("wepons")]
+[node name="Model" type="Node3D" node_paths=PackedStringArray("actions")]
 transform = Transform3D(0.999506, -0.0312966, 0.00299829, 0.0313752, 0.999018, -0.0312966, -0.00201587, 0.0313752, 0.999506, -0.293577, 0.107264, 0.861023)
 script = ExtResource("1_7mkp0")
 ship_name = "Typ1"
 ship_health = 100
 ship_armor = 100
-wepons = [NodePath("LasergunSmall"), NodePath("Transmitter")]
+actions = [NodePath("LasergunSmall"), NodePath("Transmitter")]
 
 [node name="TheLavoisier" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
