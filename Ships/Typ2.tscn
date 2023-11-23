@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_6xyjn"]
 [ext_resource type="Material" uid="uid://cfmiblmrfa4x" path="res://resource/shield/shield_mat.tres" id="5_ndyqe"]
 [ext_resource type="ArrayMesh" uid="uid://ualvqrxxahwf" path="res://resource/shield/Typ-2_Schild.obj" id="5_pk3rs"]
-[ext_resource type="PackedScene" uid="uid://dm7c37wmbst6s" path="res://Weapons/shield_small.tscn" id="7_hdxyb"]
-[ext_resource type="PackedScene" uid="uid://cg8wgxcu3yfta" path="res://Weapons/lasergun_small.tscn" id="8_huhdw"]
+[ext_resource type="PackedScene" uid="uid://dm7c37wmbst6s" path="res://Data/Actions/Weapons/shield_small.tscn" id="7_hdxyb"]
+[ext_resource type="PackedScene" uid="uid://cg8wgxcu3yfta" path="res://Data/Actions/Weapons/lasergun_small.tscn" id="8_huhdw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_omwwi"]
 

@@ -33,14 +33,17 @@ func _enter_tree():
 	self.add_child(shipUIInstance)
 	#	init ki
 	$ShipUI.setStats(self.ship_name,self.ship_current_health, self.ship_health, self.ship_current_armor, self.ship_armor,self.ship_current_shield, self.ship_shield)
+	
 func _ready():
 	get_node("AnimationPlayer").play("Ship_Idle_Animation")
 #	send signal when the ship is clicked
+
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 				# name is the node name that is the same for every one 
 				shipClicked.emit(self.get_instance_id())
+
 
 #	why cant i quee free the player
 func checkHealthIsAboveZero():

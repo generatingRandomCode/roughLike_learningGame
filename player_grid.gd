@@ -49,8 +49,8 @@ func removeClickZones(fieldName):
 	for sub in player2Root.get_children():
 		#sub.get_node("Area3D").queue_free()
 		#	to click on zone later again
-		if sub.has_node("Area3D"):
-			sub.get_node("Area3D").hide()
+		#if sub.has_node("Area3D"):
+		#	sub.get_node("Area3D").hide()
 		if sub.has_node("Ship"):
 			sub.get_node("Ship").queue_free()
 		

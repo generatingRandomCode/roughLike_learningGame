@@ -4,8 +4,8 @@
 [ext_resource type="Material" uid="uid://dawfwb4tocs7o" path="res://resource/ships/TheLavoisier/TheLavoisier_mat.tres" id="2_p24xr"]
 [ext_resource type="ArrayMesh" uid="uid://b4qnv45kdop0j" path="res://resource/ships/TheLavoisier/Fusionsreaktor_Schiff.obj" id="3_oufck"]
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_esr3n"]
-[ext_resource type="PackedScene" uid="uid://cg8wgxcu3yfta" path="res://Weapons/lasergun_small.tscn" id="5_mjmrg"]
-[ext_resource type="PackedScene" uid="uid://8c7qta7v1skl" path="res://Weapons/Transmitter.tscn" id="6_ws2lb"]
+[ext_resource type="PackedScene" uid="uid://cg8wgxcu3yfta" path="res://Data/Actions/Weapons/lasergun_small.tscn" id="5_mjmrg"]
+[ext_resource type="PackedScene" uid="uid://8c7qta7v1skl" path="res://Data/Actions/Weapons/Transmitter.tscn" id="6_ws2lb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_omwwi"]
 

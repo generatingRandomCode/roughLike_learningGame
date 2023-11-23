@@ -1,15 +1,15 @@
 [gd_scene load_steps=9 format=3 uid="uid://cg8wgxcu3yfta"]
 
-[ext_resource type="Script" path="res://Weapons/LasergunSmall.gd" id="1_gsbrl"]
-[ext_resource type="ArrayMesh" uid="uid://d25qdtcwwsqxg" path="res://resource/wepons/DualLaserGun/Typ-1_weapon.obj" id="2_cwxpd"]
-[ext_resource type="Material" uid="uid://ewuje1vwr3gi" path="res://resource/ships/Typ-1/Typ-1_mat.tres" id="2_lqmku"]
-[ext_resource type="Texture2D" uid="uid://bw6ih4rvvfrvo" path="res://Data/3DVisual/WepomAnimation/LaiserShot/muzzle_05.png" id="3_lhqvf"]
-[ext_resource type="Material" uid="uid://cd3dmran22fwk" path="res://Data/3DVisual/WepomAnimation/LaiserShot/LaiserShot_Particle.tres" id="4_5lsrg"]
-[ext_resource type="Script" path="res://Data/3DVisual/WepomAnimation/LaiserShot/LaiserGunScript.gd" id="5_dwdak"]
+[ext_resource type="Script" path="res://Data/Actions/Weapons/LasergunSmall.gd" id="1_dmmpl"]
+[ext_resource type="Material" uid="uid://ewuje1vwr3gi" path="res://resource/ships/Typ-1/Typ-1_mat.tres" id="2_bsuwc"]
+[ext_resource type="ArrayMesh" uid="uid://d25qdtcwwsqxg" path="res://resource/wepons/DualLaserGun/Typ-1_weapon.obj" id="3_g3avw"]
+[ext_resource type="Texture2D" uid="uid://bw6ih4rvvfrvo" path="res://Data/3DVisual/WepomAnimation/LaiserShot/muzzle_05.png" id="4_xfa1f"]
+[ext_resource type="Material" uid="uid://cd3dmran22fwk" path="res://Data/3DVisual/WepomAnimation/LaiserShot/LaiserShot_Particle.tres" id="5_ojw58"]
+[ext_resource type="Script" path="res://Data/3DVisual/WepomAnimation/LaiserShot/LaiserGunScript.gd" id="6_c3vp7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djupj"]
 transparency = 1
-albedo_texture = ExtResource("3_lhqvf")
+albedo_texture = ExtResource("4_xfa1f")
 emission_enabled = true
 emission = Color(1, 0, 0, 1)
 emission_energy_multiplier = 3.0
@@ -19,14 +19,15 @@ flip_faces = true
 center_offset = Vector3(0, 0.3, 0)
 
 [node name="LasergunSmall" type="Node3D"]
-script = ExtResource("1_gsbrl")
-wepon_name = "LasergunSmall"
-wepon_initiative = 3
+script = ExtResource("1_dmmpl")
 wepon_damage = 100
+wepon_name = "LasergunSmall"
+wepon_initiative = 5
+needTarget = true
 
 [node name="Model" type="MeshInstance3D" parent="."]
-material_override = ExtResource("2_lqmku")
-mesh = ExtResource("2_cwxpd")
+material_override = ExtResource("2_bsuwc")
+mesh = ExtResource("3_g3avw")
 
 [node name="LaserShot" type="GPUParticles3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.665437, 1.75792, -4.86579)
@@ -39,9 +40,9 @@ explosiveness = 1.0
 randomness = 1.0
 visibility_aabb = AABB(-3.39709, -4.0625, -4, 8, 8, 8)
 transform_align = 2
-process_material = ExtResource("4_5lsrg")
+process_material = ExtResource("5_ojw58")
 draw_pass_1 = SubResource("QuadMesh_ijjch")
-script = ExtResource("5_dwdak")
+script = ExtResource("6_c3vp7")
 
 [node name="LaserShot2" type="GPUParticles3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.629542, 1.75792, -4.84273)
@@ -54,6 +55,6 @@ explosiveness = 1.0
 randomness = 1.0
 visibility_aabb = AABB(-3.39709, -4.0625, -4, 8, 8, 8)
 transform_align = 2
-process_material = ExtResource("4_5lsrg")
+process_material = ExtResource("5_ojw58")
 draw_pass_1 = SubResource("QuadMesh_ijjch")
-script = ExtResource("5_dwdak")
+script = ExtResource("6_c3vp7")

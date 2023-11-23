@@ -1,9 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://8c7qta7v1skl"]
 
-[ext_resource type="Script" path="res://Weapons/Transmitter.gd" id="1_aweni"]
+[ext_resource type="Script" path="res://Data/Actions/Weapons/Transmitter.gd" id="1_aweni"]
 
 [node name="Transmitter" type="Node3D"]
 script = ExtResource("1_aweni")
+wepon_damage = 200
 wepon_name = "Transmitter"
 wepon_initiative = 7
-wepon_damage = 200
+needTarget = true

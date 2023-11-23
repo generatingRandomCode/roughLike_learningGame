@@ -1,4 +1,4 @@
-extends Node
+extends baseAction
 
 
 class_name BaseWepon
@@ -6,13 +6,8 @@ class_name BaseWepon
 #	 all the common functions are here
 
 #	Must be the same as the filename
-@export var wepon_name: String
-@export var wepon_initiative: int
+
 @export var wepon_damage: int
-@export var needTarget :int = 0
-#	function that defines what the wepond does
-func action(action) ->  void:
-	pass
 
 func executeDamageAction(target):
 	damageCalculation(target, self.wepon_damage)

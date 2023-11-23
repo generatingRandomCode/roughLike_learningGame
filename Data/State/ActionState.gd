@@ -59,7 +59,9 @@ func checkActionCanExecute(action):
 func clearZeroHealthShips():
 	print("clearZeroHealthShips: statz")
 	for ship in get_tree().get_nodes_in_group("ship"):
-		print("clearZeroHealthShips: ",ship.name, " ", ship.ship_current_health)
+		#print("clearZeroHealthShips: ",ship.name, " ", ship.ship_current_health)
+		if !ship:
+			continue
 		if !ship.checkHealthIsAboveZero():
 			await ship.destroySelf()
 	get_tree().call_group("ShipUI", "updateShipUI")

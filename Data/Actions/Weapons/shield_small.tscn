@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm7c37wmbst6s"]
+
+[ext_resource type="Script" path="res://Data/Actions/Weapons/ShieldSmall.gd" id="1_lvi1e"]
+
+[node name="ShieldSmall" type="Node3D"]
+script = ExtResource("1_lvi1e")
+wepon_name = "ShieldSmall"
+wepon_initiative = 3
+targetPreselection = 1

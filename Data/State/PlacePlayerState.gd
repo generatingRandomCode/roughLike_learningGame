@@ -17,11 +17,11 @@ func enter(parameter := {}) -> void:
 		var playerGridInstance = playerGrid.instantiate()
 		main.add_child(playerGridInstance)
 	#	
-	playerField = main.get_node("PlayerGrid/Player")
-	print("playerField: ", playerField.name)
+	playerField =get_tree().get_nodes_in_group("PlayerField")
 	#	this is how 
-	for place in playerField.get_children():
-		place.connect("playerPlaced", playerPlaced)
+	for place in playerField:
+		if !place.has_node("Model"):
+			place.connect("shipClicked", playerPlaced)
 
 func playerPlaced(gridID):
 	#	get the grid by nodeID
@@ -29,7 +29,6 @@ func playerPlaced(gridID):
 	#	creat a ship instance and add to the grid field
 	#	get the tcen after player name 
 	#	get the ship name from the ShipName
-	print("ShipName: ", shipName)
 	var shipPath = "res://Ships/" + shipName + ".tscn"
 	#	why does load work but not preload?
 	#	get ship
@@ -39,8 +38,9 @@ func playerPlaced(gridID):
 	grid.add_child(shipInstance)
 	#	to only place one ship remove the clickBoxes after placements 
 	
-	for place in playerField.get_children():
-		place.disconnect("playerPlaced",playerPlaced)
+	for place in playerField:
+		if place.is_connected("shipClicked",playerPlaced):
+			place.disconnect("shipClicked",playerPlaced)
 	
 	get_parent().transition_to("ChooseShipToPlace")
 

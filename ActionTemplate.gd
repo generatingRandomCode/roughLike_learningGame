@@ -18,18 +18,21 @@ var actionInitiative
 
 var needTarget = 0
 
+var targetPreselection
+
 #	gets called when calling new	get the id of both 
 func _init(actionID, causeID = null, targetID = null):
 	#self.action = self.cause.get_node(str(instance_from_id(actionID).name))
 	self.action = instance_from_id(int(str(actionID)))
+	self.targetPreselection = self.action.targetPreselection
+	self.actionInitiative = self.action.wepon_initiative
+	self.needTarget = self.action.needTarget
 	
 	if causeID:
 		self.cause = instance_from_id(causeID)
 	
 	if targetID:
 		self.targets = instance_from_id(targetID)
-	self.actionInitiative = self.action.wepon_initiative
-	self.needTarget = self.action.needTarget
 	
 	print("ActionTemplate cause ", self.cause)
 	print("ActionTemplate action ", self.action)

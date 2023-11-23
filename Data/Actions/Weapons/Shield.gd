@@ -1,4 +1,4 @@
-extends BaseWepon
+extends baseAction
 
 class_name Shield
 

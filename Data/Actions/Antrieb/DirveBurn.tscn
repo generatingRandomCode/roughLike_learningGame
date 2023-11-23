@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://by0uclccvso3y"]
+
+[ext_resource type="Script" path="res://Data/Actions/Antrieb/DirveBurn.gd" id="1_yvafp"]
+
+[node name="DriveBurn" type="Node3D"]
+script = ExtResource("1_yvafp")
+wepon_name = "DriveBurn"
+wepon_initiative = 2
+needTarget = true
+targetPreselection = 2

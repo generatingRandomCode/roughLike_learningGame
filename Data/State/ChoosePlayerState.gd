@@ -34,8 +34,7 @@ func showShipMenu(_nodeID):
 
 func displayPlayerIcon():
 	for x in actionsLeft:
-		if !x.has_node("AttackSelection"):
-			x.get_parent().get_node("FieldSelect").show()
+		x.get_parent().get_node("FieldSelect").show()
 
 func freePlayerIcon():
 	for x in actionsLeft:

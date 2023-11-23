@@ -28,8 +28,7 @@ func selectAction(actionID):
 		self.actions += [ActionTemplate.new(actionID,selectedShipID)]
 	else:
 		self.actions = [ActionTemplate.new(actionID,selectedShipID)]
-		
-	print("ActionTemplate array", actions)
+	
 	if actions[-1].needTarget:
 		await state_machine.transition_to("PlayerTurnState/ChooseTargetState")
 	else:
@@ -41,7 +40,9 @@ func selectTarget(targetID):
 	startLoop()
 
 func startLoop():
+	#	delete the ship the action was choosen for and the specific action (bonus or standard)
 	actionsLeft.erase(instance_from_id(selectedShipID))
+	#	abfrage für sofort action
 	if(actionsLeft.size() > 0):
 		await state_machine.transition_to("PlayerTurnState/ChoosePlayerState",{"Actions" : self.actions})
 		selectedShipID = null

@@ -10,12 +10,9 @@ func _ready():
 	connect("actionSelected", get_parent().selectAction)
 
 func enter(parameter = {}) -> void:
-	#	clear the ui
-
 	selectedShipID = parameter["SelectedShipID"]
 	buildActionUI(selectedShipID)
 	main.get_node("ActionUI").show()
-	main.get_node("ActionUI/ActionContainer").show()
 
 #	add buttons with ship specific actions
 func buildActionUI(shipID):
@@ -38,7 +35,6 @@ func actionPress(nodeID):
 	actionSelected.emit(nodeID)
 
 func exit():
-	main.get_node("ActionUI/ActionContainer").hide()
 	main.get_node("ActionUI").hide()
 	for x in main.get_node("ActionUI/ActionContainer").get_children():
 		main.get_node("ActionUI/ActionContainer").remove_child(x)

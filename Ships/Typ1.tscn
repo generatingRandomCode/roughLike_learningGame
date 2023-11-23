@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://dxkc48tji5lwh"]
+[gd_scene load_steps=18 format=3 uid="uid://dxkc48tji5lwh"]
 
 [ext_resource type="Material" uid="uid://ewuje1vwr3gi" path="res://resource/ships/Typ-1/Typ-1_mat.tres" id="1_h5c66"]
 [ext_resource type="Script" path="res://ShipsScripts/BaseShip.gd" id="1_t2mgs"]
 [ext_resource type="ArrayMesh" uid="uid://b2ut57vv645iv" path="res://resource/ships/Typ-1/Schiff.obj" id="2_xmh8l"]
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="3_kok3c"]
-[ext_resource type="PackedScene" uid="uid://cg8wgxcu3yfta" path="res://Weapons/lasergun_small.tscn" id="5_qf0yc"]
+[ext_resource type="PackedScene" uid="uid://cg8wgxcu3yfta" path="res://Data/Actions/Weapons/lasergun_small.tscn" id="5_qf0yc"]
+[ext_resource type="PackedScene" uid="uid://by0uclccvso3y" path="res://Data/Actions/Antrieb/DirveBurn.tscn" id="6_w60dt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_omwwi"]
 
@@ -78,7 +79,7 @@ script = ExtResource("1_t2mgs")
 ship_name = "Typ1"
 ship_health = 100
 ship_armor = 100
-actions = [NodePath("LasergunSmall")]
+actions = [NodePath("LasergunSmall"), NodePath("DriveBurn")]
 metadata/_edit_group_ = true
 
 [node name="Typ1" type="MeshInstance3D" parent="."]
@@ -201,5 +202,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03871, 0.914343, 2.96543)
 libraries = {
 "": SubResource("AnimationLibrary_hw0yp")
 }
+
+[node name="DriveBurn" parent="." instance=ExtResource("6_w60dt")]
 
 [connection signal="input_event" from="Typ1/Area3D" to="." method="_on_area_3d_input_event"]
