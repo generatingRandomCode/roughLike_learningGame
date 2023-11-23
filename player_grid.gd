@@ -8,8 +8,8 @@ var base = preload("res://player_grid_base.tscn")
 #	distance between x is the distance between start
 func _ready():
 	base = base.instantiate()
-	initBoardPlayer(base,"player",-20,-20, 30)
-	initBoardPlayer2(base,"Enemy",20,-20, 30)
+	initBoardPlayer(base,"player",-60,-20, 30)
+	initBoardPlayer2(base,"Enemy",60,-20, 30)
 	removeClickZones("Enemy")
 
 #	z von unten nach oben |

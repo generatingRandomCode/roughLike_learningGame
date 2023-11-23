@@ -40,7 +40,8 @@ func getRelativeStats(current, max)->float:
 
 func _process(delta):
 	# Get the global position of the camera
-	var camera_global_transform = get_viewport().get_camera_3d().get_global_transform()
-	var camera_position = camera_global_transform.origin
+	#var camera_global_transform = get_viewport().get_camera_3d().get_global_transform()
+	#var camera_position = camera_global_transform.origin
 	# Look at the camera
-	look_at(camera_position, Vector3(0, 1, 0))  # Adjust the up vector as needed
+	#look_at(camera_position, Vector3(0, 1, 0))  # Adjust the up vector as needed
+	pass

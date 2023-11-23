@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://himnox2wxi7d"]
+
+[node name="Camera" type="Node3D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 574.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(574, 648)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Camera3DL" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.939693, -0.241845, 0.241845, 0, 0.707107, 0.707107, -0.34202, -0.664463, 0.664463, -60, 60, 74.829)
+visible = false
+current = true
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="."]
+offset_left = 578.0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SubViewport2" type="SubViewport" parent="SubViewportContainer2"]
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(574, 648)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Camera3DR" type="Camera3D" parent="SubViewportContainer2/SubViewport2"]
+transform = Transform3D(0.939693, 0.241845, -0.241845, 0, 0.707107, 0.707107, 0.34202, -0.664463, 0.664463, 60, 60, 74.829)
+visible = false
+current = true

@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://cj0wofdm4g5mk"]
+[gd_scene load_steps=26 format=3 uid="uid://cj0wofdm4g5mk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7kjg5"]
+[ext_resource type="PackedScene" uid="uid://himnox2wxi7d" path="res://Data/Camera/camera.tscn" id="2_wjkft"]
 [ext_resource type="Texture2D" uid="uid://bc4dxw407oly7" path="res://resource/gameBackground/SpaceHDR.png" id="4_2bmyh"]
 [ext_resource type="Material" uid="uid://cndwceewwspy8" path="res://resource/gameBackground/planets/MagmaPlanet/magmaMaterial.tres" id="4_m16tw"]
 [ext_resource type="Script" path="res://Data/State/StateMashine.gd" id="5_3rjji"]
@@ -44,11 +45,7 @@ glow_blend_mode = 0
 transform = Transform3D(0.997723, 0, 0, 0, 0.997723, 0, 0, 0, 0.997723, 0, 0, 0)
 script = ExtResource("1_7kjg5")
 
-[node name="Marker3D" type="Marker3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="Marker3D"]
-transform = Transform3D(1.00228, 0, 0, 0, 0.708721, 0.708721, 0, -0.708721, 0.708721, 0, 75, 75)
-current = true
+[node name="Camera" parent="." instance=ExtResource("2_wjkft")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i7vx7")
@@ -107,5 +104,7 @@ script = ExtResource("9_koic7")
 script = ExtResource("10_0atkk")
 
 [node name="StartMenu" parent="." instance=ExtResource("9_1p4yo")]
+top_level = true
 
 [node name="ActionUI" parent="." instance=ExtResource("21_gsrlb")]
+top_level = true
