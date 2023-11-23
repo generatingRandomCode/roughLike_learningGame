@@ -61,7 +61,6 @@ func checkActionCanExecute(action):
 func clearZeroHealthShips():
 	print("clearZeroHealthShips: statz")
 	for ship in get_tree().get_nodes_in_group("ship"):
-		#print("clearZeroHealthShips: ",ship.name, " ", ship.ship_current_health)
 		if !ship:
 			continue
 		if !ship.checkHealthIsAboveZero():
@@ -69,9 +68,6 @@ func clearZeroHealthShips():
 	get_tree().call_group("ShipUI", "updateShipUI")
 
 func sortActionsByInitative(actions):
-	#	retrun true if greter
-	#	so return -1 for lesser iniz
-	#actions.sort_custom(func(a, b): return $BattleStep.getWepondInitative(a[0],a[1]) < $BattleStep.getWepondInitative(b[0],b[1]))
 	actions.sort_custom(func(a, b): return  a.actionInitiative < b.actionInitiative)
 	return actions
 
