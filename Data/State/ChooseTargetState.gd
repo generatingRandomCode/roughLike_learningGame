@@ -10,7 +10,6 @@ func _ready():
 
 #	State to enter when choosing an action for a ship
 func enter(parameter := {}) -> void:
-
 	var enemyShips = get_tree().get_nodes_in_group("enemy")
 	await displayTargetIcon()
 	for x in enemyShips:
@@ -38,12 +37,9 @@ func freeTargetIcon():
 func targetShip(targetID):
 	print("targetShip")
 	var enemyShips = get_tree().get_nodes_in_group("enemy")
-	#	als action class die classe an sich übergeben
 	for x in enemyShips: 
 		x.disconnect("shipClicked",targetShip)
-
 	freeTargetIcon()
-
 	print("Actions array: target", actions)
 	targetSelected.emit(targetID)
 

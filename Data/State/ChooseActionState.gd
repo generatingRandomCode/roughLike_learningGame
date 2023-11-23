@@ -1,25 +1,19 @@
 extends PlayerTurnState
 
 var button = preload("res://simpleButton.tscn")
-
 var buttonInstance
 
 signal actionSelected
 
+#	connect the signal when the action is pressed
 func _ready():
 	connect("actionSelected", get_parent().selectAction)
 
 func enter(parameter = {}) -> void:
 	#	clear the ui
-	for x in main.get_node("ActionUI/ActionContainer").get_children():
-		main.get_node("ActionUI/ActionContainer").remove_child(x)
-		x.queue_free()
-	
-	print("Enter choose Action State")
+
 	selectedShipID = parameter["SelectedShipID"]
-	#if SelectedShip != nodeID:
 	buildActionUI(selectedShipID)
-	#if !main.get_node("ActionUI").visible:
 	main.get_node("ActionUI").show()
 	main.get_node("ActionUI/ActionContainer").show()
 
@@ -39,10 +33,13 @@ func createActionButton(wepon):
 	buttonInstance.connect("start_pressed", actionPress)
 	
 func actionPress(nodeID):
-	main.get_node("ActionUI/ActionContainer").hide()
-	main.get_node("ActionUI").hide()
+	#	the node name is the id of the action
 	nodeID = instance_from_id(nodeID).name
-	#	why is text ok but name not?  text is ok but name is problematic when adding more buttons
-	#nodeID = instance_from_id(nodeID).name
 	actionSelected.emit(nodeID)
 
+func exit():
+	main.get_node("ActionUI/ActionContainer").hide()
+	main.get_node("ActionUI").hide()
+	for x in main.get_node("ActionUI/ActionContainer").get_children():
+		main.get_node("ActionUI/ActionContainer").remove_child(x)
+		x.queue_free()
