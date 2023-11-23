@@ -12,6 +12,11 @@ enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2}
 #	what nodes are in the target group
 @export var targetPreselection : TargetPreselectionPatterns
 #	function that defines what the wepond does
+var description : String
+
+func _enter_tree():
+	buildDescription()
+
 func action(action) ->  void:
 	pass
 
@@ -31,3 +36,8 @@ func getTargetGroup()-> Array:
 			)
 		_:
 			return []
+
+func buildDescription():
+	self.description = "wepon_initiative: " + str(self.wepon_initiative) + "\n"
+	if get("wepon_damage"):
+		self.description += "wepon_damage: " + str(self.wepon_damage) + "\n"
