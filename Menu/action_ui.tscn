@@ -28,14 +28,3 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-
-[node name="Info" type="TextEdit" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = -11.501
-anchor_right = 1.019
-anchor_bottom = 1.0
-offset_top = 586.551
-offset_right = -18.1281
-offset_bottom = 5.0
-text = "TestText"

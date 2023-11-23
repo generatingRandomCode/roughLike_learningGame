@@ -44,6 +44,4 @@ func targetShip(targetID):
 	targetSelected.emit(targetID)
 
 func exit():
-	main.get_node("ActionUI/ActionContainer").hide()
-	main.get_node("ActionUI/Info").hide()
 	main.get_node("ActionUI").hide()
