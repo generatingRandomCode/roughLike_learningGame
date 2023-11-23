@@ -1,0 +1,1967 @@
+[gd_scene load_steps=17 format=3 uid="uid://dakbo4btppekq"]
+
+[ext_resource type="Script" path="res://Menu/actionUIDisplay.gd" id="1_on7ox"]
+[ext_resource type="Texture2D" uid="uid://bnq2i5jda7to2" path="res://Menu/ActionUI/Ability_UI_deselected_2-6.png" id="2_ie0oy"]
+[ext_resource type="Texture2D" uid="uid://dw3hjroyv8u8l" path="res://Menu/ActionUI/Shield_Icon.png" id="2_o4lds"]
+[ext_resource type="Texture2D" uid="uid://eptuq4wue5g4" path="res://Menu/ActionUI/Ability_UI_1.png" id="2_pdt2v"]
+[ext_resource type="Texture2D" uid="uid://dx2v2ls3an6lj" path="res://Menu/ActionUI/Ability_UI_2.png" id="4_bt65l"]
+[ext_resource type="Texture2D" uid="uid://dtm541u8ivn5m" path="res://Menu/ActionUI/Ability_UI_3.png" id="5_f40qu"]
+[ext_resource type="Script" path="res://Menu/UIButtonKlicked.gd" id="5_jbfob"]
+[ext_resource type="Texture2D" uid="uid://bs8c45yfp63ps" path="res://Menu/ActionUI/Ability_UI_4.png" id="6_iilm7"]
+[ext_resource type="Texture2D" uid="uid://doqbe3w2m6b1i" path="res://Menu/ActionUI/Ability_UI_5.png" id="7_0lk76"]
+[ext_resource type="Texture2D" uid="uid://dtl2d8vf8vd5q" path="res://Menu/ActionUI/Ability_UI_6.png" id="8_inp68"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_eruof"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_fya8d"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_htr7j"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_cl8yw"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_8a43y"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_oi3lp"]
+
+[node name="ActionUI" type="Control" node_paths=PackedStringArray("actionUIParents", "base")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 2.0
+offset_right = 3.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_on7ox")
+iconListVar = Array[ImageTexture]([SubResource("ImageTexture_eruof"), SubResource("ImageTexture_fya8d"), SubResource("ImageTexture_htr7j"), SubResource("ImageTexture_cl8yw"), SubResource("ImageTexture_8a43y"), SubResource("ImageTexture_oi3lp")])
+titleVar = Array[String](["Waffe 1", "Waffe 2", "Waffe 3", "Waffe 4", "Waffe 5", "Waffe 6"])
+descriptionVar = Array[String](["fgerwjluhfgjlewhfe", "Jipiiiiiiiiiiiii", "rteghrgere", "greaagre", "rgeaagre", "rgeagrea"])
+actionUIParents = [NodePath("Action1Selected"), NodePath("Action2Selected"), NodePath("Action3Selected"), NodePath("Action4Selected"), NodePath("Action5Selected"), NodePath("Action6Selected")]
+base = NodePath("Base")
+
+[node name="Action1Selected" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Action1" type="TextureRect" parent="Action1Selected"]
+z_as_relative = false
+clip_contents = true
+custom_minimum_size = Vector2(150, 0)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -155.0
+offset_right = 420.0
+offset_bottom = -5.0
+grow_vertical = 0
+auto_translate = false
+localize_numeral_system = false
+mouse_filter = 2
+texture = ExtResource("2_pdt2v")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="Action1Selected/Action1"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -74.0
+offset_right = -93.86
+offset_bottom = 41.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+texture = ExtResource("2_o4lds")
+
+[node name="Action2" type="TextureRect" parent="Action1Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 68.0
+offset_top = -154.0
+offset_right = 153.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_ie0oy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action1Selected/Action2" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 1
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action1Selected/Action2"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -20.0
+offset_right = 74.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action3" type="TextureRect" parent="Action1Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 129.0
+offset_top = -154.0
+offset_right = 214.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_ie0oy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action1Selected/Action3" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 2
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action1Selected/Action3"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -20.0
+offset_right = 74.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action4" type="TextureRect" parent="Action1Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_top = -154.0
+offset_right = 275.0
+offset_bottom = -114.0
+grow_vertical = 0
+texture = ExtResource("2_ie0oy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action1Selected/Action4" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 3
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action1Selected/Action4"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -20.0
+offset_right = 74.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action5" type="TextureRect" parent="Action1Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 252.0
+offset_top = -154.0
+offset_right = 337.0
+offset_bottom = -114.0
+grow_vertical = 0
+texture = ExtResource("2_ie0oy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action1Selected/Action5" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 4
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action1Selected/Action5"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -20.0
+offset_right = 74.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action6" type="TextureRect" parent="Action1Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 314.0
+offset_top = -154.0
+offset_right = 399.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_ie0oy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action1Selected/Action6" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 5
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action1Selected/Action6"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -20.0
+offset_right = 74.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action2Selected" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Action1" type="TextureRect" parent="Action2Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 61.0
+offset_top = -154.0
+offset_right = 146.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action2Selected/Action1" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = 8.0
+offset_right = -81.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action2Selected/Action1"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.5
+offset_top = -20.0
+offset_right = 12.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action2" type="TextureRect" parent="Action2Selected"]
+z_as_relative = false
+clip_contents = true
+custom_minimum_size = Vector2(150, 0)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -155.0
+offset_right = 420.0
+offset_bottom = -5.0
+grow_vertical = 0
+auto_translate = false
+localize_numeral_system = false
+mouse_filter = 2
+texture = ExtResource("4_bt65l")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="Action2Selected/Action2"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -74.0
+offset_right = -39.86
+offset_bottom = 41.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action3" type="TextureRect" parent="Action2Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 129.0
+offset_top = -154.0
+offset_right = 214.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_ie0oy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action2Selected/Action3" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 2
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action2Selected/Action3"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -20.0
+offset_right = 74.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action4" type="TextureRect" parent="Action2Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_top = -154.0
+offset_right = 275.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_ie0oy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action2Selected/Action4" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 3
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action2Selected/Action4"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -20.0
+offset_right = 74.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action5" type="TextureRect" parent="Action2Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 252.0
+offset_top = -154.0
+offset_right = 337.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_ie0oy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action2Selected/Action5" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 4
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action2Selected/Action5"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -20.0
+offset_right = 74.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action6" type="TextureRect" parent="Action2Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 314.0
+offset_top = -154.0
+offset_right = 399.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_ie0oy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action2Selected/Action6" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 5
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action2Selected/Action6"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -20.0
+offset_right = 74.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action3Selected" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Action1" type="TextureRect" parent="Action3Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 61.0
+offset_top = -154.0
+offset_right = 146.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action3Selected/Action1" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = 8.0
+offset_right = -81.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action3Selected/Action1"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.5
+offset_top = -20.0
+offset_right = 12.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action2" type="TextureRect" parent="Action3Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 129.0
+offset_top = -154.0
+offset_right = 214.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action3Selected/Action2" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_top = 8.0
+offset_right = -93.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 1
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action3Selected/Action2"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.5
+offset_top = -20.0
+offset_right = 4.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action3" type="TextureRect" parent="Action3Selected"]
+z_as_relative = false
+clip_contents = true
+custom_minimum_size = Vector2(150, 0)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -155.0
+offset_right = 420.0
+offset_bottom = -5.0
+grow_vertical = 0
+auto_translate = false
+localize_numeral_system = false
+mouse_filter = 2
+texture = ExtResource("5_f40qu")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="Action3Selected/Action3"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -74.0
+offset_right = 24.14
+offset_bottom = 41.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action4" type="TextureRect" parent="Action3Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_top = -154.0
+offset_right = 275.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_ie0oy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action3Selected/Action4" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 3
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action3Selected/Action4"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -20.0
+offset_right = 74.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action5" type="TextureRect" parent="Action3Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 252.0
+offset_top = -154.0
+offset_right = 337.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_ie0oy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action3Selected/Action5" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 4
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action3Selected/Action5"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -20.0
+offset_right = 74.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action6" type="TextureRect" parent="Action3Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 314.0
+offset_top = -154.0
+offset_right = 399.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_ie0oy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action3Selected/Action6" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 5
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action3Selected/Action6"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -20.0
+offset_right = 74.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action4Selected" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Action1" type="TextureRect" parent="Action4Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 61.0
+offset_top = -154.0
+offset_right = 146.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action4Selected/Action1" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = 8.0
+offset_right = -81.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action4Selected/Action1"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.5
+offset_top = -20.0
+offset_right = 12.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action2" type="TextureRect" parent="Action4Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 129.0
+offset_top = -154.0
+offset_right = 214.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action4Selected/Action2" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_top = 8.0
+offset_right = -93.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 1
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action4Selected/Action2"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.5
+offset_top = -20.0
+offset_right = 4.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action3" type="TextureRect" parent="Action4Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_top = -154.0
+offset_right = 275.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action4Selected/Action3" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = 8.0
+offset_right = -91.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 2
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action4Selected/Action3"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.5
+offset_top = -20.0
+offset_right = 6.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action4" type="TextureRect" parent="Action4Selected"]
+z_as_relative = false
+clip_contents = true
+custom_minimum_size = Vector2(150, 0)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -155.0
+offset_right = 420.0
+offset_bottom = -5.0
+grow_vertical = 0
+auto_translate = false
+localize_numeral_system = false
+mouse_filter = 2
+texture = ExtResource("6_iilm7")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="Action4Selected/Action4"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -74.0
+offset_right = 85.14
+offset_bottom = 41.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action5" type="TextureRect" parent="Action4Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 252.0
+offset_top = -154.0
+offset_right = 337.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_ie0oy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action4Selected/Action5" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 4
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action4Selected/Action5"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -20.0
+offset_right = 74.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action6" type="TextureRect" parent="Action4Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 314.0
+offset_top = -154.0
+offset_right = 399.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_ie0oy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action4Selected/Action6" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 5
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action4Selected/Action6"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -20.0
+offset_right = 74.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action5Selected" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Action1" type="TextureRect" parent="Action5Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 61.0
+offset_top = -154.0
+offset_right = 146.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action5Selected/Action1" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = 8.0
+offset_right = -81.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action5Selected/Action1"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.5
+offset_top = -20.0
+offset_right = 12.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action2" type="TextureRect" parent="Action5Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 129.0
+offset_top = -154.0
+offset_right = 214.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action5Selected/Action2" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_top = 8.0
+offset_right = -93.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 1
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action5Selected/Action2"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.5
+offset_top = -20.0
+offset_right = 4.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action3" type="TextureRect" parent="Action5Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_top = -154.0
+offset_right = 275.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action5Selected/Action3" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = 8.0
+offset_right = -90.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 2
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action5Selected/Action3"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.5
+offset_top = -20.0
+offset_right = 6.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action4" type="TextureRect" parent="Action5Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 252.0
+offset_top = -154.0
+offset_right = 337.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action5Selected/Action4" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = 8.0
+offset_right = -87.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 3
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action5Selected/Action4"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.5
+offset_top = -20.0
+offset_right = 5.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action5" type="TextureRect" parent="Action5Selected"]
+z_as_relative = false
+clip_contents = true
+custom_minimum_size = Vector2(150, 0)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -155.0
+offset_right = 420.0
+offset_bottom = -5.0
+grow_vertical = 0
+auto_translate = false
+localize_numeral_system = false
+mouse_filter = 2
+texture = ExtResource("7_0lk76")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="Action5Selected/Action5"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 33.0
+offset_top = -74.0
+offset_right = 148.14
+offset_bottom = 41.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action6" type="TextureRect" parent="Action5Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 314.0
+offset_top = -154.0
+offset_right = 399.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_ie0oy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action5Selected/Action6" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 5
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action5Selected/Action6"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -20.0
+offset_right = 74.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action6Selected" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Action1" type="TextureRect" parent="Action6Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 61.0
+offset_top = -154.0
+offset_right = 146.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action6Selected/Action1" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = 8.0
+offset_right = -81.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action6Selected/Action1"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.5
+offset_top = -20.0
+offset_right = 12.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action2" type="TextureRect" parent="Action6Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 129.0
+offset_top = -154.0
+offset_right = 214.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action6Selected/Action2" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_top = 8.0
+offset_right = -93.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 1
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action6Selected/Action2"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.5
+offset_top = -20.0
+offset_right = 4.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action3" type="TextureRect" parent="Action6Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_top = -154.0
+offset_right = 275.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action6Selected/Action3" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = 8.0
+offset_right = -89.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 2
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action6Selected/Action3"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.5
+offset_top = -20.0
+offset_right = 6.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action4" type="TextureRect" parent="Action6Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 252.0
+offset_top = -154.0
+offset_right = 337.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action6Selected/Action4" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = 8.0
+offset_right = -83.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 3
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action6Selected/Action4"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.5
+offset_top = -20.0
+offset_right = 5.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action5" type="TextureRect" parent="Action6Selected"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 314.0
+offset_top = -154.0
+offset_right = 399.0
+offset_bottom = -114.0
+grow_vertical = 0
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Action6Selected/Action5" node_paths=PackedStringArray("actionUITrigger")]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = 8.0
+offset_right = -91.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jbfob")
+pos = 4
+actionUITrigger = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="Action6Selected/Action5"]
+modulate = Color(1, 1, 1, 0.556863)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.5
+offset_top = -20.0
+offset_right = 7.64
+offset_bottom = 95.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Action6" type="TextureRect" parent="Action6Selected"]
+z_as_relative = false
+clip_contents = true
+custom_minimum_size = Vector2(150, 0)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -155.0
+offset_right = 420.0
+offset_bottom = -5.0
+grow_vertical = 0
+auto_translate = false
+localize_numeral_system = false
+mouse_filter = 2
+texture = ExtResource("8_inp68")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="Action6Selected/Action6"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 96.0
+offset_top = -74.0
+offset_right = 211.14
+offset_bottom = 41.075
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Base" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Fire" type="Button" parent="Base"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 312.0
+offset_top = -110.0
+offset_right = 408.0
+offset_bottom = -14.0
+grow_vertical = 0
+
+[node name="Titel" type="Label" parent="Base"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = -108.0
+offset_right = 259.0
+offset_bottom = -82.0
+grow_vertical = 0
+scale = Vector2(1.2, 1.2)
+text = "Titel"
+
+[node name="Info" type="Label" parent="Base"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -89.0
+offset_right = 305.0
+offset_bottom = -14.0
+grow_vertical = 0
+text = "Text Text Text"
+
+[node name="TextureRect2" type="TextureRect" parent="Base"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 293.0
+offset_top = -114.0
+offset_right = 603.0
+offset_bottom = 196.0
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(30, 8)
+texture = ExtResource("2_o4lds")
+
+[connection signal="pressed" from="Action1Selected/Action2/Button" to="Action1Selected/Action2/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action1Selected/Action3/Button" to="Action1Selected/Action3/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action1Selected/Action4/Button" to="Action1Selected/Action4/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action1Selected/Action5/Button" to="Action1Selected/Action5/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action1Selected/Action6/Button" to="Action1Selected/Action6/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action2Selected/Action1/Button" to="Action2Selected/Action1/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action2Selected/Action3/Button" to="Action2Selected/Action3/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action2Selected/Action4/Button" to="Action2Selected/Action4/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action2Selected/Action5/Button" to="Action2Selected/Action5/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action2Selected/Action6/Button" to="Action2Selected/Action6/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action3Selected/Action1/Button" to="Action3Selected/Action1/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action3Selected/Action2/Button" to="Action3Selected/Action2/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action3Selected/Action4/Button" to="Action3Selected/Action4/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action3Selected/Action5/Button" to="Action3Selected/Action5/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action3Selected/Action6/Button" to="Action3Selected/Action6/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action4Selected/Action1/Button" to="Action4Selected/Action1/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action4Selected/Action2/Button" to="Action4Selected/Action2/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action4Selected/Action3/Button" to="Action4Selected/Action3/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action4Selected/Action5/Button" to="Action4Selected/Action5/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action4Selected/Action6/Button" to="Action4Selected/Action6/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action5Selected/Action1/Button" to="Action5Selected/Action1/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action5Selected/Action2/Button" to="Action5Selected/Action2/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action5Selected/Action3/Button" to="Action5Selected/Action3/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action5Selected/Action4/Button" to="Action5Selected/Action4/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action5Selected/Action6/Button" to="Action5Selected/Action6/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action6Selected/Action1/Button" to="Action6Selected/Action1/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action6Selected/Action2/Button" to="Action6Selected/Action2/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action6Selected/Action3/Button" to="Action6Selected/Action3/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action6Selected/Action4/Button" to="Action6Selected/Action4/Button" method="_on_pressed"]
+[connection signal="pressed" from="Action6Selected/Action5/Button" to="Action6Selected/Action5/Button" method="_on_pressed"]

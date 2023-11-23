@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cj0wofdm4g5mk"]
+[gd_scene load_steps=26 format=3 uid="uid://cj0wofdm4g5mk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7kjg5"]
 [ext_resource type="Texture2D" uid="uid://bc4dxw407oly7" path="res://resource/gameBackground/SpaceHDR.png" id="4_2bmyh"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://Data/State/CheckBoardState.gd" id="16_00dks"]
 [ext_resource type="Script" path="res://Data/State/PlayerTurn.gd" id="16_gjkpn"]
 [ext_resource type="ArrayMesh" uid="uid://dseemn36qr30u" path="res://resource/gameBackground/planets/PlanetMesh.obj" id="18_mhset"]
+[ext_resource type="PackedScene" uid="uid://dakbo4btppekq" path="res://Menu/action_ui_new.tscn" id="21_gsrlb"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dwnx6"]
 panorama = ExtResource("4_2bmyh")
@@ -107,5 +108,7 @@ script = ExtResource("9_koic7")
 script = ExtResource("10_0atkk")
 
 [node name="StartMenu" parent="." instance=ExtResource("9_1p4yo")]
+
+[node name="ActionUI2" parent="." instance=ExtResource("21_gsrlb")]
 
 [node name="ActionUI" parent="." instance=ExtResource("10_gtvye")]
