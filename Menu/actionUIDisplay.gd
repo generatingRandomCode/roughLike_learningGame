@@ -41,7 +41,7 @@ func selectActionTab(tabNum: int):
 	if tabNum < actions.size():
 		self.get_node("Base/Titel").text = actions[tabNum].wepon_name
 		#self.get_node("Base/Info").text = descriptionVar[tabNum]
-		self.get_node("Base/Info").text = str(actions[tabNum].wepon_initiative)
+		self.get_node("Base/Info").text = str(actions[tabNum].description)
 		base.get_node("TextureRect2").texture = actions[tabNum].icon
 		actionCurrent = actions[tabNum]
 

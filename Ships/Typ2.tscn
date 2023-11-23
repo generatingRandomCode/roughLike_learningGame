@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b622gynsjqa30"]
+[gd_scene load_steps=20 format=3 uid="uid://b622gynsjqa30"]
 
 [ext_resource type="Script" path="res://ShipsScripts/BaseShip.gd" id="1_1bqea"]
 [ext_resource type="Material" uid="uid://dlg4n4nyjoklj" path="res://resource/ships/Typ-2/typ-2_mat.tres" id="2_woyj1"]
@@ -8,6 +8,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ualvqrxxahwf" path="res://resource/shield/Typ-2_Schild.obj" id="5_pk3rs"]
 [ext_resource type="PackedScene" uid="uid://dm7c37wmbst6s" path="res://Data/Actions/Weapons/shield_small.tscn" id="7_hdxyb"]
 [ext_resource type="PackedScene" uid="uid://cg8wgxcu3yfta" path="res://Data/Actions/Weapons/lasergun_small.tscn" id="8_huhdw"]
+[ext_resource type="PackedScene" uid="uid://by0uclccvso3y" path="res://Data/Actions/Antrieb/DirveBurn.tscn" id="9_upjcp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ngxby"]
 
@@ -80,7 +81,7 @@ ship_name = "Typ2"
 ship_health = 75
 ship_armor = 75
 ship_shield = 200
-actions = [NodePath("LasergunSmall"), NodePath("ShieldSmall")]
+actions = [NodePath("LasergunSmall"), NodePath("ShieldSmall"), NodePath("DriveBurn")]
 
 [node name="Typ2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
@@ -204,3 +205,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53903e-08, 1.645, 5.97)
 libraries = {
 "": SubResource("AnimationLibrary_8a3bm")
 }
+
+[node name="DriveBurn" parent="." instance=ExtResource("9_upjcp")]

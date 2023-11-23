@@ -3,7 +3,7 @@ extends baseAction
 class_name Shield
 
 func _ready():
-	needTarget = 0
+	needTarget = false
 
 func selfShieldRaise(raise):
 	var ship = get_parent()
