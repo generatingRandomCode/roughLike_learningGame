@@ -1,15 +1,17 @@
 extends Control
 class_name actionUIDisplay
 
-@export var iconListVar: Array[ImageTexture];
-@export var titleVar: Array;
+
+
 @export var descriptionVar: Array[String];
 #	6 ActionTabs
 @export var actionUIParents: Array[Control];
 @export var base: Control;
-var currentActionIDs : Array
 
-var currentActionID : int
+var currentActionIDs : Array
+var actions
+var actionCurrent
+
 
 signal actionChoosen
 
@@ -20,41 +22,33 @@ func _ready():
 	#selectActionTab(0) #Test kann gelöscht werden
 
 
-func updateActions(actions: Array[Node], description: Array[String] = [], iconList: Array[ImageTexture] = []):
-	print("ACTIONUI: function call",titleVar)
-	iconListVar = iconList
-	titleVar = actions.map(func(x): return x.wepon_name)
-	currentActionIDs = actions.map(func(x): return x.get_instance_id())
-	descriptionVar = description
+func updateActions(actions: Array[Node]):
+	self.actions = actions
 	selectActionTab(0)
 
 
 func selectActionTab(tabNum: int):
-	print("testButton:" , currentActionID)
 	for n in actionUIParents:
 		n.hide()
 	actionUIParents[tabNum].show()
 	for n in 6:
 		actionUIParents[tabNum].get_node("Action"+ str(n+1)).visible = false
 
-	for n in titleVar.size():
+	for n in actions.size():
 		actionUIParents[tabNum].get_node("Action" + str(n+1)).visible = true
-		#	#actionUIParents[tabNum].get_node("Action" + str(n+1) + "/TextureRect").texture = iconListVar[0]
+		actionUIParents[tabNum].get_node("Action" + str(n+1) + "/TextureRect").texture = actions[n].icon
 
-	if tabNum < titleVar.size():
-		print("ACTIONUI: ",titleVar)
-		self.get_node("Base/Titel").text = titleVar[tabNum]
+	if tabNum < actions.size():
+		self.get_node("Base/Titel").text = actions[tabNum].wepon_name
 		#self.get_node("Base/Info").text = descriptionVar[tabNum]
-		self.get_node("Base/Info").text = titleVar[tabNum]
-		#base.get_node("TextureRect2").texture = iconListVar[tabNum]
-		currentActionID = currentActionIDs[tabNum]
+		self.get_node("Base/Info").text = str(actions[tabNum].wepon_initiative)
+		base.get_node("TextureRect2").texture = actions[tabNum].icon
+		actionCurrent = actions[tabNum]
 
 
 func _on_fire_pressed():
-	print("testButtonEnde:" , currentActionID)
-	var test = instance_from_id(currentActionID)	
-	print("testButtonEnde:" , test)
-	print("testButtonEnde:" , test.name)
-	if currentActionID:
-		actionChoosen.emit(currentActionID)
+
+	
+	if actionCurrent:
+		actionChoosen.emit(actionCurrent.get_instance_id())
 

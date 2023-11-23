@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dakbo4btppekq"]
+[gd_scene load_steps=11 format=3 uid="uid://dakbo4btppekq"]
 
 [ext_resource type="Script" path="res://Menu/actionUIDisplay.gd" id="1_on7ox"]
 [ext_resource type="Texture2D" uid="uid://bnq2i5jda7to2" path="res://Menu/ActionUI/Ability_UI_deselected_2-6.png" id="2_ie0oy"]
@@ -10,18 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bs8c45yfp63ps" path="res://Menu/ActionUI/Ability_UI_4.png" id="6_iilm7"]
 [ext_resource type="Texture2D" uid="uid://doqbe3w2m6b1i" path="res://Menu/ActionUI/Ability_UI_5.png" id="7_0lk76"]
 [ext_resource type="Texture2D" uid="uid://dtl2d8vf8vd5q" path="res://Menu/ActionUI/Ability_UI_6.png" id="8_inp68"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_eruof"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_fya8d"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_htr7j"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_cl8yw"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_8a43y"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_oi3lp"]
 
 [node name="ActionUI" type="Control" node_paths=PackedStringArray("actionUIParents", "base")]
 layout_mode = 3
@@ -36,8 +24,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_on7ox")
-iconListVar = Array[ImageTexture]([SubResource("ImageTexture_eruof"), SubResource("ImageTexture_fya8d"), SubResource("ImageTexture_htr7j"), SubResource("ImageTexture_cl8yw"), SubResource("ImageTexture_8a43y"), SubResource("ImageTexture_oi3lp")])
-titleVar = Array[String](["Waffe 1", "Waffe 2", "Waffe 3", "Waffe 4", "Waffe 5", "Waffe 6"])
 descriptionVar = Array[String](["fgerwjluhfgjlewhfe", "Jipiiiiiiiiiiiii", "rteghrgere", "greaagre", "rgeaagre", "rgeagrea"])
 actionUIParents = [NodePath("Action1Selected"), NodePath("Action2Selected"), NodePath("Action3Selected"), NodePath("Action4Selected"), NodePath("Action5Selected"), NodePath("Action6Selected")]
 base = NodePath("Base")

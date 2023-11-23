@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cg8wgxcu3yfta"]
+[gd_scene load_steps=10 format=3 uid="uid://cg8wgxcu3yfta"]
 
 [ext_resource type="Script" path="res://Data/Actions/Weapons/LasergunSmall.gd" id="1_dmmpl"]
 [ext_resource type="Material" uid="uid://ewuje1vwr3gi" path="res://resource/ships/Typ-1/Typ-1_mat.tres" id="2_bsuwc"]
+[ext_resource type="Texture2D" uid="uid://6uxiawowe6rh" path="res://resource/Icons/BaseWeapon_Icon.png" id="2_dsbsq"]
 [ext_resource type="ArrayMesh" uid="uid://d25qdtcwwsqxg" path="res://resource/wepons/DualLaserGun/Typ-1_weapon.obj" id="3_g3avw"]
 [ext_resource type="Texture2D" uid="uid://bw6ih4rvvfrvo" path="res://Data/3DVisual/WepomAnimation/LaiserShot/muzzle_05.png" id="4_xfa1f"]
 [ext_resource type="Material" uid="uid://cd3dmran22fwk" path="res://Data/3DVisual/WepomAnimation/LaiserShot/LaiserShot_Particle.tres" id="5_ojw58"]
@@ -21,6 +22,7 @@ center_offset = Vector3(0, 0.3, 0)
 [node name="LasergunSmall" type="Node3D"]
 script = ExtResource("1_dmmpl")
 wepon_damage = 100
+icon = ExtResource("2_dsbsq")
 wepon_name = "LasergunSmall"
 wepon_initiative = 5
 needTarget = true

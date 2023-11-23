@@ -4,6 +4,8 @@ class_name baseAction
 
 enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2}
 
+
+@export var icon : CompressedTexture2D
 @export var wepon_name: String
 @export var wepon_initiative: int
 @export var needTarget :bool = false

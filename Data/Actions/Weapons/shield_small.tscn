@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dm7c37wmbst6s"]
+[gd_scene load_steps=3 format=3 uid="uid://dm7c37wmbst6s"]
 
 [ext_resource type="Script" path="res://Data/Actions/Weapons/ShieldSmall.gd" id="1_lvi1e"]
+[ext_resource type="Texture2D" uid="uid://d3elmcq5m6mfd" path="res://resource/Icons/Shield_Icon.png" id="2_olsgk"]
 
 [node name="ShieldSmall" type="Node3D"]
 script = ExtResource("1_lvi1e")
+icon = ExtResource("2_olsgk")
 wepon_name = "ShieldSmall"
 wepon_initiative = 3
 targetPreselection = 1
