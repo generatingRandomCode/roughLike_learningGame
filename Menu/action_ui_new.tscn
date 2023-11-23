@@ -1933,6 +1933,7 @@ offset_bottom = 196.0
 grow_vertical = 0
 scale = Vector2(0.3, 0.3)
 pivot_offset = Vector2(30, 8)
+mouse_filter = 2
 texture = ExtResource("2_o4lds")
 
 [connection signal="pressed" from="Action1Selected/Action2/Button" to="Action1Selected/Action2/Button" method="_on_pressed"]
@@ -1965,3 +1966,4 @@ texture = ExtResource("2_o4lds")
 [connection signal="pressed" from="Action6Selected/Action3/Button" to="Action6Selected/Action3/Button" method="_on_pressed"]
 [connection signal="pressed" from="Action6Selected/Action4/Button" to="Action6Selected/Action4/Button" method="_on_pressed"]
 [connection signal="pressed" from="Action6Selected/Action5/Button" to="Action6Selected/Action5/Button" method="_on_pressed"]
+[connection signal="pressed" from="Base/Fire" to="." method="_on_fire_pressed"]

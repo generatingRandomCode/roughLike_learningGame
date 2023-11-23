@@ -1,40 +1,33 @@
 extends PlayerTurnState
 
-var button = preload("res://simpleButton.tscn")
-var buttonInstance
 
 signal actionSelected
+
 
 #	connect the signal when the action is pressed
 func _ready():
 	connect("actionSelected", get_parent().selectAction)
 
 func enter(parameter = {}) -> void:
+	#actionChoosen
 	selectedShip = parameter["selectedShip"]
-	buildActionUI(selectedShip)
+	#	add bonus actions later
+	var actionNameList = selectedShip.actions#.map(func(x): return x.wepon_name)
+	#buildActionUI(selectedShip)
 	main.get_node("ActionUI").show()
+	print("ACTIONUI: list ",actionNameList)
+	main.get_node("ActionUI").updateActions(actionNameList)
+	#get_tree().call_group("ActionUI", "updateActions", actionNameList)
+	main.get_node("ActionUI").connect("actionChoosen",actionChoosen)
 
-#	add buttons with ship specific actions
-func buildActionUI(ship):
-	for wepon in ship.actions:
-		createActionButton(wepon)
+
 	
-#	creates the button
-func createActionButton(wepon):
-	buttonInstance = button.instantiate()
-	buttonInstance.text = wepon.wepon_name
-	buttonInstance.name = str(wepon.get_instance_id())
-	main.get_node("ActionUI/ActionContainer").add_child(buttonInstance)
-	#	connect the signal
-	buttonInstance.connect("start_pressed", actionPress)
+
 	
-func actionPress(nodeID):
-	#	the node name is the id of the action
-	nodeID = instance_from_id(nodeID).name
+func actionChoosen(nodeID):
+	main.get_node("ActionUI").disconnect("actionChoosen",actionChoosen)
 	actionSelected.emit(nodeID)
 
 func exit():
 	main.get_node("ActionUI").hide()
-	for x in main.get_node("ActionUI/ActionContainer").get_children():
-		main.get_node("ActionUI/ActionContainer").remove_child(x)
-		x.queue_free()
+

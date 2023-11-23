@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cj0wofdm4g5mk"]
+[gd_scene load_steps=25 format=3 uid="uid://cj0wofdm4g5mk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7kjg5"]
 [ext_resource type="Texture2D" uid="uid://bc4dxw407oly7" path="res://resource/gameBackground/SpaceHDR.png" id="4_2bmyh"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dm2sbmebph5vf" path="res://start_menu.tscn" id="9_1p4yo"]
 [ext_resource type="Script" path="res://Data/State/ChooseActionState.gd" id="9_koic7"]
 [ext_resource type="Script" path="res://Data/State/ChooseTargetState.gd" id="10_0atkk"]
-[ext_resource type="PackedScene" uid="uid://n0xb56fyt5wl" path="res://Menu/action_ui.tscn" id="10_gtvye"]
 [ext_resource type="Script" path="res://Data/State/ActionState.gd" id="11_ckm3l"]
 [ext_resource type="PackedScene" uid="uid://c62ireb8h86n3" path="res://battle_step.tscn" id="12_8ojwe"]
 [ext_resource type="Script" path="res://Data/State/EnemyState.gd" id="13_cd4cd"]
@@ -109,6 +108,4 @@ script = ExtResource("10_0atkk")
 
 [node name="StartMenu" parent="." instance=ExtResource("9_1p4yo")]
 
-[node name="ActionUI2" parent="." instance=ExtResource("21_gsrlb")]
-
-[node name="ActionUI" parent="." instance=ExtResource("10_gtvye")]
+[node name="ActionUI" parent="." instance=ExtResource("21_gsrlb")]

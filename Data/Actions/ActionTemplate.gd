@@ -23,7 +23,10 @@ var targetPreselection
 
 #	gets called when calling new	get the id of both 
 func getActionFromID(actionID) -> void:
-	self.action = instance_from_id(int(str(actionID)))
+	if typeof(actionID) == TYPE_INT:
+		self.action = instance_from_id(actionID)
+	else:
+		self.action = instance_from_id(int(str(actionID)))
 
 	self.targetPreselection = self.action.targetPreselection
 	self.actionInitiative = self.action.wepon_initiative
