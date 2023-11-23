@@ -21,7 +21,7 @@ var needTarget = 0
 var targetPreselection
 
 #	gets called when calling new	get the id of both 
-func _init(actionID, causeID = null, targetID = null):
+func _init(actionID, causeID = null, targetID = null) -> void:
 	#self.action = self.cause.get_node(str(instance_from_id(actionID).name))
 	self.action = instance_from_id(int(str(actionID)))
 	self.targetPreselection = self.action.targetPreselection
@@ -39,8 +39,15 @@ func _init(actionID, causeID = null, targetID = null):
 	print("ActionTemplate actionInitiative ", self.actionInitiative)
 	print("ActionTemplate needTarget ", self.needTarget)
 	
-func setTargets(targets):
-	self.targets = instance_from_id(targets)
+func setTargets(targetIDs) -> void:
+	self.targets = instance_from_id(targetIDs)
 
-func executeAction():
+func setTargetsObj(targetsOBJ) -> void:
+	self.targets = targetsOBJ
+	
+func executeAction() -> void:
 	action.action(self)
+	
+func getTargetGroup()-> Array[Node]:
+	return self.action.getTargetGroup()
+

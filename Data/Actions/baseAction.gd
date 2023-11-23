@@ -13,3 +13,18 @@ enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2}
 func action(action) ->  void:
 	pass
 
+func getTargetGroup()-> Array[Node]:
+	match(self.targetPreselection):
+		#	all enenmy
+		TargetPreselectionPatterns.Enemy:
+			return get_tree().get_nodes_in_group("enemy")
+		#	self
+		TargetPreselectionPatterns.Self:
+			return [get_parent()]
+		#	get the free player board
+		TargetPreselectionPatterns.FreeSpace:
+			return get_tree().get_nodes_in_group("PlayerField").filter(
+				func(a): return !a.has_node("Model")
+			)
+		_:
+			return []

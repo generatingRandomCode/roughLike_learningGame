@@ -11,10 +11,8 @@ func _ready():
 
 #	State to enter when choosing an action for a ship
 func enter(parameter := {}) -> void:
-	var targetPreselection = get_parent().actions[-1].targetPreselection
-	print("targetPreselection: ", targetPreselection)
-	
-	targetGroup = getTargetGroup(targetPreselection)
+
+	targetGroup = get_parent().actions[-1].getTargetGroup()
 	
 	#	exit the target state if no target
 	if !targetGroup:
@@ -28,22 +26,7 @@ func enter(parameter := {}) -> void:
 				#	die ui zum klicken sitzt auf modell, das muss ich mal ändern damit ich die schiffe besser bauen kann
 				x.connect("shipClicked" ,targetShip)
 	
-func getTargetGroup(targetPreselection)-> Array[Node]:
-	match(targetPreselection):
-		#	all enenmy
-		0:
-			return get_tree().get_nodes_in_group("enemy")
-		#	self
-		1:
-			return get_parent().actions.cause
-		#	get the free player board
-		2:
-			return get_tree().get_nodes_in_group("PlayerField").filter(
-				func(a): return !a.has_node("Model")
-			)
-		_:
-			return []
-			
+
 #	Ziel symbole, später abhängig davon 
 func displayTargetIcon():
 

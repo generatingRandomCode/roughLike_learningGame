@@ -9,9 +9,9 @@ var explosion = preload("res://Data/3DVisual/Explosion_Particle.tscn")
 @export var ship_health : int
 @export var ship_armor : int 
 @export var ship_shield : int
-var ship_current_health 
-var ship_current_armor 
-var ship_current_shield
+var ship_current_health = null
+var ship_current_armor = null
+var ship_current_shield = null
 
 #	the weapons of the ship, the sub nodes of the wepons 
 @export var actions : Array[Node]
@@ -25,9 +25,12 @@ var shipUI = preload("res://ship_ui.tscn")
 #	init loads ships with zero health
 func _enter_tree():
 	add_to_group("ship")
-	self.ship_current_health = self.ship_health
-	self.ship_current_armor = self.ship_armor
-	self.ship_current_shield = self.ship_shield
+	if self.ship_current_health == null:
+		self.ship_current_health = self.ship_health
+	if self.ship_current_armor == null:
+		self.ship_current_armor = self.ship_armor
+	if self.ship_current_shield == null:
+		self.ship_current_shield = self.ship_shield
 	#	add ui
 	var shipUIInstance = shipUI.instantiate()
 	self.add_child(shipUIInstance)
