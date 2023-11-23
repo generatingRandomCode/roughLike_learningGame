@@ -8,11 +8,12 @@ extends Node
 class_name ActionTemplate
 
 #	the  
-var cause
-#	the action class
 var action
-
+var cause
+var causeField
 var targets
+var targetField
+
 
 var actionInitiative
 
@@ -21,24 +22,28 @@ var needTarget = 0
 var targetPreselection
 
 #	gets called when calling new	get the id of both 
-func _init(actionID, causeID = null, targetID = null) -> void:
-	#self.action = self.cause.get_node(str(instance_from_id(actionID).name))
+func getActionFromID(actionID) -> void:
 	self.action = instance_from_id(int(str(actionID)))
+
 	self.targetPreselection = self.action.targetPreselection
 	self.actionInitiative = self.action.wepon_initiative
 	self.needTarget = self.action.needTarget
 	
-	if causeID:
-		self.cause = instance_from_id(causeID)
+	if self.action.get_parent():
+		self.cause = self.action.get_parent()
+		self.causeField = self.cause.get_parent()
+
+func getActionFromObj(action: Node) -> void:
+	self.action = action
+	self.targetPreselection = self.action.targetPreselection
+	self.actionInitiative = self.action.wepon_initiative
+	self.needTarget = self.action.needTarget
 	
-	if targetID:
-		self.targets = instance_from_id(targetID)
-	
-	print("ActionTemplate cause ", self.cause)
-	print("ActionTemplate action ", self.action)
-	print("ActionTemplate actionInitiative ", self.actionInitiative)
-	print("ActionTemplate needTarget ", self.needTarget)
-	
+	if self.action.get_parent():
+		self.cause = self.action.get_parent()
+		self.causeField = self.cause.get_parent()
+
+
 func setTargets(targetIDs) -> void:
 	self.targets = instance_from_id(targetIDs)
 
@@ -48,6 +53,16 @@ func setTargetsObj(targetsOBJ) -> void:
 func executeAction() -> void:
 	action.action(self)
 	
-func getTargetGroup()-> Array[Node]:
+func getTargetGroup()-> Array:
 	return self.action.getTargetGroup()
 
+func setTargetsFromFieldID(fieldID):
+	self.targetField = instance_from_id(fieldID)
+	print("field test: set field", targetField)
+	if targetField.has_node("Model"):
+		self.targets = targetField.get_node("Model")
+
+func setTargetsFromFieldOBJ(field):
+	self.targetField = field
+	if targetField.has_node("Model"):
+		self.targets = field.get_node("Model")

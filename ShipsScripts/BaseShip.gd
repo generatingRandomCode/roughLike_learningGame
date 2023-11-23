@@ -18,7 +18,7 @@ var ship_current_shield = null
 @export var bonusActions : Array[Node]
 
 #when the ship gets clicked
-signal shipClicked
+#signal shipClicked
 
 var shipUI = preload("res://ship_ui.tscn")
 
@@ -44,8 +44,9 @@ func _ready():
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				pass
 				# name is the node name that is the same for every one 
-				shipClicked.emit(self.get_instance_id())
+				#shipClicked.emit(self.get_instance_id())
 
 
 #	why cant i quee free the player

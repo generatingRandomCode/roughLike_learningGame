@@ -3,7 +3,7 @@ extends Node3D
 var isEmpty = true
 
 
-signal shipClicked
+signal fieldSelect
 
 
 func _ready():
@@ -17,6 +17,6 @@ func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 			if has_node("Ship"):
 				$Ship.queue_free()
 			print("_on_area_3d_input_event PlayerGrid")
-			shipClicked.emit(self.get_instance_id())
+			fieldSelect.emit(self.get_instance_id())
 
 

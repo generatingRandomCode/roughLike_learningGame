@@ -23,9 +23,10 @@ func executeActions(actions):
 	for action in actions:
 		get_tree().call_group("ShipUI", "updateShipUI")
 		#	cehck if current action still exist and if not skip the action -> rebuild to while until all actions are done?
+		print("field test: set field check1", action.action)
 		if !checkActionCanExecute(action):
 			continue
-
+		print("field test: set field check2", action.action)
 		#	if new init round start remove all ships with zero health
 		if(start < action.actionInitiative):
 			start = action.actionInitiative
@@ -44,16 +45,17 @@ func executeActions(actions):
 func checkActionCanExecute(action):
 	var cause = action.cause
 	var target = action.targets
+	print("field test: check3", cause, " ", target)
 	if !cause:
 		return false
 	if !cause.get_child_count():
 		return false
-	
+
 	if action.needTarget:
-		if !target:
+		if (!action.targets) and (!action.targetField):
 			return false
-		if !target.get_child_count():
-			return false
+		#if !target.get_child_count():
+			#return false
 	return true
 
 func clearZeroHealthShips():

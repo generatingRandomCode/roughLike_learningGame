@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://mubsfndci7ev"]
+[gd_scene load_steps=18 format=3 uid="uid://mubsfndci7ev"]
 
 [ext_resource type="Script" path="res://ShipsScripts/BaseShip.gd" id="1_7mkp0"]
 [ext_resource type="Material" uid="uid://dawfwb4tocs7o" path="res://resource/ships/TheLavoisier/TheLavoisier_mat.tres" id="2_p24xr"]
@@ -6,8 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_esr3n"]
 [ext_resource type="PackedScene" uid="uid://cg8wgxcu3yfta" path="res://Data/Actions/Weapons/lasergun_small.tscn" id="5_mjmrg"]
 [ext_resource type="PackedScene" uid="uid://8c7qta7v1skl" path="res://Data/Actions/Weapons/Transmitter.tscn" id="6_ws2lb"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_omwwi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ngxby"]
 
@@ -106,12 +104,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
 material_override = ExtResource("2_p24xr")
 mesh = ExtResource("3_oufck")
 skeleton = NodePath("")
-
-[node name="Area3D" type="Area3D" parent="TheLavoisier"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TheLavoisier/Area3D"]
-transform = Transform3D(14.6095, 0, 0, 0, 5.94724, 0, 0, 0, 21.1379, 0, 0, 7.61163)
-shape = SubResource("BoxShape3D_omwwi")
 
 [node name="TrusterParticle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12768, 0.765777, 15.8863)
@@ -224,5 +216,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.33897, 6.39873, -5.52685)
 libraries = {
 "": SubResource("AnimationLibrary_pcug3")
 }
-
-[connection signal="input_event" from="TheLavoisier/Area3D" to="." method="_on_area_3d_input_event"]

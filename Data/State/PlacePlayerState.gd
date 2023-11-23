@@ -21,7 +21,7 @@ func enter(parameter := {}) -> void:
 	#	this is how 
 	for place in playerField:
 		if !place.has_node("Model"):
-			place.connect("shipClicked", playerPlaced)
+			place.connect("fieldSelect", playerPlaced)
 
 func playerPlaced(gridID):
 	#	get the grid by nodeID
@@ -39,8 +39,8 @@ func playerPlaced(gridID):
 	#	to only place one ship remove the clickBoxes after placements 
 	
 	for place in playerField:
-		if place.is_connected("shipClicked",playerPlaced):
-			place.disconnect("shipClicked",playerPlaced)
+		if place.is_connected("fieldSelect",playerPlaced):
+			place.disconnect("fieldSelect",playerPlaced)
 	
 	get_parent().transition_to("ChooseShipToPlace")
 

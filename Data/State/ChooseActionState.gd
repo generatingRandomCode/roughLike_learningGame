@@ -10,13 +10,12 @@ func _ready():
 	connect("actionSelected", get_parent().selectAction)
 
 func enter(parameter = {}) -> void:
-	selectedShipID = parameter["SelectedShipID"]
-	buildActionUI(selectedShipID)
+	selectedShip = parameter["selectedShip"]
+	buildActionUI(selectedShip)
 	main.get_node("ActionUI").show()
 
 #	add buttons with ship specific actions
-func buildActionUI(shipID):
-	var ship = instance_from_id(shipID)
+func buildActionUI(ship):
 	for wepon in ship.actions:
 		createActionButton(wepon)
 	

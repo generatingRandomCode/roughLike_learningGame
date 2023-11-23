@@ -2,7 +2,7 @@ extends PlayerTurnState
 
 
 var icon = preload("res://Data/3DVisual/3DAttackSelector.tscn")
-var targetGroup : Array[Node]
+var targetGroup : Array
 
 signal targetSelected
 
@@ -11,20 +11,17 @@ func _ready():
 
 #	State to enter when choosing an action for a ship
 func enter(parameter := {}) -> void:
-
 	targetGroup = get_parent().actions[-1].getTargetGroup()
-	
 	#	exit the target state if no target
 	if !targetGroup:
 		get_parent().startLoop()
 		
-		
 	await displayTargetIcon()
 	for x in targetGroup:
 		if x.get_child_count():
-			if !x.is_connected("shipClicked" ,targetShip):
+			if !x.is_connected("fieldSelect" ,targetShip):
 				#	die ui zum klicken sitzt auf modell, das muss ich mal ändern damit ich die schiffe besser bauen kann
-				x.connect("shipClicked" ,targetShip)
+				x.connect("fieldSelect" ,targetShip)
 	
 
 #	Ziel symbole, später abhängig davon 
@@ -43,7 +40,7 @@ func freeTargetIcon():
 	
 func targetShip(targetID):
 	for x in targetGroup: 
-		x.disconnect("shipClicked",targetShip)
+		x.disconnect("fieldSelect",targetShip)
 	freeTargetIcon()
 	print("Actions array: target", actions)
 	targetSelected.emit(targetID)

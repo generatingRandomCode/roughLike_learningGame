@@ -4,8 +4,10 @@ class_name BaseAntriebe
 
 #	moves x filds
 func move(cause, target):
-	cause.get_parent().remove_child(cause)
-	target.add_child(cause)
+	print("field test: ", target)
+	if !target.has_node("Model"):
+		cause.get_parent().remove_child(cause)
+		target.add_child(cause)
 	
 	
 #	get the player position

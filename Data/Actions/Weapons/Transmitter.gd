@@ -6,4 +6,5 @@ func _ready():
 	needTarget = 1
 
 func action(action) -> void:
-	executeDamageAction(action.targets)
+	if action.targetField.has_node("Model"):
+		executeDamageAction(action.targets)
