@@ -316,6 +316,5 @@ libraries = {
 
 [node name="bigLaserBeam" parent="." instance=ExtResource("6_i7kde")]
 transform = Transform3D(1, 2.20898e-08, 0, -2.6921e-10, 1, 0, 2.56114e-09, 2.23517e-08, 1, 1.0063, 0.0286983, -9.7816)
-needTarget = false
 
 [node name="ArmorRepairDrones" parent="." instance=ExtResource("7_wp6yt")]

@@ -10,6 +10,7 @@ enum TargetPreselectionPatterns{
 	FreeSpaceWithDistance = 4,
 	FirstShipsInEachRow = 5,
 	FirstInRow = 6,
+	None = 7,
 	}
 enum ActionType {Action = 0, BonusAction = 1}
 
@@ -68,6 +69,8 @@ func getTargetGroup(targetGroup : TargetPreselectionPatterns)-> Array:
 			return 	getFirstTargetinEachRow()
 		TargetPreselectionPatterns.FirstInRow:
 			return 	getFirstInRow()
+		TargetPreselectionPatterns.None:
+			return 	[]
 		_:
 			return []
 
