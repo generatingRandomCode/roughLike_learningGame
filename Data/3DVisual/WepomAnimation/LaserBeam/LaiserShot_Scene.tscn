@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwwq4fv0r2ct0"]
+[gd_scene load_steps=11 format=3 uid="uid://dwwq4fv0r2ct0"]
 
+[ext_resource type="Texture2D" uid="uid://bh5tbadrtc2r6" path="res://resource/Particles/scorch_02.png" id="3_sckf3"]
 [ext_resource type="Script" path="res://Data/3DVisual/WepomAnimation/LaserBeam/DrawLine.gd" id="4_b1807"]
 [ext_resource type="Material" uid="uid://dud081ps5p3kf" path="res://Data/3DVisual/WepomAnimation/LaserBeam/LaiserRay_mat.tres" id="5_uwlfr"]
 
@@ -7,11 +8,39 @@
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_p3ef4"]
 
-[node name="LaserBeam" type="Path3D" node_paths=PackedStringArray("Capsule", "pathFollow")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khkap"]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("3_sckf3")
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_5bw3e"]
+_data = [Vector2(0, 0), 0.0, 4.04982, 0, 0, Vector2(1, 0), -3.47285, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4nnit"]
+curve = SubResource("Curve_5bw3e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nwsa0"]
+direction = Vector3(-1, 0, -1)
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_4nnit")
+turbulence_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jb07c"]
+orientation = 2
+
+[node name="LaserBeam" type="Path3D" node_paths=PackedStringArray("Capsule", "pathFollow", "fireParticle", "targetParticle")]
 curve = SubResource("Curve3D_xfoh4")
 script = ExtResource("4_b1807")
 Capsule = NodePath("PathFollow3D/MeshInstance3D")
 pathFollow = NodePath("PathFollow3D")
+fireParticle = NodePath("PathFollow3D/GPUParticles3D")
+targetParticle = NodePath("PathFollow3D/GPUParticles3D2")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
 transform = Transform3D(-4.37112e-08, 0, -0.999999, 0, 0.999999, 0, 0.999996, 0, -4.37114e-08, 0, 0, 0)
@@ -21,3 +50,21 @@ progress = 6.57234
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 material_override = ExtResource("5_uwlfr")
 mesh = SubResource("CylinderMesh_p3ef4")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="PathFollow3D"]
+transform = Transform3D(1, 7.10543e-15, -4.23516e-22, 0, -4.37114e-08, -1, -7.10543e-15, 1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_khkap")
+amount = 4
+lifetime = 0.4
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_nwsa0")
+draw_pass_1 = SubResource("PlaneMesh_jb07c")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="PathFollow3D"]
+transform = Transform3D(1, 7.10543e-15, -4.23516e-22, 0, -4.37114e-08, -1, -7.10543e-15, 1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_khkap")
+amount = 4
+lifetime = 0.4
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_nwsa0")
+draw_pass_1 = SubResource("PlaneMesh_jb07c")
