@@ -52,6 +52,7 @@ func setTargets(targetIDs) -> void:
 
 func setTargetsObj(targetsOBJ) -> void:
 	self.targets = targetsOBJ
+	self.targetField = self.targets.get_parent()
 	
 func executeAction() -> void:
 	action.action(self)
