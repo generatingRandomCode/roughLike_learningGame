@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cq5uynd8elmpb"]
+[gd_scene load_steps=14 format=3 uid="uid://cq5uynd8elmpb"]
 
 [ext_resource type="Script" path="res://PlayerGrid.gd" id="1_q0ddw"]
 [ext_resource type="Material" uid="uid://du63xj0gdu124" path="res://resource/Materials/ShipHollow.tres" id="2_ylaxv"]
@@ -12,6 +12,7 @@ size = Vector3(10, 10, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ugpi"]
 transparency = 1
+no_depth_test = true
 specular_mode = 2
 disable_ambient_light = true
 vertex_color_use_as_albedo = true
@@ -19,7 +20,6 @@ vertex_color_is_srgb = true
 albedo_texture_force_srgb = true
 emission_enabled = true
 emission = Color(0, 1, 0.211765, 1)
-emission_energy_multiplier = 2.0
 
 [sub_resource type="Gradient" id="Gradient_4yito"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
@@ -27,10 +27,18 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_oy0w3"]
 gradient = SubResource("Gradient_4yito")
 
+[sub_resource type="Curve" id="Curve_4malu"]
+_data = [Vector2(0, 0), 0.0, 1.64302, 0, 0, Vector2(0.997214, 0.957895), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bxmup"]
+curve = SubResource("Curve_4malu")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ofjv7"]
-gravity = Vector3(0, 1, 0)
-scale_min = 10.0
-scale_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 15.0
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_bxmup")
 color_ramp = SubResource("GradientTexture1D_oy0w3")
 
 [node name="PlayerGridBase" type="Node3D"]
