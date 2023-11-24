@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://r814dc1udrur"
+path="res://.godot/imported/ArmorShip.obj-abd8b85904cc1cf67a3354f19ea81465.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ArmorShip.obj-abd8b85904cc1cf67a3354f19ea81465.mesh"]
+
+source_file="res://resource/ships/T-47p/ArmorShip.obj"
+dest_files=["res://.godot/imported/ArmorShip.obj-abd8b85904cc1cf67a3354f19ea81465.mesh", "res://.godot/imported/ArmorShip.obj-abd8b85904cc1cf67a3354f19ea81465.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

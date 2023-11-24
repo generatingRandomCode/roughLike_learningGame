@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsro5j2e5fngg"]
+
+[ext_resource type="Script" path="res://Data/Actions/Weapons/bigLaserBeam.gd" id="1_edohe"]
+[ext_resource type="Texture2D" uid="uid://wa4pxep4y0bi" path="res://resource/Icons/BigLaserGun_Icon.png" id="2_cqqym"]
+
+[node name="bigLaserBeam" type="Node3D"]
+script = ExtResource("1_edohe")
+wepon_damage = 200
+energyCost = 3
+icon = ExtResource("2_cqqym")
+wepon_name = "Big Laser Beam"
+wepon_initiative = 8
+needTarget = true

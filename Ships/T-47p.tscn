@@ -1,0 +1,317 @@
+[gd_scene load_steps=18 format=3 uid="uid://ddyy5vpr04v0a"]
+
+[ext_resource type="Script" path="res://ShipsScripts/T-47p.gd" id="1_jxvy0"]
+[ext_resource type="Material" uid="uid://diacfryenl8o0" path="res://resource/ships/T-47p/T-47p_mat.tres" id="2_m3a2t"]
+[ext_resource type="ArrayMesh" uid="uid://r814dc1udrur" path="res://resource/ships/T-47p/ArmorShip.obj" id="3_1o1vi"]
+[ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_goepc"]
+[ext_resource type="PackedScene" uid="uid://by0uclccvso3y" path="res://Data/Actions/Antrieb/DirveBurn.tscn" id="6_0xhxl"]
+[ext_resource type="PackedScene" uid="uid://bsro5j2e5fngg" path="res://Data/Actions/Weapons/bigLaserBeam.tscn" id="6_i7kde"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xepbc"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_goepc")
+emission_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_jkigj"]
+offsets = PackedFloat32Array(0, 0.0075188, 0.0541353, 0.114286, 0.332331, 0.715789, 1)
+colors = PackedColorArray(0.997827, 0.972396, 0.911708, 1, 0.867252, 0.668517, 0, 1, 0.955071, 0.777003, 0.30474, 1, 0.968627, 0.466667, 0.0509804, 0.560784, 0.965149, 0.184158, 0, 0.407843, 0.0196078, 0, 0, 0.384314, 0, 0, 0, 0.0588235)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ko1hb"]
+gradient = SubResource("Gradient_jkigj")
+
+[sub_resource type="Curve" id="Curve_w2njj"]
+_data = [Vector2(0, 0.326316), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_si8t3"]
+curve = SubResource("Curve_w2njj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2eo25"]
+lifetime_randomness = 0.08
+direction = Vector3(0, 0, 0)
+spread = 4.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 16.0
+angular_velocity_min = -181.1
+angular_velocity_max = -124.0
+angle_min = -161.5
+angle_max = 166.0
+scale_min = 2.78
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_si8t3")
+color_ramp = SubResource("GradientTexture1D_ko1hb")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xdvja"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ngxby"]
+
+[sub_resource type="Animation" id="Animation_nsnrd"]
+resource_name = "Ship_IdlShip_Idle_Animation"
+length = 16.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 3.8, 1, -0.3, 0.1, 1, 12.2, 1, 0.2, 0, -1.5, 16, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 3.6, 1, 0.017, 0.001, 0.017, 1, 12.2, 1, -0.017, 0.001, -0.017, 1, 16.1, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_vh0hd"]
+resource_name = "Ship_Idle_Animation"
+length = 16.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 3.8, 1, -0.3, 0.1, 1, 12.2, 1, 0.2, 0, -1.5, 16, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 3.6, 1, 0.017, 0.001, 0.017, 1, 12.2, 1, -0.017, 0.001, -0.017, 1, 16.1, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pcug3"]
+_data = {
+"Ship_IdlShip_Idle_Animation": SubResource("Animation_nsnrd"),
+"Ship_Idle_Animation": SubResource("Animation_vh0hd")
+}
+
+[node name="Model" type="Node3D" node_paths=PackedStringArray("actions", "bonusActions")]
+transform = Transform3D(0.999506, -0.0312966, 0.00299829, 0.0313752, 0.999018, -0.0312966, -0.00201587, 0.0313752, 0.999506, -0.293577, 0.107264, 0.861023)
+script = ExtResource("1_jxvy0")
+ship_name = "T-47p"
+ship_health = 100
+ship_armor = 400
+ship_energy = 6
+ship_energy_regeneration = 1
+actions = [NodePath("bigLaserBeam")]
+bonusActions = [NodePath("DriveBurn")]
+
+[node name="TheLavoisier" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
+material_override = ExtResource("2_m3a2t")
+mesh = ExtResource("3_1o1vi")
+skeleton = NodePath("")
+
+[node name="TrusterParticle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12768, 0.765777, 15.8863)
+
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 8.52961e-08, 0, -1.96451e-10, 1, 0, 8.84756e-09, 8.56817e-08, 1, 12.9182, 7.81041, -3.42727)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D6" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 8.1578e-08, 0, -1.96451e-10, 1, 0, 8.61473e-09, 8.19564e-08, 1, 13.5333, 7.00876, -3.37491)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D7" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 6.6706e-08, 0, -1.96451e-10, 1, 0, 7.68341e-09, 6.70552e-08, 1, 12.5933, 6.31167, -3.40105)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D8" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 6.6706e-08, 0, -1.96451e-10, 1, 0, 7.68341e-09, 6.70552e-08, 1, 11.9278, 7.17204, -3.43976)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D9" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 1.00168e-07, 0, -1.96451e-10, 1, 0, 9.77889e-09, 1.00583e-07, 1, -4.55854, 9.60722, -3.51892)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D10" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 9.64501e-08, 0, -1.96451e-10, 1, 0, 9.54606e-09, 9.68575e-08, 1, -3.94343, 8.80557, -3.46656)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D11" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 8.1578e-08, 0, -1.96451e-10, 1, 0, 8.61473e-09, 8.19564e-08, 1, -4.88346, 8.10848, -3.4927)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D12" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 8.1578e-08, 0, -1.96451e-10, 1, 0, 8.61473e-09, 8.19564e-08, 1, -5.54896, 8.96885, -3.5314)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D13" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 1.37341e-07, 0, -1.60071e-10, 1, 0, 1.30385e-08, 1.37836e-07, 1, -6.31027, -7.90021, -3.36493)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D14" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 1.33623e-07, 0, -1.74623e-10, 1, 0, 1.25729e-08, 1.3411e-07, 1, -5.69515, -8.70187, -3.31257)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D15" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 1.18751e-07, 0, -1.96451e-10, 1, 0, 1.0943e-08, 1.19209e-07, 1, -6.63518, -9.39896, -3.33871)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D16" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 1.18751e-07, 0, -1.96451e-10, 1, 0, 1.0943e-08, 1.19209e-07, 1, -7.30068, -8.53859, -3.37742)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D17" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 1.67085e-07, 0, -4.36557e-11, 1, 0, 1.67638e-08, 1.67638e-07, 1, 11.1842, -9.65547, -3.27454)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D18" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 1.63367e-07, 0, -5.82077e-11, 1, 0, 1.62981e-08, 1.63913e-07, 1, 11.7993, -10.4571, -3.22218)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D19" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 1.48495e-07, 0, -1.16415e-10, 1, 0, 1.44355e-08, 1.49012e-07, 1, 10.8592, -11.1542, -3.24831)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D20" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 1.48495e-07, 0, -1.16415e-10, 1, 0, 1.44355e-08, 1.49012e-07, 1, 10.1937, -10.2938, -3.28703)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrusterParticle"]
+shape = SubResource("SphereShape3D_ngxby")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pcug3")
+}
+
+[node name="DriveBurn" parent="." instance=ExtResource("6_0xhxl")]
+
+[node name="bigLaserBeam" parent="." instance=ExtResource("6_i7kde")]
+transform = Transform3D(1, 2.20898e-08, 0, -2.6921e-10, 1, 0, 2.56114e-09, 2.23517e-08, 1, 1.0063, 0.0286983, -9.7816)
