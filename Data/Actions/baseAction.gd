@@ -2,7 +2,15 @@ extends Node
 
 class_name baseAction
 
-enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2, Player = 3, FreeSpaceWithDistance = 4, FirstShips = 5}
+enum TargetPreselectionPatterns{
+	Enemy = 0,
+	Self = 1,
+	FreeSpace = 2,
+	Player = 3,
+	FreeSpaceWithDistance = 4,
+	FirstShipsInEachRow = 5,
+	FirstInRow = 6,
+	}
 enum ActionType {Action= 0, BonusAction=1}
 
 @export var energyCost : int
@@ -51,11 +59,32 @@ func getTargetGroup()-> Array:
 			return get_tree().get_nodes_in_group("player").map(func(x): return x.get_parent())
 		TargetPreselectionPatterns.FreeSpaceWithDistance:
 			return getTargetGroupForDistance(self.moveDistance)
-		TargetPreselectionPatterns.FirstShips:
+		TargetPreselectionPatterns.FirstShipsInEachRow:
 			return 	getFirstTargetinEachRow()
+		TargetPreselectionPatterns.FirstInRow:
+			return 	getFirstInRow()
 		_:
 			return []
-
+			
+func getFirstInRow()->Array[Node]:
+	var enemyField = get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
+	var nodeArray : Array[Node] = []
+	var shipField = owner.get_parent()
+	var yPos = int(str(shipField.name))
+	
+	var store
+	for place in enemyField:
+		if int(str(place.name)) == yPos:
+			if store:
+				if int(str(place.get_parent().name)) < int(str(store.get_parent().name)):
+					store = place
+			else:
+				store=place
+	if store:
+		nodeArray += [store]
+			
+	
+	return nodeArray
 #	get the first target in each row
 func getFirstTargetinEachRow()->Array[Node]:
 	var enemyField = get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
