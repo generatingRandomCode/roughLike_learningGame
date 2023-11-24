@@ -27,7 +27,7 @@ icon = ExtResource("2_dsbsq")
 wepon_name = "LasergunSmall"
 wepon_initiative = 5
 needTarget = true
-targetPreselection = null
+targetPreselection = 5
 
 [node name="Model" type="MeshInstance3D" parent="."]
 material_override = ExtResource("2_bsuwc")

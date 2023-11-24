@@ -2,7 +2,7 @@ extends Node
 
 class_name baseAction
 
-enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2, Player = 3, FreeSpaceWithDistance = 4}
+enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2, Player = 3, FreeSpaceWithDistance = 4, FirstShips = 5}
 enum ActionType {Action= 0, BonusAction=1}
 
 @export var energyCost : int
@@ -33,7 +33,7 @@ func loadedAction(action)-> void:
 	pass
 
 func getTargetGroup()-> Array:
-	getTargetGroupForDistance(1)
+	
 	match(self.targetPreselection):
 		#	all enenmy
 		TargetPreselectionPatterns.Enemy:
@@ -51,10 +51,31 @@ func getTargetGroup()-> Array:
 			return get_tree().get_nodes_in_group("player").map(func(x): return x.get_parent())
 		TargetPreselectionPatterns.FreeSpaceWithDistance:
 			return getTargetGroupForDistance(self.moveDistance)
+		TargetPreselectionPatterns.FirstShips:
+			return 	getFirstTargetinEachRow()
 		_:
 			return []
 
-#	still in work
+#	get the first target in each row
+func getFirstTargetinEachRow()->Array[Node]:
+	var enemyField = get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
+	var nodeArray : Array[Node] = []
+	var gridX = 3
+	for x in gridX:
+		var store
+		for place in enemyField:
+			if str(place.name) == str(x):
+				if store:
+					if int(str(place.get_parent().name)) < int(str(store.get_parent().name)):
+						store = place
+				else:
+					store = place
+		if store:
+			nodeArray += [store]
+			store = null
+	#print("shipField x: ", nodeArray)
+	return nodeArray
+
 #	returns all free fieds in distance x from the cause
 func getTargetGroupForDistance(distance : int)->Array[Node]:
 	var nodeArray : Array[Node] = []
@@ -64,7 +85,6 @@ func getTargetGroupForDistance(distance : int)->Array[Node]:
 	var shipField = owner.get_parent()
 	var xPos = int(str(shipField.get_parent().name))
 	var yPos = int(str(shipField.name))
-	print("shipField x: ", xPos, "y: ", yPos)
 	for place in playerField:
 		if place == shipField:
 			continue
@@ -78,9 +98,6 @@ func getTargetGroupForDistance(distance : int)->Array[Node]:
 		if place.has_node("Model"):
 			continue
 		nodeArray += [place]
-	print("shipField: ", shipField)
-	print("shipField: ende ", nodeArray)
-	
 	return nodeArray
 
 func buildDescription():
