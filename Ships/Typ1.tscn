@@ -71,14 +71,15 @@ _data = {
 "Ship_Idle_Animation": SubResource("Animation_10k3k")
 }
 
-[node name="Model" type="Node3D" node_paths=PackedStringArray("actions")]
+[node name="Model" type="Node3D" node_paths=PackedStringArray("actions", "bonusActions")]
 transform = Transform3D(0.99982, -0.0189768, 0, 0.0189768, 0.99982, 0, 0, 0, 1, -0.099287, -0.0979293, 0.070226)
 script = ExtResource("1_x7qk6")
 ship_health = 100
 ship_armor = 150
 ship_energy = 6
 ship_energy_regeneration = 1
-actions = [NodePath("LasergunSmall"), NodePath("DriveBurn")]
+actions = [NodePath("LasergunSmall")]
+bonusActions = [NodePath("DriveBurn")]
 
 [node name="Typ1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
@@ -194,6 +195,5 @@ libraries = {
 
 [node name="LasergunSmall" parent="." instance=ExtResource("5_qf0yc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03871, 0.914343, 2.96543)
-targetPreselection = null
 
 [node name="DriveBurn" parent="." instance=ExtResource("6_w60dt")]

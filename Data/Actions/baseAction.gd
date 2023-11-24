@@ -3,7 +3,7 @@ extends Node
 class_name baseAction
 
 enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2, Player = 3}
-
+enum ActionType {Action= 0, BonusAction=1}
 
 @export var energyCost : int
 @export var icon : CompressedTexture2D
@@ -14,6 +14,8 @@ enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2, Player = 3}
 @export var targetPreselection : TargetPreselectionPatterns
 #	function that defines what the wepond does
 var description : String
+var actionType : ActionType
+
 
 func _enter_tree():
 	buildDescription()
@@ -61,3 +63,6 @@ func hasEnoughEnergy()->bool:
 	if get_parent().ship_current_energy >= self.energyCost:
 		return true
 	return false
+	
+func getActionType():
+	pass

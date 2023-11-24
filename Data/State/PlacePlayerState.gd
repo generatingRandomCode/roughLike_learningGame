@@ -3,7 +3,6 @@ extends State
 var base = preload("res://player_grid_base.tscn")
 var playerGrid = preload("res://player_grid.tscn")
 
-
 var playerField
 #	the player chosen ship
 var shipName

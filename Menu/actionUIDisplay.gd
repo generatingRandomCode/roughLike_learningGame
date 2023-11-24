@@ -24,7 +24,6 @@ func _ready():
 	hide()
 	#selectActionTab(0) #Test kann gelöscht werden
 
-
 func updateActions(actions: Array[Node]):
 	self.actions = actions
 	selectActionTab(0)
@@ -44,17 +43,16 @@ func selectActionTab(tabNum: int):
 		actionUIParents[tabNum].get_node("Action" + str(n+1) + "/TextureRect").texture = actions[n].icon
 
 	if tabNum < actions.size() :
-		
+		print("BonusAction: ",actions[tabNum].actionType )
 		self.get_node("Base/Titel").text = actions[tabNum].wepon_name
-		#self.get_node("Base/Info").text = descriptionVar[tabNum]
-		self.get_node("Base/Info").text = str(actions[tabNum].description)
+		self.get_node("Base/Info").text = "Action Type: " + ("BonusAction" if actions[tabNum].actionType else "Action") + "\n"
+		self.get_node("Base/Info").text += str(actions[tabNum].description)
 		base.get_node("TextureRect2").texture = actions[tabNum].icon
 		actionCurrent = actions[tabNum]
 
 
 func _on_fire_pressed():
 	#	hot to skip
-	
 	if actionCurrent:
 		actionChoosen.emit(actionCurrent)
 

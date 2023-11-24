@@ -12,24 +12,42 @@ func enter(parameter = {}) -> void:
 	#	add bonus actions later
 	#	hier werden all vom schiff ausführabren actionen hinzugefügt
 	#	einfach eine weiterer Node3D hinzufügen als standardaction
-	var actionNameList = selectedShip.actions
+	#	nur die arrays werden angezeigt die noch 
+	var actionNameList : Array[Node] = []
+	if selectedShip in get_parent().actionsLeft:
+		actionNameList += selectedShip.actions
+	if selectedShip in get_parent().bonusActionsLeft:
+		actionNameList += selectedShip.bonusActions
+	
+	setAtionType(actionNameList)
+	print("bonusAction",actionNameList)
+	print("bonusAction", actionNameList[0].actionType)
+
 	main.get_node("ActionUI").show()
 	main.get_node("ActionUI").updateActions(actionNameList)
 	main.get_node("ActionUI").connect("actionChoosen",actionChoosen)
 	#main.get_node("ActionUI").connect("skipAction",skipAction)
 
-func actionChoosen(shipAction):
+func actionChoosen(shipAction : Node3D):
+	if !shipAction.hasEnoughEnergy():
+		return
+	#	check if ship still can execute bonus action
+	#if checkForBonusAction(shipAction):
+	#	if shipAction not in selectedShip.bonusActions:
+	#		return
+	#else:
+	#	if shipAction not in selectedShip.actions:
+	#		return
+	#	emit siggnal if ship still can execute the action
+	actionSelected.emit(shipAction)
 
-	if shipAction.hasEnoughEnergy():
-		actionSelected.emit(shipAction)
-		
-#func skipAction():
-		#actionSelected.emit()
-	
-	
-
-func exit():
+func exit()->void:
 	main.get_node("ActionUI").hide()
-	#main.get_node("ActionUI").disconnect("skipAction",skipAction)
 	main.get_node("ActionUI").disconnect("actionChoosen",actionChoosen)
 
+func setAtionType(actions: Array[Node]):
+	for x in actions:
+		if x in selectedShip.actions:
+			x.actionType = 0#	Action in enum
+		else:
+			x.actionType = 1#	BonusAction in enum

@@ -91,14 +91,15 @@ _data = {
 "Ship_Idle_Animation": SubResource("Animation_vh0hd")
 }
 
-[node name="Model" type="Node3D" node_paths=PackedStringArray("actions")]
+[node name="Model" type="Node3D" node_paths=PackedStringArray("actions", "bonusActions")]
 transform = Transform3D(0.999506, -0.0312966, 0.00299829, 0.0313752, 0.999018, -0.0312966, -0.00201587, 0.0313752, 0.999506, -0.293577, 0.107264, 0.861023)
 script = ExtResource("1_b0vgl")
 ship_health = 100
 ship_armor = 100
 ship_energy = 12
 ship_energy_regeneration = 3
-actions = [NodePath("Transmitter"), NodePath("DriveBurn")]
+actions = [NodePath("Transmitter")]
+bonusActions = [NodePath("DriveBurn")]
 
 [node name="TheLavoisier" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)

@@ -19,6 +19,9 @@ func enter(parameter := {}) -> void:
 	#	if entered from outside the playerturn
 	if !actionsLeft:
 		actionsLeft = get_tree().get_nodes_in_group("player")#.map(func(x): return x.get_parent())
+	
+	if !bonusActionsLeft:
+		bonusActionsLeft = get_tree().get_nodes_in_group("player")#.map(func(x): return x.get_parent())
 	#	choose player for action
 	await get_parent().transition_to("PlayerTurnState/ChoosePlayerState")
 
@@ -30,6 +33,11 @@ func selectPlayer(selectedFieldID):
 #	hier wird aufgerufen was bei der jeweiligen gewählten action pssieren soll
 
 func selectAction(shipAction):
+	if checkForBonusAction(shipAction):		
+		bonusActionsLeft.erase(selectedShip)
+	else:
+		actionsLeft.erase(selectedShip)
+	# call function to check the 
 	#	when skip signal is clicked
 	var newAction=ActionTemplate.new()
 	newAction.getActionFromObj(shipAction)
@@ -46,11 +54,11 @@ func selectTarget(targetID):
 	startLoop()
 
 func startLoop():
-	#main.get_node("ActionUI").disconnect("skipAction",skipAction)
+	print("bonusAction: ", actionsLeft, bonusActionsLeft)
 	#	delete the ship the action was choosen for and the specific action (bonus or standard)
-	actionsLeft.erase(selectedShip)
 	#	abfrage für sofort action
-	if(actionsLeft.size() > 0):
+	
+	if((actionsLeft.size() + bonusActionsLeft.size()) > 0):
 		await state_machine.transition_to("PlayerTurnState/ChoosePlayerState",{"Actions" : self.actions})
 		selectedShip = null
 	else:
@@ -59,4 +67,13 @@ func startLoop():
 		self.actions = []
 
 func skipAction():
-		startLoop()
+	actionsLeft.erase(selectedShip)
+	bonusActionsLeft.erase(selectedShip)
+	startLoop()
+
+#	returns true when the action is a bonus action and false when it is a normal action
+func checkForBonusAction(shipAction):
+	if shipAction in selectedShip.bonusActions:
+		return true
+	if shipAction in selectedShip.actions:
+		return false

@@ -8,10 +8,15 @@ func _ready():
 #	all the fields with player action
 var playerFields
 
+var choosableFields
+
 func enter(parameter := {}) -> void:
 	print("enter choose Player State")
-	playerFields = get_parent().actionsLeft.map(func(x): return x.get_parent())
-		
+	var actionsField = get_parent().actionsLeft.map(func(x): return x.get_parent())
+	var bonusActionsField = get_parent().bonusActionsLeft.map(func(x): return x.get_parent())
+	playerFields = actionsField + bonusActionsField
+	playerFields = delete_duplicates(playerFields)
+	
 	#	get the action array
 	displayPlayerIcon()
 	for x in playerFields:
@@ -42,3 +47,15 @@ func exit():
 			continue
 		if x.is_connected("fieldSelect",showShipMenu):
 			x.disconnect("fieldSelect",showShipMenu)
+
+func delete_duplicates(array: Array):
+	var result = []
+	for i in range(array.size()):
+		var duplicated = false
+		for j in range(i+1, array.size()):
+			if array[i] == array[j]:
+				duplicated = true
+				break
+		if not duplicated:
+			result += [array[i]]
+	return result
