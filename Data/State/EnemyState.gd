@@ -25,27 +25,11 @@ func enemyAttack():
 		var newAction = ActionTemplate.new()
 		newAction.getActionFromObj(action)
 		actions += [newAction]
-		var random_target = randi() % getTargetGroup(actions[-1]).size()
-		actions[-1].setTargetsFromFieldOBJ(getTargetGroup(actions[-1])[random_target])
+		#var random_target = randi() % getTargetGroup(actions[-1]).size()
+		var random_target = randi() % actions[-1].getTargetGroup().size()
+		#actions[-1].setTargetsFromFieldOBJ(getTargetGroup(actions[-1])[random_target])
+		actions[-1].setTargetsFromFieldOBJ(actions[-1].getTargetGroup()[random_target])
 	return actions
 
 func getWeponForShip(enemyShip):
 	return enemyShip.actions
-	
-func getTargetGroup(action)-> Array:
-	match(action.targetPreselection):
-		#	all enenmy
-		TargetPreselectionPatterns.Enemy:
-			return get_tree().get_nodes_in_group("player").map(func(x): return x.get_parent())
-		#	self
-		TargetPreselectionPatterns.Self:
-			return [action.cause.get_parent()]
-		#	get the free player board
-		TargetPreselectionPatterns.FreeSpace:
-			return get_tree().get_nodes_in_group("EnemyField").filter(
-				func(a): return !a.has_node("Model")
-			)
-		TargetPreselectionPatterns.Player:
-			return get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
-		_:
-			return []
