@@ -5,6 +5,7 @@
 
 [node name="DriveBurn" type="Node3D"]
 script = ExtResource("1_yvafp")
+energyCost = 4
 icon = ExtResource("2_c2poe")
 wepon_name = "DriveBurn"
 wepon_initiative = 2

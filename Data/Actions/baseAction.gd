@@ -5,6 +5,7 @@ class_name baseAction
 enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2}
 
 
+@export var energyCost : int
 @export var icon : CompressedTexture2D
 @export var wepon_name: String
 @export var wepon_initiative: int
@@ -39,5 +40,6 @@ func getTargetGroup()-> Array:
 
 func buildDescription():
 	self.description = "wepon_initiative: " + str(self.wepon_initiative) + "\n"
+	self.description = "energyCost: " + str(self.energyCost) + "\n"
 	if get("wepon_damage"):
 		self.description += "wepon_damage: " + str(self.wepon_damage) + "\n"

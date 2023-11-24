@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://mubsfndci7ev"]
+[gd_scene load_steps=18 format=3 uid="uid://mubsfndci7ev"]
 
-[ext_resource type="Script" path="res://ShipsScripts/BaseShip.gd" id="1_7mkp0"]
+[ext_resource type="Script" path="res://ShipsScripts/TheLavoisier.gd" id="1_b0vgl"]
 [ext_resource type="Material" uid="uid://dawfwb4tocs7o" path="res://resource/ships/TheLavoisier/TheLavoisier_mat.tres" id="2_p24xr"]
 [ext_resource type="ArrayMesh" uid="uid://b4qnv45kdop0j" path="res://resource/ships/TheLavoisier/Fusionsreaktor_Schiff.obj" id="3_oufck"]
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_esr3n"]
-[ext_resource type="PackedScene" uid="uid://cg8wgxcu3yfta" path="res://Data/Actions/Weapons/lasergun_small.tscn" id="5_mjmrg"]
 [ext_resource type="PackedScene" uid="uid://8c7qta7v1skl" path="res://Data/Actions/Weapons/Transmitter.tscn" id="6_ws2lb"]
 [ext_resource type="PackedScene" uid="uid://by0uclccvso3y" path="res://Data/Actions/Antrieb/DirveBurn.tscn" id="7_okjo7"]
 
@@ -94,11 +93,12 @@ _data = {
 
 [node name="Model" type="Node3D" node_paths=PackedStringArray("actions")]
 transform = Transform3D(0.999506, -0.0312966, 0.00299829, 0.0313752, 0.999018, -0.0312966, -0.00201587, 0.0313752, 0.999506, -0.293577, 0.107264, 0.861023)
-script = ExtResource("1_7mkp0")
-ship_name = "Typ1"
+script = ExtResource("1_b0vgl")
 ship_health = 100
 ship_armor = 100
-actions = [NodePath("LasergunSmall"), NodePath("Transmitter"), NodePath("DriveBurn")]
+ship_energy = 12
+ship_energy_regeneration = 3
+actions = [NodePath("Transmitter"), NodePath("DriveBurn")]
 
 [node name="TheLavoisier" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
@@ -207,9 +207,6 @@ fract_delta = false
 transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_2eo25")
 draw_pass_1 = SubResource("QuadMesh_xdvja")
-
-[node name="LasergunSmall" parent="." instance=ExtResource("5_mjmrg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.33897, 6.39873, -5.52685)
 
 [node name="Transmitter" parent="." instance=ExtResource("6_ws2lb")]
 

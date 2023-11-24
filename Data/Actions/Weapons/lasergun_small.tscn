@@ -22,6 +22,7 @@ center_offset = Vector3(0, 0.3, 0)
 [node name="LasergunSmall" type="Node3D"]
 script = ExtResource("1_dmmpl")
 wepon_damage = 100
+energyCost = 2
 icon = ExtResource("2_dsbsq")
 wepon_name = "LasergunSmall"
 wepon_initiative = 5

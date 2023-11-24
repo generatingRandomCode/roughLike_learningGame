@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://b622gynsjqa30"]
 
-[ext_resource type="Script" path="res://ShipsScripts/BaseShip.gd" id="1_1bqea"]
+[ext_resource type="Script" path="res://ShipsScripts/Typ2.gd" id="1_m8hma"]
 [ext_resource type="Material" uid="uid://dlg4n4nyjoklj" path="res://resource/ships/Typ-2/typ-2_mat.tres" id="2_woyj1"]
 [ext_resource type="ArrayMesh" uid="uid://c27m5vtwiql4s" path="res://resource/ships/Typ-2/Typ-2.obj" id="3_bwsj8"]
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_6xyjn"]
@@ -76,12 +76,13 @@ _data = {
 
 [node name="Model" type="Node3D" node_paths=PackedStringArray("actions")]
 transform = Transform3D(0.997624, -0.0688881, 0, 0.0688881, 0.997624, 0, 0, 0, 1, -0.00247513, 0.0985127, 0.497337)
-script = ExtResource("1_1bqea")
-ship_name = "Typ2"
-ship_health = 75
-ship_armor = 75
-ship_shield = 200
-actions = [NodePath("LasergunSmall"), NodePath("ShieldSmall"), NodePath("DriveBurn")]
+script = ExtResource("1_m8hma")
+ship_health = 50
+ship_armor = 50
+ship_shield = 250
+ship_energy = 10
+ship_energy_regeneration = 2
+actions = [NodePath("ShieldSmall"), NodePath("LasergunSmall"), NodePath("DriveBurn")]
 
 [node name="Typ2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)

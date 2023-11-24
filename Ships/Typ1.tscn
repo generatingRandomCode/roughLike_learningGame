@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://dxkc48tji5lwh"]
 
 [ext_resource type="Material" uid="uid://ewuje1vwr3gi" path="res://resource/ships/Typ-1/Typ-1_mat.tres" id="1_h5c66"]
-[ext_resource type="Script" path="res://ShipsScripts/BaseShip.gd" id="1_t2mgs"]
+[ext_resource type="Script" path="res://ShipsScripts/Typ1.gd" id="1_x7qk6"]
 [ext_resource type="ArrayMesh" uid="uid://b2ut57vv645iv" path="res://resource/ships/Typ-1/Schiff.obj" id="2_xmh8l"]
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="3_kok3c"]
 [ext_resource type="PackedScene" uid="uid://cg8wgxcu3yfta" path="res://Data/Actions/Weapons/lasergun_small.tscn" id="5_qf0yc"]
@@ -73,10 +73,11 @@ _data = {
 
 [node name="Model" type="Node3D" node_paths=PackedStringArray("actions")]
 transform = Transform3D(0.99982, -0.0189768, 0, 0.0189768, 0.99982, 0, 0, 0, 1, -0.099287, -0.0979293, 0.070226)
-script = ExtResource("1_t2mgs")
-ship_name = "Typ1"
+script = ExtResource("1_x7qk6")
 ship_health = 100
-ship_armor = 100
+ship_armor = 150
+ship_energy = 6
+ship_energy_regeneration = 1
 actions = [NodePath("LasergunSmall"), NodePath("DriveBurn")]
 
 [node name="Typ1" type="MeshInstance3D" parent="."]
@@ -186,12 +187,12 @@ transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_2eo25")
 draw_pass_1 = SubResource("QuadMesh_xdvja")
 
-[node name="LasergunSmall" parent="." instance=ExtResource("5_qf0yc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03871, 0.914343, 2.96543)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_hw0yp")
 }
+
+[node name="LasergunSmall" parent="." instance=ExtResource("5_qf0yc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03871, 0.914343, 2.96543)
 
 [node name="DriveBurn" parent="." instance=ExtResource("6_w60dt")]
