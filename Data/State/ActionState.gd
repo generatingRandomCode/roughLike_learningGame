@@ -7,10 +7,9 @@ func enter(parameter := {}) -> void:
 	# wie sorg ich dafür das er für jedes schiff einmal 
 	var actions = parameter["Actions"]
 	print("ActionTemplate: real", actions)
+	#	bevor ich sie sortiere muss ich die init sortieren
 	actions = sortActionsByInitative(actions)
 	print("ActionTemplate: real ", actions)
-	for x in actions:
-		print("ActionTemplate: real ", x.actionInitiative)
 	
 	await executeActions(actions)
 	await clearZeroHealthShips()
@@ -20,27 +19,31 @@ func enter(parameter := {}) -> void:
 func executeActions(actions):
 	#	sort action
 	var start = 0
-	for action in actions:
+	#for action in actions:
+	while actions:
+		var action = actions[0]
 		get_tree().call_group("ShipUI", "updateShipUI")
 		#	cehck if current action still exist and if not skip the action -> rebuild to while until all actions are done?
 		print("field test: set field check1", action.action)
 		if !checkActionCanExecute(action):
+			actions.erase(action)
 			continue
 		print("field test: set field check2", action.action)
 		#	if new init round start remove all ships with zero health
 		if(start < action.actionInitiative):
 			start = action.actionInitiative
-			print("getWepondInitative: ", start)
 			await clearZeroHealthShips()
 			await get_tree().create_timer(1).timeout
 		
 		if !checkActionCanExecute(action):
+			actions.erase(action)
 			continue
 
 		#	call the battelstep with the action
 		await action.executeAction()
 		get_tree().call_group("ShipUI", "updateShipUI")
 		await get_tree().create_timer(.25).timeout
+		actions.erase(action)
 
 func checkActionCanExecute(action):
 	var cause = action.cause

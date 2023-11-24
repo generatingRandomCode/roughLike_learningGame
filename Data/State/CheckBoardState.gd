@@ -5,7 +5,7 @@ extends State
 #	this state fpr beginning will chose enemy stats at random
 func enter(parameter := {}) -> void:
 	print("enter checkBoardState")
-	checkField()
+	await checkField()
 	get_parent().transition_to("InterTurnState",{})
 
 
