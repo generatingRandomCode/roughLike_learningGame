@@ -10,6 +10,7 @@ extends Node3D
 @export var shipName : Label3D
 
 func _ready():
+	hide()
 	add_to_group("ShipUI")
 	if get_parent():
 		updateShipUI()
