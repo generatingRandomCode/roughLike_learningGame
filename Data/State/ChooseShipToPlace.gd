@@ -15,7 +15,7 @@ func enter(parameter := {}) -> void:
 		main.get_node("StartMenu/ChooseShip").show()
 	else:
 		#	when number reaches zero 
-		main.get_node("PlayerGrid").removeClickZones("Player")
+		main.get_node("PlayerGrid").removeClickZones("PlayerField")
 		get_parent().transition_to("PlaceEnemyState")
 	
 

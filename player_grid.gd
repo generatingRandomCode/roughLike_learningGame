@@ -10,13 +10,16 @@ func _ready():
 	base = base.instantiate()
 	initBoardPlayer(base,"player",-60,-20, 30)
 	initBoardPlayer2(base,"Enemy",60,-20, 30)
-	removeClickZones("Enemy")
+	removeClickZones("EnemyField")
 
 #	z von unten nach oben |
 #	x rechts nach links
 func initBoardPlayer(grid,player,offsetX,offsetZ, space):
 	var safeZ = offsetZ
 	for x in range(3):
+		var node = Node3D.new()
+		node.name = str(x)
+		$Player.add_child(node)
 		for z in range(3):
 			#to dont double the ships
 			var newGrid = grid.duplicate()
@@ -24,7 +27,7 @@ func initBoardPlayer(grid,player,offsetX,offsetZ, space):
 			#rotate to face inwards
 			newGrid.rotate(Vector3(0,1,0), PI*1.5)
 			newGrid.add_to_group("PlayerField")
-			$Player.add_child(newGrid)
+			$Player.get_node(str(x)).add_child(newGrid)
 			offsetZ = offsetZ + space
 		offsetX += -space
 		offsetZ = safeZ
@@ -32,6 +35,9 @@ func initBoardPlayer(grid,player,offsetX,offsetZ, space):
 func initBoardPlayer2(grid,player,offsetX,offsetZ,space):
 	
 	for x in range(3):
+		var node = Node3D.new()
+		node.name = str(x)
+		$Enemy.add_child(node)
 		for z in range(3):
 			#to dont double the ships
 			var newGrid = grid.duplicate()
@@ -39,14 +45,16 @@ func initBoardPlayer2(grid,player,offsetX,offsetZ,space):
 			#rotate to face inwards
 			newGrid.rotate(Vector3(0,1,0), PI*0.5)
 			newGrid.add_to_group("EnemyField")
-			$Enemy.add_child(newGrid)
+			#$Enemy.add_child(newGrid)
+			$Enemy.get_node(str(x)).add_child(newGrid)
+			
 			offsetZ = offsetZ +space
 		offsetX +=  space
 		offsetZ = -20
 		
-func removeClickZones(fieldName):
-	var player2Root = get_node(fieldName)
-	for sub in player2Root.get_children():
+func removeClickZones(groupName):
+	var player2Root = get_tree().get_nodes_in_group(groupName)
+	for sub in player2Root:
 		if sub.has_node("Ship"):
 			sub.get_node("Ship").queue_free()
 		

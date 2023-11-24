@@ -6,7 +6,7 @@ var enemyGrid
 
 func enter(parameter := {}) -> void:
 
-	enemyGrid = get_tree().get_root().get_node("main/PlayerGrid/Enemy")
+	enemyGrid = get_tree().get_nodes_in_group("EnemyField")
 	#enemyGrid = get_tree().get_node("Player2")
 	print("place Enemy State")
 	placeEnemy()
@@ -31,14 +31,14 @@ func placeEnemy():
 	
 	for x in range(enemyNumber):
 		var randShip = randi() % shipList.size()
-		var random_index = randi() % enemyGrid.get_child_count()
-		if !enemyGrid.get_child(random_index).has_node("Model"):
+		var random_index = randi() % enemyGrid.size()
+		if !enemyGrid[random_index].has_node("Model"):
 			var shipPath = "res://Ships/" + shipList[randShip].split(".")[0] + ".tscn"
 			var ship = load(shipPath)
 			var shipInstance = ship.instantiate()
 			# Get a random index to select a random child
 			shipInstance.add_to_group("enemy")
-			enemyGrid.get_child(random_index).add_child(shipInstance)
+			enemyGrid[random_index].add_child(shipInstance)
 		# Create a new node as a child
 		# Add the new node as a child to the random child
 		print("Added a new EnemyShip to a random child.")
