@@ -24,14 +24,14 @@ emission_energy_multiplier = 2.0
 [sub_resource type="Gradient" id="Gradient_4yito"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_c5edl"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oy0w3"]
 gradient = SubResource("Gradient_4yito")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ofjv7"]
 gravity = Vector3(0, 1, 0)
 scale_min = 10.0
 scale_max = 10.0
-color_ramp = SubResource("GradientTexture1D_c5edl")
+color_ramp = SubResource("GradientTexture1D_oy0w3")
 
 [node name="PlayerGridBase" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
