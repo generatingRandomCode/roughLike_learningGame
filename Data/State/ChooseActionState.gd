@@ -16,20 +16,20 @@ func enter(parameter = {}) -> void:
 	main.get_node("ActionUI").show()
 	main.get_node("ActionUI").updateActions(actionNameList)
 	main.get_node("ActionUI").connect("actionChoosen",actionChoosen)
-	main.get_node("ActionUI").connect("skipAction",skipAction)
+	#main.get_node("ActionUI").connect("skipAction",skipAction)
 
 func actionChoosen(shipAction):
 
 	if shipAction.hasEnoughEnergy():
 		actionSelected.emit(shipAction)
 		
-func skipAction():
-		actionSelected.emit()
+#func skipAction():
+		#actionSelected.emit()
 	
 	
 
 func exit():
 	main.get_node("ActionUI").hide()
-	main.get_node("ActionUI").disconnect("skipAction",skipAction)
+	#main.get_node("ActionUI").disconnect("skipAction",skipAction)
 	main.get_node("ActionUI").disconnect("actionChoosen",actionChoosen)
 

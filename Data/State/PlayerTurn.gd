@@ -10,10 +10,12 @@ var actions = []
 #	the selected ship model from the selected field
 var selectedShip
 
+func _ready():
+	#	connect the skip action
+	main.get_node("ActionUI").connect("skipAction",skipAction)
+
 func enter(parameter := {}) -> void:
 	#	init the standard actions for each ship actions:
-	
-	
 	#	if entered from outside the playerturn
 	if !actionsLeft:
 		actionsLeft = get_tree().get_nodes_in_group("player")#.map(func(x): return x.get_parent())
@@ -27,12 +29,8 @@ func selectPlayer(selectedFieldID):
 
 #	hier wird aufgerufen was bei der jeweiligen gewählten action pssieren soll
 
-func selectAction(shipAction = null):
+func selectAction(shipAction):
 	#	when skip signal is clicked
-	if !shipAction:
-		startLoop()
-		return
-
 	var newAction=ActionTemplate.new()
 	newAction.getActionFromObj(shipAction)
 	self.actions += [newAction]
@@ -48,6 +46,7 @@ func selectTarget(targetID):
 	startLoop()
 
 func startLoop():
+	#main.get_node("ActionUI").disconnect("skipAction",skipAction)
 	#	delete the ship the action was choosen for and the specific action (bonus or standard)
 	actionsLeft.erase(selectedShip)
 	#	abfrage für sofort action
@@ -58,3 +57,6 @@ func startLoop():
 		await state_machine.transition_to("EnemyState",{"Actions" = self.actions})
 		selectedShip = null
 		self.actions = []
+
+func skipAction():
+		startLoop()
