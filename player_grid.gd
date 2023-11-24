@@ -26,6 +26,7 @@ func initBoardPlayer(grid,player,offsetX,offsetZ, space):
 			newGrid.set_position(Vector3(offsetX, 0,offsetZ))
 			#rotate to face inwards
 			newGrid.rotate(Vector3(0,1,0), PI*1.5)
+			newGrid.name = str(z)
 			newGrid.add_to_group("PlayerField")
 			$Player.get_node(str(x)).add_child(newGrid)
 			offsetZ = offsetZ + space
@@ -44,6 +45,7 @@ func initBoardPlayer2(grid,player,offsetX,offsetZ,space):
 			newGrid.set_position(Vector3(offsetX, 0,offsetZ))
 			#rotate to face inwards
 			newGrid.rotate(Vector3(0,1,0), PI*0.5)
+			newGrid.name = str(z)
 			newGrid.add_to_group("EnemyField")
 			#$Enemy.add_child(newGrid)
 			$Enemy.get_node(str(x)).add_child(newGrid)

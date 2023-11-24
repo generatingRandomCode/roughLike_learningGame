@@ -2,7 +2,7 @@ extends Node
 
 class_name baseAction
 
-enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2, Player = 3}
+enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2, Player = 3, FreeSpaceWithDistance = 4}
 enum ActionType {Action= 0, BonusAction=1}
 
 @export var energyCost : int
@@ -33,6 +33,7 @@ func loadedAction(action)-> void:
 	pass
 
 func getTargetGroup()-> Array:
+	getTargetGroupForDistance(1)
 	match(self.targetPreselection):
 		#	all enenmy
 		TargetPreselectionPatterns.Enemy:
@@ -48,8 +49,39 @@ func getTargetGroup()-> Array:
 		#	get all the player fields
 		TargetPreselectionPatterns.Player:
 			return get_tree().get_nodes_in_group("player").map(func(x): return x.get_parent())
+		TargetPreselectionPatterns.FreeSpaceWithDistance:
+			return getTargetGroupForDistance(self.moveDistance)
 		_:
 			return []
+
+#	still in work
+#	returns all free fieds in distance x from the cause
+func getTargetGroupForDistance(distance : int)->Array[Node]:
+	var nodeArray : Array[Node] = []
+	var playerField = get_tree().get_nodes_in_group("PlayerField")
+	var gridX = 3
+	var gridY = 3
+	var shipField = owner.get_parent()
+	var xPos = int(str(shipField.get_parent().name))
+	var yPos = int(str(shipField.name))
+	print("shipField x: ", xPos, "y: ", yPos)
+	for place in playerField:
+		if place == shipField:
+			continue
+		var placeX = int(str(place.get_parent().name))
+		var placeY = int(str(place.name))
+		
+		if abs(placeX - xPos) > distance:
+			continue
+		if abs(placeY - yPos) > distance:
+			continue
+		if place.has_node("Model"):
+			continue
+		nodeArray += [place]
+	print("shipField: ", shipField)
+	print("shipField: ende ", nodeArray)
+	
+	return nodeArray
 
 func buildDescription():
 	self.description = "wepon_initiative: " + str(self.wepon_initiative) + "\n"

@@ -2,6 +2,7 @@ extends baseAction
 
 class_name BaseAntriebe
 
+@export var moveDistance : int
 #	moves x filds
 func move(cause, target):
 	print("field test: ", target)
