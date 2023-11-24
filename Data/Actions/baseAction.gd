@@ -2,7 +2,7 @@ extends Node
 
 class_name baseAction
 
-enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2}
+enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2, Player = 3}
 
 
 @export var energyCost : int
@@ -35,7 +35,6 @@ func getTargetGroup()-> Array:
 		#	all enenmy
 		TargetPreselectionPatterns.Enemy:
 			return get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
-
 		#	self
 		TargetPreselectionPatterns.Self:
 			return [get_parent().get_parent()]
@@ -44,6 +43,9 @@ func getTargetGroup()-> Array:
 			return get_tree().get_nodes_in_group("PlayerField").filter(
 				func(a): return !a.has_node("Model")
 			)
+		#	get all the player fields
+		TargetPreselectionPatterns.Player:
+			return get_tree().get_nodes_in_group("player").map(func(x): return x.get_parent())
 		_:
 			return []
 

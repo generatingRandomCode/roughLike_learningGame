@@ -1,6 +1,6 @@
 extends State
 #enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2} -> og
-enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2}
+enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2, Player = 3}
 #	this state fpr beginning will chose enemy stats at random
 func enter(parameter := {}) -> void:
 	print("Enter enemyState")
@@ -45,5 +45,7 @@ func getTargetGroup(action)-> Array:
 			return get_tree().get_nodes_in_group("EnemyField").filter(
 				func(a): return !a.has_node("Model")
 			)
+		TargetPreselectionPatterns.Player:
+			return get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
 		_:
 			return []

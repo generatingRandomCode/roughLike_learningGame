@@ -1,10 +1,8 @@
-extends BaseWepon
+extends baseAction
 
 class_name Transmitter
 
-func _ready():
-	needTarget = 1
-
 func loadedAction(action) -> void:
-	if action.targetField.has_node("Model"):
-		executeDamageAction(action.targets)
+	if action.targets:
+		action.targets.ship_current_energy = min(action.targets.ship_current_energy + 5 ,action.targets.ship_energy)
+		
