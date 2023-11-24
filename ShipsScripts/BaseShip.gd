@@ -29,7 +29,7 @@ var shipUI = preload("res://ship_ui.tscn")
 
 #	init loads ships with zero health
 func _enter_tree():
-	add_to_group("ship")
+	add_to_group("Ship")
 	if self.ship_current_energy == null:
 		self.ship_current_energy = self.ship_energy
 	if self.ship_current_health == null:
@@ -68,4 +68,12 @@ func destroySelf():
 	queue_free()
 
 func updateEnergy():
+	print("updateEnergy")
 	ship_current_energy = min(ship_energy, ship_current_energy + ship_energy_regeneration)
+
+func useEnergy(energyCost : int)->bool:
+	if energyCost <= ship_current_energy:
+		ship_current_energy = ship_current_energy - energyCost
+		return true
+	else:
+		return false

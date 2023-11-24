@@ -10,12 +10,13 @@
 [ext_resource type="Material" uid="uid://dkv7y0hoktjf4" path="res://resource/Menu/ParameterUI/health_mat.tres" id="6_olu88"]
 [ext_resource type="ArrayMesh" uid="uid://cu6cuosycxe8q" path="res://resource/Menu/ParameterUI/ParameterUI_Ernergy.obj" id="7_c0v4t"]
 
-[node name="ShipUI" type="Node3D" node_paths=PackedStringArray("healthObj", "armorObj", "shieldObj")]
+[node name="ShipUI" type="Node3D" node_paths=PackedStringArray("healthObj", "armorObj", "shieldObj", "energyNode")]
 transform = Transform3D(-1.74846e-07, -4, 1.74846e-07, 0, -1.74846e-07, -4, 4, -1.74846e-07, 7.64274e-15, -15, 0, 0)
 script = ExtResource("1_4fje0")
 healthObj = NodePath("ParameterUiBase/health")
 armorObj = NodePath("ParameterUiBase/armor")
 shieldObj = NodePath("ParameterUiBase/shield")
+energyNode = NodePath("ParameterUiBase/Energy")
 enegyOff = ExtResource("2_dobr2")
 enegyOn = ExtResource("3_vd1ie")
 
@@ -41,7 +42,10 @@ material_override = ExtResource("6_olu88")
 mesh = ExtResource("4_ujphk")
 skeleton = NodePath("../..")
 
+[node name="Energy" type="Node3D" parent="ParameterUiBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -2.84217e-14, -0.5)
+
 [node name="ParameterUiErnergy" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 10, 0)
+transform = Transform3D(1, 0, 0, 0, 1, -8.35187e-23, 0, -8.35187e-23, 1, -1, 10, -1.42109e-14)
 visible = false
 mesh = ExtResource("7_c0v4t")

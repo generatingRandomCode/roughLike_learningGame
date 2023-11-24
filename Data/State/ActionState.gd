@@ -60,7 +60,7 @@ func checkActionCanExecute(action):
 
 func clearZeroHealthShips():
 	print("clearZeroHealthShips: statz")
-	for ship in get_tree().get_nodes_in_group("ship"):
+	for ship in get_tree().get_nodes_in_group("Ship"):
 		if !ship:
 			continue
 		if !ship.checkHealthIsAboveZero():

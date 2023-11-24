@@ -19,6 +19,13 @@ func _enter_tree():
 	buildDescription()
 
 func action(action) ->  void:
+	#	check if you can pay the energy cost, if not pass or play animation
+	if get_parent().useEnergy(energyCost):
+		loadedAction(action)
+	else:
+		pass
+	
+func loadedAction(action)-> void:
 	pass
 
 func getTargetGroup()-> Array:

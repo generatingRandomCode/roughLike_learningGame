@@ -194,5 +194,6 @@ libraries = {
 
 [node name="LasergunSmall" parent="." instance=ExtResource("5_qf0yc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03871, 0.914343, 2.96543)
+targetPreselection = null
 
 [node name="DriveBurn" parent="." instance=ExtResource("6_w60dt")]

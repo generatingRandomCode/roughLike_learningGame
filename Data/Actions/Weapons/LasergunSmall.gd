@@ -7,7 +7,7 @@ class_name LaserGunSmall
 func _ready():
 	needTarget = 1
 
-func action(action) -> void:
+func loadedAction(action) -> void:
 	
 	for x in $Model.get_children():
 		x.fire()

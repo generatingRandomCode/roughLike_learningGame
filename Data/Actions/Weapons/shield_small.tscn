@@ -9,4 +9,5 @@ energyCost = 5
 icon = ExtResource("2_olsgk")
 wepon_name = "ShieldSmall"
 wepon_initiative = 3
+needTarget = null
 targetPreselection = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cj0wofdm4g5mk"]
+[gd_scene load_steps=27 format=3 uid="uid://cj0wofdm4g5mk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7kjg5"]
 [ext_resource type="PackedScene" uid="uid://himnox2wxi7d" path="res://Data/Camera/camera.tscn" id="2_wjkft"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://Data/State/CheckBoardState.gd" id="16_00dks"]
 [ext_resource type="Script" path="res://Data/State/PlayerTurn.gd" id="16_gjkpn"]
 [ext_resource type="ArrayMesh" uid="uid://dseemn36qr30u" path="res://resource/gameBackground/planets/PlanetMesh.obj" id="18_mhset"]
+[ext_resource type="Script" path="res://Data/State/InterTurnState.gd" id="21_acpjl"]
 [ext_resource type="PackedScene" uid="uid://dakbo4btppekq" path="res://Menu/action_ui_new.tscn" id="21_gsrlb"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dwnx6"]
@@ -102,6 +103,9 @@ script = ExtResource("9_koic7")
 
 [node name="ChooseTargetState" type="Node3D" parent="StateMashine/PlayerTurnState"]
 script = ExtResource("10_0atkk")
+
+[node name="InterTurnState" type="Node3D" parent="StateMashine"]
+script = ExtResource("21_acpjl")
 
 [node name="StartMenu" parent="." instance=ExtResource("9_1p4yo")]
 top_level = true

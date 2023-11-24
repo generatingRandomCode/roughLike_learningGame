@@ -6,7 +6,7 @@ extends State
 func enter(parameter := {}) -> void:
 	print("enter checkBoardState")
 	checkField()
-	get_parent().transition_to("PlayerTurnState",{})
+	get_parent().transition_to("InterTurnState",{})
 
 
 #	checks if there are still enemys
