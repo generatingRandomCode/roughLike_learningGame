@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwwq4fv0r2ct0"]
+
+[ext_resource type="Script" path="res://Data/3DVisual/WepomAnimation/LaserBeam/DrawLine.gd" id="4_b1807"]
+[ext_resource type="Material" uid="uid://dud081ps5p3kf" path="res://Data/3DVisual/WepomAnimation/LaserBeam/LaiserRay_mat.tres" id="5_uwlfr"]
+
+[sub_resource type="Curve3D" id="Curve3D_xfoh4"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p3ef4"]
+
+[node name="LaserBeam" type="Path3D" node_paths=PackedStringArray("Capsule", "pathFollow")]
+curve = SubResource("Curve3D_xfoh4")
+script = ExtResource("4_b1807")
+Capsule = NodePath("PathFollow3D/MeshInstance3D")
+pathFollow = NodePath("PathFollow3D")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(-4.37112e-08, 0, -0.999999, 0, 0.999999, 0, 0.999996, 0, -4.37114e-08, 0, 0, 0)
+progress = 6.57234
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PathFollow3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+material_override = ExtResource("5_uwlfr")
+mesh = SubResource("CylinderMesh_p3ef4")

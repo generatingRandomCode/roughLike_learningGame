@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsro5j2e5fngg"]
+[gd_scene load_steps=4 format=3 uid="uid://b8rd8mbbidybf"]
 
 [ext_resource type="Script" path="res://Data/Actions/Weapons/bigLaserBeam.gd" id="1_edohe"]
 [ext_resource type="Texture2D" uid="uid://wa4pxep4y0bi" path="res://resource/Icons/BigLaserGun_Icon.png" id="2_cqqym"]
+[ext_resource type="PackedScene" uid="uid://dwwq4fv0r2ct0" path="res://Data/3DVisual/WepomAnimation/LaserBeam/LaiserShot_Scene.tscn" id="3_napch"]
 
 [node name="bigLaserBeam" type="Node3D"]
 script = ExtResource("1_edohe")
@@ -11,3 +12,5 @@ icon = ExtResource("2_cqqym")
 wepon_name = "Big Laser Beam"
 wepon_initiative = 8
 needTarget = true
+
+[node name="LaserBeam" parent="." instance=ExtResource("3_napch")]

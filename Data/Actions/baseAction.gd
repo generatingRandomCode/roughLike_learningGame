@@ -20,7 +20,7 @@ var actionType : ActionType
 func _enter_tree():
 	buildDescription()
 
-func action(action) ->  void:
+func action(action : Node) ->  void:
 	#	check if you can pay the energy cost, if not pass or play animation
 	if energyCost == 0:
 		loadedAction(action)
