@@ -5,17 +5,17 @@ enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2, Player = 3}
 func enter(parameter := {}) -> void:
 	print("Enter enemyState")
 	
-	var actions = parameter["Actions"]
+	var actions : Array[Node] = parameter["Actions"]
 	
 	actions += enemyAttack()
 	
 	print("actions: ", actions)
 	get_parent().transition_to("ActionState",{"Actions": actions})
-	actions = {}
+	actions = []
 
 #	enemy  target groups sind genau andersherum, sie schießen auf den spieler und nicht auf sich selbst
-func enemyAttack():
-	var actions = []
+func enemyAttack() ->Array[Node]:
+	var actions  : Array[Node] = []
 	var enemyShips = get_tree().get_nodes_in_group("enemy")
 
 	for ship in enemyShips:

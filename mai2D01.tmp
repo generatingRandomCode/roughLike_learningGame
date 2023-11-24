@@ -1,0 +1,112 @@
+[gd_scene load_steps=26 format=3 uid="uid://cj0wofdm4g5mk"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_7kjg5"]
+[ext_resource type="PackedScene" uid="uid://himnox2wxi7d" path="res://Data/Camera/camera.tscn" id="2_wjkft"]
+[ext_resource type="Texture2D" uid="uid://bc4dxw407oly7" path="res://resource/gameBackground/SpaceHDR.png" id="4_2bmyh"]
+[ext_resource type="Material" uid="uid://cndwceewwspy8" path="res://resource/gameBackground/planets/MagmaPlanet/magmaMaterial.tres" id="4_m16tw"]
+[ext_resource type="Script" path="res://Data/State/StateMashine.gd" id="5_3rjji"]
+[ext_resource type="Script" path="res://Data/3DVisual/WorldEnvironmentRotate.gd" id="5_6gc2w"]
+[ext_resource type="Script" path="res://Data/State/GameStart.gd" id="6_gg8rk"]
+[ext_resource type="Script" path="res://Data/State/PlaceEnemyState.gd" id="7_e3jri"]
+[ext_resource type="Script" path="res://Data/State/PlacePlayerState.gd" id="8_gwhf8"]
+[ext_resource type="Script" path="res://Data/State/ChooseShipToPlace.gd" id="8_wee5y"]
+[ext_resource type="PackedScene" uid="uid://dm2sbmebph5vf" path="res://start_menu.tscn" id="9_1p4yo"]
+[ext_resource type="Script" path="res://Data/State/ChooseActionState.gd" id="9_koic7"]
+[ext_resource type="Script" path="res://Data/State/ChooseTargetState.gd" id="10_0atkk"]
+[ext_resource type="Script" path="res://Data/State/ActionState.gd" id="11_ckm3l"]
+[ext_resource type="PackedScene" uid="uid://c62ireb8h86n3" path="res://battle_step.tscn" id="12_8ojwe"]
+[ext_resource type="Script" path="res://Data/State/EnemyState.gd" id="13_cd4cd"]
+[ext_resource type="Script" path="res://Data/State/ChoosePlayerState.gd" id="15_y8yl8"]
+[ext_resource type="Script" path="res://Data/State/CheckBoardState.gd" id="16_00dks"]
+[ext_resource type="Script" path="res://Data/State/PlayerTurn.gd" id="16_gjkpn"]
+[ext_resource type="ArrayMesh" uid="uid://dseemn36qr30u" path="res://resource/gameBackground/planets/PlanetMesh.obj" id="18_mhset"]
+[ext_resource type="Script" path="res://Data/State/InterTurnState.gd" id="21_acpjl"]
+[ext_resource type="PackedScene" uid="uid://dakbo4btppekq" path="res://Menu/action_ui_new.tscn" id="21_gsrlb"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dwnx6"]
+panorama = ExtResource("4_2bmyh")
+
+[sub_resource type="Sky" id="Sky_hylld"]
+sky_material = SubResource("PanoramaSkyMaterial_dwnx6")
+
+[sub_resource type="Environment" id="Environment_i7vx7"]
+background_mode = 2
+sky = SubResource("Sky_hylld")
+ambient_light_source = 1
+glow_enabled = true
+glow_levels/1 = 1.0
+glow_normalized = true
+glow_intensity = 1.5
+glow_strength = 0.5
+glow_bloom = 0.5
+glow_blend_mode = 0
+
+[node name="main" type="Node3D"]
+transform = Transform3D(0.997723, 0, 0, 0, 0.997723, 0, 0, 0, 0.997723, 0, 0, 0)
+script = ExtResource("1_7kjg5")
+
+[node name="Camera" parent="." instance=ExtResource("2_wjkft")]
+offset_top = -3.0
+offset_bottom = -3.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i7vx7")
+script = ExtResource("5_6gc2w")
+
+[node name="PlanetMesh" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(0.615662, 0, 0.788011, 0, 1, 0, -0.788011, 0, 0.615662, 500, -1510.51, -1788)
+material_override = ExtResource("4_m16tw")
+mesh = ExtResource("18_mhset")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 25, 0)
+light_energy = 0.5
+
+[node name="StateMashine" type="Node3D" parent="."]
+script = ExtResource("5_3rjji")
+
+[node name="GameStart" type="Node3D" parent="StateMashine"]
+script = ExtResource("6_gg8rk")
+
+[node name="ChooseShipToPlace" type="Node3D" parent="StateMashine"]
+script = ExtResource("8_wee5y")
+
+[node name="PlacePlayerState" type="Node3D" parent="StateMashine"]
+transform = Transform3D(0.993863, 0, 0, 0, 0.993863, 0, 0, 0, 0.993863, 0, 0, 0)
+script = ExtResource("8_gwhf8")
+
+[node name="PlaceEnemyState" type="Node3D" parent="StateMashine"]
+script = ExtResource("7_e3jri")
+
+[node name="InterTurnState" type="Node3D" parent="StateMashine"]
+script = ExtResource("21_acpjl")
+
+[node name="PlayerTurnState" type="Node3D" parent="StateMashine"]
+script = ExtResource("16_gjkpn")
+
+[node name="ChoosePlayerState" type="Node3D" parent="StateMashine/PlayerTurnState"]
+script = ExtResource("15_y8yl8")
+
+[node name="ChooseActionState" type="Node3D" parent="StateMashine/PlayerTurnState"]
+script = ExtResource("9_koic7")
+
+[node name="ChooseTargetState" type="Node3D" parent="StateMashine/PlayerTurnState"]
+script = ExtResource("10_0atkk")
+
+[node name="EnemyState" type="Node3D" parent="StateMashine"]
+script = ExtResource("13_cd4cd")
+
+[node name="ActionState" type="Node3D" parent="StateMashine"]
+script = ExtResource("11_ckm3l")
+
+[node name="BattleStep" parent="StateMashine/ActionState" instance=ExtResource("12_8ojwe")]
+
+[node name="CheckBoardState" type="Node3D" parent="StateMashine"]
+script = ExtResource("16_00dks")
+
+[node name="StartMenu" parent="." instance=ExtResource("9_1p4yo")]
+top_level = true
+
+[node name="ActionUI" parent="." instance=ExtResource("21_gsrlb")]
+top_level = true

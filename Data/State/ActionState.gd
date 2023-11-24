@@ -5,10 +5,11 @@ extends State
 func enter(parameter := {}) -> void:
 	#var test = ActionTemplate.new("wasser")
 	# wie sorg ich dafür das er für jedes schiff einmal 
-	var actions = parameter["Actions"]
+	var actions : Array[Node] = parameter["Actions"]
 	print("ActionTemplate: real", actions)
 	#	bevor ich sie sortiere muss ich die init sortieren
-	actions = sortActionsByInitative(actions)
+	reInitizeActions(actions)
+	actions = sortActionsByInitative(actions) 
 	print("ActionTemplate: real ", actions)
 	
 	await executeActions(actions)
@@ -16,7 +17,7 @@ func enter(parameter := {}) -> void:
 	get_parent().transition_to("CheckBoardState",{})
 
 #	calls the functions 
-func executeActions(actions):
+func executeActions(actions : Array[Node]):
 	#	sort action
 	var start = 0
 	#for action in actions:
@@ -70,8 +71,19 @@ func clearZeroHealthShips():
 			await ship.destroySelf()
 	get_tree().call_group("ShipUI", "updateShipUI")
 
-func sortActionsByInitative(actions):
+func sortActionsByInitative(actions : Array[Node])->Array[Node]:
 	actions.sort_custom(func(a, b): return  a.actionInitiative < b.actionInitiative)
 	return actions
 
+func reInitizeActions(actions : Array[Node])->void:
+	
+	for x in actions.size():
+		#	get the current cause
+		var actionToCompare = actions[x].cause
+		#	compare to the rest of the arrays:
+		for y in actions.size():
+			if y > x:
+				if actionToCompare == actions[y].cause:
+					actions[y].actionInitiative += actions[x].actionInitiative
+				
 

@@ -6,7 +6,7 @@ class_name PlayerTurnState
 var actionsLeft
 var bonusActionsLeft
 
-var actions = []
+var actions : Array[Node] = []
 #	the selected ship model from the selected field
 var selectedShip
 
