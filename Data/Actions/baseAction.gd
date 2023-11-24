@@ -50,3 +50,8 @@ func buildDescription():
 	self.description = "energyCost: " + str(self.energyCost) + "\n"
 	if get("wepon_damage"):
 		self.description += "wepon_damage: " + str(self.wepon_damage) + "\n"
+
+func hasEnoughEnergy()->bool:
+	if get_parent().ship_current_energy >= self.energyCost:
+		return true
+	return false

@@ -69,3 +69,8 @@ func setTargetsFromFieldOBJ(field):
 	self.targetField = field
 	if targetField.has_node("Model"):
 		self.targets = field.get_node("Model")
+
+func hasEnoughEnergy()->bool:
+	if cause.ship_current_energy >= action.energyCost:
+		return true
+	return false

@@ -8,6 +8,8 @@ func enter(parameter := {}) -> void:
 
 
 func updateShips():
+	#	update the ship energy
 	get_tree().call_group("Ship", "updateEnergy")
+	#	update the ship ui
 	get_tree().call_group("ShipUI", "updateShipUI")
 	#updateEnergy
