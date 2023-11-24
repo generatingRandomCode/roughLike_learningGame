@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dw1ryx131522k"]
+[gd_scene load_steps=11 format=3 uid="uid://dw1ryx131522k"]
 
 [ext_resource type="Script" path="res://ship_ui.gd" id="1_4fje0"]
 [ext_resource type="ArrayMesh" uid="uid://dlrvljm23rbgs" path="res://resource/Menu/ParameterUI/ParameterUI_Base.obj" id="2_0q3o0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://5ki5be5egoj7" path="res://resource/Menu/ParameterUI/shield_mat.tres" id="3_jlw8b"]
 [ext_resource type="Material" uid="uid://b6725nibc3sbo" path="res://resource/Materials/displayEnergyOn.tres" id="3_vd1ie"]
 [ext_resource type="ArrayMesh" uid="uid://nwq4l7xrgl42" path="res://resource/Menu/ParameterUI/ParameterUI_HealthArmorShield.obj" id="4_ujphk"]
+[ext_resource type="Material" uid="uid://c0rykcewoxo7h" path="res://resource/Materials/displayWhite.tres" id="5_7m7o5"]
 [ext_resource type="Material" uid="uid://ck7hdvurimoim" path="res://resource/Menu/ParameterUI/armor_mat.tres" id="5_ba13n"]
 [ext_resource type="Material" uid="uid://dkv7y0hoktjf4" path="res://resource/Menu/ParameterUI/health_mat.tres" id="6_olu88"]
 [ext_resource type="ArrayMesh" uid="uid://cu6cuosycxe8q" path="res://resource/Menu/ParameterUI/ParameterUI_Ernergy.obj" id="7_c0v4t"]
@@ -23,11 +24,14 @@ shipName = NodePath("Label3D")
 
 [node name="ParameterUiBase" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.17124e-08, -1.31134e-07, 2, -1.73205, -1, -5.54238e-08, 1, -1.73205, -1.19422e-07, 4.7561, -1.97147, -5.11578)
+layers = 512
 cast_shadow = 0
 mesh = ExtResource("2_0q3o0")
+surface_material_override/1 = ExtResource("5_7m7o5")
 
 [node name="shield" type="MeshInstance3D" parent="ParameterUiBase"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.85, 0, 0)
+layers = 512
 material_override = ExtResource("3_jlw8b")
 cast_shadow = 0
 mesh = ExtResource("4_ujphk")
@@ -35,6 +39,7 @@ skeleton = NodePath("../..")
 
 [node name="armor" type="MeshInstance3D" parent="ParameterUiBase"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45, 0, 0)
+layers = 513
 material_override = ExtResource("5_ba13n")
 cast_shadow = 0
 mesh = ExtResource("4_ujphk")
@@ -42,6 +47,7 @@ skeleton = NodePath("../..")
 
 [node name="health" type="MeshInstance3D" parent="ParameterUiBase"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05, 0, 0)
+layers = 512
 material_override = ExtResource("6_olu88")
 cast_shadow = 0
 mesh = ExtResource("4_ujphk")
@@ -53,6 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -2.84217e-14, -0.5)
 [node name="ParameterUiErnergy" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, -5.85622e-09, 2.18557e-08, -5.85622e-09, 0.866025, 0.5, -2.18557e-08, -0.5, 0.866025, 3.7561, -6.56794, -2.462)
 visible = false
+layers = 512
 cast_shadow = 0
 mesh = ExtResource("7_c0v4t")
 
