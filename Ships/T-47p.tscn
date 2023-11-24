@@ -1,11 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://ddyy5vpr04v0a"]
+[gd_scene load_steps=19 format=3 uid="uid://c5xynpirguq6l"]
 
 [ext_resource type="Script" path="res://ShipsScripts/T-47p.gd" id="1_jxvy0"]
 [ext_resource type="Material" uid="uid://diacfryenl8o0" path="res://resource/ships/T-47p/T-47p_mat.tres" id="2_m3a2t"]
 [ext_resource type="ArrayMesh" uid="uid://r814dc1udrur" path="res://resource/ships/T-47p/ArmorShip.obj" id="3_1o1vi"]
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_goepc"]
 [ext_resource type="PackedScene" uid="uid://by0uclccvso3y" path="res://Data/Actions/Antrieb/DirveBurn.tscn" id="6_0xhxl"]
-[ext_resource type="PackedScene" uid="uid://bsro5j2e5fngg" path="res://Data/Actions/Weapons/bigLaserBeam.tscn" id="6_i7kde"]
+[ext_resource type="PackedScene" uid="uid://b8rd8mbbidybf" path="res://Data/Actions/Weapons/bigLaserBeam.tscn" id="6_i7kde"]
+[ext_resource type="PackedScene" uid="uid://wnfiihdht6t6" path="res://Data/Actions/Suport/ArmorRepairDrones.tscn" id="7_wp6yt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xepbc"]
 transparency = 1
@@ -99,7 +100,7 @@ ship_health = 100
 ship_armor = 400
 ship_energy = 6
 ship_energy_regeneration = 1
-actions = [NodePath("bigLaserBeam")]
+actions = [NodePath("bigLaserBeam"), NodePath("ArmorRepairDrones")]
 bonusActions = [NodePath("DriveBurn")]
 
 [node name="TheLavoisier" type="MeshInstance3D" parent="."]
@@ -315,3 +316,6 @@ libraries = {
 
 [node name="bigLaserBeam" parent="." instance=ExtResource("6_i7kde")]
 transform = Transform3D(1, 2.20898e-08, 0, -2.6921e-10, 1, 0, 2.56114e-09, 2.23517e-08, 1, 1.0063, 0.0286983, -9.7816)
+needTarget = false
+
+[node name="ArmorRepairDrones" parent="." instance=ExtResource("7_wp6yt")]

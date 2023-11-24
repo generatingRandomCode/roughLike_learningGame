@@ -11,9 +11,11 @@ enum TargetPreselectionPatterns{
 	FirstShipsInEachRow = 5,
 	FirstInRow = 6,
 	}
-enum ActionType {Action= 0, BonusAction=1}
+enum ActionType {Action = 0, BonusAction = 1}
 
 @export var energyCost : int
+#	wepons can becom inactive through ammonitiondepeltions for expample
+@export var active : bool = true
 @export var icon : CompressedTexture2D
 @export var wepon_name: String
 @export var wepon_initiative: int
@@ -39,10 +41,13 @@ func action(action : Node) ->  void:
 	
 func loadedAction(action)-> void:
 	pass
-
-func getTargetGroup()-> Array:
 	
-	match(self.targetPreselection):
+func getTargetGroupFromPre()-> Array:
+	var targetGroup = self.targetPreselection
+	return getTargetGroup(targetGroup)
+
+func getTargetGroup(targetGroup : TargetPreselectionPatterns)-> Array:
+	match(targetGroup):
 		#	all enenmy
 		TargetPreselectionPatterns.Enemy:
 			return get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
@@ -65,13 +70,19 @@ func getTargetGroup()-> Array:
 			return 	getFirstInRow()
 		_:
 			return []
-			
+
+#	returns last node in grid if empty
 func getFirstInRow()->Array[Node]:
 	var enemyField = get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
 	var nodeArray : Array[Node] = []
 	var shipField = owner.get_parent()
 	var yPos = int(str(shipField.name))
-	
+	var xGrid = 3
+	#	get the last field in the same row as the player in case no ship is in row
+	var last : Array[Node] = get_tree().get_nodes_in_group("EnemyField").filter(
+		func(x):
+			return (x.get_parent().name == str(xGrid-1)) and (x.name ==str(yPos)))
+	#	variable for shor time storage
 	var store
 	for place in enemyField:
 		if int(str(place.name)) == yPos:
@@ -82,6 +93,8 @@ func getFirstInRow()->Array[Node]:
 				store=place
 	if store:
 		nodeArray += [store]
+	else:
+		nodeArray = last
 			
 	
 	return nodeArray
@@ -134,6 +147,8 @@ func buildDescription():
 	self.description = "energyCost: " + str(self.energyCost) + "\n"
 	if get("wepon_damage"):
 		self.description += "wepon_damage: " + str(self.wepon_damage) + "\n"
+	if get("usages"):
+		self.description += "usages: " + str(self.usages) + "\n"
 
 func hasEnoughEnergy()->bool:
 	if energyCost == 0:

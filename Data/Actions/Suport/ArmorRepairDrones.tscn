@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://wnfiihdht6t6"]
+
+[ext_resource type="Script" path="res://Data/Actions/Suport/ArmorRepairDrones.gd" id="1_juy4e"]
+[ext_resource type="Texture2D" uid="uid://cs6o27dcx0rwh" path="res://resource/Icons/RepairArmor_Icon.png" id="2_4hbl5"]
+
+[node name="ArmorRepairDrones" type="Node3D"]
+script = ExtResource("1_juy4e")
+energyCost = 2
+icon = ExtResource("2_4hbl5")
+wepon_name = "ArmorRepairDrones"
+wepon_initiative = 2
+needTarget = true
+targetPreselection = 3

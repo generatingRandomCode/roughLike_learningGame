@@ -4,14 +4,12 @@ signal shipSelected
 
 func _ready():
 	connect("shipSelected", get_parent().selectPlayer)
-
 #	all the fields with player action
 var playerFields
 
 var choosableFields
 
 func enter(parameter := {}) -> void:
-	print("enter choose Player State")
 	var actionsField = get_parent().actionsLeft.map(func(x): return x.get_parent())
 	var bonusActionsField = get_parent().bonusActionsLeft.map(func(x): return x.get_parent())
 	playerFields = actionsField + bonusActionsField
@@ -25,7 +23,7 @@ func enter(parameter := {}) -> void:
 		if x.get_child_count():
 			if !x.is_connected("fieldSelect", showShipMenu):
 				x.connect("fieldSelect" ,showShipMenu)
-	print("enter choose Player Ende")
+
 	
 #	transition to the field is clicked on
 func showShipMenu(_nodeID):

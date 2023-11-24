@@ -11,7 +11,5 @@ energyCost = 3
 icon = ExtResource("2_cqqym")
 wepon_name = "Big Laser Beam"
 wepon_initiative = 8
-needTarget = true
-targetPreselection = 6
 
 [node name="LaserBeam" parent="." instance=ExtResource("3_napch")]

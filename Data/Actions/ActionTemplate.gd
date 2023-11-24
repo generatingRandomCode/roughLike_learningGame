@@ -14,7 +14,6 @@ var causeField
 var targets
 var targetField
 
-
 var actionInitiative
 
 var needTarget = 0
@@ -58,7 +57,7 @@ func executeAction() -> void:
 	action.action(self)
 	
 func getTargetGroup()-> Array:
-	return self.action.getTargetGroup()
+	return self.action.getTargetGroupFromPre()
 
 func setTargetsFromFieldID(fieldID):
 	self.targetField = instance_from_id(fieldID)

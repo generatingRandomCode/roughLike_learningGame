@@ -31,6 +31,8 @@ func enter(parameter = {}) -> void:
 func actionChoosen(shipAction : Node3D):
 	if !shipAction.hasEnoughEnergy():
 		return
+	if !shipAction.active:
+		return
 	#	check if ship still can execute bonus action
 	#if checkForBonusAction(shipAction):
 	#	if shipAction not in selectedShip.bonusActions:
@@ -47,7 +49,17 @@ func exit()->void:
 
 func setAtionType(actions: Array[Node]):
 	for x in actions:
+		print("debug: ", x.wepon_name)
 		if x in selectedShip.actions:
 			x.actionType = 0#	Action in enum
 		else:
 			x.actionType = 1#	BonusAction in enum
+
+#	on all inputs
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			if event.pressed:
+				if state_machine.state == self:
+					#	bakc to player selection
+					await state_machine.transition_to("PlayerTurnState/ChoosePlayerState")

@@ -7,6 +7,7 @@ var actionsLeft
 var bonusActionsLeft
 
 var actions : Array[Node] = []
+var action : Node
 #	the selected ship model from the selected field
 var selectedShip
 
@@ -33,16 +34,10 @@ func selectPlayer(selectedFieldID):
 #	hier wird aufgerufen was bei der jeweiligen gewählten action pssieren soll
 
 func selectAction(shipAction):
-	if checkForBonusAction(shipAction):		
-		bonusActionsLeft.erase(selectedShip)
-	else:
-		actionsLeft.erase(selectedShip)
-	# call function to check the 
-	#	when skip signal is clicked
-	var newAction=ActionTemplate.new()
+	self.action = shipAction
+	var newAction = ActionTemplate.new()
 	newAction.getActionFromObj(shipAction)
 	self.actions += [newAction]
-
 	if actions[-1].needTarget:
 		await state_machine.transition_to("PlayerTurnState/ChooseTargetState")
 	else:
@@ -54,17 +49,25 @@ func selectTarget(targetID):
 	startLoop()
 
 func startLoop():
+	if checkForBonusAction(action):		
+		bonusActionsLeft.erase(selectedShip)
+	else:
+		actionsLeft.erase(selectedShip)
+	# call function to check the 
+	#	when skip signal is clicked
 	print("bonusAction: ", actionsLeft, bonusActionsLeft)
 	#	delete the ship the action was choosen for and the specific action (bonus or standard)
 	#	abfrage für sofort action
 	
 	if((actionsLeft.size() + bonusActionsLeft.size()) > 0):
 		await state_machine.transition_to("PlayerTurnState/ChoosePlayerState",{"Actions" : self.actions})
-		selectedShip = null
 	else:
 		await state_machine.transition_to("EnemyState",{"Actions" = self.actions})
-		selectedShip = null
 		self.actions = []
+	#	clear
+	
+	selectedShip = null
+	action = null
 
 func skipAction():
 	actionsLeft.erase(selectedShip)
