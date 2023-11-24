@@ -1922,6 +1922,32 @@ pivot_offset = Vector2(30, 8)
 mouse_filter = 2
 texture = ExtResource("2_o4lds")
 
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1022.0
+offset_top = -122.0
+offset_right = 1137.0
+offset_bottom = -7.0
+grow_vertical = 0
+
+[node name="TextureRect3" type="TextureRect" parent="BoxContainer"]
+layout_direction = 1
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_o4lds")
+
+[node name="Skip" type="Button" parent="BoxContainer/TextureRect3"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+offset_right = 105.0
+offset_bottom = 115.0
+grow_vertical = 0
+text = "Skip"
+
 [connection signal="pressed" from="Action1Selected/Action2/Button" to="Action1Selected/Action2/Button" method="_on_pressed"]
 [connection signal="pressed" from="Action1Selected/Action3/Button" to="Action1Selected/Action3/Button" method="_on_pressed"]
 [connection signal="pressed" from="Action1Selected/Action4/Button" to="Action1Selected/Action4/Button" method="_on_pressed"]
@@ -1953,3 +1979,4 @@ texture = ExtResource("2_o4lds")
 [connection signal="pressed" from="Action6Selected/Action4/Button" to="Action6Selected/Action4/Button" method="_on_pressed"]
 [connection signal="pressed" from="Action6Selected/Action5/Button" to="Action6Selected/Action5/Button" method="_on_pressed"]
 [connection signal="pressed" from="Base/Fire" to="." method="_on_fire_pressed"]
+[connection signal="pressed" from="BoxContainer/TextureRect3/Skip" to="." method="_on_skip_press"]

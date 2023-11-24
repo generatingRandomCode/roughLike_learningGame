@@ -11,6 +11,9 @@ var actions = []
 var selectedShip
 
 func enter(parameter := {}) -> void:
+	#	init the standard actions for each ship actions:
+	
+	
 	#	if entered from outside the playerturn
 	if !actionsLeft:
 		actionsLeft = get_tree().get_nodes_in_group("player")#.map(func(x): return x.get_parent())
@@ -24,9 +27,14 @@ func selectPlayer(selectedFieldID):
 
 #	hier wird aufgerufen was bei der jeweiligen gewählten action pssieren soll
 
-func selectAction(actionID):
+func selectAction(shipAction = null):
+	#	when skip signal is clicked
+	if !shipAction:
+		startLoop()
+		return
+
 	var newAction=ActionTemplate.new()
-	newAction.getActionFromID(actionID)
+	newAction.getActionFromObj(shipAction)
 	self.actions += [newAction]
 
 	if actions[-1].needTarget:

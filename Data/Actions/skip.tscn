@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgt4ks811i4rh"]
+
+[ext_resource type="Script" path="res://Data/Actions/Skip.gd" id="1_uue24"]
+[ext_resource type="Texture2D" uid="uid://cyn78t3t5upwm" path="res://icon.svg" id="2_3kstr"]
+
+[node name="Skip" type="Node3D"]
+script = ExtResource("1_uue24")
+icon = ExtResource("2_3kstr")
+wepon_name = "Skip"
+targetPreselection = 1

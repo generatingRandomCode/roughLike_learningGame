@@ -8,12 +8,15 @@ class_name actionUIDisplay
 @export var actionUIParents: Array[Control];
 @export var base: Control;
 
+
+
 var currentActionIDs : Array
 var actions
 var actionCurrent
 
 
 signal actionChoosen
+signal skipAction
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,14 +34,17 @@ func selectActionTab(tabNum: int):
 	for n in actionUIParents:
 		n.hide()
 	actionUIParents[tabNum].show()
+
 	for n in 6:
 		actionUIParents[tabNum].get_node("Action"+ str(n+1)).visible = false
 
 	for n in actions.size():
 		actionUIParents[tabNum].get_node("Action" + str(n+1)).visible = true
+		actionUIParents[tabNum].get_node("Action" + str(n+1)).visible = true
 		actionUIParents[tabNum].get_node("Action" + str(n+1) + "/TextureRect").texture = actions[n].icon
 
-	if tabNum < actions.size():
+	if tabNum < actions.size() :
+		
 		self.get_node("Base/Titel").text = actions[tabNum].wepon_name
 		#self.get_node("Base/Info").text = descriptionVar[tabNum]
 		self.get_node("Base/Info").text = str(actions[tabNum].description)
@@ -47,8 +53,10 @@ func selectActionTab(tabNum: int):
 
 
 func _on_fire_pressed():
-
+	#	hot to skip
 	
 	if actionCurrent:
-		actionChoosen.emit(actionCurrent.get_instance_id())
+		actionChoosen.emit(actionCurrent)
 
+func _on_skip_press():
+	skipAction.emit()

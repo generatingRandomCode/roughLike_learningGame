@@ -4,6 +4,8 @@ extends Node3D
 class_name BaseShip
 
 var explosion = preload("res://Data/3DVisual/Explosion_Particle.tscn")
+var shipUI = preload("res://ship_ui.tscn")
+
 #	Basic Ship Variables
 @export var ship_name : String
 #	ship base stats
@@ -24,8 +26,6 @@ var ship_current_energy = null
 
 #when the ship gets clicked
 #signal shipClicked
-
-var shipUI = preload("res://ship_ui.tscn")
 
 #	init loads ships with zero health
 func _enter_tree():
@@ -51,7 +51,6 @@ func checkHealthIsAboveZero():
 	if self.ship_current_health > 0:
 		return true
 	return false
-
 
 func destroySelf():
 	var explosionInstance = explosion.instantiate()

@@ -10,19 +10,26 @@ func enter(parameter = {}) -> void:
 	#actionChoosen
 	selectedShip = parameter["selectedShip"]
 	#	add bonus actions later
+	#	hier werden all vom schiff ausführabren actionen hinzugefügt
+	#	einfach eine weiterer Node3D hinzufügen als standardaction
 	var actionNameList = selectedShip.actions
 	main.get_node("ActionUI").show()
 	main.get_node("ActionUI").updateActions(actionNameList)
 	main.get_node("ActionUI").connect("actionChoosen",actionChoosen)
+	main.get_node("ActionUI").connect("skipAction",skipAction)
 
-func actionChoosen(nodeID):
-	var actionToTest = instance_from_id(nodeID)
-	if actionToTest.hasEnoughEnergy():
-		main.get_node("ActionUI").disconnect("actionChoosen",actionChoosen)
-		actionSelected.emit(nodeID)
+func actionChoosen(shipAction):
 
-
+	if shipAction.hasEnoughEnergy():
+		actionSelected.emit(shipAction)
+		
+func skipAction():
+		actionSelected.emit()
+	
+	
 
 func exit():
 	main.get_node("ActionUI").hide()
+	main.get_node("ActionUI").disconnect("skipAction",skipAction)
+	main.get_node("ActionUI").disconnect("actionChoosen",actionChoosen)
 

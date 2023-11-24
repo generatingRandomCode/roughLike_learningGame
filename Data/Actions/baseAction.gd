@@ -20,7 +20,9 @@ func _enter_tree():
 
 func action(action) ->  void:
 	#	check if you can pay the energy cost, if not pass or play animation
-	if get_parent().useEnergy(energyCost):
+	if energyCost == 0:
+		loadedAction(action)
+	elif get_parent().useEnergy(energyCost):
 		loadedAction(action)
 	else:
 		pass
@@ -52,6 +54,8 @@ func buildDescription():
 		self.description += "wepon_damage: " + str(self.wepon_damage) + "\n"
 
 func hasEnoughEnergy()->bool:
+	if energyCost == 0:
+		return true
 	if get_parent().ship_current_energy >= self.energyCost:
 		return true
 	return false
