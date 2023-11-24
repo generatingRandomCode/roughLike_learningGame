@@ -7,11 +7,14 @@ extends Node3D
 
 @export var enegyOff : StandardMaterial3D
 @export var enegyOn : StandardMaterial3D
+@export var shipName : Label3D
 
 func _ready():
 	add_to_group("ShipUI")
 	if get_parent():
 		updateShipUI()
+	if get_parent().is_in_group("enemy"):
+		self.rotation_degrees = Vector3(90,90,0)
 	#init
 
 # cALLS  setStats but gets the values from parent
@@ -25,9 +28,11 @@ func setStats(name,health,maxHealth,armor,maxArmor,shield,maxShield,energy,maxEn
 	setShipArmor(armor,maxArmor)
 	setShipShield(shield,maxShield)
 	setEnergy(energy,maxEnergy)
+	
 	#print("set Stats")-1
 
 func setShipName(name):
+	shipName.text = name
 	print("text name: ", name)
 
 func setShipHealth(health,maxHealth):
