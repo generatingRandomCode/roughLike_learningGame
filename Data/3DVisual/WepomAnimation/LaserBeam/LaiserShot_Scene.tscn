@@ -26,8 +26,8 @@ curve = SubResource("Curve_5bw3e")
 direction = Vector3(-1, 0, -1)
 flatness = 1.0
 gravity = Vector3(0, 0, 0)
-scale_min = 2.0
-scale_max = 3.0
+scale_min = 10.0
+scale_max = 10.0
 scale_curve = SubResource("CurveTexture_4nnit")
 turbulence_enabled = true
 
@@ -35,24 +35,29 @@ turbulence_enabled = true
 orientation = 2
 
 [node name="LaserBeam" type="Path3D" node_paths=PackedStringArray("Capsule", "pathFollow", "fireParticle", "targetParticle")]
+transform = Transform3D(1.14257, 0, 0, 0, 1.14257, 0, 0, 0, 1.14257, 0, 0, 0)
 curve = SubResource("Curve3D_xfoh4")
 script = ExtResource("4_b1807")
 Capsule = NodePath("PathFollow3D/MeshInstance3D")
 pathFollow = NodePath("PathFollow3D")
-fireParticle = NodePath("PathFollow3D/GPUParticles3D")
-targetParticle = NodePath("PathFollow3D/GPUParticles3D2")
+fireParticle = NodePath("GPUParticles3D")
+targetParticle = NodePath("GPUParticles3D2")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
-transform = Transform3D(-4.37112e-08, 0, -0.999999, 0, 0.999999, 0, 0.999996, 0, -4.37114e-08, 0, 0, 0)
-progress = 6.57234
+transform = Transform3D(-4.37112e-08, 0, -0.999999, 0, 0.999999, 0, 0.999996, 0, -4.37113e-08, 5, 0, 0)
+progress = 5.0
+rotation_mode = 1
+cubic_interp = false
+loop = false
+tilt_enabled = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PathFollow3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -2.18557e-07, -1, 0, 5, -4.37114e-08, 0, 0, 0)
 material_override = ExtResource("5_uwlfr")
 mesh = SubResource("CylinderMesh_p3ef4")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="PathFollow3D"]
-transform = Transform3D(1, 7.10543e-15, -4.23516e-22, 0, -4.37114e-08, -1, -7.10543e-15, 1, -4.37114e-08, 0, 0, 0)
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37112e-08, -0.999999, 4.37114e-08, 0, -4.37114e-08, -0.999999, 0.999996, -4.37114e-08, 1.91069e-15, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_khkap")
 amount = 4
 lifetime = 0.4
@@ -60,8 +65,8 @@ transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_nwsa0")
 draw_pass_1 = SubResource("PlaneMesh_jb07c")
 
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="PathFollow3D"]
-transform = Transform3D(1, 7.10543e-15, -4.23516e-22, 0, -4.37114e-08, -1, -7.10543e-15, 1, -4.37114e-08, 0, 0, 0)
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37112e-08, -0.999999, 4.37114e-08, 0, -4.37114e-08, -0.999999, 0.999996, -4.37114e-08, 1.91069e-15, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_khkap")
 amount = 4
 lifetime = 0.4
