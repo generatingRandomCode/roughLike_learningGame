@@ -19,7 +19,7 @@ func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 				$Ship.queue_free()
 			fieldSelect.emit(self.get_instance_id())
 
-
+#	function to show the ui when hovered over
 func displayShipUI():
 	if !has_node("Model"):
 		return

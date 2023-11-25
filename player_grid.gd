@@ -6,21 +6,27 @@ var base = preload("res://player_grid_base.tscn")
 
 # Called when the node enters the scene tree for the first time.
 #	distance between x is the distance between start
+@onready var main = get_tree().get_current_scene()
+@onready var gridX = main.gridX
+@onready var gridY = main.gridY
 func _ready():
 	base = base.instantiate()
-	initBoardPlayer(base,"player",-60,-20, 30)
-	initBoardPlayer2(base,"Enemy",60,-20, 30)
+	
+
+	print("global board size test :", main.gridY)
+	initBoardPlayer(gridX,gridY,base,"player",-60, 40, 30)
+	initBoardPlayer2(gridX,gridY,base,"Enemy",60, 40, 30)
 	removeClickZones("EnemyField")
 
 #	z von unten nach oben |
 #	x rechts nach links
-func initBoardPlayer(grid,player,offsetX,offsetZ, space):
+func initBoardPlayer(gridX : int,gridY : int,grid : Node3D ,player : String, offsetX : int ,offsetZ : int, space : int):
 	var safeZ = offsetZ
-	for x in range(3):
+	for x in gridX:
 		var node = Node3D.new()
 		node.name = str(x)
 		$Player.add_child(node)
-		for z in range(3):
+		for z in gridY:
 			#to dont double the ships
 			var newGrid = grid.duplicate()
 			newGrid.set_position(Vector3(offsetX, 0,offsetZ))
@@ -29,17 +35,17 @@ func initBoardPlayer(grid,player,offsetX,offsetZ, space):
 			newGrid.name = str(z)
 			newGrid.add_to_group("PlayerField")
 			$Player.get_node(str(x)).add_child(newGrid)
-			offsetZ = offsetZ + space
+			offsetZ = offsetZ - space
 		offsetX += -space
 		offsetZ = safeZ
 	
-func initBoardPlayer2(grid,player,offsetX,offsetZ,space):
+func initBoardPlayer2(gridX : int,gridY : int,grid : Node3D ,player : String, offsetX : int ,offsetZ : int, space : int):
 	
-	for x in range(3):
+	for x in gridX:
 		var node = Node3D.new()
 		node.name = str(x)
 		$Enemy.add_child(node)
-		for z in range(3):
+		for z in gridY:
 			#to dont double the ships
 			var newGrid = grid.duplicate()
 			newGrid.set_position(Vector3(offsetX, 0,offsetZ))
@@ -50,7 +56,7 @@ func initBoardPlayer2(grid,player,offsetX,offsetZ,space):
 			#$Enemy.add_child(newGrid)
 			$Enemy.get_node(str(x)).add_child(newGrid)
 			
-			offsetZ = offsetZ +space
+			offsetZ = offsetZ - space
 		offsetX +=  space
 		offsetZ = -20
 		

@@ -27,6 +27,10 @@ enum ActionType {Action = 0, BonusAction = 1}
 var description : String
 var actionType : ActionType
 
+#	get the stats from the player menu
+@onready var main = get_tree().get_current_scene()
+@onready var gridX = main.gridX
+@onready var gridY = main.gridY
 
 func _enter_tree():
 	buildDescription()
@@ -35,7 +39,7 @@ func action(action : Node) ->  void:
 	#	check if you can pay the energy cost, if not pass or play animation
 	if energyCost == 0:
 		loadedAction(action)
-	elif get_parent().useEnergy(energyCost):
+	elif self.owner.useEnergy(energyCost):
 		loadedAction(action)
 	else:
 		pass
@@ -54,7 +58,7 @@ func getTargetGroup(targetGroup : TargetPreselectionPatterns)-> Array:
 			return get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
 		#	self
 		TargetPreselectionPatterns.Self:
-			return [get_parent().get_parent()]
+			return [self.owner.get_parent()]
 		#	get the free player board
 		TargetPreselectionPatterns.FreeSpace:
 			return get_tree().get_nodes_in_group("PlayerField").filter(
@@ -80,11 +84,11 @@ func getFirstInRow()->Array[Node]:
 	var nodeArray : Array[Node] = []
 	var shipField = owner.get_parent()
 	var yPos = int(str(shipField.name))
-	var xGrid = 3
+
 	#	get the last field in the same row as the player in case no ship is in row
 	var last : Array[Node] = get_tree().get_nodes_in_group("EnemyField").filter(
 		func(x):
-			return (x.get_parent().name == str(xGrid-1)) and (x.name ==str(yPos)))
+			return (x.get_parent().name == str(gridX-1)) and (x.name ==str(yPos)))
 	#	variable for shor time storage
 	var store
 	for place in enemyField:
@@ -105,8 +109,7 @@ func getFirstInRow()->Array[Node]:
 func getFirstTargetinEachRow()->Array[Node]:
 	var enemyField = get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
 	var nodeArray : Array[Node] = []
-	var gridX = 3
-	for x in gridX:
+	for x in gridY:
 		var store
 		for place in enemyField:
 			if str(place.name) == str(x):
@@ -125,8 +128,6 @@ func getFirstTargetinEachRow()->Array[Node]:
 func getTargetGroupForDistance(distance : int)->Array[Node]:
 	var nodeArray : Array[Node] = []
 	var playerField = get_tree().get_nodes_in_group("PlayerField")
-	var gridX = 3
-	var gridY = 3
 	var shipField = owner.get_parent()
 	var xPos = int(str(shipField.get_parent().name))
 	var yPos = int(str(shipField.name))
