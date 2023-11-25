@@ -107,8 +107,9 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "Round:Test"
 
-[node name="PlayerTurnState" type="Node3D" parent="StateMashine"]
+[node name="PlayerTurnState" type="Node3D" parent="StateMashine" node_paths=PackedStringArray("skipAllButton")]
 script = ExtResource("16_gjkpn")
+skipAllButton = NodePath("SkipAllButton/HBoxContainer/Panel/SkipAllButton")
 
 [node name="ChoosePlayerState" type="Node3D" parent="StateMashine/PlayerTurnState"]
 script = ExtResource("15_y8yl8")
@@ -118,6 +119,45 @@ script = ExtResource("9_koic7")
 
 [node name="ChooseTargetState" type="Node3D" parent="StateMashine/PlayerTurnState"]
 script = ExtResource("10_0atkk")
+
+[node name="SkipAllButton" type="Control" parent="StateMashine/PlayerTurnState"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -108.0
+offset_top = -102.0
+offset_right = -18.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 10
+size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StateMashine/PlayerTurnState/SkipAllButton"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="StateMashine/PlayerTurnState/SkipAllButton/HBoxContainer"]
+layout_mode = 2
+
+[node name="SkipAllButton" type="Button" parent="StateMashine/PlayerTurnState/SkipAllButton/HBoxContainer/Panel"]
+layout_mode = 0
+offset_left = -42.0
+offset_top = -9.0
+offset_right = 50.0
+offset_bottom = 50.0
+text = "End Round"
 
 [node name="EnemyState" type="Node3D" parent="StateMashine"]
 script = ExtResource("13_cd4cd")

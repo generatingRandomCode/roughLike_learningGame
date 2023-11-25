@@ -2,10 +2,12 @@ extends State
 
 class_name PlayerTurnState
 
+#	cannot have a exit function , it will break the loop which is bad...
 #	all the player nodes with a ship
 var actionsLeft
 var bonusActionsLeft
 
+@export var skipAllButton : Button
 var actions : Array[Node] = []
 var action : Node
 #	the selected ship model from the selected field
@@ -14,6 +16,9 @@ var selectedShip
 func _ready():
 	#	connect the skip action
 	main.get_node("ActionUI").connect("skipAction",skipAction)
+	skipAllButton.connect("pressed",skipAllAction)
+	skipAllButton.hide()
+	skipAllButton.text = "End Round"
 
 func enter(parameter := {}) -> void:
 	#	init the standard actions for each ship actions:
@@ -23,16 +28,20 @@ func enter(parameter := {}) -> void:
 	
 	if !bonusActionsLeft:
 		bonusActionsLeft = get_tree().get_nodes_in_group("player")#.map(func(x): return x.get_parent())
+	
+	skipAllButton.show()
 	#	choose player for action
 	await get_parent().transition_to("PlayerTurnState/ChoosePlayerState")
+
+
 
 #	get the causeID and opens the action board for the ship where is checked what actions the ship can execute
 func selectPlayer(selectedFieldID):
 	selectedShip = instance_from_id(selectedFieldID).get_node("Model")
 	await state_machine.transition_to("PlayerTurnState/ChooseActionState",{"selectedShip" :  selectedShip})
 
-#	hier wird aufgerufen was bei der jeweiligen gewählten action pssieren soll
 
+#	get the ship action
 func selectAction(shipAction):
 	self.action = shipAction
 	var newAction = ActionTemplate.new()
@@ -49,19 +58,21 @@ func selectTarget(targetID):
 	startLoop()
 
 func startLoop():
-	if checkForBonusAction(action):		
-		bonusActionsLeft.erase(selectedShip)
-	else:
-		actionsLeft.erase(selectedShip)
+	removeUsedAction(action)
+	#if checkForBonusAction(action):		
+	#	bonusActionsLeft.erase(selectedShip)
+	#else:
+	#	actionsLeft.erase(selectedShip)
 	# call function to check the 
 	#	when skip signal is clicked
 	print("bonusAction: ", actionsLeft, bonusActionsLeft)
 	#	delete the ship the action was choosen for and the specific action (bonus or standard)
 	#	abfrage für sofort action
 	
-	if((actionsLeft.size() + bonusActionsLeft.size()) > 0):
+	if(actionsLeft + bonusActionsLeft):
 		await state_machine.transition_to("PlayerTurnState/ChoosePlayerState",{"Actions" : self.actions})
 	else:
+		skipAllButton.hide()
 		await state_machine.transition_to("EnemyState",{"Actions" = self.actions})
 		self.actions = []
 	#	clear
@@ -73,7 +84,21 @@ func skipAction():
 	actionsLeft.erase(selectedShip)
 	bonusActionsLeft.erase(selectedShip)
 	startLoop()
+	
+func skipAllAction():
+	skipAllButton.hide()
+	actionsLeft = []
+	bonusActionsLeft = []
+	startLoop()
 
+func removeUsedAction(action : Node)->void:
+	if !action:
+		return
+	if checkForBonusAction(action):		
+		bonusActionsLeft.erase(selectedShip)
+	else:
+		actionsLeft.erase(selectedShip)
+	
 #	returns true when the action is a bonus action and false when it is a normal action
 func checkForBonusAction(shipAction):
 	if shipAction in selectedShip.bonusActions:
