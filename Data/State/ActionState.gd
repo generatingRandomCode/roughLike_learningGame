@@ -44,7 +44,7 @@ func executeActions(actions : Array[Node]):
 		await action.executeAction()
 
 		get_tree().call_group("ShipUI", "updateShipUI")
-		await get_tree().create_timer(.25).timeout
+		#await get_tree().create_timer(.25).timeout
 		actions.erase(action)
 
 #	problem wie weiß ich beim überprüfen ob ich target oder targetFieldBrauche 

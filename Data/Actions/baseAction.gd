@@ -40,9 +40,9 @@ func _enter_tree():
 func action(action : Node) ->  void:
 	#	check if you can pay the energy cost, if not pass or play animation
 	if energyCost == 0:
-		loadedAction(action)
+		await loadedAction(action)
 	elif self.owner.useEnergy(energyCost):
-		loadedAction(action)
+		await loadedAction(action)
 	else:
 		pass
 	

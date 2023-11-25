@@ -46,7 +46,7 @@ func setTargetsObj(targetsOBJ) -> void:
 	self.targetField = self.targets.get_parent()
 	
 func executeAction() -> void:
-	action.action(self)
+	await action.action(self)
 	
 func getTargetGroup()-> Array:
 	return self.action.getTargetGroupFromPre()
