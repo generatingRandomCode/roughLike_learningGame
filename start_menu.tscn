@@ -69,3 +69,28 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 alignment = 1
+
+[node name="GetXY" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 40.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="GridX" type="LineEdit" parent="GetXY"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "X:"
+placeholder_text = "1,2,3..."
+alignment = 3
+
+[node name="GridY" type="LineEdit" parent="GetXY"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Y:"
+placeholder_text = "1.2.3.."
+alignment = 3

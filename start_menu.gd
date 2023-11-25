@@ -2,11 +2,22 @@ extends Control
 
 var button = preload("res://simpleButton.tscn")
 
+@onready var gridX : LineEdit = $GetXY/GridX 
+@onready var gridY : LineEdit = $GetXY/GridY
+@onready var main = get_tree().get_root().get_node("main")
 
-#	for each ship in type a button will be created. yo
+
 func _enter_tree():
+	$GetXY.hide()
 	$ChooseShip.hide()
 	$ChooseShipNumber.hide()
+#	for each ship in type a button will be created. yo
+
+func _ready():
+	main = get_tree().get_root().get_node("main")
+	gridX.connect("text_submitted", main.get_node("StateMashine/ChooseBoardSizeState").chooseXGrid)
+	gridY.connect("text_submitted", main.get_node("StateMashine/ChooseBoardSizeState").chooseYGrid)
+	
 	createNumberButton()
 	var main = get_tree().get_root().get_node("main")
 	var path = "res://Ships"	
@@ -47,3 +58,4 @@ func createNumberButton():
 		
 func getNumber():
 	pass
+

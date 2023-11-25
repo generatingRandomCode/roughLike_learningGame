@@ -13,6 +13,6 @@ var gridY : int
 
 
 func _enter_tree():
-	gridX = 4
-	gridY = 4
+	gridX = 3
+	gridY = 3
 

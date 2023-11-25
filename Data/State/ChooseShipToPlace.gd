@@ -10,7 +10,6 @@ func enter(parameter := {}) -> void:
 	print("number ",number)
 
 	if number > 0:
-		print("Enter ChooseShipToPlace")
 		main.get_node("StartMenu").show()
 		main.get_node("StartMenu/ChooseShip").show()
 	else:

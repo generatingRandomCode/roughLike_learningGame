@@ -16,7 +16,7 @@ func _ready():
 	print("global board size test :", main.gridY)
 	initBoardPlayer(gridX,gridY,base,"player",-60, 40, 30)
 	initBoardPlayer2(gridX,gridY,base,"Enemy",60, 40, 30)
-	#removeClickZones("EnemyField")
+	removeClickZones("EnemyField")
 
 #	z von unten nach oben |
 #	x rechts nach links
