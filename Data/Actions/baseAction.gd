@@ -63,9 +63,7 @@ func getTargetGroup(targetGroup : TargetPreselectionPatterns)-> Array:
 			return [self.owner.get_parent()]
 		#	get the free player board
 		TargetPreselectionPatterns.FreeSpace:
-			return get_tree().get_nodes_in_group("PlayerField").filter(
-				func(a): return !a.has_node("Model")
-			)
+			return get_tree().get_nodes_in_group("PlayerField").filter(func(a): return !a.has_node("Model"))
 		#	get all the player fields
 		TargetPreselectionPatterns.Player:
 			return get_tree().get_nodes_in_group("player").map(func(x): return x.get_parent())
@@ -82,11 +80,14 @@ func getTargetGroup(targetGroup : TargetPreselectionPatterns)-> Array:
 
 #	returns last node in grid if empty
 func getFirstInRow()->Array[Node]:
-	var enemyField = get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
+	var enemyField : Array
+	if self.owner.is_in_group("player"):
+		enemyField = get_tree().get_nodes_in_group("enemy").map(func(x)->Node: return x.get_parent()) 
+	else:
+		enemyField = get_tree().get_nodes_in_group("player").map(func(x)->Node: return x.get_parent())
 	var nodeArray : Array[Node] = []
 	var shipField = owner.get_parent()
 	var yPos = int(str(shipField.name))
-
 	#	get the last field in the same row as the player in case no ship is in row
 	var last : Array[Node] = get_tree().get_nodes_in_group("EnemyField").filter(
 		func(x):
