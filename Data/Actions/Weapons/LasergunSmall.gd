@@ -8,7 +8,7 @@ func _ready():
 	needTarget = 1
 
 func loadedAction(action) -> void:
-	
+	$LaserBeam.fire($LaserBeam.global_position ,action.targetField.global_position, 2)
 	for x in $Model.get_children():
 		x.fire()
 		await get_tree().create_timer(0.01).timeout

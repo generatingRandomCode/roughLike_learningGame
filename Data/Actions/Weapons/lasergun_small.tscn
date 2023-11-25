@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cg8wgxcu3yfta"]
+[gd_scene load_steps=11 format=3 uid="uid://cg8wgxcu3yfta"]
 
 [ext_resource type="Script" path="res://Data/Actions/Weapons/LasergunSmall.gd" id="1_dmmpl"]
 [ext_resource type="Material" uid="uid://ewuje1vwr3gi" path="res://resource/ships/Typ-1/Typ-1_mat.tres" id="2_bsuwc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bw6ih4rvvfrvo" path="res://Data/3DVisual/WepomAnimation/LaiserShot/muzzle_05.png" id="4_xfa1f"]
 [ext_resource type="Material" uid="uid://cd3dmran22fwk" path="res://Data/3DVisual/WepomAnimation/LaiserShot/LaiserShot_Particle.tres" id="5_ojw58"]
 [ext_resource type="Script" path="res://Data/3DVisual/WepomAnimation/LaiserShot/LaiserGunScript.gd" id="6_c3vp7"]
+[ext_resource type="PackedScene" uid="uid://dy73j8gwgk81e" path="res://Data/3DVisual/WepomAnimation/LaserBeam/LaseProjectileShot_Scene.tscn" id="8_ktb3x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djupj"]
 transparency = 1
@@ -62,3 +63,6 @@ transform_align = 2
 process_material = ExtResource("5_ojw58")
 draw_pass_1 = SubResource("QuadMesh_ijjch")
 script = ExtResource("6_c3vp7")
+
+[node name="LaserBeam" parent="." instance=ExtResource("8_ktb3x")]
+transform = Transform3D(1.14257, 0, 0, 0, 1.14257, 0, 0, 0, 1.14257, -0.0210885, 1.39134, -4.66785)
