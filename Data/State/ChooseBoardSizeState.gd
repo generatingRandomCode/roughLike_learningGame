@@ -4,11 +4,17 @@ var gridX : int
 var gridY : int
 
 #	here the info for how to size the player will be extracted
+
+#	for debuging i will deactivat
 func enter(_msg := {}) -> void:
 	main.get_node("StartMenu").show()
 	main.get_node("StartMenu/GetXY").show()
 	print("test")
-
+	#deactivate
+	gridX = 4
+	gridY = 4
+	valuesChosen()
+	
 
 func chooseXGrid(gridX : String):
 	self.gridX = convertToCoor(gridX)

@@ -17,7 +17,7 @@ func enter(parameter := {}) -> void:
 func enemyAttack() ->Array[Node]:
 	var actions  : Array[Node] = []
 	var enemyShips = get_tree().get_nodes_in_group("enemy")
-	var playerShipsFields = get_tree().get_nodes_in_group("player").map(func(x): return x.get_parent())
+	#var playerShipsFields = get_tree().get_nodes_in_group("player").map(func(x): return x.get_parent())
 	for ship in enemyShips:
 		var wepons = ship.actions
 		var random_wepon = randi() % wepons.size()
@@ -26,9 +26,12 @@ func enemyAttack() ->Array[Node]:
 		var newAction = ActionTemplate.new()
 		newAction.getActionFromObj(action)
 		actions += [newAction]
-		var random_target = randi() % playerShipsFields.size()
+		var targets = actions[-1].getTargetGroup()
+		if targets:
+			var random_target = randi() % targets.size()
+			actions[-1].setTargetsFromFieldOBJ(targets[random_target])
 		#var random_target = randi() % actions[-1].getTargetGroup().size()
-		actions[-1].setTargetsFromFieldOBJ(playerShipsFields[random_target])
+		
 		
 		#actions[-1].setTargetsFromFieldOBJ(actions[-1].getTargetGroup()[random_target])
 	return actions

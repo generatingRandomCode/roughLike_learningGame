@@ -57,16 +57,25 @@ func getTargetGroup(targetGroup : TargetPreselectionPatterns)-> Array:
 	match(targetGroup):
 		#	all enenmy
 		TargetPreselectionPatterns.Enemy:
-			return get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
+			if self.owner.is_in_group("player"):
+				return get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
+			else:
+				return get_tree().get_nodes_in_group("player").map(func(x): return x.get_parent())
 		#	self
 		TargetPreselectionPatterns.Self:
 			return [self.owner.get_parent()]
 		#	get the free player board
 		TargetPreselectionPatterns.FreeSpace:
-			return get_tree().get_nodes_in_group("PlayerField").filter(func(a): return !a.has_node("Model"))
+			if self.owner.is_in_group("player"):
+				return get_tree().get_nodes_in_group("PlayerField").filter(func(a): return !a.has_node("Model"))
+			else:
+				return get_tree().get_nodes_in_group("EnemyField").filter(func(a): return !a.has_node("Model"))
 		#	get all the player fields
 		TargetPreselectionPatterns.Player:
-			return get_tree().get_nodes_in_group("player").map(func(x): return x.get_parent())
+			if self.owner.is_in_group("player"):
+				return get_tree().get_nodes_in_group("player").map(func(x): return x.get_parent())
+			else:
+				return get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
 		TargetPreselectionPatterns.FreeSpaceWithDistance:
 			return getTargetGroupForDistance(self.moveDistance)
 		TargetPreselectionPatterns.FirstShipsInEachRow:
@@ -89,9 +98,13 @@ func getFirstInRow()->Array[Node]:
 	var shipField = owner.get_parent()
 	var yPos = int(str(shipField.name))
 	#	get the last field in the same row as the player in case no ship is in row
-	var last : Array[Node] = get_tree().get_nodes_in_group("EnemyField").filter(
-		func(x):
-			return (x.get_parent().name == str(gridX-1)) and (x.name ==str(yPos)))
+	var last : Array[Node] 
+	if self.owner.is_in_group("player"):
+		last = get_tree().get_nodes_in_group("EnemyField").filter(
+			func(x):return (x.get_parent().name == str(gridX-1)) and (x.name ==str(yPos)))
+	else:
+		last = get_tree().get_nodes_in_group("PlayerField").filter(
+			func(x):return (x.get_parent().name == str(gridX-1)) and (x.name ==str(yPos)))
 	#	variable for shor time storage
 	var store
 	for place in enemyField:
@@ -110,7 +123,11 @@ func getFirstInRow()->Array[Node]:
 	return nodeArray
 #	get the first target in each row
 func getFirstTargetinEachRow()->Array[Node]:
-	var enemyField = get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
+	var enemyField : Array
+	if self.owner.is_in_group("player"):
+		enemyField = get_tree().get_nodes_in_group("enemy").map(func(x): return x.get_parent())
+	else:
+		enemyField = get_tree().get_nodes_in_group("player").map(func(x): return x.get_parent())
 	var nodeArray : Array[Node] = []
 	for x in gridY:
 		var store
@@ -130,7 +147,11 @@ func getFirstTargetinEachRow()->Array[Node]:
 #	returns all free fieds in distance x from the cause
 func getTargetGroupForDistance(distance : int)->Array[Node]:
 	var nodeArray : Array[Node] = []
-	var playerField = get_tree().get_nodes_in_group("PlayerField")
+	var playerField : Array
+	if self.owner.is_in_group("player"):
+		playerField = get_tree().get_nodes_in_group("PlayerField")
+	else:
+		playerField = get_tree().get_nodes_in_group("EnemyField")
 	var shipField = owner.get_parent()
 	var xPos = int(str(shipField.get_parent().name))
 	var yPos = int(str(shipField.name))
