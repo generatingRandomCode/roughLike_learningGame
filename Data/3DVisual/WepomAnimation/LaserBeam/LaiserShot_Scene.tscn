@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://dud081ps5p3kf" path="res://Data/3DVisual/WepomAnimation/LaserBeam/LaiserRay_mat.tres" id="5_uwlfr"]
 
 [sub_resource type="Curve3D" id="Curve3D_xfoh4"]
+resource_local_to_scene = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_p3ef4"]
 
