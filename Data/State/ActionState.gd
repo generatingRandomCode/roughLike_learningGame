@@ -57,6 +57,7 @@ func checkActionCanExecute(action):
 	if !cause.get_child_count():
 		return false
 #	#	check if target is required
+	
 	if action.needTarget:
 		if !action.targets:
 			return false

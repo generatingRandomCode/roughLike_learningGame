@@ -16,30 +16,22 @@ var targetField
 
 var actionInitiative
 
-var needTarget = 0
+var needTarget = false
+var needTargetField = false
 
 var targetPreselection
 
 #	gets called when calling new	get the id of both 
-func getActionFromID(actionID) -> void:
-	if typeof(actionID) == TYPE_INT:
-		self.action = instance_from_id(actionID)
-	else:
-		self.action = instance_from_id(int(str(actionID)))
+func getActionFromID(actionID: int) -> void:
+	getActionFromObj(instance_from_id(actionID))
 
-	self.targetPreselection = self.action.targetPreselection
-	self.actionInitiative = self.action.wepon_initiative
-	self.needTarget = self.action.needTarget
-	
-	if self.action.get_parent():
-		self.cause = self.action.get_parent()
-		self.causeField = self.cause.get_parent()
 
 func getActionFromObj(action: Node) -> void:
 	self.action = action
 	self.targetPreselection = self.action.targetPreselection
 	self.actionInitiative = self.action.wepon_initiative
 	self.needTarget = self.action.needTarget
+	self.needTargetField = self.action.needTargetField
 	
 	if self.action.get_parent():
 		self.cause = self.action.get_parent()
