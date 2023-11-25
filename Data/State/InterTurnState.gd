@@ -9,7 +9,7 @@ func _ready():
 func enter(parameter := {}) -> void:
 	displayRoundTimer()
 	await updateShips()
-	get_parent().transition_to("PlayerTurnState",{})
+	get_parent().transition_to("PlayerTurnState")
 
 
 func updateShips():

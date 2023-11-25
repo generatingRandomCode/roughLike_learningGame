@@ -18,16 +18,15 @@ func _ready():
 	main.get_node("ActionUI").connect("skipAction",skipAction)
 	skipAllButton.connect("pressed",skipAllAction)
 	skipAllButton.hide()
-	skipAllButton.text = "End Round"
 
 func enter(parameter := {}) -> void:
 	#	init the standard actions for each ship actions:
 	#	if entered from outside the playerturn
 	if !actionsLeft:
-		actionsLeft = get_tree().get_nodes_in_group("player")#.map(func(x): return x.get_parent())
+		actionsLeft = get_tree().get_nodes_in_group("player")
 	
 	if !bonusActionsLeft:
-		bonusActionsLeft = get_tree().get_nodes_in_group("player")#.map(func(x): return x.get_parent())
+		bonusActionsLeft = get_tree().get_nodes_in_group("player")
 	
 	skipAllButton.show()
 	#	choose player for action
@@ -50,20 +49,15 @@ func selectAction(shipAction):
 	if actions[-1].needTarget:
 		await state_machine.transition_to("PlayerTurnState/ChooseTargetState")
 	else:
-		startLoop()
+		checkForActionsLeft()
 
 #	get the target id for the action
 func selectTarget(targetID):
 	actions[-1].setTargetsFromFieldID(targetID)
-	startLoop()
+	checkForActionsLeft()
 
-func startLoop():
+func checkForActionsLeft():
 	removeUsedAction(action)
-	#if checkForBonusAction(action):		
-	#	bonusActionsLeft.erase(selectedShip)
-	#else:
-	#	actionsLeft.erase(selectedShip)
-	# call function to check the 
 	#	when skip signal is clicked
 	print("bonusAction: ", actionsLeft, bonusActionsLeft)
 	#	delete the ship the action was choosen for and the specific action (bonus or standard)
@@ -72,8 +66,8 @@ func startLoop():
 	if(actionsLeft + bonusActionsLeft):
 		await state_machine.transition_to("PlayerTurnState/ChoosePlayerState",{"Actions" : self.actions})
 	else:
-		skipAllButton.hide()
 		await state_machine.transition_to("EnemyState",{"Actions" = self.actions})
+		skipAllButton.hide()
 		self.actions = []
 	#	clear
 	
@@ -83,13 +77,13 @@ func startLoop():
 func skipAction():
 	actionsLeft.erase(selectedShip)
 	bonusActionsLeft.erase(selectedShip)
-	startLoop()
+	checkForActionsLeft()
 	
 func skipAllAction():
 	skipAllButton.hide()
 	actionsLeft = []
 	bonusActionsLeft = []
-	startLoop()
+	checkForActionsLeft()
 
 func removeUsedAction(action : Node)->void:
 	if !action:
