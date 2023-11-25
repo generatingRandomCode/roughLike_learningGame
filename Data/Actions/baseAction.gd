@@ -21,6 +21,8 @@ enum ActionType {Action = 0, BonusAction = 1}
 @export var wepon_name: String
 @export var wepon_initiative: int
 @export var needTarget :bool = false
+#	true if need target field 
+@export var needTargetField :bool = false
 #	what nodes are in the target group
 @export var targetPreselection : TargetPreselectionPatterns
 #	function that defines what the wepond does

@@ -42,10 +42,12 @@ func executeActions(actions : Array[Node]):
 
 		#	call the battelstep with the action
 		await action.executeAction()
+
 		get_tree().call_group("ShipUI", "updateShipUI")
 		await get_tree().create_timer(.25).timeout
 		actions.erase(action)
 
+#	problem wie weiß ich beim überprüfen ob ich target oder targetFieldBrauche 
 func checkActionCanExecute(action):
 	var cause = action.cause
 	var target = action.targets
@@ -54,12 +56,14 @@ func checkActionCanExecute(action):
 		return false
 	if !cause.get_child_count():
 		return false
-
+#	#	check if target is required
 	if action.needTarget:
-		if (!action.targets) and (!action.targetField):
+		if !action.targets:
 			return false
-		#if !target.get_child_count():
-			#return false
+	#	check if the action needs a target field
+	if action.needTargetField:
+		if !action.targetField:
+			return false 
 	return true
 
 func clearZeroHealthShips():
