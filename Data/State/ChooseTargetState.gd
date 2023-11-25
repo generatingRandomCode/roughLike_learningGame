@@ -16,7 +16,7 @@ func enter(parameter := {}) -> void:
 	targetGroup = get_parent().actions[-1].getTargetGroup()
 	#	exit the target state if no target
 	if !targetGroup:
-		get_parent().startLoop()
+		get_parent().checkForActionsLeft()
 		
 	await displayTargetIcon()
 	for x in targetGroup:

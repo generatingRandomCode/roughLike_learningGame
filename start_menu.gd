@@ -43,7 +43,7 @@ func createNumberButton():
 		buttonInstance.name = str(x)
 		buttonInstance.text= str(x)
 		$ChooseShipNumber/HBoxContainer.add_child(buttonInstance)
-		buttonInstance.connect("start_pressed", main.get_node("StateMashine/GameStart").startPressed)
+		buttonInstance.connect("start_pressed", main.get_node("StateMashine/ChooseShipNumberState").startPressed)
 		
 func getNumber():
 	pass

@@ -16,7 +16,7 @@ func _ready():
 	print("global board size test :", main.gridY)
 	initBoardPlayer(gridX,gridY,base,"player",-60, 40, 30)
 	initBoardPlayer2(gridX,gridY,base,"Enemy",60, 40, 30)
-	removeClickZones("EnemyField")
+	#removeClickZones("EnemyField")
 
 #	z von unten nach oben |
 #	x rechts nach links
@@ -40,7 +40,7 @@ func initBoardPlayer(gridX : int,gridY : int,grid : Node3D ,player : String, off
 		offsetZ = safeZ
 	
 func initBoardPlayer2(gridX : int,gridY : int,grid : Node3D ,player : String, offsetX : int ,offsetZ : int, space : int):
-	
+	var safeZ = offsetZ
 	for x in gridX:
 		var node = Node3D.new()
 		node.name = str(x)
@@ -58,7 +58,7 @@ func initBoardPlayer2(gridX : int,gridY : int,grid : Node3D ,player : String, of
 			
 			offsetZ = offsetZ - space
 		offsetX +=  space
-		offsetZ = -20
+		offsetZ = safeZ
 		
 func removeClickZones(groupName):
 	var player2Root = get_tree().get_nodes_in_group(groupName)

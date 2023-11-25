@@ -10,6 +10,5 @@ energyCost = 3
 icon = ExtResource("2_c2poe")
 wepon_name = "DriveBurn"
 wepon_initiative = 2
-needTarget = true
 needTargetField = true
 targetPreselection = 4

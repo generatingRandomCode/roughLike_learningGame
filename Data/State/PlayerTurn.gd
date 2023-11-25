@@ -46,7 +46,7 @@ func selectAction(shipAction):
 	var newAction = ActionTemplate.new()
 	newAction.getActionFromObj(shipAction)
 	self.actions += [newAction]
-	if actions[-1].needTarget:
+	if action.needTarget or action.needTargetField:
 		await state_machine.transition_to("PlayerTurnState/ChooseTargetState")
 	else:
 		checkForActionsLeft()

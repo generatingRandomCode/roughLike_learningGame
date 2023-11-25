@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cj0wofdm4g5mk"]
+[gd_scene load_steps=27 format=3 uid="uid://cj0wofdm4g5mk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7kjg5"]
 [ext_resource type="PackedScene" uid="uid://himnox2wxi7d" path="res://Data/Camera/camera.tscn" id="2_wjkft"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Data/State/PlacePlayerState.gd" id="8_gwhf8"]
 [ext_resource type="Script" path="res://Data/State/ChooseShipToPlace.gd" id="8_wee5y"]
 [ext_resource type="PackedScene" uid="uid://dm2sbmebph5vf" path="res://start_menu.tscn" id="9_1p4yo"]
+[ext_resource type="Script" path="res://Data/State/ChooseShipNumberState.gd" id="9_hd7he"]
 [ext_resource type="Script" path="res://Data/State/ChooseActionState.gd" id="9_koic7"]
 [ext_resource type="Script" path="res://Data/State/ChooseTargetState.gd" id="10_0atkk"]
 [ext_resource type="Script" path="res://Data/State/ActionState.gd" id="11_ckm3l"]
@@ -68,6 +69,9 @@ script = ExtResource("5_3rjji")
 
 [node name="GameStart" type="Node3D" parent="StateMashine"]
 script = ExtResource("6_gg8rk")
+
+[node name="ChooseShipNumberState" type="Node3D" parent="StateMashine"]
+script = ExtResource("9_hd7he")
 
 [node name="ChooseShipToPlace" type="Node3D" parent="StateMashine"]
 script = ExtResource("8_wee5y")
