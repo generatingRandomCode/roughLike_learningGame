@@ -15,9 +15,9 @@ func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-			if has_node("Ship"):
-				$Ship.queue_free()
 			fieldSelect.emit(self.get_instance_id())
+			#if has_node("Ship"):
+				#$Ship.queue_free()
 
 #	function to show the ui when hovered over
 func displayShipUI():

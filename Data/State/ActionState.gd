@@ -54,8 +54,8 @@ func executeActions(actions : Array[Node]):
 			if !checkActionCanExecute(action):
 				actions.erase(action)
 				continue
-			await action.payActionShipEnergy()
-			await action.executeAction()
+			action.payActionShipEnergy()
+			action.executeAction()
 			get_tree().call_group("ShipUI", "updateShipUI")
 			actions.erase(action)
 		#	end of a init step

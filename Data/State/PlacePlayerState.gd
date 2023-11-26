@@ -10,7 +10,6 @@ var shipName
 #	regulates the placing of character ships
 func enter(parameter := {}) -> void:
 	shipName = parameter["shipName"] 
-	print("enterPlaceShips")
 	#	create player grid
 	if !main.has_node("PlayerGrid"):
 		var playerGridInstance = playerGrid.instantiate()
@@ -25,6 +24,8 @@ func enter(parameter := {}) -> void:
 func playerPlaced(gridID):
 	#	get the grid by nodeID
 	var grid = instance_from_id(gridID)
+	#	remove the placeholder example
+	grid.get_node("Ship").queue_free()
 	#	creat a ship instance and add to the grid field
 	#	get the tcen after player name 
 	#	get the ship name from the ShipName
@@ -35,12 +36,10 @@ func playerPlaced(gridID):
 	var shipInstance = ship.instantiate()
 	shipInstance.add_to_group("player")
 	grid.add_child(shipInstance)
-	#	to only place one ship remove the clickBoxes after placements 
-	
+	#	to only place one ship remove the clickBoxes after placements 	
+	get_parent().transition_to("ChooseShipToPlace")
+
+func exit():
 	for place in playerField:
 		if place.is_connected("fieldSelect",playerPlaced):
 			place.disconnect("fieldSelect",playerPlaced)
-	
-	get_parent().transition_to("ChooseShipToPlace")
-
-
