@@ -10,7 +10,7 @@ func enter(parameter := {}) -> void:
 	if !checkPlayer():
 		await get_tree().create_timer(3).timeout
 		get_tree().quit()
-	elif checkEnemy():
+	elif !checkEnemy():
 		get_parent().transition_to("LevelEndState")
 	else:
 		get_parent().transition_to("InterTurnState",{})

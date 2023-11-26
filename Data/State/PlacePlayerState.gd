@@ -9,17 +9,24 @@ var shipName
 
 #	regulates the placing of character ships
 func enter(parameter := {}) -> void:
+	
 	shipName = parameter["shipName"] 
+	
 	#	create player grid
 	if !main.has_node("PlayerGrid"):
 		var playerGridInstance = playerGrid.instantiate()
 		main.add_child(playerGridInstance)
-	#	
+
+
 	playerField =get_tree().get_nodes_in_group("PlayerField")
 	#	this is how 
 	for place in playerField:
 		if !place.has_node("Model"):
 			place.connect("fieldSelect", playerPlaced)
+			
+
+
+
 
 func playerPlaced(gridID):
 	#	get the grid by nodeID

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cj0wofdm4g5mk"]
+[gd_scene load_steps=33 format=3 uid="uid://cj0wofdm4g5mk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7kjg5"]
 [ext_resource type="PackedScene" uid="uid://himnox2wxi7d" path="res://Data/Camera/camera.tscn" id="2_wjkft"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dkslf6fo0yycv" path="res://Data/Campaign/campaign.tscn" id="11_uxify"]
 [ext_resource type="PackedScene" uid="uid://c62ireb8h86n3" path="res://battle_step.tscn" id="12_8ojwe"]
 [ext_resource type="Script" path="res://Data/State/EnemyState.gd" id="13_cd4cd"]
+[ext_resource type="Script" path="res://Data/State/PlaceSafedShipsState.gd" id="15_g5y3w"]
 [ext_resource type="Script" path="res://Data/State/ChoosePlayerState.gd" id="15_y8yl8"]
 [ext_resource type="Script" path="res://Data/State/CheckBoardState.gd" id="16_00dks"]
 [ext_resource type="Script" path="res://Data/State/PlayerTurn.gd" id="16_gjkpn"]
@@ -91,6 +92,9 @@ script = ExtResource("9_hd7he")
 
 [node name="ChooseShipToPlace" type="Node3D" parent="StateMashine"]
 script = ExtResource("8_wee5y")
+
+[node name="PlaceSafedShipsState" type="Node3D" parent="StateMashine"]
+script = ExtResource("15_g5y3w")
 
 [node name="PlacePlayerState" type="Node3D" parent="StateMashine"]
 transform = Transform3D(0.993863, 0, 0, 0, 0.993863, 0, 0, 0, 0.993863, 0, 0, 0)

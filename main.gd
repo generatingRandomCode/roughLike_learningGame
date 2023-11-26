@@ -12,7 +12,7 @@ var gridX : int
 var gridY : int
 #var playerShipsNames : Array[String]
 var currentLevelCount : int = 0
-var playerShips : Array[String]
+var playerShips : Array = []
 var currentCampaign : Campaign
 var currentLevel : BaseLevel
 var playerMoney : int = 0
