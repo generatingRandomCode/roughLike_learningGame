@@ -10,8 +10,7 @@ func enter(parameter := {}) -> void:
 	
 	for ship in get_tree().get_nodes_in_group("Ship"):
 		self.connect("checkForHealth", ship.checkForHealth)
-	#var test = ActionTemplate.new("wasser")
-	# wie sorg ich dafür das er für jedes schiff einmal 
+
 	var actions : Array[Node] = parameter["Actions"]
 	print("ActionTemplate: real", actions)
 	#	bevor ich sie sortiere muss ich die init sortieren
@@ -20,9 +19,11 @@ func enter(parameter := {}) -> void:
 	print("ActionTemplate: real ", actions)
 	
 	await executeActions(actions)
-	checkForHealth.emit(false)
+	checkForHealth.emit(true)
 	#await clearZeroHealthShips()
 	await clearBattlestep()
+	#	wait for actions to conclude
+	await get_tree().create_timer(.5).timeout
 	get_parent().transition_to("CheckBoardState",{})
 
 #	calls the functions 
@@ -51,17 +52,11 @@ func executeActions(actions : Array[Node]):
 				actions.erase(action)
 				continue
 			await action.payActionShipEnergy()
-			#await action.action.chooseTargetsSelf()
-			#var actionClon = action.action.duplicate(8)
-			#battleStep.add_child(actionClon)
-			#actionClon.fire(action)
 			await action.executeAction()
-			#await actionClon.action(action)
-			
+
 			get_tree().call_group("ShipUI", "updateShipUI")
 			actions.erase(action)
-			#actions.erase(action)
-		#await hideZeroHealthShips()
+		#	end of a init step
 		checkForHealth.emit(false)
 		await get_tree().create_timer(1).timeout
 		if currentMaxInitStep == initStep:

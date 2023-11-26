@@ -58,6 +58,7 @@ func checkHealthIsAboveZero():
 func checkForHealth(actionLoopEnd : bool = false):
 	if actionLoopEnd:
 		if !checkHealthIsAboveZero():
+			print("destroy")
 			destroySelf()
 	else:
 		if !checkHealthIsAboveZero():
@@ -67,8 +68,6 @@ func destroySelf():
 	for x in get_children():
 		remove_child(x)
 		x.queue_free()
-
-	await get_tree().create_timer(.5).timeout
 	if get_parent():
 		get_parent().remove_child(self)
 	queue_free()
