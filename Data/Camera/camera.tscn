@@ -34,14 +34,19 @@ size = Vector2i(574, 648)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="Node3D" type="Node3D" parent="GridContainer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("cam3D")]
-transform = Transform3D(0.939693, -0.241845, 0.241845, 0, 0.707107, 0.707107, -0.34202, -0.664463, 0.664463, -96.7609, 0, 0)
+[node name="Node3D" type="Node3D" parent="GridContainer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("cam3D", "positionNode")]
+transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, -90, 0, 0)
 script = ExtResource("1_ae3ip")
-cam3D = NodePath("Camera3DL")
-moveSpeed = 20.0
+cam3D = NodePath("Node3D/Camera3DL")
+moveSpeed = 40.0
+positionNode = NodePath("Node3D")
+playerDisplay = true
 
-[node name="Camera3DL" type="Camera3D" parent="GridContainer/SubViewportContainer/SubViewport/Node3D"]
-transform = Transform3D(1, -1.49012e-08, 1.49012e-08, 1.49012e-08, 1, 1.19209e-07, -1.49012e-08, -1.19209e-07, 1, 0, 0, 100)
+[node name="Node3D" type="Node3D" parent="GridContainer/SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="Camera3DL" type="Camera3D" parent="GridContainer/SubViewportContainer/SubViewport/Node3D/Node3D"]
+transform = Transform3D(1, 1.49012e-08, -1.49012e-08, 1.49012e-08, 1, 5.96046e-08, -1.49012e-08, -8.9407e-08, 1, 0, -1.90735e-06, 100)
 current = true
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="GridContainer"]
@@ -57,8 +62,21 @@ size = Vector2i(574, 648)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="Node3D" type="Node3D" parent="GridContainer/SubViewportContainer2/SubViewport2"]
+[node name="Node3D2" type="Node3D" parent="GridContainer/SubViewportContainer2/SubViewport2" node_paths=PackedStringArray("cam3D", "positionNode")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 90, 0, 0)
+script = ExtResource("1_ae3ip")
+cam3D = NodePath("Node3D/Camera3DL")
+moveSpeed = 40.0
+positionNode = NodePath("Node3D")
 
-[node name="Camera3DR" type="Camera3D" parent="GridContainer/SubViewportContainer2/SubViewport2/Node3D"]
-transform = Transform3D(0.939693, 0.241845, -0.241845, 0, 0.707107, 0.707107, 0.34202, -0.664463, 0.664463, 60, 60, 74.829)
+[node name="Node3D" type="Node3D" parent="GridContainer/SubViewportContainer2/SubViewport2/Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="Camera3DL" type="Camera3D" parent="GridContainer/SubViewportContainer2/SubViewport2/Node3D2/Node3D"]
+transform = Transform3D(1, 1.49012e-08, -1.49012e-08, 1.49012e-08, 1, 5.96046e-08, -1.49012e-08, -8.9407e-08, 1, 0, -1.90735e-06, 100)
 current = true
+
+[connection signal="mouse_entered" from="GridContainer/SubViewportContainer" to="GridContainer/SubViewportContainer/SubViewport/Node3D" method="_on_sub_viewport_container_mouse_entered"]
+[connection signal="mouse_exited" from="GridContainer/SubViewportContainer" to="GridContainer/SubViewportContainer/SubViewport/Node3D" method="_on_sub_viewport_container_mouse_exited"]
+[connection signal="mouse_entered" from="GridContainer/SubViewportContainer2" to="GridContainer/SubViewportContainer2/SubViewport2/Node3D2" method="_on_sub_viewport_container_2_mouse_entered"]
+[connection signal="mouse_exited" from="GridContainer/SubViewportContainer2" to="GridContainer/SubViewportContainer2/SubViewport2/Node3D2" method="_on_sub_viewport_container_2_mouse_exited"]
