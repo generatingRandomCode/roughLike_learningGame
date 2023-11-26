@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c5xynpirguq6l"]
+[gd_scene load_steps=20 format=3 uid="uid://c5xynpirguq6l"]
 
 [ext_resource type="Script" path="res://ShipsScripts/T-47p.gd" id="1_jxvy0"]
 [ext_resource type="Material" uid="uid://diacfryenl8o0" path="res://resource/ships/T-47p/T-47p_mat.tres" id="2_m3a2t"]
@@ -86,14 +86,31 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 60, 1, 0, 0, 1, 0, 120, 1, 0, 0, 0, -1)
 
+[sub_resource type="Animation" id="Animation_sflv4"]
+resource_name = "ship_move_animation"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array()
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pcug3"]
 _data = {
 "Ship_IdlShip_Idle_Animation": SubResource("Animation_nsnrd"),
-"Ship_Idle_Animation": SubResource("Animation_vh0hd")
+"Ship_Idle_Animation": SubResource("Animation_vh0hd"),
+"ship_move_animation": SubResource("Animation_sflv4")
 }
 
 [node name="Model" type="Node3D" node_paths=PackedStringArray("actions", "bonusActions")]
-transform = Transform3D(-0.109734, -0.993961, 0, 0.993961, -0.109734, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_jxvy0")
 ship_name = "T-47p"
 ship_health = 100
