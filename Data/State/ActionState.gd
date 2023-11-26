@@ -54,12 +54,12 @@ func executeActions(actions : Array[Node]):
 				continue
 			await action.payActionShipEnergy()
 			await action.executeAction()
-
 			get_tree().call_group("ShipUI", "updateShipUI")
 			actions.erase(action)
 		#	end of a init step
-		checkForHealth.emit(false)
 		await get_tree().create_timer(1).timeout
+		get_tree().call_group("ShipUI", "updateShipUI")
+		checkForHealth.emit(false)
 		if currentMaxInitStep == initStep:
 			break
 		#if !actions:

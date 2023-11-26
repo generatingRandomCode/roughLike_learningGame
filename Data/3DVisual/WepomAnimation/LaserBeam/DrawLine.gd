@@ -22,7 +22,7 @@ func _ready():
 # Called when the node enters the scene tree for the first time.
 func fire(action : ActionTemplate,timeout : float = 1):
 	var position1 = self.global_position
-	var position2 = action.targets.global_position
+	var position2 = action.targetField.global_position
 	t = timeout
 	curve.clear_points()
 	curve.add_point(to_local(position1))
