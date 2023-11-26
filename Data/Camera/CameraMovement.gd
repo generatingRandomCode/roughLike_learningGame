@@ -8,8 +8,10 @@ var mouseInsideCam = false;
 var startPosition: Vector3;
 var startRotation: Vector3;
 @export var positionNode: Node3D;
-var maxZoom = 1000
-var minZoom = 20
+var maxZoom = 150
+var minZoom = 15
+var minRotation = -60
+var maxRotation = 60
 @export var playerDisplay: bool;
 
 
@@ -23,7 +25,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	positionNode.position = Vector3(positionNode.position.x+moveDirection.x*delta*moveSpeed, positionNode.position.y+moveDirection.y*delta*moveSpeed, positionNode.position.z+moveDirection.z*delta*moveSpeed)
-	rotation_degrees = Vector3(rotation_degrees.x+rotateDirection.x*delta*moveSpeed, rotation_degrees.y+rotateDirection.y*delta*moveSpeed, rotation_degrees.z+rotateDirection.z*delta*moveSpeed)
+	if(minRotation<rotation_degrees.y+rotateDirection.y*delta*moveSpeed && maxRotation>rotation_degrees.y+rotateDirection.y*delta*moveSpeed):
+		rotation_degrees = Vector3(rotation_degrees.x+rotateDirection.x*delta*moveSpeed, rotation_degrees.y+rotateDirection.y*delta*moveSpeed, rotation_degrees.z+rotateDirection.z*delta*moveSpeed)
 
 func _input(event):
 	if(mouseInsideCam):
@@ -114,7 +117,7 @@ func _on_sub_viewport_container_mouse_entered():
 func _on_sub_viewport_container_mouse_exited():
 	if(playerDisplay):
 		mouseInsideCam = false;
-		moveDirection = Vector3(0,0,0)
+	moveDirection = Vector3(0,0,0)
 
 
 func _on_sub_viewport_container_2_mouse_entered():
@@ -125,4 +128,4 @@ func _on_sub_viewport_container_2_mouse_entered():
 func _on_sub_viewport_container_2_mouse_exited():
 	if(!playerDisplay):
 		mouseInsideCam = false;
-		moveDirection = Vector3(0,0,0)
+	moveDirection = Vector3(0,0,0)

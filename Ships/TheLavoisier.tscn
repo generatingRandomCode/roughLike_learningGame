@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://mubsfndci7ev"]
+[gd_scene load_steps=19 format=3 uid="uid://mubsfndci7ev"]
 
 [ext_resource type="Script" path="res://ShipsScripts/TheLavoisier.gd" id="1_b0vgl"]
 [ext_resource type="Material" uid="uid://dawfwb4tocs7o" path="res://resource/ships/TheLavoisier/TheLavoisier_mat.tres" id="2_p24xr"]
@@ -85,14 +85,32 @@ tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 3.6, 1, 0.017, 0.001, 0.017, 1, 12.2, 1, -0.017, 0.001, -0.017, 1, 16.1, 1, 0, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_qgt7y"]
+resource_name = "ship_move_animation"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array()
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pcug3"]
 _data = {
 "Ship_IdlShip_Idle_Animation": SubResource("Animation_nsnrd"),
-"Ship_Idle_Animation": SubResource("Animation_vh0hd")
+"Ship_Idle_Animation": SubResource("Animation_vh0hd"),
+"ship_move_animation": SubResource("Animation_qgt7y")
 }
 
 [node name="Model" type="Node3D" node_paths=PackedStringArray("shipModell", "actions", "bonusActions")]
-transform = Transform3D(0.999506, -0.0312966, 0.00299829, 0.0313752, 0.999018, -0.0312966, -0.00201587, 0.0313752, 0.999506, -0.293577, 0.107264, 0.861023)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_b0vgl")
 ship_name = "The Lavoisier"
 shipModell = NodePath("TheLavoisier")
