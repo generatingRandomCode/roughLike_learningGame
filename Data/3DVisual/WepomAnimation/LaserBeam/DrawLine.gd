@@ -34,7 +34,6 @@ func fire(position1: Vector3,position2: Vector3, action = null,timeout : float =
 		#Capsule.set_scale(Vector3(0.2, 1, 0.2))
 		progress = 0.0
 		set_process(true)
-		
 	else:
 		fireParticle.process_material = processParticleMaterial
 		targetParticle.process_material = processParticleMaterial

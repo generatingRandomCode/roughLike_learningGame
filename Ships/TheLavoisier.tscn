@@ -91,10 +91,11 @@ _data = {
 "Ship_Idle_Animation": SubResource("Animation_vh0hd")
 }
 
-[node name="Model" type="Node3D" node_paths=PackedStringArray("actions", "bonusActions")]
+[node name="Model" type="Node3D" node_paths=PackedStringArray("shipModell", "actions", "bonusActions")]
 transform = Transform3D(0.999506, -0.0312966, 0.00299829, 0.0313752, 0.999018, -0.0312966, -0.00201587, 0.0313752, 0.999506, -0.293577, 0.107264, 0.861023)
 script = ExtResource("1_b0vgl")
 ship_name = "The Lavoisier"
+shipModell = NodePath("TheLavoisier")
 ship_health = 100
 ship_armor = 100
 ship_energy = 12

@@ -6,8 +6,10 @@
 [node name="ShieldSmall" type="Node3D"]
 script = ExtResource("1_lvi1e")
 energyCost = 5
+active = null
 icon = ExtResource("2_olsgk")
 wepon_name = "ShieldSmall"
 wepon_initiative = 3
 needTarget = null
+needTargetField = null
 targetPreselection = 1

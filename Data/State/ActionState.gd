@@ -1,8 +1,15 @@
 extends State
 
+#	this signal will be emitted at the end of the round to destroy all ships
+signal checkForHealth
+
+@onready var battleStep : Node3D = $BattleStep
 #	Actions [action, cause, target]
 #	gets a array of actions, sort them by init and executes them
 func enter(parameter := {}) -> void:
+	
+	for ship in get_tree().get_nodes_in_group("Ship"):
+		self.connect("checkForHealth", ship.checkForHealth)
 	#var test = ActionTemplate.new("wasser")
 	# wie sorg ich dafür das er für jedes schiff einmal 
 	var actions : Array[Node] = parameter["Actions"]
@@ -13,53 +20,59 @@ func enter(parameter := {}) -> void:
 	print("ActionTemplate: real ", actions)
 	
 	await executeActions(actions)
-	await clearZeroHealthShips()
+	checkForHealth.emit(false)
+	#await clearZeroHealthShips()
+	await clearBattlestep()
 	get_parent().transition_to("CheckBoardState",{})
 
 #	calls the functions 
 func executeActions(actions : Array[Node]):
-	#	sort action
-	#var start : int = 0
+
 	var MaxinitStep : int = 11
-	var currentMaxInitStep = actions[-1].actionInitiative
-	#for action in actions:
-	#while actions:
-	for initStep in MaxinitStep:
+	var startInit = max(1,actions[0].actionInitiative - 1)
+	
+	var currentMaxInitStep = (actions[-1].actionInitiative) + 5
+	for initStep in range( startInit ,currentMaxInitStep):
+		#	sort the action and get a new end init to end the turn
+		actions = sortActionsByInitative(actions)
 		displayInitTimer(initStep)
 		print("field test: set field check1", actions)
-		for action in actions:
-		#var action = actions[0]
+		#for action in actions:
+		var actionCounter = 0
+		while(actionCounter < actions.size()):
+			var action = actions[actionCounter]
 		#	cehck if current action still exist and if not skip the action -> rebuild to while until all actions are done?
 		#	check bevore ship is destroyed
 			if action.actionInitiative != initStep:
+				actionCounter += 1
 				continue
+			#	check for valid action and delete if not
 			if !checkActionCanExecute(action):
-				#actions.erase(action)
+				actions.erase(action)
 				continue
-			print("field test: set field check2", action.action)
 			await action.payActionShipEnergy()
+			#await action.action.chooseTargetsSelf()
+			#var actionClon = action.action.duplicate(8)
+			#battleStep.add_child(actionClon)
+			#actionClon.fire(action)
 			await action.executeAction()
+			#await actionClon.action(action)
+			
 			get_tree().call_group("ShipUI", "updateShipUI")
+			actions.erase(action)
 			#actions.erase(action)
-		await hideZeroHealthShips()
+		#await hideZeroHealthShips()
+		checkForHealth.emit(false)
 		await get_tree().create_timer(1).timeout
 		if currentMaxInitStep == initStep:
 			break
-		#	wait 1 second after each action
-		#	if new init round start remove all ships with zero health
-			#if(start < action.actionInitiative):
-			#	start = action.actionInitiative
-			#	await get_tree().create_timer(1).timeout
-		#	check after ship destroyed
-		#if !checkActionCanExecute(action):
-		#	actions.erase(action)
-		#	continue
+		#if !actions:
+		#	break
+func clearBattlestep()->void:
+	for x in battleStep.get_children():
+		battleStep.remove_child(x)
+		x.queue_free()
 
-		#	call the battelstep with the action
-		#pay energy cost
-
-		#get_tree().call_group("ShipUI", "updateShipUI")
-		#actions.erase(action)
 
 #	problem wie weiß ich beim überprüfen ob ich target oder targetFieldBrauche 
 func checkActionCanExecute(action):
@@ -91,7 +104,7 @@ func hideZeroHealthShips():
 		if !ship:
 			continue
 		if !ship.checkHealthIsAboveZero():
-			await ship.hideAndDestroy()
+			await ship.hideAndShowDestruction()
 			
 	get_tree().call_group("ShipUI", "updateShipUI")
 func clearZeroHealthShips():
@@ -123,3 +136,6 @@ func displayInitTimer(initStep: int):
 	turnLabel.text = "init: " + str(initStep)
 	turnLabel.show()
 
+func exit():
+	for ship in get_tree().get_nodes_in_group("Ship"):
+		self.disconnect("checkForHealth", ship.checkForHealth)
