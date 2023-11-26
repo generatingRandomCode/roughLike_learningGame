@@ -12,7 +12,7 @@ func enter(_msg := {}) -> void:
 	print("test")
 	#deactivate
 	gridX = 2
-	gridY = 2
+	gridY = 4
 	valuesChosen()
 	
 

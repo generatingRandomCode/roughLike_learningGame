@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dwwq4fv0r2ct0" path="res://Data/3DVisual/WepomAnimation/LaserBeam/LaiserShot_Scene.tscn" id="3_napch"]
 [ext_resource type="Material" uid="uid://b7xiia23m6emy" path="res://Data/3DVisual/WepomAnimation/LaserBeam/bigLaiserShot_ParticleEffect.tres" id="4_7tfhl"]
 
-[sub_resource type="Curve3D" id="Curve3D_27rfq"]
+[sub_resource type="Curve3D" id="Curve3D_qo50j"]
 resource_local_to_scene = true
 
 [node name="bigLaserBeam" type="Node3D"]
@@ -19,5 +19,5 @@ wepon_initiative = 8
 targetPreselection = 7
 
 [node name="LaserBeam" parent="." instance=ExtResource("3_napch")]
-curve = SubResource("Curve3D_27rfq")
+curve = SubResource("Curve3D_qo50j")
 processParticleMaterial = ExtResource("4_7tfhl")
