@@ -8,6 +8,8 @@ var shipUI = preload("res://ship_ui.tscn")
 
 #	Basic Ship Variables
 @export var ship_name : String
+@export var shipModell : MeshInstance3D
+var shipDestroyed : bool = false
 #	ship base stats
 @export var ship_health : int
 var ship_current_health = null
@@ -52,19 +54,40 @@ func checkHealthIsAboveZero():
 		return true
 	return false
 
+# gets signalled from the action State
+func checkForHealth(actionLoopEnd : bool = false):
+	if actionLoopEnd:
+		if !checkHealthIsAboveZero():
+			destroySelf()
+	else:
+		if !checkHealthIsAboveZero():
+			hideAndShowDestruction()
+
 func destroySelf():
-	var explosionInstance = explosion.instantiate()
-	#await get_tree().create_timer(.1).timeout
-	#hide()
 	for x in get_children():
 		remove_child(x)
 		x.queue_free()
 
-	add_child(explosionInstance)
 	await get_tree().create_timer(.5).timeout
 	if get_parent():
 		get_parent().remove_child(self)
 	queue_free()
+
+func hideAndShowDestruction():
+	#	play the explosion when ship is not destroyed yet
+	if !shipDestroyed:
+		var explosionInstance = explosion.instantiate()
+		add_child(explosionInstance)
+		await get_tree().create_timer(.01).timeout
+		shipDestroyed = true
+	#	hide all ship and wepon models
+	$TrusterParticle.hide()
+	shipModell.hide()
+	for action in bonusActions + actions:
+		if action.has_node("Model"):
+			action.get_node("Model").hide()
+	#hide()
+	
 
 func updateEnergy():
 	print("updateEnergy")

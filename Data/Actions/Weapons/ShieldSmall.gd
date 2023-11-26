@@ -9,6 +9,6 @@ func _ready():
 	#wepon_damage = 0
 
 func loadedAction(action) -> void:
-	selfShieldRaise(150)
+	selfShieldRaise(action, 150)
 	#executeDamageAction(targetID)
 

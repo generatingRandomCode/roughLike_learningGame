@@ -15,6 +15,7 @@ enum TargetPreselectionPatterns{
 enum ActionType {Action = 0, BonusAction = 1}
 
 @export var energyCost : int
+@export var animation : Node
 #	wepons can becom inactive through ammonitiondepeltions for expample
 @export var active : bool = true
 @export var icon : CompressedTexture2D
@@ -34,6 +35,7 @@ var actionType : ActionType
 #	has to be here for the target stuff...
 @onready var gridX = main.gridX
 @onready var gridY = main.gridY
+
 
 func _enter_tree():
 	buildDescription()

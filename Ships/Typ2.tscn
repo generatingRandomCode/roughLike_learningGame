@@ -74,10 +74,11 @@ _data = {
 "Ship_Idle_Animation": SubResource("Animation_mmlf7")
 }
 
-[node name="Model" type="Node3D" node_paths=PackedStringArray("actions", "bonusActions")]
+[node name="Model" type="Node3D" node_paths=PackedStringArray("shipModell", "actions", "bonusActions")]
 transform = Transform3D(0.997624, -0.0688881, 0, 0.0688881, 0.997624, 0, 0, 0, 1, -0.00247513, 0.0985127, 0.497337)
 script = ExtResource("1_m8hma")
 ship_name = "Typ-2"
+shipModell = NodePath("Typ2")
 ship_health = 50
 ship_armor = 50
 ship_shield = 250
