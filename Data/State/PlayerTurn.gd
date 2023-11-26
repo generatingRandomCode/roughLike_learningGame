@@ -28,9 +28,10 @@ func enter(parameter := {}) -> void:
 	if !bonusActionsLeft:
 		bonusActionsLeft = get_tree().get_nodes_in_group("player")
 	
-	skipAllButton.show()
 	#	choose player for action
 	await get_parent().transition_to("PlayerTurnState/ChoosePlayerState")
+	#	show skip all button at the end ?
+	skipAllButton.show()
 
 
 
@@ -80,10 +81,12 @@ func skipAction():
 	checkForActionsLeft()
 	
 func skipAllAction():
-	skipAllButton.hide()
-	actionsLeft = []
-	bonusActionsLeft = []
-	checkForActionsLeft()
+	#only deactivate as clickable when there are no actions to click left
+	if actionsLeft + bonusActionsLeft:
+		skipAllButton.hide()
+		actionsLeft = []
+		bonusActionsLeft = []
+		checkForActionsLeft()
 
 func removeUsedAction(action : Node)->void:
 	if !action:
