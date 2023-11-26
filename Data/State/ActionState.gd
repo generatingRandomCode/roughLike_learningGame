@@ -21,14 +21,15 @@ func executeActions(actions : Array[Node]):
 	#	sort action
 	#var start : int = 0
 	var MaxinitStep : int = 11
+	var currentMaxInitStep = actions[-1].actionInitiative
 	#for action in actions:
 	#while actions:
 	for initStep in MaxinitStep:
 		displayInitTimer(initStep)
+		print("field test: set field check1", actions)
 		for action in actions:
 		#var action = actions[0]
 		#	cehck if current action still exist and if not skip the action -> rebuild to while until all actions are done?
-			print("field test: set field check1", action.action)
 		#	check bevore ship is destroyed
 			if action.actionInitiative != initStep:
 				continue
@@ -39,10 +40,12 @@ func executeActions(actions : Array[Node]):
 			await action.payActionShipEnergy()
 			await action.executeAction()
 			get_tree().call_group("ShipUI", "updateShipUI")
-			
-		#	wait 1 second after each action
-		await clearZeroHealthShips()
+			#actions.erase(action)
+		await hideZeroHealthShips()
 		await get_tree().create_timer(1).timeout
+		if currentMaxInitStep == initStep:
+			break
+		#	wait 1 second after each action
 		#	if new init round start remove all ships with zero health
 			#if(start < action.actionInitiative):
 			#	start = action.actionInitiative
@@ -68,7 +71,8 @@ func checkActionCanExecute(action):
 	if !cause.get_child_count():
 		return false
 #	#	check if target is required
-	
+	if !cause.ship_current_health:
+		return false
 	if action.needTarget:
 		if !action.targets:
 			return false
@@ -82,6 +86,14 @@ func checkActionCanExecute(action):
 		return false
 	return true
 
+func hideZeroHealthShips():
+	for ship in get_tree().get_nodes_in_group("Ship"):
+		if !ship:
+			continue
+		if !ship.checkHealthIsAboveZero():
+			await ship.hideAndDestroy()
+			
+	get_tree().call_group("ShipUI", "updateShipUI")
 func clearZeroHealthShips():
 	print("clearZeroHealthShips: statz")
 	for ship in get_tree().get_nodes_in_group("Ship"):

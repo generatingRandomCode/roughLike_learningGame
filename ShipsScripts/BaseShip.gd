@@ -66,6 +66,21 @@ func destroySelf():
 		get_parent().remove_child(self)
 	queue_free()
 
+func hideAndDestroy():
+	var explosionInstance = explosion.instantiate()
+	#await get_tree().create_timer(.1).timeout
+	#hide()
+	#for x in get_children():
+	#	remove_child(x)
+	#	x.queue_free()
+
+	add_child(explosionInstance)
+	await get_tree().create_timer(.5).timeout
+	hide()
+	#if get_parent():
+	#	get_parent().remove_child(self)
+	#queue_free()
+
 func updateEnergy():
 	print("updateEnergy")
 	ship_current_energy = min(ship_energy, ship_current_energy + ship_energy_regeneration)

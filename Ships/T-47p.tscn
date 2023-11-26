@@ -100,8 +100,8 @@ ship_health = 100
 ship_armor = 400
 ship_energy = 6
 ship_energy_regeneration = 1
-actions = [NodePath("bigLaserBeam"), NodePath("ArmorRepairDrones")]
-bonusActions = [NodePath("DriveBurn")]
+actions = [NodePath("bigLaserBeam")]
+bonusActions = [NodePath("DriveBurn"), NodePath("ArmorRepairDrones")]
 
 [node name="TheLavoisier" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)

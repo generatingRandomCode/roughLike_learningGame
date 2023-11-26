@@ -20,7 +20,7 @@ func _ready():
 	hide()
 
 # Called when the node enters the scene tree for the first time.
-func fire(position1: Vector3,position2: Vector3, timeout : float = 1):
+func fire(position1: Vector3,position2: Vector3, action = null,timeout : float = 1):
 	position1 = self.global_position
 	t = timeout
 	curve.clear_points()
@@ -44,6 +44,9 @@ func fire(position1: Vector3,position2: Vector3, timeout : float = 1):
 
 	await get_tree().create_timer(timeout).timeout
 	set_process(false)
+	if action:
+		if action.targetField.has_node("Model"):
+			get_parent().executeDamageAction(action.targets)
 	targetParticle.emitting = true
 	await get_tree().create_timer(0.2).timeout
 	hide()
