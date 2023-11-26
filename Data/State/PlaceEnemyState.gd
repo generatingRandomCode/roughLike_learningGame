@@ -5,13 +5,32 @@ var enemyGrid
 
 
 func enter(parameter := {}) -> void:
-
 	enemyGrid = get_tree().get_nodes_in_group("EnemyField")
-	#enemyGrid = get_tree().get_node("Player2")
 	print("place Enemy State")
-	placeEnemy()
+	placeEnemyFromCurrentLevel()
+	#placeEnemyRandom()
+	get_parent().transition_to("InterTurnState")
+
+
+func placeEnemyFromCurrentLevel():
+	var currentLevel = main.currentLevel
+	var enemyGridRoot = main.get_node("PlayerGrid/Enemy")
+	for index in currentLevel.enemyShipsNames.size():
+		var shipName = currentLevel.enemyShipsNames[index]
+		var shipPath = "res://Ships/" + shipName + ".tscn"
+		var ship = load(shipPath)
+		var shipInstance = ship.instantiate()
+		shipInstance.add_to_group("enemy")
+		#var posX =  currentLevel.enemyPosition[index][0]
+		#var posY =  currentLevel.enemyPosition[index][0]
+		var random_index = randi() % enemyGrid.size()
+		enemyGrid[random_index].add_child(shipInstance)
+		#enemyGridRoot.get_node(str(posX)).get_node(str(posY)).add_child(shipInstance)
+		
 	
-func placeEnemy():
+
+
+func placeEnemyRandom():
 	var enemyNumber = max(1,randi() % 9)
 	#var enemyNumber = 2
 	var shipList = []
@@ -42,5 +61,3 @@ func placeEnemy():
 		# Create a new node as a child
 		# Add the new node as a child to the random child
 		print("Added a new EnemyShip to a random child.")
-	
-	get_parent().transition_to("InterTurnState")

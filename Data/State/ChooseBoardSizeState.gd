@@ -11,8 +11,8 @@ func enter(_msg := {}) -> void:
 	main.get_node("StartMenu/GetXY").show()
 	print("test")
 	#deactivate
-	gridX = 2
-	gridY = 2
+	gridX = 3
+	gridY = 3
 	valuesChosen()
 	
 

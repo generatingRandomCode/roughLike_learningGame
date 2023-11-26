@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkslf6fo0yycv"]
+
+[ext_resource type="Script" path="res://Data/Campaign/campaign.gd" id="1_ylgbc"]
+[ext_resource type="Script" path="res://Data/Campaign/Level1.gd" id="2_cjc45"]
+
+[node name="Campaign" type="Node3D"]
+script = ExtResource("1_ylgbc")
+
+[node name="Level1" type="Node3D" parent="." node_paths=PackedStringArray("enemyShips")]
+script = ExtResource("2_cjc45")
+enemyShipsNames = Array[String](["TheLavoisier"])
+enemyShips = []
+lootMoney = 100
+
+[node name="Level2" type="Node3D" parent="." node_paths=PackedStringArray("enemyShips")]
+script = ExtResource("2_cjc45")
+enemyShipsNames = Array[String](["TheLavoisier", "TheLavoisier", "Typ1"])
+enemyShips = []
+lootMoney = 100

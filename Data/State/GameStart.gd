@@ -7,4 +7,4 @@ extends State
 
 #	get the number of player ships
 func enter(_msg := {}) -> void:
-	get_parent().transition_to("ChooseBoardSizeState")
+	get_parent().transition_to("CreateCampaignState")

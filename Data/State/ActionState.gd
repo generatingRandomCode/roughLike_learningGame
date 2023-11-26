@@ -32,9 +32,9 @@ func executeActions(actions : Array[Node]):
 
 	var MaxinitStep : int = 100
 	#	start one bevore first action
-	var startInit = max(1,actions[0].actionInitiative - 1)
+	var startInit = max(0,actions[0].actionInitiative - 1)
 	var currentMaxInitStep : int = 0
-	for initStep in range( startInit ,MaxinitStep):
+	for initStep in range(startInit ,MaxinitStep):
 		#	sort the action and get a new end init to end the turn
 		actions = sortActionsByInitative(actions)
 		displayInitTimer(initStep)
@@ -44,7 +44,7 @@ func executeActions(actions : Array[Node]):
 		while(actionCounter < actions.size()):
 			#	keep the longest going action
 			var action = actions[actionCounter]
-			currentMaxInitStep = max(currentMaxInitStep ,action.actionInitiative + action.action.timeNeededForAction)
+			currentMaxInitStep = max(currentMaxInitStep ,action.actionInitiative + action.action.timeNeededForAction + 1)
 		#	cehck if current action still exist and if not skip the action -> rebuild to while until all actions are done?
 		#	check bevore ship is destroyed
 			if action.actionInitiative != initStep:
