@@ -41,14 +41,7 @@ func _enter_tree():
 #	function that shoud be called form outside the class if you want to execute a action
 #	this shoud be in the action validation and not here
 func action(action : Node) ->  void:
-	#	check if you can pay the energy cost, if not pass or play animation
 	await loadedAction(action)
-	#if energyCost == 0:
-	#	await loadedAction(action)
-	#elif self.owner.useEnergy(energyCost):
-	#	await loadedAction(action)
-	#else:
-	#	pass
 
 #	function that every ACTION defines for itself
 func loadedAction(action)-> void:
