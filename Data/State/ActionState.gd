@@ -30,11 +30,11 @@ func enter(parameter := {}) -> void:
 #	calls the functions 
 func executeActions(actions : Array[Node]):
 
-	var MaxinitStep : int = 11
+	var MaxinitStep : int = 100
+	#	start one bevore first action
 	var startInit = max(1,actions[0].actionInitiative - 1)
-	
-	var currentMaxInitStep = (actions[-1].actionInitiative) + 5
-	for initStep in range( startInit ,currentMaxInitStep):
+	var currentMaxInitStep : int = 0
+	for initStep in range( startInit ,MaxinitStep):
 		#	sort the action and get a new end init to end the turn
 		actions = sortActionsByInitative(actions)
 		displayInitTimer(initStep)
@@ -42,7 +42,9 @@ func executeActions(actions : Array[Node]):
 		#for action in actions:
 		var actionCounter = 0
 		while(actionCounter < actions.size()):
+			#	keep the longest going action
 			var action = actions[actionCounter]
+			currentMaxInitStep = max(currentMaxInitStep ,action.actionInitiative + action.action.timeNeededForAction)
 		#	cehck if current action still exist and if not skip the action -> rebuild to while until all actions are done?
 		#	check bevore ship is destroyed
 			if action.actionInitiative != initStep:
@@ -64,6 +66,8 @@ func executeActions(actions : Array[Node]):
 			break
 		#if !actions:
 		#	break
+		
+
 func clearBattlestep()->void:
 	for x in battleStep.get_children():
 		battleStep.remove_child(x)
@@ -95,22 +99,6 @@ func checkActionCanExecute(action):
 		return false
 	return true
 
-func hideZeroHealthShips():
-	for ship in get_tree().get_nodes_in_group("Ship"):
-		if !ship:
-			continue
-		if !ship.checkHealthIsAboveZero():
-			await ship.hideAndShowDestruction()
-			
-	get_tree().call_group("ShipUI", "updateShipUI")
-func clearZeroHealthShips():
-	print("clearZeroHealthShips: statz")
-	for ship in get_tree().get_nodes_in_group("Ship"):
-		if !ship:
-			continue
-		if !ship.checkHealthIsAboveZero():
-			await ship.destroySelf()
-	get_tree().call_group("ShipUI", "updateShipUI")
 
 func sortActionsByInitative(actions : Array[Node])->Array[Node]:
 	actions.sort_custom(func(a, b): return  a.actionInitiative < b.actionInitiative)
