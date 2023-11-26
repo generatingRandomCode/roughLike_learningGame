@@ -19,7 +19,8 @@ func enter(parameter := {}) -> void:
 #	calls the functions 
 func executeActions(actions : Array[Node]):
 	#	sort action
-	var start = 0
+	var start : int = 0
+	var initStep : int = 0
 	#for action in actions:
 	while actions:
 		var action = actions[0]
