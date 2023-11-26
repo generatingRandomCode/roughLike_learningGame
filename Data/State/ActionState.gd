@@ -19,37 +19,44 @@ func enter(parameter := {}) -> void:
 #	calls the functions 
 func executeActions(actions : Array[Node]):
 	#	sort action
-	var start : int = 0
-	var initStep : int = 0
+	#var start : int = 0
+	var MaxinitStep : int = 11
 	#for action in actions:
-	while actions:
-		var action = actions[0]
-		get_tree().call_group("ShipUI", "updateShipUI")
+	#while actions:
+	for initStep in MaxinitStep:
+		displayInitTimer(initStep)
+		for action in actions:
+		#var action = actions[0]
 		#	cehck if current action still exist and if not skip the action -> rebuild to while until all actions are done?
-		print("field test: set field check1", action.action)
+			print("field test: set field check1", action.action)
 		#	check bevore ship is destroyed
-		if !checkActionCanExecute(action):
-			actions.erase(action)
-			continue
-		print("field test: set field check2", action.action)
+			if action.actionInitiative != initStep:
+				continue
+			if !checkActionCanExecute(action):
+				#actions.erase(action)
+				continue
+			print("field test: set field check2", action.action)
+			await action.payActionShipEnergy()
+			await action.executeAction()
+			get_tree().call_group("ShipUI", "updateShipUI")
+			
+		#	wait 1 second after each action
+		await clearZeroHealthShips()
+		await get_tree().create_timer(1).timeout
 		#	if new init round start remove all ships with zero health
-		if(start < action.actionInitiative):
-			start = action.actionInitiative
-			await clearZeroHealthShips()
-			await get_tree().create_timer(1).timeout
+			#if(start < action.actionInitiative):
+			#	start = action.actionInitiative
+			#	await get_tree().create_timer(1).timeout
 		#	check after ship destroyed
-		if !checkActionCanExecute(action):
-			actions.erase(action)
-			continue
+		#if !checkActionCanExecute(action):
+		#	actions.erase(action)
+		#	continue
 
 		#	call the battelstep with the action
 		#pay energy cost
-		await action.payActionShipEnergy()
-		await action.executeAction()
 
-		get_tree().call_group("ShipUI", "updateShipUI")
-		#await get_tree().create_timer(.25).timeout
-		actions.erase(action)
+		#get_tree().call_group("ShipUI", "updateShipUI")
+		#actions.erase(action)
 
 #	problem wie weiß ich beim überprüfen ob ich target oder targetFieldBrauche 
 func checkActionCanExecute(action):
@@ -99,4 +106,8 @@ func reInitizeActions(actions : Array[Node])->void:
 				if actionToCompare == actions[y].cause:
 					actions[y].actionInitiative += actions[x].actionInitiative
 				
+func displayInitTimer(initStep: int):
+	var turnLabel = main.get_node("StateMashine/InterTurnState/Panel/RichTextLabel")
+	turnLabel.text = "init: " + str(initStep)
+	turnLabel.show()
 
