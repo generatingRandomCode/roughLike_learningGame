@@ -212,6 +212,7 @@ process_material = SubResource("ParticleProcessMaterial_2eo25")
 draw_pass_1 = SubResource("QuadMesh_xdvja")
 
 [node name="Transmitter" parent="." instance=ExtResource("6_ws2lb")]
+transform = Transform3D(1, 4.43979e-08, 0, -1.60071e-10, 1, 0, 5.12227e-09, 4.47035e-08, 1, -4.71319, 6.45159, -4.67345)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
