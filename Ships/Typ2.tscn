@@ -93,7 +93,6 @@ _data = {
 }
 
 [node name="Model" type="Node3D" node_paths=PackedStringArray("shipModell", "actions", "bonusActions")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_m8hma")
 ship_name = "Typ-2"
 shipModell = NodePath("Typ2")
