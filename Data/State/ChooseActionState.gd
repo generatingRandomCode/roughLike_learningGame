@@ -19,7 +19,7 @@ func enter(parameter = {}) -> void:
 	if selectedShip in get_parent().bonusActionsLeft:
 		actionNameList += selectedShip.bonusActions
 	
-	setAtionType(actionNameList)
+	setActionType(actionNameList)
 	print("bonusAction",actionNameList)
 	print("bonusAction", actionNameList[0].actionType)
 
@@ -47,9 +47,8 @@ func exit()->void:
 	main.get_node("ActionUI").hide()
 	main.get_node("ActionUI").disconnect("actionChoosen",actionChoosen)
 
-func setAtionType(actions: Array[Node]):
+func setActionType(actions: Array[Node]):
 	for x in actions:
-		print("debug: ", x.wepon_name)
 		if x in selectedShip.actions:
 			x.actionType = 0#	Action in enum
 		else:

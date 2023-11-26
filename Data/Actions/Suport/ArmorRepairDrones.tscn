@@ -5,6 +5,7 @@
 
 [node name="ArmorRepairDrones" type="Node3D"]
 script = ExtResource("1_juy4e")
+timeNeededForAction = 1
 energyCost = 2
 icon = ExtResource("2_4hbl5")
 wepon_name = "ArmorRepairDrones"

@@ -24,6 +24,7 @@ func enter(parameter := {}) -> void:
 	await clearBattlestep()
 	#	wait for actions to conclude
 	await get_tree().create_timer(.5).timeout
+	get_tree().call_group("ShipUI", "updateShipUI")
 	get_parent().transition_to("CheckBoardState",{})
 
 #	calls the functions 

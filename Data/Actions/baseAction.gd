@@ -14,6 +14,8 @@ enum TargetPreselectionPatterns{
 	}
 enum ActionType {Action = 0, BonusAction = 1}
 
+
+@export var timeNeededForAction : int
 @export var energyCost : int
 @export var animation : Node
 #	wepons can becom inactive through ammonitiondepeltions for expample
