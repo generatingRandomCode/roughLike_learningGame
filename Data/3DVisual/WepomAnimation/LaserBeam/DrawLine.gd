@@ -19,6 +19,7 @@ func _ready():
 
 # Called when the node enters the scene tree for the first time.
 func fire(position1: Vector3,position2: Vector3, timeout : float = 1):
+	position1 = self.global_position
 	t = timeout
 	curve.clear_points()
 	curve.add_point(to_local(position1))
@@ -28,7 +29,7 @@ func fire(position1: Vector3,position2: Vector3, timeout : float = 1):
 	if(isProjectile):
 		pathFollow.set_progress_ratio(0)
 		show()
-		Capsule.set_scale(Vector3(0.2, 1, 0.2))
+		#Capsule.set_scale(Vector3(0.2, 1, 0.2))
 		progress = 0.0
 		set_process(true)
 		
@@ -39,6 +40,8 @@ func fire(position1: Vector3,position2: Vector3, timeout : float = 1):
 
 	await get_tree().create_timer(timeout).timeout
 	set_process(false)
+	targetParticle.emitting = true
+	await get_tree().create_timer(0.2).timeout
 	hide()
 	curve.clear_points()
 

@@ -11,10 +11,11 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djupj"]
 transparency = 1
+blend_mode = 1
 albedo_texture = ExtResource("4_xfa1f")
 emission_enabled = true
-emission = Color(1, 0, 0, 1)
-emission_energy_multiplier = 3.0
+emission = Color(1, 0.443137, 0.376471, 1)
+emission_energy_multiplier = 16.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_ijjch"]
 flip_faces = true
@@ -65,4 +66,4 @@ draw_pass_1 = SubResource("QuadMesh_ijjch")
 script = ExtResource("6_c3vp7")
 
 [node name="LaserBeam" parent="." instance=ExtResource("8_ktb3x")]
-transform = Transform3D(1.14257, 0, 0, 0, 1.14257, 0, 0, 0, 1.14257, -0.0210885, 1.39134, -4.66785)
+transform = Transform3D(1.14257, 0, 0, 0, 1.14257, 0, 0, 0, 1.14257, 0, 1.391, -4.668)
