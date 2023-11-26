@@ -33,14 +33,15 @@ sky_material = SubResource("PanoramaSkyMaterial_dwnx6")
 
 [sub_resource type="Environment" id="Environment_i7vx7"]
 background_mode = 2
+background_energy_multiplier = 0.18
 sky = SubResource("Sky_hylld")
 ambient_light_source = 1
 glow_enabled = true
 glow_levels/1 = 1.0
 glow_normalized = true
 glow_intensity = 1.5
-glow_strength = 0.5
-glow_bloom = 0.5
+glow_strength = 0.75
+glow_bloom = 0.75
 glow_blend_mode = 0
 
 [node name="main" type="Node3D"]

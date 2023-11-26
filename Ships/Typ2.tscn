@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_6xyjn"]
 [ext_resource type="Material" uid="uid://cfmiblmrfa4x" path="res://resource/shield/shield_mat.tres" id="5_ndyqe"]
 [ext_resource type="ArrayMesh" uid="uid://ualvqrxxahwf" path="res://resource/shield/Typ-2_Schild.obj" id="5_pk3rs"]
+[ext_resource type="PackedScene" uid="uid://egof24pfw2e1" path="res://Data/Actions/Weapons/smallLaserBeam.tscn" id="7_bmw4v"]
 [ext_resource type="PackedScene" uid="uid://dm7c37wmbst6s" path="res://Data/Actions/Weapons/shield_small.tscn" id="7_hdxyb"]
-[ext_resource type="PackedScene" uid="uid://cg8wgxcu3yfta" path="res://Data/Actions/Weapons/lasergun_small.tscn" id="8_huhdw"]
 [ext_resource type="PackedScene" uid="uid://by0uclccvso3y" path="res://Data/Actions/Antrieb/DirveBurn.tscn" id="9_upjcp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ngxby"]
@@ -83,7 +83,7 @@ ship_armor = 50
 ship_shield = 250
 ship_energy = 10
 ship_energy_regeneration = 2
-actions = [NodePath("ShieldSmall"), NodePath("LasergunSmall")]
+actions = [NodePath("ShieldSmall"), NodePath("smallLaserBeam")]
 bonusActions = [NodePath("DriveBurn")]
 
 [node name="Typ2" type="MeshInstance3D" parent="."]
@@ -199,10 +199,10 @@ transform = Transform3D(0.9, 0, 0, 0, 0.616, 0, 0, 0, 0.4, 0, 0, -2.75428)
 material_override = ExtResource("5_ndyqe")
 mesh = ExtResource("5_pk3rs")
 
-[node name="ShieldSmall" parent="." instance=ExtResource("7_hdxyb")]
+[node name="smallLaserBeam" parent="." instance=ExtResource("7_bmw4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0386362, 1.53942, 5.79966)
 
-[node name="LasergunSmall" parent="." instance=ExtResource("8_huhdw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53903e-08, 1.645, 5.97)
+[node name="ShieldSmall" parent="." instance=ExtResource("7_hdxyb")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

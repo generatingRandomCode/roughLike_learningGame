@@ -3,11 +3,13 @@ extends Path3D
 
 var position1: Vector3;
 var position2: Vector3;
+@export var laserBeamThickness: float;
 @export var Capsule: MeshInstance3D;
 @export var pathFollow: PathFollow3D;
 @export var fireParticle: GPUParticles3D;
 @export var targetParticle: GPUParticles3D;
 @export var isProjectile: bool;
+@export var processParticleMaterial: ParticleProcessMaterial;
 var progress: float;
 var t
 
@@ -34,9 +36,11 @@ func fire(position1: Vector3,position2: Vector3, timeout : float = 1):
 		set_process(true)
 		
 	else:
+		fireParticle.process_material = processParticleMaterial
+		targetParticle.process_material = processParticleMaterial
 		pathFollow.set_progress_ratio(0.5)
 		show()
-		Capsule.set_scale(Vector3(0.3, curve.get_baked_length()/2, 0.3))
+		Capsule.set_scale(Vector3(laserBeamThickness, curve.get_baked_length()/2, laserBeamThickness))
 
 	await get_tree().create_timer(timeout).timeout
 	set_process(false)

@@ -1,0 +1,17 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://bdpg5ginsvbt0"]
+
+[sub_resource type="Curve" id="Curve_5bw3e"]
+_data = [Vector2(0, 0), 0.0, 4.04982, 0, 0, Vector2(1, 0), -3.47285, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4nnit"]
+curve = SubResource("Curve_5bw3e")
+
+[resource]
+direction = Vector3(-1, 0, -1)
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_4nnit")
+turbulence_enabled = true
