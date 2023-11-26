@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://himnox2wxi7d"]
+[gd_scene load_steps=2 format=3 uid="uid://himnox2wxi7d"]
+
+[ext_resource type="Script" path="res://Data/Camera/CameraMovement.gd" id="1_ae3ip"]
 
 [node name="Camera" type="Control"]
 layout_mode = 3
@@ -28,13 +30,18 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer"]
 handle_input_locally = false
 physics_object_picking = true
-size = Vector2i(2, 2)
+size = Vector2i(574, 648)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="Camera3DL" type="Camera3D" parent="GridContainer/SubViewportContainer/SubViewport"]
-transform = Transform3D(0.939693, -0.241845, 0.241845, 0, 0.707107, 0.707107, -0.34202, -0.664463, 0.664463, -60, 60, 74.829)
-visible = false
+[node name="Node3D" type="Node3D" parent="GridContainer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("cam3D")]
+transform = Transform3D(0.939693, -0.241845, 0.241845, 0, 0.707107, 0.707107, -0.34202, -0.664463, 0.664463, -96.7609, 0, 0)
+script = ExtResource("1_ae3ip")
+cam3D = NodePath("Camera3DL")
+moveSpeed = 20.0
+
+[node name="Camera3DL" type="Camera3D" parent="GridContainer/SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, -1.49012e-08, 1.49012e-08, 1.49012e-08, 1, 1.19209e-07, -1.49012e-08, -1.19209e-07, 1, 0, 0, 100)
 current = true
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="GridContainer"]
@@ -46,11 +53,12 @@ stretch = true
 [node name="SubViewport2" type="SubViewport" parent="GridContainer/SubViewportContainer2"]
 handle_input_locally = false
 physics_object_picking = true
-size = Vector2i(2, 2)
+size = Vector2i(574, 648)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="Camera3DR" type="Camera3D" parent="GridContainer/SubViewportContainer2/SubViewport2"]
+[node name="Node3D" type="Node3D" parent="GridContainer/SubViewportContainer2/SubViewport2"]
+
+[node name="Camera3DR" type="Camera3D" parent="GridContainer/SubViewportContainer2/SubViewport2/Node3D"]
 transform = Transform3D(0.939693, 0.241845, -0.241845, 0, 0.707107, 0.707107, 0.34202, -0.664463, 0.664463, 60, 60, 74.829)
-visible = false
 current = true
