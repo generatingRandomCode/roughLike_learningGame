@@ -42,6 +42,8 @@ func executeActions(actions : Array[Node]):
 			continue
 
 		#	call the battelstep with the action
+		#pay energy cost
+		await action.payActionShipEnergy()
 		await action.executeAction()
 
 		get_tree().call_group("ShipUI", "updateShipUI")
@@ -68,12 +70,8 @@ func checkActionCanExecute(action):
 			return false 
 	#check for energy
 		#	check if you can pay the energy cost, if not pass or play animation
-	#if action.energyCost == 0:
-	#	return true
-	#elif self.owner.useEnergy(energyCost):
-	#	await loadedAction(action)
-	#else:
-	#	pass
+	if action.getActionShipEnergy() < action.energyCost:
+		return false
 	return true
 
 func clearZeroHealthShips():

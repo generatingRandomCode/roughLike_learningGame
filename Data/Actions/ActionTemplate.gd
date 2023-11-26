@@ -71,7 +71,7 @@ func hasEnoughEnergy()->bool:
 	return false
 	
 func getActionShipEnergy()->int:
-	return self.cause.ship_energy
+	return self.cause.ship_current_energy
 	
 func payActionShipEnergy()->void:
-	action.cause.ship_current_energy = max(0, action.cause.ship_energy - self.energyCost)
+	cause.ship_current_energy = max(0, cause.ship_current_energy - self.energyCost)

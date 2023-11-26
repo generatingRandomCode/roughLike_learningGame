@@ -42,12 +42,13 @@ func _enter_tree():
 #	this shoud be in the action validation and not here
 func action(action : Node) ->  void:
 	#	check if you can pay the energy cost, if not pass or play animation
-	if energyCost == 0:
-		await loadedAction(action)
-	elif self.owner.useEnergy(energyCost):
-		await loadedAction(action)
-	else:
-		pass
+	await loadedAction(action)
+	#if energyCost == 0:
+	#	await loadedAction(action)
+	#elif self.owner.useEnergy(energyCost):
+	#	await loadedAction(action)
+	#else:
+	#	pass
 
 #	function that every ACTION defines for itself
 func loadedAction(action)-> void:
