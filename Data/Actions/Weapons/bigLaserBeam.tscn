@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://wa4pxep4y0bi" path="res://resource/Icons/BigLaserGun_Icon.png" id="2_cqqym"]
 [ext_resource type="PackedScene" uid="uid://dwwq4fv0r2ct0" path="res://Data/3DVisual/WepomAnimation/LaserBeam/LaiserShot_Scene.tscn" id="3_napch"]
 
-[sub_resource type="Curve3D" id="Curve3D_vlxxj"]
+[sub_resource type="Curve3D" id="Curve3D_3a7l6"]
 resource_local_to_scene = true
 
 [node name="bigLaserBeam" type="Node3D"]
@@ -17,4 +17,4 @@ wepon_initiative = 8
 targetPreselection = 7
 
 [node name="LaserBeam" parent="." instance=ExtResource("3_napch")]
-curve = SubResource("Curve3D_vlxxj")
+curve = SubResource("Curve3D_3a7l6")

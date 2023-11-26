@@ -8,17 +8,19 @@ extends Node
 class_name ActionTemplate
 
 #	the  
-var action
-var cause
-var causeField
-var targets
-var targetField
+var action : Node
+var cause : Node
+var causeField : Node
+var targets : Node
+var targetField : Node
 
-var actionInitiative
+var actionInitiative : int
 
-var needTarget = false
-var needTargetField = false
+var needTarget : bool = false
+var needTargetField : bool = false
+var energyCost : int
 
+#	enum
 var targetPreselection
 
 #	gets called when calling new	get the id of both 
@@ -32,14 +34,15 @@ func getActionFromObj(action: Node) -> void:
 	self.actionInitiative = self.action.wepon_initiative
 	self.needTarget = self.action.needTarget
 	self.needTargetField = self.action.needTargetField
-	
-	if self.action.get_parent():
-		self.cause = self.action.get_parent()
-		self.causeField = self.cause.get_parent()
+	self.energyCost = self.action.energyCost
+	#	should allways applay at the moment
+	if self.action.owner:
+		self.cause = self.action.owner
+		self.causeField = self.cause.owner
 
 
 func setTargets(targetIDs) -> void:
-	self.targets = instance_from_id(targetIDs)
+	setTargetsObj(instance_from_id(targetIDs))
 
 func setTargetsObj(targetsOBJ) -> void:
 	self.targets = targetsOBJ
@@ -66,3 +69,9 @@ func hasEnoughEnergy()->bool:
 	if cause.ship_current_energy >= action.energyCost:
 		return true
 	return false
+	
+func getActionShipEnergy()->int:
+	return self.cause.ship_energy
+	
+func payActionShipEnergy()->void:
+	action.cause.ship_current_energy = max(0, action.cause.ship_energy - self.energyCost)

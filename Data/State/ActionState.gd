@@ -26,6 +26,7 @@ func executeActions(actions : Array[Node]):
 		get_tree().call_group("ShipUI", "updateShipUI")
 		#	cehck if current action still exist and if not skip the action -> rebuild to while until all actions are done?
 		print("field test: set field check1", action.action)
+		#	check bevore ship is destroyed
 		if !checkActionCanExecute(action):
 			actions.erase(action)
 			continue
@@ -35,7 +36,7 @@ func executeActions(actions : Array[Node]):
 			start = action.actionInitiative
 			await clearZeroHealthShips()
 			await get_tree().create_timer(1).timeout
-		
+		#	check after ship destroyed
 		if !checkActionCanExecute(action):
 			actions.erase(action)
 			continue
@@ -65,6 +66,14 @@ func checkActionCanExecute(action):
 	if action.needTargetField:
 		if !action.targetField:
 			return false 
+	#check for energy
+		#	check if you can pay the energy cost, if not pass or play animation
+	#if action.energyCost == 0:
+	#	return true
+	#elif self.owner.useEnergy(energyCost):
+	#	await loadedAction(action)
+	#else:
+	#	pass
 	return true
 
 func clearZeroHealthShips():
