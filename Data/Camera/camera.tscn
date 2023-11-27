@@ -30,7 +30,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer"]
 handle_input_locally = false
 physics_object_picking = true
-size = Vector2i(2, 2)
+size = Vector2i(574, 648)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
@@ -40,6 +40,8 @@ script = ExtResource("1_ae3ip")
 cam3D = NodePath("Node3D/Camera3DL")
 moveSpeed = 40.0
 positionNode = NodePath("Node3D")
+minRotation = -30.0
+maxRotation = 160.0
 playerDisplay = true
 
 [node name="Node3D" type="Node3D" parent="GridContainer/SubViewportContainer/SubViewport/Node3D"]
@@ -58,7 +60,7 @@ stretch = true
 [node name="SubViewport2" type="SubViewport" parent="GridContainer/SubViewportContainer2"]
 handle_input_locally = false
 physics_object_picking = true
-size = Vector2i(2, 2)
+size = Vector2i(574, 648)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
@@ -68,6 +70,8 @@ script = ExtResource("1_ae3ip")
 cam3D = NodePath("Node3D/Camera3DL")
 moveSpeed = 40.0
 positionNode = NodePath("Node3D")
+minRotation = -160.0
+maxRotation = 30.0
 
 [node name="Node3D" type="Node3D" parent="GridContainer/SubViewportContainer2/SubViewport2/Node3D2"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
