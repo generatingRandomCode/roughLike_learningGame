@@ -204,3 +204,13 @@ top_level = true
 top_level = true
 
 [node name="SafePlayerShips" type="Node3D" parent="."]
+
+[node name="ReflectionProbe2" type="ReflectionProbe" parent="."]
+transform = Transform3D(1.00228, 0, 0, 0, 1.00228, 0, 0, 0, 1.00228, 100, 0, 0)
+max_distance = 5000.0
+size = Vector3(200, 200, 200)
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+transform = Transform3D(1.00228, 0, 0, 0, 1.00228, 0, 0, 0, 1.00228, -100, 0, 0)
+max_distance = 5000.0
+size = Vector3(200, 200, 200)
