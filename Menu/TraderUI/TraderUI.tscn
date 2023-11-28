@@ -1,0 +1,285 @@
+[gd_scene load_steps=9 format=3 uid="uid://x2x0l4lxpttf"]
+
+[ext_resource type="Texture2D" uid="uid://2ie08o6kpcki" path="res://Menu/TraderUI/Händler_UI_Background.png" id="2_mb5a5"]
+[ext_resource type="Texture2D" uid="uid://5xktwqcrrngs" path="res://Menu/TraderUI/Händler_UI_Apply_hover.png" id="3_ljuue"]
+[ext_resource type="Texture2D" uid="uid://f1bnvc8vu4go" path="res://Menu/TraderUI/Händler_UI_Apply.png" id="3_v6yv5"]
+[ext_resource type="Texture2D" uid="uid://b3vnu7ulc5dhj" path="res://Menu/TraderUI/Händler_UI_ValueBar.png" id="4_mpu0c"]
+[ext_resource type="Texture2D" uid="uid://yym641qshqy" path="res://Menu/TraderUI/Händler_UI_ItemBox.png" id="5_1wxob"]
+[ext_resource type="Texture2D" uid="uid://dor6201vschhs" path="res://Menu/TraderUI/Händler_UI_ItemBox_hover.png" id="5_vi8qk"]
+[ext_resource type="Texture2D" uid="uid://t0l0cm4h8613" path="res://resource/Icons/Move_Icon.png" id="6_ls2cm"]
+[ext_resource type="Texture2D" uid="uid://uvvnsln2wog4" path="res://Menu/TraderUI/Händler_UI_Repair.png" id="7_xjjx1"]
+
+[node name="TraderUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="."]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="Background" type="TextureRect" parent="Control"]
+offset_left = 24.0
+offset_top = -475.0
+offset_right = 933.0
+offset_bottom = 472.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("2_mb5a5")
+
+[node name="HandelAbschliessen" type="TextureButton" parent="Control"]
+offset_left = 490.0
+offset_top = 291.0
+offset_right = 763.0
+offset_bottom = 452.0
+texture_normal = ExtResource("3_v6yv5")
+texture_hover = ExtResource("3_ljuue")
+
+[node name="Text" type="Label" parent="Control/HandelAbschliessen"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 22.0
+offset_right = 250.0
+offset_bottom = 138.0
+theme_override_font_sizes/font_size = 40
+text = "Handel
+abschließen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+offset_left = 775.0
+offset_top = 368.0
+offset_right = 911.0
+offset_bottom = 408.0
+texture = ExtResource("4_mpu0c")
+stretch_mode = 2
+
+[node name="ItemBox" type="TextureButton" parent="Control"]
+offset_left = 43.0
+offset_top = -343.0
+offset_right = 166.0
+offset_bottom = -182.0
+texture_normal = ExtResource("5_1wxob")
+texture_hover = ExtResource("5_vi8qk")
+
+[node name="ItemBoxValue" type="Label" parent="Control/ItemBox"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 118.0
+offset_right = 86.0
+offset_bottom = 163.0
+theme_override_font_sizes/font_size = 30
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Control/ItemBox"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 119.0
+offset_bottom = 120.0
+texture = ExtResource("6_ls2cm")
+
+[node name="ItemBox2" type="TextureButton" parent="Control"]
+offset_left = 43.0
+offset_top = -114.0
+offset_right = 166.0
+offset_bottom = 47.0
+texture_normal = ExtResource("5_1wxob")
+texture_hover = ExtResource("5_vi8qk")
+
+[node name="ItemBoxValue" type="Label" parent="Control/ItemBox2"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 118.0
+offset_right = 86.0
+offset_bottom = 163.0
+theme_override_font_sizes/font_size = 30
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Control/ItemBox2"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 119.0
+offset_bottom = 120.0
+texture = ExtResource("6_ls2cm")
+
+[node name="ItemBox3" type="TextureButton" parent="Control"]
+offset_left = 43.0
+offset_top = 109.0
+offset_right = 166.0
+offset_bottom = 270.0
+texture_normal = ExtResource("5_1wxob")
+texture_hover = ExtResource("5_vi8qk")
+
+[node name="ItemBoxValue" type="Label" parent="Control/ItemBox3"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 118.0
+offset_right = 86.0
+offset_bottom = 163.0
+theme_override_font_sizes/font_size = 30
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Control/ItemBox3"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 119.0
+offset_bottom = 120.0
+texture = ExtResource("6_ls2cm")
+
+[node name="ItemBox4" type="TextureButton" parent="Control"]
+offset_left = 43.0
+offset_top = 292.0
+offset_right = 166.0
+offset_bottom = 453.0
+texture_normal = ExtResource("5_1wxob")
+texture_hover = ExtResource("5_vi8qk")
+
+[node name="ItemBoxValue" type="Label" parent="Control/ItemBox4"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 118.0
+offset_right = 86.0
+offset_bottom = 163.0
+theme_override_font_sizes/font_size = 30
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Control/ItemBox4"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 119.0
+offset_bottom = 120.0
+texture = ExtResource("6_ls2cm")
+
+[node name="ItemBox5" type="TextureButton" parent="Control"]
+offset_left = 193.0
+offset_top = 292.0
+offset_right = 316.0
+offset_bottom = 453.0
+texture_normal = ExtResource("5_1wxob")
+texture_hover = ExtResource("5_vi8qk")
+
+[node name="ItemBoxValue" type="Label" parent="Control/ItemBox5"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 118.0
+offset_right = 86.0
+offset_bottom = 163.0
+theme_override_font_sizes/font_size = 30
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Control/ItemBox5"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 119.0
+offset_bottom = 120.0
+texture = ExtResource("6_ls2cm")
+
+[node name="ItemBox6" type="TextureButton" parent="Control"]
+offset_left = 342.0
+offset_top = 292.0
+offset_right = 465.0
+offset_bottom = 453.0
+texture_normal = ExtResource("5_1wxob")
+texture_hover = ExtResource("5_vi8qk")
+
+[node name="ItemBoxValue" type="Label" parent="Control/ItemBox6"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 118.0
+offset_right = 86.0
+offset_bottom = 163.0
+theme_override_font_sizes/font_size = 30
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Control/ItemBox6"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 119.0
+offset_bottom = 120.0
+texture = ExtResource("7_xjjx1")
+
+[node name="Händler" type="Label" parent="Control"]
+offset_left = 43.0
+offset_top = -466.0
+offset_right = 593.0
+offset_bottom = -394.0
+theme_override_font_sizes/font_size = 50
+text = "Händler (weißer Adler)"
+vertical_alignment = 2
+
+[node name="Module" type="Label" parent="Control"]
+offset_left = 43.0
+offset_top = -396.0
+offset_right = 593.0
+offset_bottom = -324.0
+theme_override_font_sizes/font_size = 40
+text = "Module"
+
+[node name="Kapitäne" type="Label" parent="Control"]
+offset_left = 43.0
+offset_top = -170.0
+offset_right = 593.0
+offset_bottom = -98.0
+theme_override_font_sizes/font_size = 40
+text = "Kapitäne"
+
+[node name="Schiffe" type="Label" parent="Control"]
+offset_left = 43.0
+offset_top = 54.0
+offset_right = 593.0
+offset_bottom = 126.0
+theme_override_font_sizes/font_size = 40
+text = "Schiffe"
+
+[node name="Guthaben" type="Label" parent="Control"]
+offset_left = 768.0
+offset_top = 303.492
+offset_right = 913.0
+offset_bottom = 375.492
+theme_override_font_sizes/font_size = 40
+text = "1567"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Ausgaben" type="Label" parent="Control"]
+offset_left = 768.0
+offset_top = 366.492
+offset_right = 913.0
+offset_bottom = 438.492
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 2
