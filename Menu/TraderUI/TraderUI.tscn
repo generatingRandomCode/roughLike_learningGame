@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://x2x0l4lxpttf"]
+[gd_scene load_steps=13 format=3 uid="uid://x2x0l4lxpttf"]
 
 [ext_resource type="Texture2D" uid="uid://2ie08o6kpcki" path="res://Menu/TraderUI/Händler_UI_Background.png" id="2_mb5a5"]
 [ext_resource type="Texture2D" uid="uid://5xktwqcrrngs" path="res://Menu/TraderUI/Händler_UI_Apply_hover.png" id="3_ljuue"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://dor6201vschhs" path="res://Menu/TraderUI/Händler_UI_ItemBox_hover.png" id="5_vi8qk"]
 [ext_resource type="Texture2D" uid="uid://t0l0cm4h8613" path="res://resource/Icons/Move_Icon.png" id="6_ls2cm"]
 [ext_resource type="Texture2D" uid="uid://uvvnsln2wog4" path="res://Menu/TraderUI/Händler_UI_Repair.png" id="7_xjjx1"]
+[ext_resource type="Texture2D" uid="uid://dgdh3e2ir7vrl" path="res://resource/Icons/Typ-1_Icon.png" id="8_jg3p5"]
+[ext_resource type="Texture2D" uid="uid://dn5pj3b501mut" path="res://resource/Icons/Typ_2_Icon.png" id="9_dbmre"]
+[ext_resource type="Texture2D" uid="uid://b4h4di5l42l5r" path="res://resource/Icons/Fusionsreaktor_Icon.png" id="10_slpc3"]
+[ext_resource type="Texture2D" uid="uid://c431da4lnq6nc" path="res://resource/Icons/ArmorShip_Icon.png" id="11_88454"]
 
 [node name="TraderUI" type="Control"]
 layout_mode = 3
@@ -33,6 +37,7 @@ grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 
 [node name="Background" type="TextureRect" parent="Control"]
+layout_mode = 0
 offset_left = 24.0
 offset_top = -475.0
 offset_right = 933.0
@@ -43,6 +48,7 @@ mouse_filter = 2
 texture = ExtResource("2_mb5a5")
 
 [node name="HandelAbschliessen" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = 490.0
 offset_top = 291.0
 offset_right = 763.0
@@ -63,6 +69,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect2" type="TextureRect" parent="Control"]
+layout_mode = 0
 offset_left = 775.0
 offset_top = 368.0
 offset_right = 911.0
@@ -71,6 +78,7 @@ texture = ExtResource("4_mpu0c")
 stretch_mode = 2
 
 [node name="ItemBox" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = 43.0
 offset_top = -343.0
 offset_right = 166.0
@@ -98,6 +106,7 @@ offset_bottom = 120.0
 texture = ExtResource("6_ls2cm")
 
 [node name="ItemBox2" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = 43.0
 offset_top = -114.0
 offset_right = 166.0
@@ -125,6 +134,7 @@ offset_bottom = 120.0
 texture = ExtResource("6_ls2cm")
 
 [node name="ItemBox3" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = 43.0
 offset_top = 109.0
 offset_right = 166.0
@@ -149,9 +159,98 @@ offset_left = 4.0
 offset_top = 5.0
 offset_right = 119.0
 offset_bottom = 120.0
-texture = ExtResource("6_ls2cm")
+texture = ExtResource("8_jg3p5")
+expand_mode = 2
+
+[node name="ItemBox7" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 109.0
+offset_right = 319.0
+offset_bottom = 270.0
+texture_normal = ExtResource("5_1wxob")
+texture_hover = ExtResource("5_vi8qk")
+
+[node name="ItemBoxValue" type="Label" parent="Control/ItemBox7"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 118.0
+offset_right = 86.0
+offset_bottom = 163.0
+theme_override_font_sizes/font_size = 30
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Control/ItemBox7"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 119.0
+offset_bottom = 120.0
+texture = ExtResource("9_dbmre")
+expand_mode = 2
+
+[node name="ItemBox8" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 109.0
+offset_right = 467.0
+offset_bottom = 270.0
+texture_normal = ExtResource("5_1wxob")
+texture_hover = ExtResource("5_vi8qk")
+
+[node name="ItemBoxValue" type="Label" parent="Control/ItemBox8"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 118.0
+offset_right = 86.0
+offset_bottom = 163.0
+theme_override_font_sizes/font_size = 30
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Control/ItemBox8"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 119.0
+offset_bottom = 120.0
+texture = ExtResource("10_slpc3")
+expand_mode = 2
+
+[node name="ItemBox9" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 494.0
+offset_top = 109.0
+offset_right = 617.0
+offset_bottom = 270.0
+texture_normal = ExtResource("5_1wxob")
+texture_hover = ExtResource("5_vi8qk")
+
+[node name="ItemBoxValue" type="Label" parent="Control/ItemBox9"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 118.0
+offset_right = 86.0
+offset_bottom = 163.0
+theme_override_font_sizes/font_size = 30
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Control/ItemBox9"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 119.0
+offset_bottom = 120.0
+texture = ExtResource("11_88454")
+expand_mode = 2
 
 [node name="ItemBox4" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = 43.0
 offset_top = 292.0
 offset_right = 166.0
@@ -179,6 +278,7 @@ offset_bottom = 120.0
 texture = ExtResource("6_ls2cm")
 
 [node name="ItemBox5" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = 193.0
 offset_top = 292.0
 offset_right = 316.0
@@ -206,6 +306,7 @@ offset_bottom = 120.0
 texture = ExtResource("6_ls2cm")
 
 [node name="ItemBox6" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = 342.0
 offset_top = 292.0
 offset_right = 465.0
@@ -233,6 +334,7 @@ offset_bottom = 120.0
 texture = ExtResource("7_xjjx1")
 
 [node name="Händler" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 43.0
 offset_top = -466.0
 offset_right = 593.0
@@ -242,6 +344,7 @@ text = "Händler (weißer Adler)"
 vertical_alignment = 2
 
 [node name="Module" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 43.0
 offset_top = -396.0
 offset_right = 593.0
@@ -250,6 +353,7 @@ theme_override_font_sizes/font_size = 40
 text = "Module"
 
 [node name="Kapitäne" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 43.0
 offset_top = -170.0
 offset_right = 593.0
@@ -258,6 +362,7 @@ theme_override_font_sizes/font_size = 40
 text = "Kapitäne"
 
 [node name="Schiffe" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 43.0
 offset_top = 54.0
 offset_right = 593.0
@@ -266,6 +371,7 @@ theme_override_font_sizes/font_size = 40
 text = "Schiffe"
 
 [node name="Guthaben" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 768.0
 offset_top = 303.492
 offset_right = 913.0
@@ -276,6 +382,7 @@ horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="Ausgaben" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 768.0
 offset_top = 366.492
 offset_right = 913.0
