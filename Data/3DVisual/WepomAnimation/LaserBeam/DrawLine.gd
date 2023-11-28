@@ -11,7 +11,7 @@ var position2: Vector3;
 @export var isProjectile: bool;
 @export var processParticleMaterial: ParticleProcessMaterial;
 var progress: float;
-var t
+var t: float
 
 func _ready():
 	var cur = Curve3D.new()
@@ -41,12 +41,22 @@ func fire(action : ActionTemplate,timeout : float = 1):
 		pathFollow.set_progress_ratio(0.5)
 		show()
 		Capsule.set_scale(Vector3(laserBeamThickness, curve.get_baked_length()/2, laserBeamThickness))
-
+	if !action.targetField.has_node("Model"):
+		var distance = curve.get_baked_length()
+		curve.clear_points()
+		curve.add_point(to_local(position1))
+		curve.add_point(to_local(position2*2))
+		if isProjectile:
+			progress = 0.0
+			await get_tree().create_timer(timeout*2).timeout
+			t = t*curve.get_baked_length()/distance
+	
 	await get_tree().create_timer(timeout).timeout
 	set_process(false)
 	if action.targetField.has_node("Model"):
 		get_parent().executeDamageAction(action.targets)
-	targetParticle.emitting = true
+		targetParticle.emitting = true
+		
 	await get_tree().create_timer(0.2).timeout
 	hide()
 	curve.clear_points()

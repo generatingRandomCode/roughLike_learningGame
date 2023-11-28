@@ -10,8 +10,8 @@ var startRotation: Vector3;
 @export var positionNode: Node3D;
 var maxZoom = 150
 var minZoom = 15
-var minRotation = -60
-var maxRotation = 60
+@export var minRotation: float;
+@export var maxRotation: float;
 @export var playerDisplay: bool;
 
 
@@ -118,6 +118,7 @@ func _on_sub_viewport_container_mouse_exited():
 	if(playerDisplay):
 		mouseInsideCam = false;
 	moveDirection = Vector3(0,0,0)
+	rotateDirection = Vector3(0,0,0)
 
 
 func _on_sub_viewport_container_2_mouse_entered():
@@ -129,3 +130,4 @@ func _on_sub_viewport_container_2_mouse_exited():
 	if(!playerDisplay):
 		mouseInsideCam = false;
 	moveDirection = Vector3(0,0,0)
+	rotateDirection = Vector3(0,0,0)

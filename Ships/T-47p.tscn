@@ -110,9 +110,10 @@ _data = {
 "ship_move_animation": SubResource("Animation_sflv4")
 }
 
-[node name="Model" type="Node3D" node_paths=PackedStringArray("actions", "bonusActions")]
+[node name="Model" type="Node3D" node_paths=PackedStringArray("shipModell", "actions", "bonusActions")]
 script = ExtResource("1_jxvy0")
 ship_name = "T-47p"
+shipModell = NodePath("TheLavoisier")
 ship_health = 100
 ship_armor = 400
 ship_energy = 6
