@@ -110,7 +110,6 @@ _data = {
 }
 
 [node name="Model" type="Node3D" node_paths=PackedStringArray("shipModell", "actions", "bonusActions")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_b0vgl")
 ship_name = "The Lavoisier"
 shipModell = NodePath("TheLavoisier")

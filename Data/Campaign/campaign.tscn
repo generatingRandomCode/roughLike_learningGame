@@ -6,14 +6,12 @@
 [node name="Campaign" type="Node3D"]
 script = ExtResource("1_ylgbc")
 
-[node name="Level1" type="Node3D" parent="." node_paths=PackedStringArray("enemyShips")]
+[node name="Level1" type="Node3D" parent="."]
 script = ExtResource("2_cjc45")
 enemyShipsNames = Array[String](["TheLavoisier"])
-enemyShips = []
 lootMoney = 100
 
-[node name="Level2" type="Node3D" parent="." node_paths=PackedStringArray("enemyShips")]
+[node name="Level2" type="Node3D" parent="."]
 script = ExtResource("2_cjc45")
 enemyShipsNames = Array[String](["TheLavoisier", "TheLavoisier", "Typ1"])
-enemyShips = []
 lootMoney = 100
