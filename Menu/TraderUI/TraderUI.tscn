@@ -41,9 +41,9 @@ script = ExtResource("1_rnvnn")
 [node name="Background" type="TextureRect" parent="Control"]
 layout_mode = 0
 offset_left = 36.0
-offset_top = -475.0
+offset_top = -432.0
 offset_right = 945.0
-offset_bottom = 472.0
+offset_bottom = 515.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
@@ -52,9 +52,9 @@ texture = ExtResource("2_mb5a5")
 [node name="HandelAbschliessen" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 502.0
-offset_top = 291.0
+offset_top = 334.0
 offset_right = 775.0
-offset_bottom = 452.0
+offset_bottom = 495.0
 texture_normal = ExtResource("3_v6yv5")
 texture_hover = ExtResource("3_ljuue")
 
@@ -73,18 +73,18 @@ vertical_alignment = 1
 [node name="TextureRect2" type="TextureRect" parent="Control"]
 layout_mode = 0
 offset_left = 787.0
-offset_top = 368.0
+offset_top = 411.0
 offset_right = 923.0
-offset_bottom = 408.0
+offset_bottom = 451.0
 texture = ExtResource("4_mpu0c")
 stretch_mode = 2
 
 [node name="ItemBox" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 55.0
-offset_top = -343.0
+offset_top = -300.0
 offset_right = 178.0
-offset_bottom = -182.0
+offset_bottom = -139.0
 texture_normal = ExtResource("5_1wxob")
 texture_hover = ExtResource("5_vi8qk")
 
@@ -110,9 +110,9 @@ texture = ExtResource("6_ls2cm")
 [node name="ItemBox2" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 55.0
-offset_top = -114.0
+offset_top = -71.0
 offset_right = 178.0
-offset_bottom = 47.0
+offset_bottom = 90.0
 texture_normal = ExtResource("5_1wxob")
 texture_hover = ExtResource("5_vi8qk")
 
@@ -138,9 +138,9 @@ texture = ExtResource("6_ls2cm")
 [node name="ItemBox3" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 55.0
-offset_top = 109.0
+offset_top = 152.0
 offset_right = 178.0
-offset_bottom = 270.0
+offset_bottom = 313.0
 texture_normal = ExtResource("5_1wxob")
 texture_hover = ExtResource("5_vi8qk")
 
@@ -167,9 +167,9 @@ expand_mode = 2
 [node name="ItemBox7" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 208.0
-offset_top = 109.0
+offset_top = 152.0
 offset_right = 331.0
-offset_bottom = 270.0
+offset_bottom = 313.0
 texture_normal = ExtResource("5_1wxob")
 texture_hover = ExtResource("5_vi8qk")
 
@@ -196,9 +196,9 @@ expand_mode = 2
 [node name="ItemBox8" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 356.0
-offset_top = 109.0
+offset_top = 152.0
 offset_right = 479.0
-offset_bottom = 270.0
+offset_bottom = 313.0
 texture_normal = ExtResource("5_1wxob")
 texture_hover = ExtResource("5_vi8qk")
 
@@ -225,9 +225,9 @@ expand_mode = 2
 [node name="ItemBox9" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 506.0
-offset_top = 109.0
+offset_top = 152.0
 offset_right = 629.0
-offset_bottom = 270.0
+offset_bottom = 313.0
 texture_normal = ExtResource("5_1wxob")
 texture_hover = ExtResource("5_vi8qk")
 
@@ -254,9 +254,9 @@ expand_mode = 2
 [node name="ItemBox4" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 55.0
-offset_top = 292.0
+offset_top = 335.0
 offset_right = 178.0
-offset_bottom = 453.0
+offset_bottom = 496.0
 texture_normal = ExtResource("5_1wxob")
 texture_hover = ExtResource("5_vi8qk")
 
@@ -282,9 +282,9 @@ texture = ExtResource("6_ls2cm")
 [node name="ItemBox5" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 205.0
-offset_top = 292.0
+offset_top = 335.0
 offset_right = 328.0
-offset_bottom = 453.0
+offset_bottom = 496.0
 texture_normal = ExtResource("5_1wxob")
 texture_hover = ExtResource("5_vi8qk")
 
@@ -310,9 +310,9 @@ texture = ExtResource("6_ls2cm")
 [node name="ItemBox6" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 354.0
-offset_top = 292.0
+offset_top = 335.0
 offset_right = 477.0
-offset_bottom = 453.0
+offset_bottom = 496.0
 texture_normal = ExtResource("5_1wxob")
 texture_hover = ExtResource("5_vi8qk")
 
@@ -338,9 +338,9 @@ texture = ExtResource("7_xjjx1")
 [node name="Händler" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 55.0
-offset_top = -466.0
+offset_top = -423.0
 offset_right = 605.0
-offset_bottom = -394.0
+offset_bottom = -351.0
 theme_override_font_sizes/font_size = 50
 text = "Händler (weißer Adler)"
 vertical_alignment = 2
@@ -348,36 +348,36 @@ vertical_alignment = 2
 [node name="Module" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 55.0
-offset_top = -396.0
+offset_top = -353.0
 offset_right = 605.0
-offset_bottom = -324.0
+offset_bottom = -281.0
 theme_override_font_sizes/font_size = 40
 text = "Module"
 
 [node name="Kapitäne" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 55.0
-offset_top = -170.0
+offset_top = -127.0
 offset_right = 605.0
-offset_bottom = -98.0
+offset_bottom = -55.0
 theme_override_font_sizes/font_size = 40
 text = "Kapitäne"
 
 [node name="Schiffe" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 55.0
-offset_top = 54.0
+offset_top = 97.0
 offset_right = 605.0
-offset_bottom = 126.0
+offset_bottom = 169.0
 theme_override_font_sizes/font_size = 40
 text = "Schiffe"
 
 [node name="Guthaben" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 780.0
-offset_top = 303.492
+offset_top = 346.492
 offset_right = 925.0
-offset_bottom = 375.492
+offset_bottom = 418.492
 theme_override_font_sizes/font_size = 40
 text = "1567"
 horizontal_alignment = 2
@@ -386,9 +386,9 @@ vertical_alignment = 2
 [node name="Ausgaben" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 780.0
-offset_top = 366.492
+offset_top = 409.492
 offset_right = 925.0
-offset_bottom = 438.492
+offset_bottom = 481.492
 theme_override_font_sizes/font_size = 40
 text = "0"
 horizontal_alignment = 2

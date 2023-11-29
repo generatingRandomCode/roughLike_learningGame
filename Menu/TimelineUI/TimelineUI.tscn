@@ -1,0 +1,160 @@
+[gd_scene load_steps=9 format=3 uid="uid://2xsmik7kjx1w"]
+
+[ext_resource type="Script" path="res://Menu/TraderUI/UIScale.gd" id="1_af1to"]
+[ext_resource type="Texture2D" uid="uid://v37rnsaqjo7n" path="res://Menu/TimelineUI/Timeline_Bar.png" id="1_bx8up"]
+[ext_resource type="Texture2D" uid="uid://q55v08t4se34" path="res://Menu/TimelineUI/Timeline_InfoBox.png" id="2_iymqv"]
+[ext_resource type="Script" path="res://Menu/TimelineUI/TimeScaling.gd" id="3_hmquh"]
+[ext_resource type="Texture2D" uid="uid://clsol2la0haew" path="res://Menu/TimelineUI/Timeline_NextRoundButton.png" id="3_tvr7e"]
+[ext_resource type="Texture2D" uid="uid://cs50i4k8wnl7m" path="res://Menu/TimelineUI/Timeline_InfoBox_hover.png" id="4_nnt3m"]
+[ext_resource type="Texture2D" uid="uid://dnc2kqauyp8ck" path="res://Menu/TimelineUI/Timeline_NextRoundButton_hover.png" id="4_s081c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0a6ai"]
+line_spacing = 0.0
+font_size = 40
+
+[node name="TimelineUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+mouse_filter = 2
+script = ExtResource("1_af1to")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -306.0
+offset_right = 306.0
+offset_bottom = 93.0
+texture = ExtResource("1_bx8up")
+script = ExtResource("3_hmquh")
+
+[node name="roundCounter" type="TextureButton" parent="Control/TextureRect"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 9.0
+offset_right = 89.0
+offset_bottom = 77.0
+texture_normal = ExtResource("2_iymqv")
+
+[node name="Value" type="Label" parent="Control/TextureRect/roundCounter"]
+layout_direction = 1
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 68.805
+offset_bottom = 70.0
+pivot_offset = Vector2(21.53, 36.51)
+theme_override_font_sizes/font_size = 50
+text = "1"
+label_settings = SubResource("LabelSettings_0a6ai")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="nextRound" type="TextureButton" parent="Control/TextureRect"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 9.0
+offset_right = 343.0
+offset_bottom = 77.0
+texture_normal = ExtResource("3_tvr7e")
+texture_hover = ExtResource("4_s081c")
+
+[node name="Value" type="Label" parent="Control/TextureRect/nextRound"]
+layout_direction = 1
+layout_mode = 0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 239.945
+offset_bottom = 66.715
+pivot_offset = Vector2(21.53, 36.51)
+theme_override_font_sizes/font_size = 50
+text = "Next Round"
+label_settings = SubResource("LabelSettings_0a6ai")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="half" type="TextureButton" parent="Control/TextureRect"]
+layout_mode = 0
+offset_left = 358.0
+offset_top = 9.0
+offset_right = 426.0
+offset_bottom = 77.0
+texture_normal = ExtResource("2_iymqv")
+texture_hover = ExtResource("4_nnt3m")
+
+[node name="Value" type="Label" parent="Control/TextureRect/half"]
+layout_direction = 1
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 68.805
+offset_bottom = 70.0
+pivot_offset = Vector2(21.53, 36.51)
+theme_override_font_sizes/font_size = 50
+text = "1/2"
+label_settings = SubResource("LabelSettings_0a6ai")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="normal" type="TextureButton" parent="Control/TextureRect"]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 9.0
+offset_right = 511.0
+offset_bottom = 77.0
+texture_normal = ExtResource("2_iymqv")
+texture_hover = ExtResource("4_nnt3m")
+
+[node name="Value" type="Label" parent="Control/TextureRect/normal"]
+layout_direction = 1
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 68.805
+offset_bottom = 70.0
+pivot_offset = Vector2(21.53, 36.51)
+theme_override_font_sizes/font_size = 50
+text = "1"
+label_settings = SubResource("LabelSettings_0a6ai")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="double" type="TextureButton" parent="Control/TextureRect"]
+layout_mode = 0
+offset_left = 526.0
+offset_top = 9.0
+offset_right = 594.0
+offset_bottom = 77.0
+texture_normal = ExtResource("2_iymqv")
+texture_hover = ExtResource("4_nnt3m")
+
+[node name="Value" type="Label" parent="Control/TextureRect/double"]
+layout_direction = 1
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 68.805
+offset_bottom = 70.0
+pivot_offset = Vector2(21.53, 36.51)
+theme_override_font_sizes/font_size = 50
+text = "2"
+label_settings = SubResource("LabelSettings_0a6ai")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="resized" from="." to="Control" method="_on_timeline_ui_resized"]
+[connection signal="pressed" from="Control/TextureRect/half" to="Control/TextureRect" method="_on_half_pressed"]
+[connection signal="pressed" from="Control/TextureRect/normal" to="Control/TextureRect" method="_on_normal_pressed"]
+[connection signal="pressed" from="Control/TextureRect/double" to="Control/TextureRect" method="_on_double_pressed"]
