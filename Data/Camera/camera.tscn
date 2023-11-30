@@ -30,7 +30,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer"]
 handle_input_locally = false
 physics_object_picking = true
-size = Vector2i(574, 648)
+size = Vector2i(478, 540)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
@@ -48,7 +48,7 @@ playerDisplay = true
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 
 [node name="Camera3DL" type="Camera3D" parent="GridContainer/SubViewportContainer/SubViewport/Node3D/Node3D"]
-transform = Transform3D(1, 1.49012e-08, -1.49012e-08, 1.49012e-08, 1, 5.96046e-08, -1.49012e-08, -8.9407e-08, 1, 0, -1.90735e-06, 100)
+transform = Transform3D(1, -1.49012e-08, 1.49012e-08, 1.49012e-08, 1, 8.9407e-08, -1.49012e-08, -8.9407e-08, 1, 0, 0, 100)
 current = true
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="GridContainer"]
@@ -60,7 +60,7 @@ stretch = true
 [node name="SubViewport2" type="SubViewport" parent="GridContainer/SubViewportContainer2"]
 handle_input_locally = false
 physics_object_picking = true
-size = Vector2i(574, 648)
+size = Vector2i(478, 540)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 

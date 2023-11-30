@@ -20,7 +20,7 @@ func _ready():
 	moveDirection = Vector3(0,0,0)
 	rotateDirection = Vector3(0,0,0)
 	startPosition = positionNode.position
-	startRotation = self.rotation_degrees
+	startRotation = rotation_degrees
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
