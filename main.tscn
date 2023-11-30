@@ -137,6 +137,9 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "Round:Test"
 
+[node name="EnemyState" type="Node3D" parent="StateMashine"]
+script = ExtResource("13_cd4cd")
+
 [node name="PlayerTurnState" type="Node3D" parent="StateMashine" node_paths=PackedStringArray("skipAllButton")]
 script = ExtResource("16_gjkpn")
 skipAllButton = NodePath("SkipAllButton/HBoxContainer/Panel/SkipAllButton")
@@ -188,9 +191,6 @@ offset_top = -9.0
 offset_right = 50.0
 offset_bottom = 50.0
 text = "End Round"
-
-[node name="EnemyState" type="Node3D" parent="StateMashine"]
-script = ExtResource("13_cd4cd")
 
 [node name="ActionState" type="Node3D" parent="StateMashine"]
 script = ExtResource("11_ckm3l")

@@ -22,6 +22,9 @@ func _ready():
 func enter(parameter := {}) -> void:
 	#	init the standard actions for each ship actions:
 	#	if entered from outside the playerturn
+	#if parameter.has("Actions"):
+	self.actions = parameter["Actions"]
+	print("new Actions: start", actions)
 	if !actionsLeft:
 		actionsLeft = get_tree().get_nodes_in_group("player")
 	
@@ -65,11 +68,11 @@ func checkForActionsLeft():
 	#	abfrage für sofort action
 	
 	if(actionsLeft + bonusActionsLeft):
-		await state_machine.transition_to("PlayerTurnState/ChoosePlayerState",{"Actions" : self.actions})
+		await state_machine.transition_to("PlayerTurnState/ChoosePlayerState")
 	else:
-		await state_machine.transition_to("EnemyState",{"Actions" = self.actions})
+		print("new Actions: ", actions)
+		await state_machine.transition_to("ActionState",{"Actions" = self.actions})
 		skipAllButton.hide()
-		self.actions = []
 	#	clear
 	
 	selectedShip = null

@@ -1,17 +1,15 @@
 extends State
-#enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2} -> og
-enum TargetPreselectionPatterns{Enemy = 0, Self = 1, FreeSpace = 2, Player = 3}
+
 #	this state fpr beginning will chose enemy stats at random
 func enter(parameter := {}) -> void:
 	print("Enter enemyState")
 	
-	var actions : Array[Node] = parameter["Actions"]
+	#var actions : Array[Node] = parameter["Actions"]
 	
-	actions += enemyAttack()
+	var actions : Array[Node] = enemyAttack()
 	
-	print("actions: ", actions)
-	get_parent().transition_to("ActionState",{"Actions": actions})
-	actions = []
+	print("new Actions: enemy", actions)
+	get_parent().transition_to("PlayerTurnState",{"Actions": actions})
 
 #	enemy  target groups sind genau andersherum, sie schießen auf den spieler und nicht auf sich selbst
 func enemyAttack() ->Array[Node]:
