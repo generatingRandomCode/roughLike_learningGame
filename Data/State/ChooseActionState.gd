@@ -13,6 +13,8 @@ func enter(parameter = {}) -> void:
 	#	hier werden all vom schiff ausführabren actionen hinzugefügt
 	#	einfach eine weiterer Node3D hinzufügen als standardaction
 	#	nur die arrays werden angezeigt die noch 
+	print("\n\nbonusAction startstart",selectedShip)
+	
 	var actionNameList : Array[Node] = []
 	if selectedShip in get_parent().actionsLeft:
 		actionNameList += selectedShip.actions
@@ -21,6 +23,8 @@ func enter(parameter = {}) -> void:
 	
 	setActionType(actionNameList)
 	print("bonusAction",actionNameList)
+	print("bonusAction left",get_parent().actionsLeft)
+	print("bonusAction bonus",get_parent().bonusActionsLeft)
 	print("bonusAction", actionNameList[0].actionType)
 
 	main.get_node("ActionUI").show()

@@ -4,8 +4,8 @@ class_name PlayerTurnState
 
 #	cannot have a exit function , it will break the loop which is bad...
 #	all the player nodes with a ship
-var actionsLeft
-var bonusActionsLeft
+var actionsLeft = []
+var bonusActionsLeft = []
 
 #@export var skipAllButton : Button
 var actions : Array[Node] = []
@@ -25,12 +25,13 @@ func enter(parameter := {}) -> void:
 	#	if entered from outside the playerturn
 	#if parameter.has("Actions"):
 	self.actions = parameter["Actions"]
-	print("new Actions: start", actions)
-	if !actionsLeft:
+	#print("new Actions: start", actions)
+	if actionsLeft == [] and bonusActionsLeft == []:
 		actionsLeft = get_tree().get_nodes_in_group("player")
-	
-	if !bonusActionsLeft:
 		bonusActionsLeft = get_tree().get_nodes_in_group("player")
+	
+#	if !bonusActionsLeft:
+#		bonusActionsLeft = get_tree().get_nodes_in_group("player")
 	
 	#	choose player for action
 	await get_parent().transition_to("PlayerTurnState/ChoosePlayerState")
@@ -40,7 +41,9 @@ func enter(parameter := {}) -> void:
 
 #	get the causeID and opens the action board for the ship where is checked what actions the ship can execute
 func selectPlayer(selectedFieldID):
+	#	problem is that it gets the wrong node...
 	selectedShip = instance_from_id(selectedFieldID).get_node("Model")
+	#selectedShip = instance_from_id(selectedFieldID).get_children()[0]
 	await state_machine.transition_to("PlayerTurnState/ChooseActionState",{"selectedShip" :  selectedShip})
 
 
@@ -63,14 +66,14 @@ func selectTarget(targetID):
 func checkForActionsLeft():
 	removeUsedAction(action)
 	#	when skip signal is clicked
-	print("bonusAction: ", actionsLeft, bonusActionsLeft)
+	#print("bonusAction: ", actionsLeft, bonusActionsLeft)
 	#	delete the ship the action was choosen for and the specific action (bonus or standard)
 	#	abfrage für sofort action
 	
 	if(actionsLeft + bonusActionsLeft):
 		await state_machine.transition_to("PlayerTurnState/ChoosePlayerState")
 	else:
-		print("new Actions: ", actions)
+		#print("new Actions: ", actions)
 		await state_machine.transition_to("ActionState",{"Actions" = self.actions})
 	#	clear
 	

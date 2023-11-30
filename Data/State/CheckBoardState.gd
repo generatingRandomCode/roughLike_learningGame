@@ -43,6 +43,7 @@ func safePlayerShipsAtCombatEnd():
 	for ship in playerShips:
 		print("shippath: ", ship.get_parent().get_path())		
 		main.playerShips += [ship.get_parent().get_path()]
+		#	move child
 		ship.get_parent().remove_child(ship)
 		main.get_node("SafePlayerShips").add_child(ship)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://x2x0l4lxpttf"]
+[gd_scene load_steps=12 format=3 uid="uid://x2x0l4lxpttf"]
 
 [ext_resource type="Script" path="res://Menu/TraderUI/TraderUI.gd" id="1_oxogi"]
 [ext_resource type="Script" path="res://Menu/TraderUI/UIScale.gd" id="1_rnvnn"]
@@ -11,9 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://t0l0cm4h8613" path="res://resource/Icons/Move_Icon.png" id="6_ls2cm"]
 [ext_resource type="Texture2D" uid="uid://uvvnsln2wog4" path="res://Menu/TraderUI/Händler_UI_Repair.png" id="7_xjjx1"]
 [ext_resource type="Texture2D" uid="uid://dgdh3e2ir7vrl" path="res://resource/Icons/Typ-1_Icon.png" id="8_jg3p5"]
-[ext_resource type="Texture2D" uid="uid://dn5pj3b501mut" path="res://resource/Icons/Typ_2_Icon.png" id="9_dbmre"]
-[ext_resource type="Texture2D" uid="uid://b4h4di5l42l5r" path="res://resource/Icons/Fusionsreaktor_Icon.png" id="10_slpc3"]
-[ext_resource type="Texture2D" uid="uid://c431da4lnq6nc" path="res://resource/Icons/ArmorShip_Icon.png" id="11_88454"]
 
 [node name="TraderUI" type="Control"]
 layout_mode = 3
@@ -137,16 +134,20 @@ offset_right = 119.0
 offset_bottom = 120.0
 texture = ExtResource("6_ls2cm")
 
-[node name="ItemBox3" type="TextureButton" parent="Control"]
+[node name="ShipsDisplay" type="HBoxContainer" parent="Control"]
 layout_mode = 0
-offset_left = 55.0
-offset_top = 152.0
-offset_right = 178.0
-offset_bottom = 313.0
+offset_left = 42.0
+offset_top = 154.0
+offset_right = 936.0
+offset_bottom = 318.0
+
+[node name="StandardShipButton" type="TextureButton" parent="Control/ShipsDisplay"]
+visible = false
+layout_mode = 2
 texture_normal = ExtResource("5_1wxob")
 texture_hover = ExtResource("5_vi8qk")
 
-[node name="ItemBoxValue" type="Label" parent="Control/ItemBox3"]
+[node name="ItemBoxValue" type="Label" parent="Control/ShipsDisplay/StandardShipButton"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 118.0
@@ -157,100 +158,13 @@ text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon" type="TextureRect" parent="Control/ItemBox3"]
+[node name="Icon" type="TextureRect" parent="Control/ShipsDisplay/StandardShipButton"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 5.0
 offset_right = 119.0
 offset_bottom = 120.0
 texture = ExtResource("8_jg3p5")
-expand_mode = 2
-
-[node name="ItemBox7" type="TextureButton" parent="Control"]
-layout_mode = 0
-offset_left = 208.0
-offset_top = 152.0
-offset_right = 331.0
-offset_bottom = 313.0
-texture_normal = ExtResource("5_1wxob")
-texture_hover = ExtResource("5_vi8qk")
-
-[node name="ItemBoxValue" type="Label" parent="Control/ItemBox7"]
-layout_mode = 0
-offset_left = 35.0
-offset_top = 118.0
-offset_right = 86.0
-offset_bottom = 163.0
-theme_override_font_sizes/font_size = 30
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Icon" type="TextureRect" parent="Control/ItemBox7"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 5.0
-offset_right = 119.0
-offset_bottom = 120.0
-texture = ExtResource("9_dbmre")
-expand_mode = 2
-
-[node name="ItemBox8" type="TextureButton" parent="Control"]
-layout_mode = 0
-offset_left = 356.0
-offset_top = 152.0
-offset_right = 479.0
-offset_bottom = 313.0
-texture_normal = ExtResource("5_1wxob")
-texture_hover = ExtResource("5_vi8qk")
-
-[node name="ItemBoxValue" type="Label" parent="Control/ItemBox8"]
-layout_mode = 0
-offset_left = 35.0
-offset_top = 118.0
-offset_right = 86.0
-offset_bottom = 163.0
-theme_override_font_sizes/font_size = 30
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Icon" type="TextureRect" parent="Control/ItemBox8"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 5.0
-offset_right = 119.0
-offset_bottom = 120.0
-texture = ExtResource("10_slpc3")
-expand_mode = 2
-
-[node name="ItemBox9" type="TextureButton" parent="Control"]
-layout_mode = 0
-offset_left = 506.0
-offset_top = 152.0
-offset_right = 629.0
-offset_bottom = 313.0
-texture_normal = ExtResource("5_1wxob")
-texture_hover = ExtResource("5_vi8qk")
-
-[node name="ItemBoxValue" type="Label" parent="Control/ItemBox9"]
-layout_mode = 0
-offset_left = 35.0
-offset_top = 118.0
-offset_right = 86.0
-offset_bottom = 163.0
-theme_override_font_sizes/font_size = 30
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Icon" type="TextureRect" parent="Control/ItemBox9"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 5.0
-offset_right = 119.0
-offset_bottom = 120.0
-texture = ExtResource("11_88454")
 expand_mode = 2
 
 [node name="ItemBox4" type="TextureButton" parent="Control"]
