@@ -1,11 +1,11 @@
 extends State
 
 
-var enemyGrid
+#var enemyGrid
 
 
 func enter(parameter := {}) -> void:
-	enemyGrid = get_tree().get_nodes_in_group("EnemyField")
+	var enemyGrid = get_tree().get_nodes_in_group("EnemyField")
 	print("place Enemy State")
 	placeEnemyFromCurrentLevel()
 	#placeEnemyRandom()
@@ -13,6 +13,7 @@ func enter(parameter := {}) -> void:
 
 
 func placeEnemyFromCurrentLevel():
+	var enemyGrid = get_tree().get_nodes_in_group("EnemyField")
 	var currentLevel = main.currentLevel
 	var enemyGridRoot = main.get_node("PlayerGrid/Enemy")
 	for index in currentLevel.enemyShipsNames.size():
@@ -24,13 +25,17 @@ func placeEnemyFromCurrentLevel():
 		#var posX =  currentLevel.enemyPosition[index][0]
 		#var posY =  currentLevel.enemyPosition[index][0]
 		var random_index = randi() % enemyGrid.size()
-		enemyGrid[random_index].add_child(shipInstance)
+		if !enemyGrid[random_index].has_node("Model"):
+			enemyGrid[random_index].add_child(shipInstance)
+		#	prevents enemy from spawning on top of each other
+		enemyGrid.erase(enemyGrid[random_index])
 		#enemyGridRoot.get_node(str(posX)).get_node(str(posY)).add_child(shipInstance)
 		
 	
 
 
 func placeEnemyRandom():
+	var enemyGrid = get_tree().get_nodes_in_group("EnemyField")
 	var enemyNumber = max(1,randi() % 9)
 	#var enemyNumber = 2
 	var shipList = []

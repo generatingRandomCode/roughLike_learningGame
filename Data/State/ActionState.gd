@@ -8,6 +8,7 @@ signal checkForHealth
 #	gets a array of actions, sort them by init and executes them
 func enter(parameter := {}) -> void:
 	
+	# connect all the ships
 	for ship in get_tree().get_nodes_in_group("Ship"):
 		self.connect("checkForHealth", ship.checkForHealth)
 
