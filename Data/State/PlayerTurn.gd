@@ -7,17 +7,18 @@ class_name PlayerTurnState
 var actionsLeft
 var bonusActionsLeft
 
-@export var skipAllButton : Button
+#@export var skipAllButton : Button
 var actions : Array[Node] = []
 var action : Node
 #	the selected ship model from the selected field
 var selectedShip
 
 func _ready():
+	# connect the skip button
+	timelineUI.connect("skipAll",skipAllAction)
+	#skipAllButton.connect("pressed",skipAllAction)
 	#	connect the skip action
 	main.get_node("ActionUI").connect("skipAction",skipAction)
-	skipAllButton.connect("pressed",skipAllAction)
-	skipAllButton.hide()
 
 func enter(parameter := {}) -> void:
 	#	init the standard actions for each ship actions:
@@ -32,7 +33,6 @@ func enter(parameter := {}) -> void:
 		bonusActionsLeft = get_tree().get_nodes_in_group("player")
 	
 	#	choose player for action
-	skipAllButton.show()
 	await get_parent().transition_to("PlayerTurnState/ChoosePlayerState")
 	#	show skip all button at the end ?
 
@@ -71,7 +71,6 @@ func checkForActionsLeft():
 		await state_machine.transition_to("PlayerTurnState/ChoosePlayerState")
 	else:
 		print("new Actions: ", actions)
-		skipAllButton.hide()
 		await state_machine.transition_to("ActionState",{"Actions" = self.actions})
 	#	clear
 	
@@ -84,9 +83,11 @@ func skipAction():
 	checkForActionsLeft()
 	
 func skipAllAction():
+	#	only allow skip when we are in one of the player states
+	if (state_machine.state != self) and (state_machine.state not in get_children()):
+		return
 	#only deactivate as clickable when there are no actions to click left
 	if actionsLeft + bonusActionsLeft:
-		skipAllButton.hide()
 		actionsLeft = []
 		bonusActionsLeft = []
 		checkForActionsLeft()

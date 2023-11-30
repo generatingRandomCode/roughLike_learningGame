@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://x2x0l4lxpttf"]
+[gd_scene load_steps=15 format=3 uid="uid://x2x0l4lxpttf"]
 
+[ext_resource type="Script" path="res://Menu/TraderUI/TraderUI.gd" id="1_oxogi"]
 [ext_resource type="Script" path="res://Menu/TraderUI/UIScale.gd" id="1_rnvnn"]
 [ext_resource type="Texture2D" uid="uid://2ie08o6kpcki" path="res://Menu/TraderUI/Händler_UI_Background.png" id="2_mb5a5"]
 [ext_resource type="Texture2D" uid="uid://5xktwqcrrngs" path="res://Menu/TraderUI/Händler_UI_Apply_hover.png" id="3_ljuue"]
@@ -24,6 +25,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+script = ExtResource("1_oxogi")
 
 [node name="Control" type="Control" parent="."]
 layout_direction = 1
@@ -394,3 +396,4 @@ text = "0"
 horizontal_alignment = 2
 
 [connection signal="resized" from="." to="Control" method="_on_trader_ui_resized"]
+[connection signal="pressed" from="Control/HandelAbschliessen" to="." method="endClicked"]

@@ -157,6 +157,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="resized" from="." to="Control" method="_on_timeline_ui_resized"]
+[connection signal="pressed" from="Control/TextureRect/nextRound" to="." method="_on_next_round_pressed"]
 [connection signal="pressed" from="Control/TextureRect/half" to="Control/TextureRect" method="_on_half_pressed"]
 [connection signal="pressed" from="Control/TextureRect/normal" to="Control/TextureRect" method="_on_normal_pressed"]
 [connection signal="pressed" from="Control/TextureRect/double" to="Control/TextureRect" method="_on_double_pressed"]

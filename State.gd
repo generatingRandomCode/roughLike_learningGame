@@ -10,6 +10,7 @@ extends Node3D
 
 @onready var main = get_tree().get_root().get_node("main")
 @onready var state_machine = get_tree().get_root().get_node("main/StateMashine")
+@onready var timelineUI = get_tree().get_root().get_node("main/TimelineUI")
 
 func _ready():
 	pass

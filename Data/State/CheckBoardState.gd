@@ -11,6 +11,7 @@ func enter(parameter := {}) -> void:
 		await get_tree().create_timer(3).timeout
 		get_tree().quit()
 	elif !checkEnemy():
+		safePlayerShipsAtCombatEnd()
 		get_parent().transition_to("LevelEndState")
 	else:
 		get_parent().transition_to("InterTurnState",{})
@@ -37,3 +38,14 @@ func checkEnemy()->bool:
 		return true
 
 
+func safePlayerShipsAtCombatEnd():
+	var playerShips = get_tree().get_nodes_in_group("player")
+	for ship in playerShips:
+		print("shippath: ", ship.get_parent().get_path())		
+		main.playerShips += [ship.get_parent().get_path()]
+		ship.get_parent().remove_child(ship)
+		main.get_node("SafePlayerShips").add_child(ship)
+
+	var playerGrid = main.get_node("PlayerGrid")
+	main.remove_child(main.get_node("PlayerGrid"))
+	playerGrid.queue_free()

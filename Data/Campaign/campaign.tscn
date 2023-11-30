@@ -13,5 +13,9 @@ lootMoney = 100
 
 [node name="Level2" type="Node3D" parent="."]
 script = ExtResource("2_cjc45")
+levelTyp = 1
+
+[node name="Level3" type="Node3D" parent="."]
+script = ExtResource("2_cjc45")
 enemyShipsNames = Array[String](["TheLavoisier", "TheLavoisier", "Typ1"])
 lootMoney = 100

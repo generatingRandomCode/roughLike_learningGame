@@ -10,11 +10,13 @@ func _ready():
 func enter(_msg := {}) -> void:
 	
 	#	check if the player board allready exist
+	#	start first level with placing a ship
 	if main.gamestart:
 		main.currentCampaign = $Campaign
 		get_parent().transition_to("ChooseShipToPlace",{"Number": 1})
 	else:
-		get_parent().transition_to("PlaceSafedShipsState")
+		#	continue with fleet 
+		get_parent().transition_to("BuildLevelState")
 
 	#get_parent().transition_to("ChooseShipNumberState")
 	#get_parent().transition_to("PlacePlayerState",{"shipName" : playerShips[0]})
