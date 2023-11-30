@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cwwx2vnh3ngid"
+path="res://.godot/imported/R10.obj-8c081bccc6544aad4f9a2a1d06dd15fb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/R10.obj-8c081bccc6544aad4f9a2a1d06dd15fb.mesh"]
+
+source_file="res://resource/ships/R10/R10.obj"
+dest_files=["res://.godot/imported/R10.obj-8c081bccc6544aad4f9a2a1d06dd15fb.mesh", "res://.godot/imported/R10.obj-8c081bccc6544aad4f9a2a1d06dd15fb.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b2h0os7tmgelk"
+path="res://.godot/imported/R10-LQ.obj-a9e844d1d5fb0301833e55d0f2b3f185.mesh"
+
+[deps]
+
+files=["res://.godot/imported/R10-LQ.obj-a9e844d1d5fb0301833e55d0f2b3f185.mesh"]
+
+source_file="res://resource/ships/R10/R10-LQ.obj"
+dest_files=["res://.godot/imported/R10-LQ.obj-a9e844d1d5fb0301833e55d0f2b3f185.mesh", "res://.godot/imported/R10-LQ.obj-a9e844d1d5fb0301833e55d0f2b3f185.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

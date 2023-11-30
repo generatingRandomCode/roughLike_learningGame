@@ -23,8 +23,8 @@ func enter(parameter = {}):
 		var ship = savedShips[x]
 		var shipPath = main.playerShips[x]
 		ship.get_parent().remove_child(ship)
-		ship.name = "Model" 
 		get_node(shipPath).add_child(ship)
+		ship.name = "Model" 
 		pass
 	print("shippath", main.get_node("PlayerGrid"))
 	

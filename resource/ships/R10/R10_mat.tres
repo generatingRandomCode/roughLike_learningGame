@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://c781g1o2htaa0"]
+
+[ext_resource type="Texture2D" uid="uid://b377avprq4jsd" path="res://resource/ships/R10/R10-LQ_R10_mat_BaseColor.png" id="1_mvyap"]
+[ext_resource type="Texture2D" uid="uid://dnabrreul1bik" path="res://resource/ships/R10/R10-LQ_R10_mat_OcclusionRoughnessMetallic.png" id="2_7cfwi"]
+[ext_resource type="Texture2D" uid="uid://t0cc44qey7fx" path="res://resource/ships/R10/R10-LQ_R10_mat_Emissive.png" id="3_iq64b"]
+[ext_resource type="Texture2D" uid="uid://ch6ya3eo7j8w8" path="res://resource/ships/R10/R10-LQ_R10_mat_Normal.png" id="4_ct0qb"]
+
+[resource]
+albedo_texture = ExtResource("1_mvyap")
+metallic = 1.0
+metallic_texture = ExtResource("2_7cfwi")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_7cfwi")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_energy_multiplier = 3.0
+emission_texture = ExtResource("3_iq64b")
+normal_enabled = true
+normal_texture = ExtResource("4_ct0qb")
+ao_enabled = true
+ao_texture = ExtResource("2_7cfwi")
