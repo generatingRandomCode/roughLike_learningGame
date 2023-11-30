@@ -1,10 +1,10 @@
 extends State
 
 var roundTimer : int = 0
-@export var turnLabel : RichTextLabel
+#@export var turnLabel : RichTextLabel
 
 func _ready():
-	turnLabel.hide()
+	$TimelineUI.hide()
 #	called at the start of combat and at start of each round
 func enter(parameter := {}) -> void:
 	displayRoundTimer()
@@ -21,5 +21,5 @@ func updateShips():
 
 func displayRoundTimer():
 	roundTimer += 1
-	turnLabel.text = "Round: " + str(roundTimer)
-	turnLabel.show()
+	$TimelineUI.displayTurn(str(roundTimer))
+	$TimelineUI.show()

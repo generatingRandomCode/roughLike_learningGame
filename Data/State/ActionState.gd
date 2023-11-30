@@ -38,7 +38,6 @@ func executeActions(actions : Array[Node]):
 	for initStep in range(startInit ,MaxinitStep):
 		#	sort the action and get a new end init to end the turn
 		actions = sortActionsByInitative(actions)
-		displayInitTimer(initStep)
 		print("field test: set field check1", actions)
 		#for action in actions:
 		var actionCounter = 0
@@ -116,10 +115,10 @@ func reInitizeActions(actions : Array[Node])->void:
 				if actionToCompare == actions[y].cause:
 					actions[y].actionInitiative += actions[x].actionInitiative
 				
-func displayInitTimer(initStep: int):
-	var turnLabel = main.get_node("StateMashine/InterTurnState/Panel/RichTextLabel")
-	turnLabel.text = "init: " + str(initStep)
-	turnLabel.show()
+#func displayInitTimer(initStep: int):
+#	var turnLabel = main.get_node("StateMashine/InterTurnState/Panel/RichTextLabel")
+#	turnLabel.text = "init: " + str(initStep)
+#	turnLabel.show()
 
 func exit():
 	for ship in get_tree().get_nodes_in_group("Ship"):

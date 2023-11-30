@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://2xsmik7kjx1w"]
+[gd_scene load_steps=10 format=3 uid="uid://2xsmik7kjx1w"]
 
 [ext_resource type="Script" path="res://Menu/TraderUI/UIScale.gd" id="1_af1to"]
 [ext_resource type="Texture2D" uid="uid://v37rnsaqjo7n" path="res://Menu/TimelineUI/Timeline_Bar.png" id="1_bx8up"]
+[ext_resource type="Script" path="res://Menu/TimelineUI/TimelineUI.gd" id="1_fmvpl"]
 [ext_resource type="Texture2D" uid="uid://q55v08t4se34" path="res://Menu/TimelineUI/Timeline_InfoBox.png" id="2_iymqv"]
 [ext_resource type="Script" path="res://Menu/TimelineUI/TimeScaling.gd" id="3_hmquh"]
 [ext_resource type="Texture2D" uid="uid://clsol2la0haew" path="res://Menu/TimelineUI/Timeline_NextRoundButton.png" id="3_tvr7e"]
@@ -22,6 +23,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
+script = ExtResource("1_fmvpl")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1

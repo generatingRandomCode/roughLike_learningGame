@@ -109,33 +109,10 @@ script = ExtResource("7_e3jri")
 [node name="CombatStartState" type="Node3D" parent="StateMashine"]
 script = ExtResource("18_2sphu")
 
-[node name="InterTurnState" type="Node3D" parent="StateMashine" node_paths=PackedStringArray("turnLabel")]
+[node name="InterTurnState" type="Node3D" parent="StateMashine"]
 script = ExtResource("21_acpjl")
-turnLabel = NodePath("Panel/RichTextLabel")
 
-[node name="Panel" type="Panel" parent="StateMashine/InterTurnState"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-size_flags_horizontal = 6
-size_flags_vertical = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="StateMashine/InterTurnState/Panel"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_right = 91.0
-offset_bottom = 24.0
-grow_horizontal = 0
-size_flags_horizontal = 8
-size_flags_vertical = 0
-text = "Round:Test"
+[node name="TimelineUI" parent="StateMashine/InterTurnState" instance=ExtResource("30_8o7xe")]
 
 [node name="EnemyState" type="Node3D" parent="StateMashine"]
 script = ExtResource("13_cd4cd")
@@ -220,8 +197,6 @@ size = Vector3(200, 200, 200)
 transform = Transform3D(1.00228, 0, 0, 0, 1.00228, 0, 0, 0, 1.00228, -100, 0, 0)
 max_distance = 5000.0
 size = Vector3(200, 200, 200)
-
-[node name="TimelineUI" parent="." instance=ExtResource("30_8o7xe")]
 
 [node name="TraderUI_Testweise_Drinnen" parent="." instance=ExtResource("30_mtrsg")]
 visible = false
