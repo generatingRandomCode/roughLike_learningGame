@@ -32,9 +32,9 @@ func enter(parameter := {}) -> void:
 		bonusActionsLeft = get_tree().get_nodes_in_group("player")
 	
 	#	choose player for action
+	skipAllButton.show()
 	await get_parent().transition_to("PlayerTurnState/ChoosePlayerState")
 	#	show skip all button at the end ?
-	skipAllButton.show()
 
 
 
@@ -71,8 +71,8 @@ func checkForActionsLeft():
 		await state_machine.transition_to("PlayerTurnState/ChoosePlayerState")
 	else:
 		print("new Actions: ", actions)
-		await state_machine.transition_to("ActionState",{"Actions" = self.actions})
 		skipAllButton.hide()
+		await state_machine.transition_to("ActionState",{"Actions" = self.actions})
 	#	clear
 	
 	selectedShip = null
