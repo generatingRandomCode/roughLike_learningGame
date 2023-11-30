@@ -220,4 +220,5 @@ size = Vector3(200, 200, 200)
 [node name="TimelineUI" parent="." instance=ExtResource("30_8o7xe")]
 
 [node name="TraderUI_Testweise_Drinnen" parent="." instance=ExtResource("30_mtrsg")]
+visible = false
 offset_right = -0.00012207
