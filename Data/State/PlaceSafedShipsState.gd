@@ -7,8 +7,11 @@ var playerGrid = preload("res://player_grid.tscn")
 func enter(parameter = {}):
 	
 	if !main.has_node("PlayerGrid"):
+		#	place a new player grid
 		var playerGridInstance = playerGrid.instantiate()
 		main.add_child(playerGridInstance)
+		#	remove the exmapel ship from the grid
+		playerGridInstance.removeClickZones("PlayerField")
 		
 	#main.playerShips
 	#if main.get_node("SafePlayerShips").get_child_count():
