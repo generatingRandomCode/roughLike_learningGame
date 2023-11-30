@@ -9,7 +9,7 @@ func enter(parameter := {}) -> void:
 	print("place Enemy State")
 	placeEnemyFromCurrentLevel()
 	#placeEnemyRandom()
-	get_parent().transition_to("InterTurnState")
+	get_parent().transition_to("CombatStartState")
 
 
 func placeEnemyFromCurrentLevel():

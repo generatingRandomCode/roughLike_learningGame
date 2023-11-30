@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cj0wofdm4g5mk"]
+[gd_scene load_steps=36 format=3 uid="uid://cj0wofdm4g5mk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7kjg5"]
 [ext_resource type="PackedScene" uid="uid://himnox2wxi7d" path="res://Data/Camera/camera.tscn" id="2_wjkft"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://Data/State/ChoosePlayerState.gd" id="15_y8yl8"]
 [ext_resource type="Script" path="res://Data/State/CheckBoardState.gd" id="16_00dks"]
 [ext_resource type="Script" path="res://Data/State/PlayerTurn.gd" id="16_gjkpn"]
+[ext_resource type="Script" path="res://Data/State/CombatStartState.gd" id="18_2sphu"]
 [ext_resource type="ArrayMesh" uid="uid://dseemn36qr30u" path="res://resource/gameBackground/planets/PlanetMesh.obj" id="18_mhset"]
 [ext_resource type="Script" path="res://Data/State/InterTurnState.gd" id="21_acpjl"]
 [ext_resource type="PackedScene" uid="uid://dakbo4btppekq" path="res://Menu/action_ui_new.tscn" id="21_gsrlb"]
@@ -104,6 +105,9 @@ script = ExtResource("8_gwhf8")
 
 [node name="PlaceEnemyState" type="Node3D" parent="StateMashine"]
 script = ExtResource("7_e3jri")
+
+[node name="CombatStartState" type="Node3D" parent="StateMashine"]
+script = ExtResource("18_2sphu")
 
 [node name="InterTurnState" type="Node3D" parent="StateMashine" node_paths=PackedStringArray("turnLabel")]
 script = ExtResource("21_acpjl")
