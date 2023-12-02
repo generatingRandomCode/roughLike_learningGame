@@ -7,7 +7,7 @@ class_name actionUIDisplay
 #	6 ActionTabs
 @export var actionUIParents: Array[Control];
 @export var base: Control;
-
+@export var select: AudioStreamPlayer;
 
 
 var currentActionIDs : Array
@@ -56,6 +56,7 @@ func _on_fire_pressed():
 	#	hot to skip
 	if actionCurrent:
 		actionChoosen.emit(actionCurrent)
+		select.play()
 
 func _on_skip_press():
 	skipAction.emit()

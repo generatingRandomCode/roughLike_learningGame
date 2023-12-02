@@ -2,6 +2,8 @@ extends Button
 
 @export var pos: int;
 @export var actionUITrigger: actionUIDisplay;
+@export var hover: AudioStreamPlayer;
+@export var select: AudioStreamPlayer;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -15,3 +17,9 @@ func _process(delta):
 
 func _on_pressed():
 	actionUITrigger.selectActionTab(pos)
+	select.play()
+
+
+
+func _on_mouse_entered():
+	hover.play()

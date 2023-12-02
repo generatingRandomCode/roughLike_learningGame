@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://mubsfndci7ev"]
+[gd_scene load_steps=18 format=3 uid="uid://mubsfndci7ev"]
 
 [ext_resource type="Script" path="res://ShipsScripts/TheLavoisier.gd" id="1_b0vgl"]
 [ext_resource type="Material" uid="uid://dawfwb4tocs7o" path="res://resource/ships/TheLavoisier/TheLavoisier_mat.tres" id="2_p24xr"]
@@ -6,8 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_esr3n"]
 [ext_resource type="PackedScene" uid="uid://8c7qta7v1skl" path="res://Data/Actions/Weapons/Transmitter.tscn" id="6_ws2lb"]
 [ext_resource type="PackedScene" uid="uid://by0uclccvso3y" path="res://Data/Actions/Antrieb/DirveBurn.tscn" id="7_okjo7"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_ngxby"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xepbc"]
 transparency = 1
@@ -129,8 +127,53 @@ skeleton = NodePath("")
 [node name="TrusterParticle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12768, 0.765777, 15.8863)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrusterParticle"]
-shape = SubResource("SphereShape3D_ngxby")
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0436, 0.20817, 0)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D6" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1055, 0.20817, 0)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D7" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.356, -0.931457, 0)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D8" type="GPUParticles3D" parent="TrusterParticle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1055, -0.931457, 0)
+material_override = SubResource("StandardMaterial3D_xepbc")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 25
+lifetime = 0.75
+fract_delta = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2eo25")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="TrusterParticle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.12744, 0, 0)
@@ -170,54 +213,6 @@ draw_pass_1 = SubResource("QuadMesh_xdvja")
 
 [node name="GPUParticles3D4" type="GPUParticles3D" parent="TrusterParticle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.37787, -1.13963, 0)
-material_override = SubResource("StandardMaterial3D_xepbc")
-cast_shadow = 0
-ignore_occlusion_culling = true
-amount = 25
-lifetime = 0.75
-fract_delta = false
-transform_align = 3
-process_material = SubResource("ParticleProcessMaterial_2eo25")
-draw_pass_1 = SubResource("QuadMesh_xdvja")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="TrusterParticle/GPUParticles3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4215, 1.3478, 0)
-material_override = SubResource("StandardMaterial3D_xepbc")
-cast_shadow = 0
-ignore_occlusion_culling = true
-amount = 25
-lifetime = 0.75
-fract_delta = false
-transform_align = 3
-process_material = SubResource("ParticleProcessMaterial_2eo25")
-draw_pass_1 = SubResource("QuadMesh_xdvja")
-
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="TrusterParticle/GPUParticles3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4834, 1.3478, 0)
-material_override = SubResource("StandardMaterial3D_xepbc")
-cast_shadow = 0
-ignore_occlusion_culling = true
-amount = 25
-lifetime = 0.75
-fract_delta = false
-transform_align = 3
-process_material = SubResource("ParticleProcessMaterial_2eo25")
-draw_pass_1 = SubResource("QuadMesh_xdvja")
-
-[node name="GPUParticles3D3" type="GPUParticles3D" parent="TrusterParticle/GPUParticles3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7339, 0.208173, 0)
-material_override = SubResource("StandardMaterial3D_xepbc")
-cast_shadow = 0
-ignore_occlusion_culling = true
-amount = 25
-lifetime = 0.75
-fract_delta = false
-transform_align = 3
-process_material = SubResource("ParticleProcessMaterial_2eo25")
-draw_pass_1 = SubResource("QuadMesh_xdvja")
-
-[node name="GPUParticles3D4" type="GPUParticles3D" parent="TrusterParticle/GPUParticles3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4834, 0.208173, 0)
 material_override = SubResource("StandardMaterial3D_xepbc")
 cast_shadow = 0
 ignore_occlusion_culling = true

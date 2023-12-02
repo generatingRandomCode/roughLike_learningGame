@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dakbo4btppekq"]
+[gd_scene load_steps=13 format=3 uid="uid://dakbo4btppekq"]
 
 [ext_resource type="Script" path="res://Menu/actionUIDisplay.gd" id="1_on7ox"]
 [ext_resource type="Texture2D" uid="uid://bnq2i5jda7to2" path="res://Menu/ActionUI/Ability_UI_deselected_2-6.png" id="2_ie0oy"]
@@ -11,8 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://doqbe3w2m6b1i" path="res://Menu/ActionUI/Ability_UI_5.png" id="7_0lk76"]
 [ext_resource type="Texture2D" uid="uid://dtl2d8vf8vd5q" path="res://Menu/ActionUI/Ability_UI_6.png" id="8_inp68"]
 [ext_resource type="Texture2D" uid="uid://dafammkugdmtp" path="res://Menu/ActionUI/Skip_Icon.png" id="11_nrdwm"]
+[ext_resource type="AudioStream" uid="uid://bnn5pmw1c3t6p" path="res://resource/sound/SelectButton.wav" id="13_qawnd"]
 
-[node name="ActionUI" type="Control" node_paths=PackedStringArray("actionUIParents", "base")]
+[node name="ActionUI" type="Control" node_paths=PackedStringArray("actionUIParents", "base", "select")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,6 +29,7 @@ script = ExtResource("1_on7ox")
 descriptionVar = Array[String](["fgerwjluhfgjlewhfe", "Jipiiiiiiiiiiiii", "rteghrgere", "greaagre", "rgeaagre", "rgeagrea"])
 actionUIParents = [NodePath("Action1Selected"), NodePath("Action2Selected"), NodePath("Action3Selected"), NodePath("Action4Selected"), NodePath("Action5Selected"), NodePath("Action6Selected")]
 base = NodePath("Base")
+select = NodePath("SelectButton")
 
 [node name="Action1Selected" type="Control" parent="."]
 layout_mode = 1
@@ -92,7 +94,7 @@ texture = ExtResource("2_ie0oy")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action1Selected/Action2" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action1Selected/Action2" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -108,6 +110,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 1
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action1Selected/Action2"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -144,7 +148,7 @@ texture = ExtResource("2_ie0oy")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action1Selected/Action3" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action1Selected/Action3" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -160,6 +164,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 2
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action1Selected/Action3"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -195,7 +201,7 @@ texture = ExtResource("2_ie0oy")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action1Selected/Action4" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action1Selected/Action4" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -211,6 +217,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 3
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action1Selected/Action4"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -246,7 +254,7 @@ texture = ExtResource("2_ie0oy")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action1Selected/Action5" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action1Selected/Action5" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -262,6 +270,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 4
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action1Selected/Action5"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -358,7 +368,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action2Selected/Action1" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action2Selected/Action1" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -373,6 +383,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_jbfob")
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action2Selected/Action1"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -449,7 +461,7 @@ texture = ExtResource("2_ie0oy")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action2Selected/Action3" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action2Selected/Action3" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -465,6 +477,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 2
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action2Selected/Action3"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -501,7 +515,7 @@ texture = ExtResource("2_ie0oy")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action2Selected/Action4" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action2Selected/Action4" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -517,6 +531,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 3
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action2Selected/Action4"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -553,7 +569,7 @@ texture = ExtResource("2_ie0oy")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action2Selected/Action5" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action2Selected/Action5" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -569,6 +585,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 4
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action2Selected/Action5"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -605,7 +623,7 @@ texture = ExtResource("2_ie0oy")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action2Selected/Action6" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action2Selected/Action6" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -621,6 +639,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 5
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action2Selected/Action6"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -665,7 +685,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action3Selected/Action1" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action3Selected/Action1" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -680,6 +700,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_jbfob")
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action3Selected/Action1"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -715,7 +737,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action3Selected/Action2" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action3Selected/Action2" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -731,6 +753,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 1
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action3Selected/Action2"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -807,7 +831,7 @@ texture = ExtResource("2_ie0oy")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action3Selected/Action4" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action3Selected/Action4" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -823,6 +847,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 3
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action3Selected/Action4"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -859,7 +885,7 @@ texture = ExtResource("2_ie0oy")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action3Selected/Action5" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action3Selected/Action5" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -875,6 +901,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 4
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action3Selected/Action5"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -911,7 +939,7 @@ texture = ExtResource("2_ie0oy")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action3Selected/Action6" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action3Selected/Action6" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -927,6 +955,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 5
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action3Selected/Action6"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -971,7 +1001,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action4Selected/Action1" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action4Selected/Action1" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -986,6 +1016,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_jbfob")
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action4Selected/Action1"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -1021,7 +1053,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action4Selected/Action2" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action4Selected/Action2" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1037,6 +1069,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 1
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action4Selected/Action2"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -1072,7 +1106,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action4Selected/Action3" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action4Selected/Action3" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1088,6 +1122,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 2
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action4Selected/Action3"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -1164,7 +1200,7 @@ texture = ExtResource("2_ie0oy")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action4Selected/Action5" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action4Selected/Action5" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1180,6 +1216,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 4
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action4Selected/Action5"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -1216,7 +1254,7 @@ texture = ExtResource("2_ie0oy")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action4Selected/Action6" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action4Selected/Action6" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1232,6 +1270,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 5
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action4Selected/Action6"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -1276,7 +1316,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action5Selected/Action1" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action5Selected/Action1" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1291,6 +1331,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_jbfob")
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action5Selected/Action1"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -1326,7 +1368,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action5Selected/Action2" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action5Selected/Action2" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1342,6 +1384,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 1
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action5Selected/Action2"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -1377,7 +1421,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action5Selected/Action3" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action5Selected/Action3" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1393,6 +1437,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 2
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action5Selected/Action3"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -1428,7 +1474,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action5Selected/Action4" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action5Selected/Action4" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1444,6 +1490,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 3
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action5Selected/Action4"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -1520,7 +1568,7 @@ texture = ExtResource("2_ie0oy")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action5Selected/Action6" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action5Selected/Action6" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1536,6 +1584,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 5
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action5Selected/Action6"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -1580,7 +1630,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action6Selected/Action1" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action6Selected/Action1" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1595,6 +1645,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_jbfob")
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action6Selected/Action1"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -1630,7 +1682,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action6Selected/Action2" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action6Selected/Action2" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1646,6 +1698,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 1
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action6Selected/Action2"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -1681,7 +1735,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action6Selected/Action3" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action6Selected/Action3" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1697,6 +1751,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 2
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action6Selected/Action3"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -1732,7 +1788,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action6Selected/Action4" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action6Selected/Action4" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1748,6 +1804,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 3
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action6Selected/Action4"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -1783,7 +1841,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="Action6Selected/Action5" node_paths=PackedStringArray("actionUITrigger")]
+[node name="Button" type="Button" parent="Action6Selected/Action5" node_paths=PackedStringArray("actionUITrigger", "hover", "select")]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1799,6 +1857,8 @@ grow_vertical = 2
 script = ExtResource("5_jbfob")
 pos = 4
 actionUITrigger = NodePath("../../..")
+hover = NodePath("../../../HoverButton")
+select = NodePath("../../../SelectButton")
 
 [node name="TextureRect" type="TextureRect" parent="Action6Selected/Action5"]
 modulate = Color(1, 1, 1, 0.556863)
@@ -1953,6 +2013,13 @@ offset_bottom = 123.0
 grow_vertical = 0
 text = "Skip"
 
+[node name="HoverButton" type="AudioStreamPlayer" parent="."]
+
+[node name="SelectButton" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_qawnd")
+volume_db = -20.0
+
+[connection signal="mouse_entered" from="Action1Selected/Action2/Button" to="Action1Selected/Action2/Button" method="_on_mouse_entered"]
 [connection signal="pressed" from="Action1Selected/Action2/Button" to="Action1Selected/Action2/Button" method="_on_pressed"]
 [connection signal="pressed" from="Action1Selected/Action3/Button" to="Action1Selected/Action3/Button" method="_on_pressed"]
 [connection signal="pressed" from="Action1Selected/Action4/Button" to="Action1Selected/Action4/Button" method="_on_pressed"]

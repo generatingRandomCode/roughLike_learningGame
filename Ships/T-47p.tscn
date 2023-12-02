@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c5xynpirguq6l"]
+[gd_scene load_steps=19 format=3 uid="uid://c5xynpirguq6l"]
 
 [ext_resource type="Script" path="res://ShipsScripts/T-47p.gd" id="1_jxvy0"]
 [ext_resource type="Material" uid="uid://diacfryenl8o0" path="res://resource/ships/T-47p/T-47p_mat.tres" id="2_m3a2t"]
@@ -45,8 +45,6 @@ scale_curve = SubResource("CurveTexture_si8t3")
 color_ramp = SubResource("GradientTexture1D_ko1hb")
 
 [sub_resource type="QuadMesh" id="QuadMesh_xdvja"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_ngxby"]
 
 [sub_resource type="Animation" id="Animation_nsnrd"]
 resource_name = "Ship_IdlShip_Idle_Animation"
@@ -321,9 +319,6 @@ fract_delta = false
 transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_2eo25")
 draw_pass_1 = SubResource("QuadMesh_xdvja")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrusterParticle"]
-shape = SubResource("SphereShape3D_ngxby")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
