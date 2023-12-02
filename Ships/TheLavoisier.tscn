@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://mubsfndci7ev"]
+[gd_scene load_steps=19 format=3 uid="uid://mubsfndci7ev"]
 
 [ext_resource type="Script" path="res://ShipsScripts/TheLavoisier.gd" id="1_b0vgl"]
 [ext_resource type="Material" uid="uid://dawfwb4tocs7o" path="res://resource/ships/TheLavoisier/TheLavoisier_mat.tres" id="2_p24xr"]
 [ext_resource type="ArrayMesh" uid="uid://b4qnv45kdop0j" path="res://resource/ships/TheLavoisier/Fusionsreaktor_Schiff.obj" id="3_oufck"]
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_esr3n"]
+[ext_resource type="AudioStream" uid="uid://cfkovog736fx2" path="res://resource/sound/Thruster_loop.mp3" id="5_jcbjh"]
 [ext_resource type="PackedScene" uid="uid://8c7qta7v1skl" path="res://Data/Actions/Weapons/Transmitter.tscn" id="6_ws2lb"]
 [ext_resource type="PackedScene" uid="uid://by0uclccvso3y" path="res://Data/Actions/Antrieb/DirveBurn.tscn" id="7_okjo7"]
 
@@ -222,6 +223,21 @@ fract_delta = false
 transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_2eo25")
 draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="TrusterParticle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55327, -0.328504, 0.467156)
+stream = ExtResource("5_jcbjh")
+unit_size = 2.0
+autoplay = true
+stream_paused = true
+max_distance = 100.0
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="TrusterParticle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0231, -0.229372, 0.540421)
+stream = ExtResource("5_jcbjh")
+unit_size = 2.0
+autoplay = true
+max_distance = 100.0
 
 [node name="Transmitter" parent="." instance=ExtResource("6_ws2lb")]
 transform = Transform3D(1, 4.43979e-08, 0, -1.60071e-10, 1, 0, 5.12227e-09, 4.47035e-08, 1, -4.71319, 6.45159, -4.67345)

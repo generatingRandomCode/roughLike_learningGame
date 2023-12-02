@@ -29,6 +29,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer"]
 handle_input_locally = false
+audio_listener_enable_3d = true
 physics_object_picking = true
 size = Vector2i(478, 540)
 size_2d_override_stretch = true
@@ -49,10 +50,8 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="Camera3DL" type="Camera3D" parent="GridContainer/SubViewportContainer/SubViewport/Node3D/Node3D"]
 transform = Transform3D(1, 1.49012e-08, 0, -1.49012e-08, 1, 3.8743e-07, 1.49012e-08, -5.96046e-08, 1, 0, 7.62939e-06, 100)
-current = true
 
 [node name="AudioListener3D" type="AudioListener3D" parent="GridContainer/SubViewportContainer/SubViewport/Node3D/Node3D/Camera3DL"]
-current = true
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="GridContainer"]
 layout_mode = 2
@@ -62,6 +61,7 @@ stretch = true
 
 [node name="SubViewport2" type="SubViewport" parent="GridContainer/SubViewportContainer2"]
 handle_input_locally = false
+audio_listener_enable_3d = true
 physics_object_picking = true
 size = Vector2i(478, 540)
 size_2d_override_stretch = true
@@ -81,7 +81,8 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="Camera3DL" type="Camera3D" parent="GridContainer/SubViewportContainer2/SubViewport2/Node3D2/Node3D"]
 transform = Transform3D(1, 1.49012e-08, -1.49012e-08, 1.49012e-08, 1, 5.96046e-08, -1.49012e-08, -8.9407e-08, 1, 0, -1.90735e-06, 100)
-current = true
+
+[node name="AudioListener3D" type="AudioListener3D" parent="GridContainer/SubViewportContainer2/SubViewport2/Node3D2/Node3D/Camera3DL"]
 
 [connection signal="mouse_entered" from="GridContainer/SubViewportContainer" to="GridContainer/SubViewportContainer/SubViewport/Node3D" method="_on_sub_viewport_container_mouse_entered"]
 [connection signal="mouse_exited" from="GridContainer/SubViewportContainer" to="GridContainer/SubViewportContainer/SubViewport/Node3D" method="_on_sub_viewport_container_mouse_exited"]

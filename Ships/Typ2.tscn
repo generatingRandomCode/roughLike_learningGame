@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://b622gynsjqa30"]
+[gd_scene load_steps=21 format=3 uid="uid://b622gynsjqa30"]
 
 [ext_resource type="Script" path="res://ShipsScripts/Typ2.gd" id="1_m8hma"]
 [ext_resource type="Material" uid="uid://dlg4n4nyjoklj" path="res://resource/ships/Typ-2/typ-2_mat.tres" id="2_woyj1"]
 [ext_resource type="ArrayMesh" uid="uid://c27m5vtwiql4s" path="res://resource/ships/Typ-2/Typ-2.obj" id="3_bwsj8"]
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_6xyjn"]
+[ext_resource type="AudioStream" uid="uid://cfkovog736fx2" path="res://resource/sound/Thruster_loop.mp3" id="5_l3fll"]
 [ext_resource type="Material" uid="uid://cfmiblmrfa4x" path="res://resource/shield/shield_mat.tres" id="5_ndyqe"]
 [ext_resource type="ArrayMesh" uid="uid://ualvqrxxahwf" path="res://resource/shield/Typ-2_Schild.obj" id="5_pk3rs"]
 [ext_resource type="PackedScene" uid="uid://egof24pfw2e1" path="res://Data/Actions/Weapons/smallLaserBeam.tscn" id="7_bmw4v"]
@@ -206,6 +207,20 @@ fract_delta = false
 transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_2eo25")
 draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="TrusterParticle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.72577, -0.547801, 0)
+stream = ExtResource("5_l3fll")
+unit_size = 2.0
+autoplay = true
+max_distance = 100.0
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="TrusterParticle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.800745, -0.547801, 0)
+stream = ExtResource("5_l3fll")
+unit_size = 2.0
+autoplay = true
+max_distance = 100.0
 
 [node name="Shield" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.9, 0, 0, 0, 0.616, 0, 0, 0, 0.4, 0, 0, -2.75428)
