@@ -1,4 +1,5 @@
 extends Control
+@export var audio: AudioStreamPlayer;
 
 signal skipAll
 
@@ -13,3 +14,4 @@ func displayTurn(turn : String):
 
 func _on_next_round_pressed():
 	skipAll.emit()
+	audio.play()

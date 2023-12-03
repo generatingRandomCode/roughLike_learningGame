@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwwq4fv0r2ct0"]
+[gd_scene load_steps=10 format=3 uid="uid://dwwq4fv0r2ct0"]
 
 [ext_resource type="Texture2D" uid="uid://bh5tbadrtc2r6" path="res://resource/Particles/scorch_02.png" id="3_sckf3"]
 [ext_resource type="Material" uid="uid://b7xiia23m6emy" path="res://Data/3DVisual/WepomAnimation/LaserBeam/bigLaiserShot_ParticleEffect.tres" id="4_0svnf"]
 [ext_resource type="Script" path="res://Data/3DVisual/WepomAnimation/LaserBeam/DrawLine.gd" id="4_b1807"]
+[ext_resource type="AudioStream" uid="uid://wys0bhs870j" path="res://resource/sound/laserShoot.wav" id="5_6ls6i"]
 [ext_resource type="Material" uid="uid://dud081ps5p3kf" path="res://Data/3DVisual/WepomAnimation/LaserBeam/LaiserRay_mat.tres" id="5_uwlfr"]
 
 [sub_resource type="Curve3D" id="Curve3D_xfoh4"]
@@ -20,7 +21,7 @@ emission = Color(1, 0, 0, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_jb07c"]
 orientation = 2
 
-[node name="LaserBeam" type="Path3D" node_paths=PackedStringArray("Capsule", "pathFollow", "fireParticle", "targetParticle")]
+[node name="LaserBeam" type="Path3D" node_paths=PackedStringArray("Capsule", "pathFollow", "fireParticle", "targetParticle", "shootAudio")]
 transform = Transform3D(1.14257, 0, 0, 0, 1.14257, 0, 0, 0, 1.14257, 0, 0, 0)
 curve = SubResource("Curve3D_xfoh4")
 script = ExtResource("4_b1807")
@@ -29,6 +30,7 @@ Capsule = NodePath("PathFollow3D/MeshInstance3D")
 pathFollow = NodePath("PathFollow3D")
 fireParticle = NodePath("GPUParticles3D")
 targetParticle = NodePath("GPUParticles3D2")
+shootAudio = NodePath("AudioStreamPlayer3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
 transform = Transform3D(-4.37112e-08, 0, -0.999999, 0, 0.999999, 0, 0.999996, 0, -4.37113e-08, 5, 0, 0)
@@ -60,3 +62,7 @@ lifetime = 0.4
 transform_align = 3
 process_material = ExtResource("4_0svnf")
 draw_pass_1 = SubResource("PlaneMesh_jb07c")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_6ls6i")
+max_distance = 100.0

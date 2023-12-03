@@ -4,6 +4,7 @@ extends Control
 @onready var shipsDisplay = $Control/ShipsDisplay
 @onready var shipsDisplayButton = $Control/ShipsDisplay/StandardShipButton
 @onready var shipDir : DirAccess = DirAccess.open("res://Ships")
+@export var audioButton: AudioStreamPlayer;
 
 # Called when the node enters the scene tree for the first time.
 signal endTrade
@@ -16,6 +17,7 @@ func setMoney():
 	$Control/Guthaben.text = str(main.playerMoney)
 
 func endClicked():
+	audioButton.play()
 	endTrade.emit()
 
 func buildShipShop():
@@ -39,6 +41,7 @@ func createShipBuyButton(filename):
 
 func shipButtonPressed(button):
 	var shipName = button.name
+	audioButton.play()
 	#	if to littel money
 	if main.playerMoney < 100:
 		return

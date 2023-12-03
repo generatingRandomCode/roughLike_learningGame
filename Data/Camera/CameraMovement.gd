@@ -14,6 +14,9 @@ var minZoom = 15
 @export var maxRotation: float;
 @export var playerDisplay: bool;
 
+@export var subViewL: SubViewport;
+@export var subViewR: SubViewport;
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -112,11 +115,15 @@ func turnLeft(isPressed: bool):
 func _on_sub_viewport_container_mouse_entered():
 	if(playerDisplay):
 		mouseInsideCam = true;
+		subViewL.audio_listener_enable_3d = true;
+		subViewR.audio_listener_enable_3d = false;
 
 
 func _on_sub_viewport_container_mouse_exited():
 	if(playerDisplay):
 		mouseInsideCam = false;
+		subViewL.audio_listener_enable_3d = false;
+		subViewR.audio_listener_enable_3d = true;
 	moveDirection = Vector3(0,0,0)
 	rotateDirection = Vector3(0,0,0)
 

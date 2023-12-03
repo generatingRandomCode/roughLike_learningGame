@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://2xsmik7kjx1w"]
+[gd_scene load_steps=11 format=3 uid="uid://2xsmik7kjx1w"]
 
 [ext_resource type="Script" path="res://Menu/TraderUI/UIScale.gd" id="1_af1to"]
 [ext_resource type="Texture2D" uid="uid://v37rnsaqjo7n" path="res://Menu/TimelineUI/Timeline_Bar.png" id="1_bx8up"]
@@ -8,12 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://clsol2la0haew" path="res://Menu/TimelineUI/Timeline_NextRoundButton.png" id="3_tvr7e"]
 [ext_resource type="Texture2D" uid="uid://cs50i4k8wnl7m" path="res://Menu/TimelineUI/Timeline_InfoBox_hover.png" id="4_nnt3m"]
 [ext_resource type="Texture2D" uid="uid://dnc2kqauyp8ck" path="res://Menu/TimelineUI/Timeline_NextRoundButton_hover.png" id="4_s081c"]
+[ext_resource type="AudioStream" uid="uid://bnn5pmw1c3t6p" path="res://resource/sound/SelectButton.wav" id="9_xyc4d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0a6ai"]
 line_spacing = 0.0
 font_size = 40
 
-[node name="TimelineUI" type="Control"]
+[node name="TimelineUI" type="Control" node_paths=PackedStringArray("audio")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,6 +25,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("1_fmvpl")
+audio = NodePath("Control/AudioStreamPlayer")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -34,13 +36,14 @@ grow_horizontal = 2
 mouse_filter = 2
 script = ExtResource("1_af1to")
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="TextureRect" type="TextureRect" parent="Control" node_paths=PackedStringArray("audio")]
 layout_mode = 0
 offset_left = -306.0
 offset_right = 306.0
 offset_bottom = 93.0
 texture = ExtResource("1_bx8up")
 script = ExtResource("3_hmquh")
+audio = NodePath("../AudioStreamPlayer")
 
 [node name="roundCounter" type="TextureButton" parent="Control/TextureRect"]
 layout_mode = 0
@@ -155,6 +158,10 @@ text = "2"
 label_settings = SubResource("LabelSettings_0a6ai")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control"]
+stream = ExtResource("9_xyc4d")
+volume_db = -20.0
 
 [connection signal="resized" from="." to="Control" method="_on_timeline_ui_resized"]
 [connection signal="pressed" from="Control/TextureRect/nextRound" to="." method="_on_next_round_pressed"]

@@ -229,7 +229,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55327, -0.328504, 0.467156
 stream = ExtResource("5_jcbjh")
 unit_size = 2.0
 autoplay = true
-stream_paused = true
 max_distance = 100.0
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="TrusterParticle"]

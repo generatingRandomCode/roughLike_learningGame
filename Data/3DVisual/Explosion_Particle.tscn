@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://81hssnoskpx0"]
+[gd_scene load_steps=10 format=3 uid="uid://81hssnoskpx0"]
 
 [ext_resource type="Material" uid="uid://bqpy4fs7jefg1" path="res://resource/assets/Explosion/Explosion.tres" id="1_nxrd1"]
 [ext_resource type="Script" path="res://Data/3DVisual/StartExplosion.gd" id="2_gr45l"]
+[ext_resource type="AudioStream" uid="uid://clsfuucasskgj" path="res://resource/sound/explosion.mp3" id="3_crhtj"]
 
 [sub_resource type="Gradient" id="Gradient_e7j3u"]
 offsets = PackedFloat32Array(0.0669014, 0.183099, 0.442254, 0.71831, 1)
@@ -40,7 +41,7 @@ turbulence_noise_scale = 0.1
 
 [node name="Explosion" type="Node3D"]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." node_paths=PackedStringArray("audio")]
 material_override = ExtResource("1_nxrd1")
 cast_shadow = 0
 emitting = false
@@ -56,6 +57,9 @@ transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_k8a5l")
 draw_pass_1 = SubResource("QuadMesh_udbas")
 script = ExtResource("2_gr45l")
+audio = NodePath("../AudioStreamPlayer3D")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 74.8792)
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_crhtj")
+unit_size = 50.0
+max_distance = 400.0

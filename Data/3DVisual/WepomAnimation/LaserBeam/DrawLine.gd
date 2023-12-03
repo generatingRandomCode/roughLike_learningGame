@@ -13,6 +13,8 @@ var position2: Vector3;
 var progress: float;
 var t: float
 
+@export var shootAudio: AudioStreamPlayer3D;
+
 func _ready():
 	var cur = Curve3D.new()
 	self.curve = cur
@@ -21,6 +23,7 @@ func _ready():
 
 # Called when the node enters the scene tree for the first time.
 func fire(action : ActionTemplate,timeout : float = 1):
+	shootAudio.play()
 	var position1 = self.global_position
 	var position2 = action.targetField.global_position
 	t = timeout
