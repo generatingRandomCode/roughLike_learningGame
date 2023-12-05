@@ -14,3 +14,13 @@ res://resource/assets/Grid/Grid.tres
 res://Data/Actions/Weapons/rocketShot_small.tscn
 res://Data/3DVisual/WepomAnimation/RocketShot/RocketShot_Scene.tscn
 res://Ships/Typ2.tscn
+res://main.tscn
+res://resource/gameBackground/planets/MagmaPlanet/magmaMaterial.tres
+res://player_grid.tscn
+res://player_grid_base.tscn
+res://ship_ui.tscn
+res://simpleButton.tscn
+res://start_menu.tscn
+res://Ships/T-47p.tscn
+res://Ships/TheLavoisier.tscn
+res://Ships/Typ1.tscn
