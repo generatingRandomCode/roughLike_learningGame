@@ -117,7 +117,7 @@ turbulence_noise_scale = 0.1
 
 [sub_resource type="QuadMesh" id="QuadMesh_udbas"]
 
-[node name="LaserBeam" type="Path3D" node_paths=PackedStringArray("Capsule", "pathFollow", "fireParticle", "targetParticle", "shootAudio")]
+[node name="RocketShot" type="Path3D" node_paths=PackedStringArray("Capsule", "pathFollow", "fireParticle", "targetParticle", "shootAudio")]
 transform = Transform3D(1.14257, 0, 0, 0, 1.14257, 0, 0, 0, 1.14257, 0, 0, 0)
 script = ExtResource("1_sghes")
 Capsule = NodePath("PathFollow3D/Rocket")
