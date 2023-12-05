@@ -142,12 +142,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.81803)
 wepon_damage = 100
 timeNeededForAction = 4
 energyCost = 1
-active = true
 wepon_name = "Rocket Launcher"
 wepon_initiative = 1
-needTarget = false
-needTargetField = false
-targetPreselection = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

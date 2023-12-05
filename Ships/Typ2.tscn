@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b622gynsjqa30"]
+[gd_scene load_steps=23 format=3 uid="uid://b622gynsjqa30"]
 
 [ext_resource type="Script" path="res://ShipsScripts/Typ2.gd" id="1_m8hma"]
 [ext_resource type="Texture2D" uid="uid://dn5pj3b501mut" path="res://resource/Icons/Typ_2_Icon.png" id="2_nu8r4"]

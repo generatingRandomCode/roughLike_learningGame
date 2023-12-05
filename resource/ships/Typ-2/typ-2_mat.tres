@@ -15,6 +15,7 @@ roughness_texture_channel = 1
 emission_enabled = true
 emission_texture = ExtResource("3_x4x0f")
 normal_enabled = true
+normal_scale = -1.0
 normal_texture = ExtResource("4_ayxvf")
 ao_enabled = true
 ao_texture = ExtResource("2_05dl6")
