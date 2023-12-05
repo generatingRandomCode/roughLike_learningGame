@@ -35,12 +35,21 @@ func _ready():
 		print("An error occurred when trying to access the path.")
 	#	create number fields
 
-func createButton(fileName):
+func createButton(filename):
 	var main = get_tree().get_root().get_node("main")
-	fileName = fileName.split(".")[0]
+	filename = filename.split(".")[0]
 	var buttonInstance = button.instantiate()
-	buttonInstance.name = fileName
-	buttonInstance.text= fileName
+	
+	buttonInstance.name = filename
+	buttonInstance.text= filename
+	#	get the ship icon
+	var shipPath = "res://Ships/" + filename + ".tscn"
+	var ship = load(shipPath)
+	var shipInstance = ship.instantiate()
+	if shipInstance.icon:
+		buttonInstance.icon = shipInstance.icon
+	shipInstance.queue_free()
+	#
 	$ChooseShip/startPanel/HBoxContainer.add_child(buttonInstance)
 	#	connect to create game stat startProcess methode
 	#	must be refactoring, no upwardds connectiong!

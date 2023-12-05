@@ -3,7 +3,15 @@
 [ext_resource type="Script" path="res://simpleButton.gd" id="1_x8234"]
 
 [node name="Button" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 256.0
+offset_bottom = 256.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "START"
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
 script = ExtResource("1_x8234")
 
 [connection signal="pressed" from="." to="." method="_on_button_pressed"]
