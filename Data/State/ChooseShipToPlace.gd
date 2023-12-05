@@ -9,7 +9,6 @@ func enter(parameter := {}) -> void:
 	if parameter.has("Number"):
 		number = str(parameter["Number"]).to_int()
 	
-
 	if number > 0:
 		main.get_node("StartMenu").show()
 		main.get_node("StartMenu/ChooseShip").show()
@@ -17,9 +16,6 @@ func enter(parameter := {}) -> void:
 		#	when number reaches zero 
 		main.get_node("PlayerGrid").removeClickZones("PlayerField")
 		get_parent().transition_to("PlaceEnemyState")
-	
-
-
 
 
 #	load playerfield 

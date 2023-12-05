@@ -117,12 +117,12 @@ script = ExtResource("9_hd7he")
 [node name="ChooseShipToPlace" type="Node3D" parent="StateMashine"]
 script = ExtResource("8_wee5y")
 
-[node name="PlaceSafedShipsState" type="Node3D" parent="StateMashine"]
-script = ExtResource("15_g5y3w")
-
 [node name="PlacePlayerState" type="Node3D" parent="StateMashine"]
 transform = Transform3D(0.993863, 0, 0, 0, 0.993863, 0, 0, 0, 0.993863, 0, 0, 0)
 script = ExtResource("8_gwhf8")
+
+[node name="PlaceSafedShipsState" type="Node3D" parent="StateMashine"]
+script = ExtResource("15_g5y3w")
 
 [node name="PlaceEnemyState" type="Node3D" parent="StateMashine"]
 script = ExtResource("7_e3jri")
