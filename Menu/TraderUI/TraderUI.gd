@@ -34,6 +34,14 @@ func buildShipShop():
 func createShipBuyButton(filename):
 	var newButton = shipsDisplayButton.duplicate()
 	newButton.name = filename.split(".")[0]
+	#	wie krieg ich das jeweilige icon hier her, ich muss das schiff bauen, ohne geht es nicht
+	#	load the ship for the icon
+	var shipPath = "res://Ships/" + filename
+	var ship = load(shipPath)
+	var shipInstance = ship.instantiate()
+	if shipInstance.icon:
+		newButton.get_node("Icon").texture = shipInstance.icon
+	shipInstance.queue_free()
 	shipsDisplay.add_child(newButton)
 	newButton.show()
 	#	button signal connect (function.bind(callable that will be returned))

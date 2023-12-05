@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://c5xynpirguq6l"]
+[gd_scene load_steps=21 format=3 uid="uid://c5xynpirguq6l"]
 
 [ext_resource type="Script" path="res://ShipsScripts/T-47p.gd" id="1_jxvy0"]
 [ext_resource type="Material" uid="uid://diacfryenl8o0" path="res://resource/ships/T-47p/T-47p_mat.tres" id="2_m3a2t"]
+[ext_resource type="Texture2D" uid="uid://c431da4lnq6nc" path="res://resource/Icons/ArmorShip_Icon.png" id="2_q43pt"]
 [ext_resource type="ArrayMesh" uid="uid://r814dc1udrur" path="res://resource/ships/T-47p/ArmorShip.obj" id="3_1o1vi"]
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_goepc"]
 [ext_resource type="AudioStream" uid="uid://cfkovog736fx2" path="res://resource/sound/Thruster_loop.mp3" id="5_s7i6d"]
@@ -112,6 +113,7 @@ _data = {
 [node name="Model" type="Node3D" node_paths=PackedStringArray("shipModell", "actions", "bonusActions")]
 script = ExtResource("1_jxvy0")
 ship_name = "T-47p"
+icon = ExtResource("2_q43pt")
 shipModell = NodePath("TheLavoisier")
 ship_health = 100
 ship_armor = 400

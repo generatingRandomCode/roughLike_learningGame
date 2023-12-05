@@ -8,6 +8,7 @@ var shipUI = preload("res://ship_ui.tscn")
 
 #	Basic Ship Variables
 @export var ship_name : String
+@export var icon : CompressedTexture2D
 @export var shipModell : MeshInstance3D
 var shipDestroyed : bool = false
 #	ship base stats

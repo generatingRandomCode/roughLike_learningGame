@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://b622gynsjqa30"]
+[gd_scene load_steps=22 format=3 uid="uid://b622gynsjqa30"]
 
 [ext_resource type="Script" path="res://ShipsScripts/Typ2.gd" id="1_m8hma"]
+[ext_resource type="Texture2D" uid="uid://dn5pj3b501mut" path="res://resource/Icons/Typ_2_Icon.png" id="2_nu8r4"]
 [ext_resource type="Material" uid="uid://dlg4n4nyjoklj" path="res://resource/ships/Typ-2/typ-2_mat.tres" id="2_woyj1"]
 [ext_resource type="ArrayMesh" uid="uid://c27m5vtwiql4s" path="res://resource/ships/Typ-2/Typ-2.obj" id="3_bwsj8"]
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_6xyjn"]
@@ -94,6 +95,7 @@ _data = {
 [node name="Model" type="Node3D" node_paths=PackedStringArray("shipModell", "actions", "bonusActions")]
 script = ExtResource("1_m8hma")
 ship_name = "Typ-2"
+icon = ExtResource("2_nu8r4")
 shipModell = NodePath("Typ2")
 ship_health = 50
 ship_armor = 50

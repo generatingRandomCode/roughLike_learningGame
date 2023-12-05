@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://mubsfndci7ev"]
+[gd_scene load_steps=20 format=3 uid="uid://mubsfndci7ev"]
 
 [ext_resource type="Script" path="res://ShipsScripts/TheLavoisier.gd" id="1_b0vgl"]
+[ext_resource type="Texture2D" uid="uid://b4h4di5l42l5r" path="res://resource/Icons/Fusionsreaktor_Icon.png" id="2_ocfiq"]
 [ext_resource type="Material" uid="uid://dawfwb4tocs7o" path="res://resource/ships/TheLavoisier/TheLavoisier_mat.tres" id="2_p24xr"]
 [ext_resource type="ArrayMesh" uid="uid://b4qnv45kdop0j" path="res://resource/ships/TheLavoisier/Fusionsreaktor_Schiff.obj" id="3_oufck"]
 [ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_esr3n"]
@@ -111,6 +112,7 @@ _data = {
 [node name="Model" type="Node3D" node_paths=PackedStringArray("shipModell", "actions", "bonusActions")]
 script = ExtResource("1_b0vgl")
 ship_name = "The Lavoisier"
+icon = ExtResource("2_ocfiq")
 shipModell = NodePath("TheLavoisier")
 ship_health = 100
 ship_armor = 100
