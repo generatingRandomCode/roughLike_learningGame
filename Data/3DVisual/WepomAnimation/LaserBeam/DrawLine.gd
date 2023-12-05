@@ -35,6 +35,7 @@ func fire(action : ActionTemplate,timeout : float = 1):
 	if(isProjectile):
 		pathFollow.set_progress_ratio(0)
 		show()
+		pathFollow.show()
 		#Capsule.set_scale(Vector3(0.2, 1, 0.2))
 		progress = 0.0
 		set_process(true)
@@ -59,8 +60,9 @@ func fire(action : ActionTemplate,timeout : float = 1):
 	if action.targetField.has_node("Model"):
 		get_parent().executeDamageAction(action.targets)
 		targetParticle.emitting = true
+		pathFollow.hide()
 		
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(1.5).timeout
 	hide()
 	curve.clear_points()
 

@@ -10,6 +10,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ualvqrxxahwf" path="res://resource/shield/Typ-2_Schild.obj" id="5_pk3rs"]
 [ext_resource type="PackedScene" uid="uid://egof24pfw2e1" path="res://Data/Actions/Weapons/smallLaserBeam.tscn" id="7_bmw4v"]
 [ext_resource type="PackedScene" uid="uid://dm7c37wmbst6s" path="res://Data/Actions/Weapons/shield_small.tscn" id="7_hdxyb"]
+[ext_resource type="Texture2D" uid="uid://wa4pxep4y0bi" path="res://resource/Icons/BigLaserGun_Icon.png" id="9_hj8ju"]
 [ext_resource type="PackedScene" uid="uid://by0uclccvso3y" path="res://Data/Actions/Antrieb/DirveBurn.tscn" id="9_upjcp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xepbc"]
@@ -102,7 +103,7 @@ ship_armor = 50
 ship_shield = 250
 ship_energy = 10
 ship_energy_regeneration = 2
-actions = [NodePath("ShieldSmall"), NodePath("smallLaserBeam")]
+actions = [NodePath("ShieldSmall"), NodePath("SmallLaserBeam")]
 bonusActions = [NodePath("DriveBurn")]
 
 [node name="Typ2" type="MeshInstance3D" parent="."]
@@ -229,8 +230,9 @@ transform = Transform3D(0.9, 0, 0, 0, 0.616, 0, 0, 0, 0.4, 0, 0, -2.75428)
 material_override = ExtResource("5_ndyqe")
 mesh = ExtResource("5_pk3rs")
 
-[node name="smallLaserBeam" parent="." instance=ExtResource("7_bmw4v")]
+[node name="SmallLaserBeam" parent="." instance=ExtResource("7_bmw4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0386362, 1.53942, 5.79966)
+icon = ExtResource("9_hj8ju")
 
 [node name="ShieldSmall" parent="." instance=ExtResource("7_hdxyb")]
 

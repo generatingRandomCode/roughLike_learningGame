@@ -1,0 +1,191 @@
+[gd_scene load_steps=27 format=3 uid="uid://ddre2nc1kl5hv"]
+
+[ext_resource type="Script" path="res://Data/3DVisual/WepomAnimation/LaserBeam/DrawLine.gd" id="1_sghes"]
+[ext_resource type="Material" uid="uid://raepwvjbmlin" path="res://Data/3DVisual/WepomAnimation/RocketShot/Rocket_mat.tres" id="2_28n8e"]
+[ext_resource type="Texture2D" uid="uid://bh5tbadrtc2r6" path="res://resource/Particles/scorch_02.png" id="3_hba4f"]
+[ext_resource type="ArrayMesh" uid="uid://sniom6b8nifh" path="res://Data/3DVisual/WepomAnimation/RocketShot/Rakete.obj" id="3_ypscy"]
+[ext_resource type="Texture2D" uid="uid://6qhdxvpwub44" path="res://resource/Particles/fire_02.png" id="4_5ffq0"]
+[ext_resource type="AudioStream" uid="uid://n2712nqypixm" path="res://resource/sound/rocketrelease.wav" id="6_6exll"]
+[ext_resource type="Material" uid="uid://bqpy4fs7jefg1" path="res://resource/assets/Explosion.tres" id="6_msd04"]
+[ext_resource type="AudioStream" uid="uid://clsfuucasskgj" path="res://resource/sound/explosion.mp3" id="8_wsb1r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_270we"]
+transparency = 1
+blend_mode = 1
+no_depth_test = true
+disable_ambient_light = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(1, 0.768627, 0.00784314, 1)
+albedo_texture = ExtResource("4_5ffq0")
+emission_enabled = true
+emission = Color(0.996078, 0.545098, 0.176471, 1)
+emission_energy_multiplier = 2.34
+emission_operator = 1
+disable_receive_shadows = true
+
+[sub_resource type="Gradient" id="Gradient_jkigj"]
+offsets = PackedFloat32Array(0, 0.0075188, 0.115068, 0.264384, 0.335616, 0.452055, 0.606849, 1)
+colors = PackedColorArray(0.997827, 0.972396, 0.911708, 1, 1, 0.903479, 0.683236, 1, 0.955071, 0.777003, 0.30474, 1, 0.967078, 0.502134, 0.0799815, 0.61098, 0.968627, 0.466667, 0.0509804, 0.560784, 0.541992, 0.205204, 0, 0.407843, 0, 0, 0, 0.384314, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0c4k8"]
+gradient = SubResource("Gradient_jkigj")
+
+[sub_resource type="Curve" id="Curve_w2njj"]
+_data = [Vector2(0.00525624, 0.221053), 0.0, 1.00132, 0, 0, Vector2(1, 0), -5.69638, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rrw56"]
+curve = SubResource("Curve_w2njj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ah6tm"]
+lifetime_randomness = 0.08
+direction = Vector3(0, 0, 0)
+spread = 4.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 16.0
+angular_velocity_min = -181.1
+angular_velocity_max = -124.0
+angle_min = -161.5
+angle_max = 166.0
+scale_min = 5.0
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_rrw56")
+color_ramp = SubResource("GradientTexture1D_0c4k8")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xdvja"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khkap"]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("3_hba4f")
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_5bw3e"]
+_data = [Vector2(0, 0.610526), 0.0, 1.06573, 0, 0, Vector2(1, 0), -3.47285, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4nnit"]
+curve = SubResource("Curve_5bw3e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nwsa0"]
+direction = Vector3(-1, 0, -1)
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 8.0
+scale_max = 9.0
+scale_curve = SubResource("CurveTexture_4nnit")
+turbulence_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jb07c"]
+orientation = 2
+
+[sub_resource type="Gradient" id="Gradient_e7j3u"]
+offsets = PackedFloat32Array(0.0669014, 0.183099, 0.442254, 0.71831, 1)
+colors = PackedColorArray(0.972549, 0.976471, 0, 1, 0.97251, 0.472708, 0, 1, 0.0666667, 0, 0, 0.34902, 0.529412, 0, 0, 0.117647, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yadwp"]
+gradient = SubResource("Gradient_e7j3u")
+
+[sub_resource type="Curve" id="Curve_72jlw"]
+_data = [Vector2(0.011976, 0.810526), 0.0, 1.20855, 0, 0, Vector2(1, 0), -2.0875, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_npiv6"]
+curve = SubResource("Curve_72jlw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tlxpi"]
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector3(50, 50, 50)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 60.0
+scale_min = 6.0
+scale_max = 20.0
+scale_curve = SubResource("CurveTexture_npiv6")
+color = Color(0.913725, 0.913725, 0.913725, 1)
+color_ramp = SubResource("GradientTexture1D_yadwp")
+hue_variation_min = -0.02
+hue_variation_max = 0.02
+turbulence_enabled = true
+turbulence_noise_strength = 0.01
+turbulence_noise_scale = 0.1
+
+[sub_resource type="QuadMesh" id="QuadMesh_udbas"]
+
+[node name="LaserBeam" type="Path3D" node_paths=PackedStringArray("Capsule", "pathFollow", "fireParticle", "targetParticle", "shootAudio")]
+transform = Transform3D(1.14257, 0, 0, 0, 1.14257, 0, 0, 0, 1.14257, 0, 0, 0)
+script = ExtResource("1_sghes")
+Capsule = NodePath("PathFollow3D/Rocket")
+pathFollow = NodePath("PathFollow3D")
+fireParticle = NodePath("GPUParticles3D")
+targetParticle = NodePath("Explosion2")
+isProjectile = true
+shootAudio = NodePath("AudioStreamPlayer3D")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(-4.37112e-08, 0, -0.999999, 0, 0.999999, 0, 0.999996, 0, -4.37113e-08, 5, 0, 0)
+progress = 5.0
+rotation_mode = 1
+cubic_interp = false
+loop = false
+tilt_enabled = false
+
+[node name="Rocket" type="MeshInstance3D" parent="PathFollow3D"]
+material_override = ExtResource("2_28n8e")
+mesh = ExtResource("3_ypscy")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="PathFollow3D/Rocket"]
+transform = Transform3D(1, 0, -6.03961e-14, 0, 1, 0, 1.42109e-14, 0, 1, 0.0601497, -0.0255726, 2.09257)
+material_override = SubResource("StandardMaterial3D_270we")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 100
+lifetime = 2.0
+speed_scale = 2.0
+interpolate = false
+local_coords = true
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_ah6tm")
+draw_pass_1 = SubResource("QuadMesh_xdvja")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37112e-08, -0.999999, 4.37114e-08, 0, -4.37114e-08, -0.999999, 0.999996, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_khkap")
+amount = 4
+lifetime = 0.4
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_nwsa0")
+draw_pass_1 = SubResource("PlaneMesh_jb07c")
+
+[node name="Explosion2" type="GPUParticles3D" parent="."]
+material_override = ExtResource("6_msd04")
+cast_shadow = 0
+emitting = false
+amount = 120
+lifetime = 1.5
+one_shot = true
+preprocess = 0.04
+explosiveness = 0.95
+randomness = 1.0
+collision_base_size = 100.0
+visibility_aabb = AABB(-15, -15, -15, 30, 30, 30)
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_tlxpi")
+draw_pass_1 = SubResource("QuadMesh_udbas")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_6exll")
+max_distance = 800.0
+
+[node name="Explosion" type="Node3D" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Explosion"]
+stream = ExtResource("8_wsb1r")
+unit_size = 50.0
+max_distance = 400.0

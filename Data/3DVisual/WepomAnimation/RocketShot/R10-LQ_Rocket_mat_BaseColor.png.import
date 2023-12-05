@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxouor5b28554"
-path.s3tc="res://.godot/imported/R10-LQ_Rocket_mat_OcclusionRoughnessMetallic.png-333ceb4592e14bcb2e4b053c3f32892a.s3tc.ctex"
+uid="uid://oggiqwxde07p"
+path.s3tc="res://.godot/imported/R10-LQ_Rocket_mat_BaseColor.png-db8d751c6f32fdfb96ba36c518644300.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resource/ships/R10/R10-LQ_Rocket_mat_OcclusionRoughnessMetallic.png"
-dest_files=["res://.godot/imported/R10-LQ_Rocket_mat_OcclusionRoughnessMetallic.png-333ceb4592e14bcb2e4b053c3f32892a.s3tc.ctex"]
+source_file="res://Data/3DVisual/WepomAnimation/RocketShot/R10-LQ_Rocket_mat_BaseColor.png"
+dest_files=["res://.godot/imported/R10-LQ_Rocket_mat_BaseColor.png-db8d751c6f32fdfb96ba36c518644300.s3tc.ctex"]
 
 [params]
 

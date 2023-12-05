@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://81hssnoskpx0"]
 
-[ext_resource type="Material" uid="uid://bqpy4fs7jefg1" path="res://resource/assets/Explosion/Explosion.tres" id="1_nxrd1"]
+[ext_resource type="Material" uid="uid://bqpy4fs7jefg1" path="res://resource/assets/Explosion.tres" id="1_hp3kw"]
 [ext_resource type="Script" path="res://Data/3DVisual/StartExplosion.gd" id="2_gr45l"]
 [ext_resource type="AudioStream" uid="uid://clsfuucasskgj" path="res://resource/sound/explosion.mp3" id="3_crhtj"]
 
@@ -12,7 +12,7 @@ colors = PackedColorArray(0.972549, 0.976471, 0, 1, 0.97251, 0.472708, 0, 1, 0.0
 gradient = SubResource("Gradient_e7j3u")
 
 [sub_resource type="Curve" id="Curve_72jlw"]
-_data = [Vector2(0, 0.273684), 0.0, 0.0, 0, 0, Vector2(1, 0.463158), -1.49695, 0.0, 0, 0]
+_data = [Vector2(0.011976, 0.810526), 0.0, 1.20855, 0, 0, Vector2(1, 0), -2.0875, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_npiv6"]
@@ -42,7 +42,7 @@ turbulence_noise_scale = 0.1
 [node name="Explosion" type="Node3D"]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." node_paths=PackedStringArray("audio")]
-material_override = ExtResource("1_nxrd1")
+material_override = ExtResource("1_hp3kw")
 cast_shadow = 0
 emitting = false
 amount = 120

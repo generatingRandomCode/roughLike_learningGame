@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co8518ara0ttn"
-path.s3tc="res://.godot/imported/R10-LQ_Rocket_mat_Emissive.png-6d7b9d98cc65a2382a0e20cd32c03ee0.s3tc.ctex"
+uid="uid://dxouor5b28554"
+path.s3tc="res://.godot/imported/R10-LQ_Rocket_mat_OcclusionRoughnessMetallic.png-24971f595c58a7dfaa1cbcec21ba1850.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resource/ships/R10/R10-LQ_Rocket_mat_Emissive.png"
-dest_files=["res://.godot/imported/R10-LQ_Rocket_mat_Emissive.png-6d7b9d98cc65a2382a0e20cd32c03ee0.s3tc.ctex"]
+source_file="res://Data/3DVisual/WepomAnimation/RocketShot/R10-LQ_Rocket_mat_OcclusionRoughnessMetallic.png"
+dest_files=["res://.godot/imported/R10-LQ_Rocket_mat_OcclusionRoughnessMetallic.png-24971f595c58a7dfaa1cbcec21ba1850.s3tc.ctex"]
 
 [params]
 

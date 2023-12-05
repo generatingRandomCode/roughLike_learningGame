@@ -1,25 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://egof24pfw2e1"]
+[gd_scene load_steps=5 format=3 uid="uid://egof24pfw2e1"]
 
-[ext_resource type="Script" path="res://Data/Actions/Weapons/bigLaserBeam.gd" id="1_wrt2y"]
-[ext_resource type="Texture2D" uid="uid://wa4pxep4y0bi" path="res://resource/Icons/BigLaserGun_Icon.png" id="2_5jutk"]
+[ext_resource type="Script" path="res://Data/Actions/Weapons/smallLaserBeam.gd" id="1_usdhy"]
 [ext_resource type="PackedScene" uid="uid://dwwq4fv0r2ct0" path="res://Data/3DVisual/WepomAnimation/LaserBeam/LaiserShot_Scene.tscn" id="3_hokm6"]
 [ext_resource type="Material" uid="uid://bdpg5ginsvbt0" path="res://Data/3DVisual/WepomAnimation/LaserBeam/smallLaiserShot_ParticleEffect.tres" id="4_xnhe8"]
 
-[sub_resource type="Curve3D" id="Curve3D_4011b"]
+[sub_resource type="Curve3D" id="Curve3D_yi73p"]
 resource_local_to_scene = true
 
-[node name="smallLaserBeam" type="Node3D" node_paths=PackedStringArray("animation")]
-script = ExtResource("1_wrt2y")
-wepon_damage = 50
-timeNeededForAction = 1
-energyCost = 2
-animation = NodePath("LaserBeam")
-icon = ExtResource("2_5jutk")
-wepon_name = "Big Laser Beam"
-wepon_initiative = 6
-targetPreselection = 6
+[node name="smallLaserBeam" type="Node3D"]
+script = ExtResource("1_usdhy")
+timeNeededForAction = 2
+energyCost = 1
+wepon_name = "Small Laser Beam"
+wepon_initiative = 2
+targetPreselection = 7
 
-[node name="LaserBeam" parent="." instance=ExtResource("3_hokm6")]
-curve = SubResource("Curve3D_4011b")
+[node name="SmallLaserBeam" parent="." instance=ExtResource("3_hokm6")]
+curve = SubResource("Curve3D_yi73p")
 laserBeamThickness = 0.1
 processParticleMaterial = ExtResource("4_xnhe8")

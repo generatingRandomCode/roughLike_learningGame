@@ -31,7 +31,7 @@ stretch = true
 handle_input_locally = false
 audio_listener_enable_3d = true
 physics_object_picking = true
-size = Vector2i(478, 540)
+size = Vector2i(2, 2)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
@@ -55,6 +55,7 @@ transform = Transform3D(1, 1.49012e-08, 0, -1.49012e-08, 1, 3.8743e-07, 1.49012e
 doppler_tracking = 2
 
 [node name="AudioListener3D" type="AudioListener3D" parent="GridContainer/SubViewportContainer/SubViewport/Node3D/Node3D/Camera3DL"]
+current = true
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="GridContainer"]
 layout_mode = 2
@@ -66,7 +67,7 @@ stretch = true
 handle_input_locally = false
 audio_listener_enable_3d = true
 physics_object_picking = true
-size = Vector2i(478, 540)
+size = Vector2i(2, 2)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
@@ -89,6 +90,7 @@ transform = Transform3D(1, 1.49012e-08, -1.49012e-08, 1.49012e-08, 1, 5.96046e-0
 doppler_tracking = 2
 
 [node name="AudioListener3D" type="AudioListener3D" parent="GridContainer/SubViewportContainer2/SubViewport2/Node3D2/Node3D/Camera3DL"]
+current = true
 
 [connection signal="mouse_entered" from="GridContainer/SubViewportContainer" to="GridContainer/SubViewportContainer/SubViewport/Node3D" method="_on_sub_viewport_container_mouse_entered"]
 [connection signal="mouse_exited" from="GridContainer/SubViewportContainer" to="GridContainer/SubViewportContainer/SubViewport/Node3D" method="_on_sub_viewport_container_mouse_exited"]
