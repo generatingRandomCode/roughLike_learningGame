@@ -53,8 +53,10 @@ func _input(event):
 			if event.pressed:
 				if state_machine.state == self:
 					#	bakc to player selection
-					await state_machine.transition_to("PlayerTurnState/ChoosePlayerState")
 					get_parent().action = null
+					#	deleteted last added action
+					get_parent().actions.erase(get_parent().actions[-1])
+					await state_machine.transition_to("PlayerTurnState/ChoosePlayerState")
 					
 					
 					
