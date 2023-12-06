@@ -16,4 +16,15 @@ res://Data/3DVisual/WepomAnimation/RocketShot/RocketShot_Scene.tscn
 res://Ships/Typ2.tscn
 res://main.tscn
 res://resource/gameBackground/planets/MagmaPlanet/magmaMaterial.tres
+<<<<<<< HEAD
 res://Data/State/ChooseTargetState.gd
+=======
+res://player_grid.tscn
+res://player_grid_base.tscn
+res://ship_ui.tscn
+res://simpleButton.tscn
+res://start_menu.tscn
+res://Ships/T-47p.tscn
+res://Ships/TheLavoisier.tscn
+res://Ships/Typ1.tscn
+>>>>>>> 275086b492cffaa839cdfd1dcdc1e78be24fd18f
